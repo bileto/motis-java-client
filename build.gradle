@@ -43,7 +43,7 @@ test {
 openApiGenerate {
     generatorName = 'java'
     inputSpec = "${rootDir}/ext/motis/openapi.yaml".replace("\\","/").toString()
-    outputDir = "${buildDir}/generated"
+    outputDir = "${rootDir}".toString()
     packageName = 'com.bileto.motis.client'
     apiPackage = 'com.bileto.motis.client.api'
     modelPackage = 'com.bileto.motis.client.model'
@@ -65,15 +65,9 @@ openApiGenerate {
     ]
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs "${buildDir}/generated/src/main/java"
-        }
-    }
+tasks.named("openApiGenerate") {
+    doNotTrackState("Generating to root dir")
 }
-
-compileJava.dependsOn tasks.openApiGenerate
 
 publishing {
     publications {
