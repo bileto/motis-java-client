@@ -24,9 +24,9 @@ dependencies {
 
     implementation 'org.springframework:spring-webflux:6.2.1'
     implementation 'io.projectreactor.netty:reactor-netty:1.1.26'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.18.2'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.19.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.2'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2'
     implementation 'org.apache.commons:commons-lang3:3.18.0'
     
