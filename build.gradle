@@ -1,0 +1,84 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'org.openapi.generator' version '7.14.0'
+}
+
+group = 'com.bileto'
+version = '0.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
+    implementation 'jakarta.validation:jakarta.validation-api:3.1.1'
+
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
+
+    implementation 'org.springframework:spring-webflux:6.2.1'
+    implementation 'io.projectreactor.netty:reactor-netty:1.1.26'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.18.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2'
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+    
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testImplementation 'org.mockito:mockito-core:5.15.2'
+    testImplementation 'org.springframework:spring-test:6.2.1'
+    testImplementation 'io.projectreactor:reactor-test:3.7.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+openApiGenerate {
+    generatorName = 'java'
+    inputSpec = "${rootDir}/ext/motis/openapi.yaml".replace("\\","/").toString()
+    outputDir = "${buildDir}/generated"
+    packageName = 'com.bileto.motis.client'
+    apiPackage = 'com.bileto.motis.client.api'
+    modelPackage = 'com.bileto.motis.client.model'
+    invokerPackage = 'com.bileto.motis.client'
+
+    configOptions = [
+        annotationLibrary: 'none',
+        library: 'webclient',
+        dateLibrary: 'java8',
+        documentationProvider: 'none',
+        java8: 'true',
+        generateSupportingFiles: 'false',
+        hideGenerationTimestamp: 'true',
+        parcelableModel: 'false',
+        serializationLibrary: 'jackson',
+        useJakartaEe: 'true',
+        useSpringBoot3: 'true',
+        webclientBlockingOperations: 'true'
+    ]
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs "${buildDir}/generated/src/main/java"
+        }
+    }
+}
+
+compileJava.dependsOn tasks.openApiGenerate
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
