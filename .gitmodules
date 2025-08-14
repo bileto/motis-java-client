@@ -1,0 +1,3 @@
+[submodule "ext/motis"]
+	path = ext/motis
+	url = https://github.com/motis-project/motis.git
