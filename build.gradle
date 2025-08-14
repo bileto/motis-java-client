@@ -33,7 +33,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
     testImplementation 'org.mockito:mockito-core:5.15.2'
     testImplementation 'org.springframework:spring-test:6.2.10'
-    testImplementation 'io.projectreactor:reactor-test:3.7.1'
+    testImplementation 'io.projectreactor:reactor-test:3.7.9'
 }
 
 test {
