@@ -1,4 +1,3 @@
-README.md
 src/main/java/com/bileto/motis/client/ApiClient.java
 src/main/java/com/bileto/motis/client/JavaTimeFormatter.java
 src/main/java/com/bileto/motis/client/RFC3339DateFormat.java

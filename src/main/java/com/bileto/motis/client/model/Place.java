@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Place.JSON_PROPERTY_LAT,
   Place.JSON_PROPERTY_LON,
   Place.JSON_PROPERTY_LEVEL,
+  Place.JSON_PROPERTY_TZ,
   Place.JSON_PROPERTY_ARRIVAL,
   Place.JSON_PROPERTY_DEPARTURE,
   Place.JSON_PROPERTY_SCHEDULED_ARRIVAL,
@@ -78,6 +79,10 @@ public class Place {
   public static final String JSON_PROPERTY_LEVEL = "level";
   @jakarta.annotation.Nonnull
   private BigDecimal level;
+
+  public static final String JSON_PROPERTY_TZ = "tz";
+  @jakarta.annotation.Nullable
+  private String tz;
 
   public static final String JSON_PROPERTY_ARRIVAL = "arrival";
   @jakarta.annotation.Nullable
@@ -269,6 +274,31 @@ public class Place {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLevel(@jakarta.annotation.Nonnull BigDecimal level) {
     this.level = level;
+  }
+
+  public Place tz(@jakarta.annotation.Nullable String tz) {
+    
+    this.tz = tz;
+    return this;
+  }
+
+  /**
+   * timezone name (e.g. \&quot;Europe/Berlin\&quot;)
+   * @return tz
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TZ)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getTz() {
+    return tz;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TZ)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTz(@jakarta.annotation.Nullable String tz) {
+    this.tz = tz;
   }
 
   public Place arrival(@jakarta.annotation.Nullable OffsetDateTime arrival) {
@@ -694,6 +724,7 @@ public class Place {
         Objects.equals(this.lat, place.lat) &&
         Objects.equals(this.lon, place.lon) &&
         Objects.equals(this.level, place.level) &&
+        Objects.equals(this.tz, place.tz) &&
         Objects.equals(this.arrival, place.arrival) &&
         Objects.equals(this.departure, place.departure) &&
         Objects.equals(this.scheduledArrival, place.scheduledArrival) &&
@@ -714,7 +745,7 @@ public class Place {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, stopId, lat, lon, level, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow);
+    return Objects.hash(name, stopId, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow);
   }
 
   @Override
@@ -726,6 +757,7 @@ public class Place {
     sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
     sb.append("    lon: ").append(toIndentedString(lon)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    tz: ").append(toIndentedString(tz)).append("\n");
     sb.append("    arrival: ").append(toIndentedString(arrival)).append("\n");
     sb.append("    departure: ").append(toIndentedString(departure)).append("\n");
     sb.append("    scheduledArrival: ").append(toIndentedString(scheduledArrival)).append("\n");

@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Match.JSON_PROPERTY_STREET,
   Match.JSON_PROPERTY_HOUSE_NUMBER,
   Match.JSON_PROPERTY_ZIP,
+  Match.JSON_PROPERTY_TZ,
   Match.JSON_PROPERTY_AREAS,
   Match.JSON_PROPERTY_SCORE
 })
@@ -87,6 +88,10 @@ public class Match {
   public static final String JSON_PROPERTY_ZIP = "zip";
   @jakarta.annotation.Nullable
   private String zip;
+
+  public static final String JSON_PROPERTY_TZ = "tz";
+  @jakarta.annotation.Nullable
+  private String tz;
 
   public static final String JSON_PROPERTY_AREAS = "areas";
   @jakarta.annotation.Nonnull
@@ -357,6 +362,31 @@ public class Match {
     this.zip = zip;
   }
 
+  public Match tz(@jakarta.annotation.Nullable String tz) {
+    
+    this.tz = tz;
+    return this;
+  }
+
+  /**
+   * timezone name (e.g. \&quot;Europe/Berlin\&quot;)
+   * @return tz
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TZ)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getTz() {
+    return tz;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TZ)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTz(@jakarta.annotation.Nullable String tz) {
+    this.tz = tz;
+  }
+
   public Match areas(@jakarta.annotation.Nonnull List<Area> areas) {
     
     this.areas = areas;
@@ -435,13 +465,14 @@ public class Match {
         Objects.equals(this.street, match.street) &&
         Objects.equals(this.houseNumber, match.houseNumber) &&
         Objects.equals(this.zip, match.zip) &&
+        Objects.equals(this.tz, match.tz) &&
         Objects.equals(this.areas, match.areas) &&
         Objects.equals(this.score, match.score);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, tokens, name, id, lat, lon, level, street, houseNumber, zip, areas, score);
+    return Objects.hash(type, tokens, name, id, lat, lon, level, street, houseNumber, zip, tz, areas, score);
   }
 
   @Override
@@ -458,6 +489,7 @@ public class Match {
     sb.append("    street: ").append(toIndentedString(street)).append("\n");
     sb.append("    houseNumber: ").append(toIndentedString(houseNumber)).append("\n");
     sb.append("    zip: ").append(toIndentedString(zip)).append("\n");
+    sb.append("    tz: ").append(toIndentedString(tz)).append("\n");
     sb.append("    areas: ").append(toIndentedString(areas)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("}");
