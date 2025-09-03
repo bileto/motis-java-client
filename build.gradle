@@ -23,7 +23,7 @@ dependencies {
     implementation 'org.openapitools:jackson-databind-nullable:0.2.7'
 
     implementation 'org.springframework:spring-webflux:6.2.10'
-    implementation 'io.projectreactor.netty:reactor-netty:1.1.26'
+    implementation 'io.projectreactor.netty:reactor-netty:1.2.9'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.20.0'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.20'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.20.0'
