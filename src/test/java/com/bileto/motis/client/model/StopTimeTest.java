@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for StopTime
  */
+@Disabled
 class StopTimeTest {
     private final StopTime model = new StopTime();
 

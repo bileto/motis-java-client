@@ -32,6 +32,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Alert
  */
+@Disabled
 class AlertTest {
     private final Alert model = new Alert();
 

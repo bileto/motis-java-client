@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Stoptimes200Response
  */
+@Disabled
 class Stoptimes200ResponseTest {
     private final Stoptimes200Response model = new Stoptimes200Response();
 

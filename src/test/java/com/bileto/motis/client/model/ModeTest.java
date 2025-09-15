@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Mode
  */
+@Disabled
 class ModeTest {
     /**
      * Model tests for Mode

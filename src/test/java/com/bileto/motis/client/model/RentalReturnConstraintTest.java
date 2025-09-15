@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for RentalReturnConstraint
  */
+@Disabled
 class RentalReturnConstraintTest {
     /**
      * Model tests for RentalReturnConstraint

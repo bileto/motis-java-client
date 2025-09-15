@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for LocationType
  */
+@Disabled
 class LocationTypeTest {
     /**
      * Model tests for LocationType

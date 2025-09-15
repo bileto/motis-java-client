@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for StepInstruction
  */
+@Disabled
 class StepInstructionTest {
     private final StepInstruction model = new StepInstruction();
 

@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for ReachablePlace
  */
+@Disabled
 class ReachablePlaceTest {
     private final ReachablePlace model = new ReachablePlace();
 

@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Initial200Response
  */
+@Disabled
 class Initial200ResponseTest {
     private final Initial200Response model = new Initial200Response();
 

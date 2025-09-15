@@ -29,7 +29,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class TimetableApi {
     private ApiClient apiClient;
 
@@ -49,7 +49,6 @@ public class TimetableApi {
         this.apiClient = apiClient;
     }
 
-    
     /**
      * Get the next N departures or arrivals of a stop sorted by time
      * 
@@ -97,7 +96,7 @@ public class TimetableApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pageCursor", pageCursor));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "language", language));
-        
+
         final String[] localVarAccepts = { 
             "application/json"
         };
@@ -208,7 +207,7 @@ public class TimetableApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "joinInterlinedLegs", joinInterlinedLegs));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "language", language));
-        
+
         final String[] localVarAccepts = { 
             "application/json"
         };

@@ -31,6 +31,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Itinerary
  */
+@Disabled
 class ItineraryTest {
     private final Itinerary model = new Itinerary();
 

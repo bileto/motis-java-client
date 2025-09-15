@@ -28,7 +28,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class GeocodeApi {
     private ApiClient apiClient;
 
@@ -48,7 +48,6 @@ public class GeocodeApi {
         this.apiClient = apiClient;
     }
 
-    
     /**
      * Autocompletion &amp; geocoding that resolves user input addresses including coordinates
      * 
@@ -80,7 +79,7 @@ public class GeocodeApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "placeBias", placeBias));
-        
+
         final String[] localVarAccepts = { 
             "application/json"
         };
@@ -169,7 +168,7 @@ public class GeocodeApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
-        
+
         final String[] localVarAccepts = { 
             "application/json"
         };

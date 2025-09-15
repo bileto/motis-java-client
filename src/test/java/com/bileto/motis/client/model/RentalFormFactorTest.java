@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for RentalFormFactor
  */
+@Disabled
 class RentalFormFactorTest {
     /**
      * Model tests for RentalFormFactor

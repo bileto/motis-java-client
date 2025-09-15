@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Area
  */
+@Disabled
 class AreaTest {
     private final Area model = new Area();
 

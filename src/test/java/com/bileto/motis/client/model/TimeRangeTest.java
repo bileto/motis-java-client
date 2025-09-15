@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for TimeRange
  */
+@Disabled
 class TimeRangeTest {
     private final TimeRange model = new TimeRange();
 

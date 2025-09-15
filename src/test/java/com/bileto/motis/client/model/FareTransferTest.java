@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for FareTransfer
  */
+@Disabled
 class FareTransferTest {
     private final FareTransfer model = new FareTransfer();
 

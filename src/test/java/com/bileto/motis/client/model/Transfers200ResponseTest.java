@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Transfers200Response
  */
+@Disabled
 class Transfers200ResponseTest {
     private final Transfers200Response model = new Transfers200Response();
 

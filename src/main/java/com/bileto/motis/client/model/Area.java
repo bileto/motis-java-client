@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Area.JSON_PROPERTY_UNIQUE,
   Area.JSON_PROPERTY_DEFAULT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class Area {
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nonnull

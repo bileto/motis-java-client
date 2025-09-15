@@ -26,7 +26,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class DebugApi {
     private ApiClient apiClient;
 
@@ -46,7 +46,6 @@ public class DebugApi {
         this.apiClient = apiClient;
     }
 
-    
     /**
      * Prints all transfers of a timetable location (track, bus stop, etc.)
      * 
@@ -70,7 +69,7 @@ public class DebugApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "id", id));
-        
+
         final String[] localVarAccepts = { 
             "application/json"
         };

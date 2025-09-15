@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Duration
  */
+@Disabled
 class DurationTest {
     private final Duration model = new Duration();
 

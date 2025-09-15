@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for AlertCause
  */
+@Disabled
 class AlertCauseTest {
     /**
      * Model tests for AlertCause

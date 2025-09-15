@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for RentalPropulsionType
  */
+@Disabled
 class RentalPropulsionTypeTest {
     /**
      * Model tests for RentalPropulsionType

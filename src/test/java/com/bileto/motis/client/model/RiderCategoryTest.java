@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for RiderCategory
  */
+@Disabled
 class RiderCategoryTest {
     private final RiderCategory model = new RiderCategory();
 

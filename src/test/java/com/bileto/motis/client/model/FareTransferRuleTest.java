@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for FareTransferRule
  */
+@Disabled
 class FareTransferRuleTest {
     /**
      * Model tests for FareTransferRule

@@ -27,6 +27,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Transfer
  */
+@Disabled
 class TransferTest {
     private final Transfer model = new Transfer();
 

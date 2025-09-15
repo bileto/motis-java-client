@@ -32,6 +32,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Plan200Response
  */
+@Disabled
 class Plan200ResponseTest {
     private final Plan200Response model = new Plan200Response();
 

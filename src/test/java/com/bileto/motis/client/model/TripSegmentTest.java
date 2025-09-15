@@ -33,6 +33,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for TripSegment
  */
+@Disabled
 class TripSegmentTest {
     private final TripSegment model = new TripSegment();
 

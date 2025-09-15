@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for TripInfo
  */
+@Disabled
 class TripInfoTest {
     private final TripInfo model = new TripInfo();
 

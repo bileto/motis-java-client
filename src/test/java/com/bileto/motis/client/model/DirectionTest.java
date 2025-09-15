@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Direction
  */
+@Disabled
 class DirectionTest {
     /**
      * Model tests for Direction

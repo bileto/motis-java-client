@@ -31,6 +31,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Match
  */
+@Disabled
 class MatchTest {
     private final Match model = new Match();
 

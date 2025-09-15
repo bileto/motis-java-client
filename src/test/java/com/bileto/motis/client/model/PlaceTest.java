@@ -33,6 +33,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Place
  */
+@Disabled
 class PlaceTest {
     private final Place model = new Place();
 

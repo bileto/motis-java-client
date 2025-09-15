@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for EncodedPolyline
  */
+@Disabled
 class EncodedPolylineTest {
     private final EncodedPolyline model = new EncodedPolyline();
 

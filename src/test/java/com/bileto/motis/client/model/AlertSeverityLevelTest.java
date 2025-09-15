@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for AlertSeverityLevel
  */
+@Disabled
 class AlertSeverityLevelTest {
     /**
      * Model tests for AlertSeverityLevel

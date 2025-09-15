@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Rental
  */
+@Disabled
 class RentalTest {
     private final Rental model = new Rental();
 

@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for FareMediaType
  */
+@Disabled
 class FareMediaTypeTest {
     /**
      * Model tests for FareMediaType

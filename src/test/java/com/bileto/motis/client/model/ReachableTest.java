@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Reachable
  */
+@Disabled
 class ReachableTest {
     private final Reachable model = new Reachable();
 

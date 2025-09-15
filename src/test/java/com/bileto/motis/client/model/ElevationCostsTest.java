@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for ElevationCosts
  */
+@Disabled
 class ElevationCostsTest {
     /**
      * Model tests for ElevationCosts

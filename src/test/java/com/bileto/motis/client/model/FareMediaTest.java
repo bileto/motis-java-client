@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for FareMedia
  */
+@Disabled
 class FareMediaTest {
     private final FareMedia model = new FareMedia();
 

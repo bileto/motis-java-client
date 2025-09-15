@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for PickupDropoffType
  */
+@Disabled
 class PickupDropoffTypeTest {
     /**
      * Model tests for PickupDropoffType

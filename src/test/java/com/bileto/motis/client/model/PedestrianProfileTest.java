@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for PedestrianProfile
  */
+@Disabled
 class PedestrianProfileTest {
     /**
      * Model tests for PedestrianProfile

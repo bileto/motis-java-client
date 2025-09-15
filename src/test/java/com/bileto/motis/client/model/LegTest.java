@@ -36,6 +36,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for Leg
  */
+@Disabled
 class LegTest {
     private final Leg model = new Leg();
 

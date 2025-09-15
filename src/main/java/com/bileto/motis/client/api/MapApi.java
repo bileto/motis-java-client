@@ -30,7 +30,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class MapApi {
     private ApiClient apiClient;
 
@@ -50,7 +50,6 @@ public class MapApi {
         this.apiClient = apiClient;
     }
 
-    
     /**
      * initial location to view the map at after loading based on where public transport should be visible
      * 
@@ -145,7 +144,7 @@ public class MapApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
-        
+
         final String[] localVarAccepts = { 
             "application/json"
         };
@@ -229,7 +228,7 @@ public class MapApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
-        
+
         final String[] localVarAccepts = { 
             "application/json"
         };
@@ -331,7 +330,7 @@ public class MapApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "startTime", startTime));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "endTime", endTime));
-        
+
         final String[] localVarAccepts = { 
             "application/json"
         };

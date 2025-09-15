@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Model tests for FareProduct
  */
+@Disabled
 class FareProductTest {
     private final FareProduct model = new FareProduct();
 
