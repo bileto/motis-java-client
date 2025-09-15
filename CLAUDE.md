@@ -15,7 +15,7 @@ This is a Java client library for the MOTIS transportation information system. I
 
 ## Architecture
 
-- **Generated Client**: Located in `build/generated/src/main/java`
+- **Generated Client**: Located in `src/main/java`
 - **Library Type**: Spring WebClient-based reactive client
 - **Package Structure**:
   - `io.bileto.motis.client.api` - API interfaces
