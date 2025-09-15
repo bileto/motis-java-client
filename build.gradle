@@ -11,6 +11,8 @@ version = '0.0.0-SNAPSHOT'
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
+    withSourcesJar()
+    withJavadocJar()
 }
 
 repositories {
@@ -75,6 +77,48 @@ publishing {
     publications {
         maven(MavenPublication) {
             from components.java
+            
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
+            
+            pom {
+                name = 'MOTIS Java Client'
+                description = 'Java client for MOTIS API'
+                url = 'https://github.com/bileto/motis-java-client'
+                
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                
+                developers {
+                    developer {
+                        id = 'bileto'
+                        name = 'Bileto'
+                        email = 'info@bileto.com'
+                    }
+                }
+                
+                scm {
+                    connection = 'scm:git:git://github.com/bileto/motis-java-client.git'
+                    developerConnection = 'scm:git:ssh://github.com:bileto/motis-java-client.git'
+                    url = 'https://github.com/bileto/motis-java-client/tree/master'
+                }
+            }
+        }
+    }
+    
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/bileto/motis-java-client")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME") ?: project.findProperty("gpr.user")
+                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")
+            }
         }
     }
 }
