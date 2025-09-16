@@ -45,10 +45,10 @@ openApiGenerate {
     generatorName = 'java'
     inputSpec = "${rootDir}/ext/motis/openapi.yaml".replace("\\","/").toString()
     outputDir = "${rootDir}".toString()
-    packageName = 'com.bileto.motis.client'
-    apiPackage = 'com.bileto.motis.client.api'
-    modelPackage = 'com.bileto.motis.client.model'
-    invokerPackage = 'com.bileto.motis.client'
+    packageName = 'dev.bileto.motis.client'
+    apiPackage = 'dev.bileto.motis.client.api'
+    modelPackage = 'dev.bileto.motis.client.model'
+    invokerPackage = 'dev.bileto.motis.client'
 
     configOptions = [
         annotationLibrary: 'none',
