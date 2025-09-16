@@ -17,3 +17,4 @@ pom.xml
 README.md
 settings.gradle
 src/main/AndroidManifest.xml
+src/test/**
