@@ -60,7 +60,7 @@ public class RoutingApi {
      * 
      * <p><b>200</b> - The starting position and a list of all reachable stops If no paths are found, the reachable list is empty. 
      * @param one \\&#x60;latitude,longitude[,level]\\&#x60; tuple with - latitude and longitude in degrees - (optional) level: the OSM level (default: 0)  OR  stop id 
-     * @param maxTravelTime maximum travel time in minutes
+     * @param maxTravelTime The maximum travel time in minutes. Defaults to 90. The limit may be increased by the server administrator using &#x60;onetoall_max_travel_minutes&#x60; option in &#x60;config.yml&#x60;. See documentation for details.
      * @param time Optional. Defaults to the current time.  Departure time ($arriveBy&#x3D;false) / arrival date ($arriveBy&#x3D;true), 
      * @param arriveBy true &#x3D; all to one, false &#x3D; one to all 
      * @param maxTransfers The maximum number of allowed transfers (i.e. interchanges between transit legs, pre- and postTransit do not count as transfers). &#x60;maxTransfers&#x3D;0&#x60; searches for direct transit connections without any transfers. If you want to search only for non-transit connections (&#x60;FOOT&#x60;, &#x60;CAR&#x60;, etc.), send an empty &#x60;transitModes&#x60; parameter instead.  If not provided, the routing uses the server-side default value which is hardcoded and very high to cover all use cases.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the fastest) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance.  In plan endpoints before v3, the behavior is off by one, i.e. &#x60;maxTransfers&#x3D;0&#x60; only returns non-transit connections. 
@@ -137,7 +137,7 @@ public class RoutingApi {
      * 
      * <p><b>200</b> - The starting position and a list of all reachable stops If no paths are found, the reachable list is empty. 
      * @param one \\&#x60;latitude,longitude[,level]\\&#x60; tuple with - latitude and longitude in degrees - (optional) level: the OSM level (default: 0)  OR  stop id 
-     * @param maxTravelTime maximum travel time in minutes
+     * @param maxTravelTime The maximum travel time in minutes. Defaults to 90. The limit may be increased by the server administrator using &#x60;onetoall_max_travel_minutes&#x60; option in &#x60;config.yml&#x60;. See documentation for details.
      * @param time Optional. Defaults to the current time.  Departure time ($arriveBy&#x3D;false) / arrival date ($arriveBy&#x3D;true), 
      * @param arriveBy true &#x3D; all to one, false &#x3D; one to all 
      * @param maxTransfers The maximum number of allowed transfers (i.e. interchanges between transit legs, pre- and postTransit do not count as transfers). &#x60;maxTransfers&#x3D;0&#x60; searches for direct transit connections without any transfers. If you want to search only for non-transit connections (&#x60;FOOT&#x60;, &#x60;CAR&#x60;, etc.), send an empty &#x60;transitModes&#x60; parameter instead.  If not provided, the routing uses the server-side default value which is hardcoded and very high to cover all use cases.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the fastest) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance.  In plan endpoints before v3, the behavior is off by one, i.e. &#x60;maxTransfers&#x3D;0&#x60; only returns non-transit connections. 
@@ -168,7 +168,7 @@ public class RoutingApi {
      * 
      * <p><b>200</b> - The starting position and a list of all reachable stops If no paths are found, the reachable list is empty. 
      * @param one \\&#x60;latitude,longitude[,level]\\&#x60; tuple with - latitude and longitude in degrees - (optional) level: the OSM level (default: 0)  OR  stop id 
-     * @param maxTravelTime maximum travel time in minutes
+     * @param maxTravelTime The maximum travel time in minutes. Defaults to 90. The limit may be increased by the server administrator using &#x60;onetoall_max_travel_minutes&#x60; option in &#x60;config.yml&#x60;. See documentation for details.
      * @param time Optional. Defaults to the current time.  Departure time ($arriveBy&#x3D;false) / arrival date ($arriveBy&#x3D;true), 
      * @param arriveBy true &#x3D; all to one, false &#x3D; one to all 
      * @param maxTransfers The maximum number of allowed transfers (i.e. interchanges between transit legs, pre- and postTransit do not count as transfers). &#x60;maxTransfers&#x3D;0&#x60; searches for direct transit connections without any transfers. If you want to search only for non-transit connections (&#x60;FOOT&#x60;, &#x60;CAR&#x60;, etc.), send an empty &#x60;transitModes&#x60; parameter instead.  If not provided, the routing uses the server-side default value which is hardcoded and very high to cover all use cases.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the fastest) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance.  In plan endpoints before v3, the behavior is off by one, i.e. &#x60;maxTransfers&#x3D;0&#x60; only returns non-transit connections. 
@@ -199,7 +199,7 @@ public class RoutingApi {
      * 
      * <p><b>200</b> - The starting position and a list of all reachable stops If no paths are found, the reachable list is empty. 
      * @param one \\&#x60;latitude,longitude[,level]\\&#x60; tuple with - latitude and longitude in degrees - (optional) level: the OSM level (default: 0)  OR  stop id 
-     * @param maxTravelTime maximum travel time in minutes
+     * @param maxTravelTime The maximum travel time in minutes. Defaults to 90. The limit may be increased by the server administrator using &#x60;onetoall_max_travel_minutes&#x60; option in &#x60;config.yml&#x60;. See documentation for details.
      * @param time Optional. Defaults to the current time.  Departure time ($arriveBy&#x3D;false) / arrival date ($arriveBy&#x3D;true), 
      * @param arriveBy true &#x3D; all to one, false &#x3D; one to all 
      * @param maxTransfers The maximum number of allowed transfers (i.e. interchanges between transit legs, pre- and postTransit do not count as transfers). &#x60;maxTransfers&#x3D;0&#x60; searches for direct transit connections without any transfers. If you want to search only for non-transit connections (&#x60;FOOT&#x60;, &#x60;CAR&#x60;, etc.), send an empty &#x60;transitModes&#x60; parameter instead.  If not provided, the routing uses the server-side default value which is hardcoded and very high to cover all use cases.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the fastest) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance.  In plan endpoints before v3, the behavior is off by one, i.e. &#x60;maxTransfers&#x3D;0&#x60; only returns non-transit connections. 
