@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Match.JSON_PROPERTY_LEVEL,
   Match.JSON_PROPERTY_STREET,
   Match.JSON_PROPERTY_HOUSE_NUMBER,
+  Match.JSON_PROPERTY_COUNTRY,
   Match.JSON_PROPERTY_ZIP,
   Match.JSON_PROPERTY_TZ,
   Match.JSON_PROPERTY_AREAS,
@@ -84,6 +85,10 @@ public class Match {
   public static final String JSON_PROPERTY_HOUSE_NUMBER = "houseNumber";
   @jakarta.annotation.Nullable
   private String houseNumber;
+
+  public static final String JSON_PROPERTY_COUNTRY = "country";
+  @jakarta.annotation.Nullable
+  private String country;
 
   public static final String JSON_PROPERTY_ZIP = "zip";
   @jakarta.annotation.Nullable
@@ -337,6 +342,31 @@ public class Match {
     this.houseNumber = houseNumber;
   }
 
+  public Match country(@jakarta.annotation.Nullable String country) {
+    
+    this.country = country;
+    return this;
+  }
+
+  /**
+   * ISO3166-1 country code from OpenStreetMap
+   * @return country
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COUNTRY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getCountry() {
+    return country;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COUNTRY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCountry(@jakarta.annotation.Nullable String country) {
+    this.country = country;
+  }
+
   public Match zip(@jakarta.annotation.Nullable String zip) {
     
     this.zip = zip;
@@ -464,6 +494,7 @@ public class Match {
         Objects.equals(this.level, match.level) &&
         Objects.equals(this.street, match.street) &&
         Objects.equals(this.houseNumber, match.houseNumber) &&
+        Objects.equals(this.country, match.country) &&
         Objects.equals(this.zip, match.zip) &&
         Objects.equals(this.tz, match.tz) &&
         Objects.equals(this.areas, match.areas) &&
@@ -472,7 +503,7 @@ public class Match {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, tokens, name, id, lat, lon, level, street, houseNumber, zip, tz, areas, score);
+    return Objects.hash(type, tokens, name, id, lat, lon, level, street, houseNumber, country, zip, tz, areas, score);
   }
 
   @Override
@@ -488,6 +519,7 @@ public class Match {
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    street: ").append(toIndentedString(street)).append("\n");
     sb.append("    houseNumber: ").append(toIndentedString(houseNumber)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    zip: ").append(toIndentedString(zip)).append("\n");
     sb.append("    tz: ").append(toIndentedString(tz)).append("\n");
     sb.append("    areas: ").append(toIndentedString(areas)).append("\n");
