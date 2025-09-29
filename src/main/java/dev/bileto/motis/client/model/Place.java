@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -58,7 +59,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Place.JSON_PROPERTY_FLEX_START_PICKUP_DROP_OFF_WINDOW,
   Place.JSON_PROPERTY_FLEX_END_PICKUP_DROP_OFF_WINDOW
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Place {
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nonnull
@@ -162,7 +163,7 @@ public class Place {
    * @return name
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -170,7 +171,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@jakarta.annotation.Nonnull String name) {
     this.name = name;
@@ -187,7 +188,7 @@ public class Place {
    * @return stopId
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STOP_ID)
+  @JsonProperty(value = JSON_PROPERTY_STOP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getStopId() {
@@ -195,7 +196,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STOP_ID)
+  @JsonProperty(value = JSON_PROPERTY_STOP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStopId(@jakarta.annotation.Nullable String stopId) {
     this.stopId = stopId;
@@ -212,7 +213,7 @@ public class Place {
    * @return lat
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LAT)
+  @JsonProperty(value = JSON_PROPERTY_LAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getLat() {
@@ -220,7 +221,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LAT)
+  @JsonProperty(value = JSON_PROPERTY_LAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLat(@jakarta.annotation.Nonnull BigDecimal lat) {
     this.lat = lat;
@@ -237,7 +238,7 @@ public class Place {
    * @return lon
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LON)
+  @JsonProperty(value = JSON_PROPERTY_LON, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getLon() {
@@ -245,7 +246,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LON)
+  @JsonProperty(value = JSON_PROPERTY_LON, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLon(@jakarta.annotation.Nonnull BigDecimal lon) {
     this.lon = lon;
@@ -262,7 +263,7 @@ public class Place {
    * @return level
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_LEVEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getLevel() {
@@ -270,7 +271,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_LEVEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLevel(@jakarta.annotation.Nonnull BigDecimal level) {
     this.level = level;
@@ -287,7 +288,7 @@ public class Place {
    * @return tz
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TZ)
+  @JsonProperty(value = JSON_PROPERTY_TZ, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTz() {
@@ -295,7 +296,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TZ)
+  @JsonProperty(value = JSON_PROPERTY_TZ, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTz(@jakarta.annotation.Nullable String tz) {
     this.tz = tz;
@@ -312,7 +313,7 @@ public class Place {
    * @return arrival
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ARRIVAL)
+  @JsonProperty(value = JSON_PROPERTY_ARRIVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getArrival() {
@@ -320,7 +321,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ARRIVAL)
+  @JsonProperty(value = JSON_PROPERTY_ARRIVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setArrival(@jakarta.annotation.Nullable OffsetDateTime arrival) {
     this.arrival = arrival;
@@ -337,7 +338,7 @@ public class Place {
    * @return departure
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DEPARTURE)
+  @JsonProperty(value = JSON_PROPERTY_DEPARTURE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getDeparture() {
@@ -345,7 +346,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEPARTURE)
+  @JsonProperty(value = JSON_PROPERTY_DEPARTURE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDeparture(@jakarta.annotation.Nullable OffsetDateTime departure) {
     this.departure = departure;
@@ -362,7 +363,7 @@ public class Place {
    * @return scheduledArrival
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_ARRIVAL)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_ARRIVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getScheduledArrival() {
@@ -370,7 +371,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_ARRIVAL)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_ARRIVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScheduledArrival(@jakarta.annotation.Nullable OffsetDateTime scheduledArrival) {
     this.scheduledArrival = scheduledArrival;
@@ -387,7 +388,7 @@ public class Place {
    * @return scheduledDeparture
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_DEPARTURE)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_DEPARTURE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getScheduledDeparture() {
@@ -395,7 +396,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_DEPARTURE)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_DEPARTURE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScheduledDeparture(@jakarta.annotation.Nullable OffsetDateTime scheduledDeparture) {
     this.scheduledDeparture = scheduledDeparture;
@@ -412,7 +413,7 @@ public class Place {
    * @return scheduledTrack
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_TRACK)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_TRACK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getScheduledTrack() {
@@ -420,7 +421,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_TRACK)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_TRACK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScheduledTrack(@jakarta.annotation.Nullable String scheduledTrack) {
     this.scheduledTrack = scheduledTrack;
@@ -437,7 +438,7 @@ public class Place {
    * @return track
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TRACK)
+  @JsonProperty(value = JSON_PROPERTY_TRACK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTrack() {
@@ -445,7 +446,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRACK)
+  @JsonProperty(value = JSON_PROPERTY_TRACK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTrack(@jakarta.annotation.Nullable String track) {
     this.track = track;
@@ -462,7 +463,7 @@ public class Place {
    * @return description
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -470,7 +471,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@jakarta.annotation.Nullable String description) {
     this.description = description;
@@ -487,7 +488,7 @@ public class Place {
    * @return vertexType
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VERTEX_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_VERTEX_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public VertexType getVertexType() {
@@ -495,7 +496,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VERTEX_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_VERTEX_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVertexType(@jakarta.annotation.Nullable VertexType vertexType) {
     this.vertexType = vertexType;
@@ -512,7 +513,7 @@ public class Place {
    * @return pickupType
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PICKUP_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PICKUP_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public PickupDropoffType getPickupType() {
@@ -520,7 +521,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PICKUP_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PICKUP_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPickupType(@jakarta.annotation.Nullable PickupDropoffType pickupType) {
     this.pickupType = pickupType;
@@ -537,7 +538,7 @@ public class Place {
    * @return dropoffType
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DROPOFF_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_DROPOFF_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public PickupDropoffType getDropoffType() {
@@ -545,7 +546,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DROPOFF_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_DROPOFF_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDropoffType(@jakarta.annotation.Nullable PickupDropoffType dropoffType) {
     this.dropoffType = dropoffType;
@@ -562,7 +563,7 @@ public class Place {
    * @return cancelled
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CANCELLED)
+  @JsonProperty(value = JSON_PROPERTY_CANCELLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getCancelled() {
@@ -570,7 +571,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CANCELLED)
+  @JsonProperty(value = JSON_PROPERTY_CANCELLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCancelled(@jakarta.annotation.Nullable Boolean cancelled) {
     this.cancelled = cancelled;
@@ -595,7 +596,7 @@ public class Place {
    * @return alerts
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERTS)
+  @JsonProperty(value = JSON_PROPERTY_ALERTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Alert> getAlerts() {
@@ -603,7 +604,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALERTS)
+  @JsonProperty(value = JSON_PROPERTY_ALERTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAlerts(@jakarta.annotation.Nullable List<Alert> alerts) {
     this.alerts = alerts;
@@ -620,7 +621,7 @@ public class Place {
    * @return flex
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FLEX)
+  @JsonProperty(value = JSON_PROPERTY_FLEX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFlex() {
@@ -628,7 +629,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FLEX)
+  @JsonProperty(value = JSON_PROPERTY_FLEX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFlex(@jakarta.annotation.Nullable String flex) {
     this.flex = flex;
@@ -645,7 +646,7 @@ public class Place {
    * @return flexId
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FLEX_ID)
+  @JsonProperty(value = JSON_PROPERTY_FLEX_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFlexId() {
@@ -653,7 +654,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FLEX_ID)
+  @JsonProperty(value = JSON_PROPERTY_FLEX_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFlexId(@jakarta.annotation.Nullable String flexId) {
     this.flexId = flexId;
@@ -670,7 +671,7 @@ public class Place {
    * @return flexStartPickupDropOffWindow
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FLEX_START_PICKUP_DROP_OFF_WINDOW)
+  @JsonProperty(value = JSON_PROPERTY_FLEX_START_PICKUP_DROP_OFF_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getFlexStartPickupDropOffWindow() {
@@ -678,7 +679,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FLEX_START_PICKUP_DROP_OFF_WINDOW)
+  @JsonProperty(value = JSON_PROPERTY_FLEX_START_PICKUP_DROP_OFF_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFlexStartPickupDropOffWindow(@jakarta.annotation.Nullable OffsetDateTime flexStartPickupDropOffWindow) {
     this.flexStartPickupDropOffWindow = flexStartPickupDropOffWindow;
@@ -695,7 +696,7 @@ public class Place {
    * @return flexEndPickupDropOffWindow
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FLEX_END_PICKUP_DROP_OFF_WINDOW)
+  @JsonProperty(value = JSON_PROPERTY_FLEX_END_PICKUP_DROP_OFF_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getFlexEndPickupDropOffWindow() {
@@ -703,7 +704,7 @@ public class Place {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FLEX_END_PICKUP_DROP_OFF_WINDOW)
+  @JsonProperty(value = JSON_PROPERTY_FLEX_END_PICKUP_DROP_OFF_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFlexEndPickupDropOffWindow(@jakarta.annotation.Nullable OffsetDateTime flexEndPickupDropOffWindow) {
     this.flexEndPickupDropOffWindow = flexEndPickupDropOffWindow;

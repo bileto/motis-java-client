@@ -15,11 +15,13 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Locale;
 
 /**
  * Different elevation cost profiles for street routing. Using a elevation cost profile will prefer routes with a smaller incline and smaller difference in elevation, even if the routed way is longer.  - &#x60;NONE&#x60;: Ignore elevation data for routing. This is the default behavior - &#x60;LOW&#x60;: Add a low penalty for inclines. This will favor longer paths, if the elevation increase and incline are smaller. - &#x60;HIGH&#x60;: Add a high penalty for inclines. This will favor even longer paths, if the elevation increase and incline are smaller. 

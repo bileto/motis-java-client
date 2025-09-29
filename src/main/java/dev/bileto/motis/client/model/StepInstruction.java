@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -45,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StepInstruction.JSON_PROPERTY_ELEVATION_UP,
   StepInstruction.JSON_PROPERTY_ELEVATION_DOWN
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class StepInstruction {
   public static final String JSON_PROPERTY_RELATIVE_DIRECTION = "relativeDirection";
   @jakarta.annotation.Nonnull
@@ -117,7 +118,7 @@ public class StepInstruction {
    * @return relativeDirection
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RELATIVE_DIRECTION)
+  @JsonProperty(value = JSON_PROPERTY_RELATIVE_DIRECTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Direction getRelativeDirection() {
@@ -125,7 +126,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RELATIVE_DIRECTION)
+  @JsonProperty(value = JSON_PROPERTY_RELATIVE_DIRECTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRelativeDirection(@jakarta.annotation.Nonnull Direction relativeDirection) {
     this.relativeDirection = relativeDirection;
@@ -142,7 +143,7 @@ public class StepInstruction {
    * @return distance
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DISTANCE)
+  @JsonProperty(value = JSON_PROPERTY_DISTANCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getDistance() {
@@ -150,7 +151,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISTANCE)
+  @JsonProperty(value = JSON_PROPERTY_DISTANCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDistance(@jakarta.annotation.Nonnull BigDecimal distance) {
     this.distance = distance;
@@ -167,7 +168,7 @@ public class StepInstruction {
    * @return fromLevel
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_FROM_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_FROM_LEVEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getFromLevel() {
@@ -175,7 +176,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FROM_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_FROM_LEVEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setFromLevel(@jakarta.annotation.Nonnull BigDecimal fromLevel) {
     this.fromLevel = fromLevel;
@@ -192,7 +193,7 @@ public class StepInstruction {
    * @return toLevel
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TO_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_TO_LEVEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getToLevel() {
@@ -200,7 +201,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TO_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_TO_LEVEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setToLevel(@jakarta.annotation.Nonnull BigDecimal toLevel) {
     this.toLevel = toLevel;
@@ -217,7 +218,7 @@ public class StepInstruction {
    * @return osmWay
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OSM_WAY)
+  @JsonProperty(value = JSON_PROPERTY_OSM_WAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getOsmWay() {
@@ -225,7 +226,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_OSM_WAY)
+  @JsonProperty(value = JSON_PROPERTY_OSM_WAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOsmWay(@jakarta.annotation.Nullable Integer osmWay) {
     this.osmWay = osmWay;
@@ -242,7 +243,7 @@ public class StepInstruction {
    * @return polyline
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_POLYLINE)
+  @JsonProperty(value = JSON_PROPERTY_POLYLINE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public EncodedPolyline getPolyline() {
@@ -250,7 +251,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_POLYLINE)
+  @JsonProperty(value = JSON_PROPERTY_POLYLINE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPolyline(@jakarta.annotation.Nonnull EncodedPolyline polyline) {
     this.polyline = polyline;
@@ -267,7 +268,7 @@ public class StepInstruction {
    * @return streetName
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STREET_NAME)
+  @JsonProperty(value = JSON_PROPERTY_STREET_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getStreetName() {
@@ -275,7 +276,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STREET_NAME)
+  @JsonProperty(value = JSON_PROPERTY_STREET_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStreetName(@jakarta.annotation.Nonnull String streetName) {
     this.streetName = streetName;
@@ -292,7 +293,7 @@ public class StepInstruction {
    * @return exit
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXIT)
+  @JsonProperty(value = JSON_PROPERTY_EXIT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getExit() {
@@ -300,7 +301,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXIT)
+  @JsonProperty(value = JSON_PROPERTY_EXIT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExit(@jakarta.annotation.Nonnull String exit) {
     this.exit = exit;
@@ -317,7 +318,7 @@ public class StepInstruction {
    * @return stayOn
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STAY_ON)
+  @JsonProperty(value = JSON_PROPERTY_STAY_ON, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getStayOn() {
@@ -325,7 +326,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STAY_ON)
+  @JsonProperty(value = JSON_PROPERTY_STAY_ON, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStayOn(@jakarta.annotation.Nonnull Boolean stayOn) {
     this.stayOn = stayOn;
@@ -342,7 +343,7 @@ public class StepInstruction {
    * @return area
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AREA)
+  @JsonProperty(value = JSON_PROPERTY_AREA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getArea() {
@@ -350,7 +351,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AREA)
+  @JsonProperty(value = JSON_PROPERTY_AREA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setArea(@jakarta.annotation.Nonnull Boolean area) {
     this.area = area;
@@ -367,7 +368,7 @@ public class StepInstruction {
    * @return toll
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOLL)
+  @JsonProperty(value = JSON_PROPERTY_TOLL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getToll() {
@@ -375,7 +376,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOLL)
+  @JsonProperty(value = JSON_PROPERTY_TOLL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setToll(@jakarta.annotation.Nullable Boolean toll) {
     this.toll = toll;
@@ -392,7 +393,7 @@ public class StepInstruction {
    * @return accessRestriction
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACCESS_RESTRICTION)
+  @JsonProperty(value = JSON_PROPERTY_ACCESS_RESTRICTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAccessRestriction() {
@@ -400,7 +401,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCESS_RESTRICTION)
+  @JsonProperty(value = JSON_PROPERTY_ACCESS_RESTRICTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAccessRestriction(@jakarta.annotation.Nullable String accessRestriction) {
     this.accessRestriction = accessRestriction;
@@ -417,7 +418,7 @@ public class StepInstruction {
    * @return elevationUp
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ELEVATION_UP)
+  @JsonProperty(value = JSON_PROPERTY_ELEVATION_UP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getElevationUp() {
@@ -425,7 +426,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ELEVATION_UP)
+  @JsonProperty(value = JSON_PROPERTY_ELEVATION_UP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setElevationUp(@jakarta.annotation.Nullable Integer elevationUp) {
     this.elevationUp = elevationUp;
@@ -442,7 +443,7 @@ public class StepInstruction {
    * @return elevationDown
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ELEVATION_DOWN)
+  @JsonProperty(value = JSON_PROPERTY_ELEVATION_DOWN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getElevationDown() {
@@ -450,7 +451,7 @@ public class StepInstruction {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ELEVATION_DOWN)
+  @JsonProperty(value = JSON_PROPERTY_ELEVATION_DOWN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setElevationDown(@jakarta.annotation.Nullable Integer elevationDown) {
     this.elevationDown = elevationDown;

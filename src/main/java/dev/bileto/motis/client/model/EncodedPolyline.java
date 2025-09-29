@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   EncodedPolyline.JSON_PROPERTY_PRECISION,
   EncodedPolyline.JSON_PROPERTY_LENGTH
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class EncodedPolyline {
   public static final String JSON_PROPERTY_POINTS = "points";
   @jakarta.annotation.Nonnull
@@ -59,7 +60,7 @@ public class EncodedPolyline {
    * @return points
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_POINTS)
+  @JsonProperty(value = JSON_PROPERTY_POINTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPoints() {
@@ -67,7 +68,7 @@ public class EncodedPolyline {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_POINTS)
+  @JsonProperty(value = JSON_PROPERTY_POINTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPoints(@jakarta.annotation.Nonnull String points) {
     this.points = points;
@@ -84,7 +85,7 @@ public class EncodedPolyline {
    * @return precision
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRECISION)
+  @JsonProperty(value = JSON_PROPERTY_PRECISION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getPrecision() {
@@ -92,7 +93,7 @@ public class EncodedPolyline {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRECISION)
+  @JsonProperty(value = JSON_PROPERTY_PRECISION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPrecision(@jakarta.annotation.Nonnull Integer precision) {
     this.precision = precision;
@@ -110,7 +111,7 @@ public class EncodedPolyline {
    * @return length
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LENGTH)
+  @JsonProperty(value = JSON_PROPERTY_LENGTH, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getLength() {
@@ -118,7 +119,7 @@ public class EncodedPolyline {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LENGTH)
+  @JsonProperty(value = JSON_PROPERTY_LENGTH, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLength(@jakarta.annotation.Nonnull Integer length) {
     this.length = length;

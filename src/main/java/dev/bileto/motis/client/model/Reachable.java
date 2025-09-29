@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -35,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Reachable.JSON_PROPERTY_ONE,
   Reachable.JSON_PROPERTY_ALL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Reachable {
   public static final String JSON_PROPERTY_ONE = "one";
   @jakarta.annotation.Nullable
@@ -59,7 +60,7 @@ public class Reachable {
    * @return one
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ONE)
+  @JsonProperty(value = JSON_PROPERTY_ONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Place getOne() {
@@ -67,7 +68,7 @@ public class Reachable {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ONE)
+  @JsonProperty(value = JSON_PROPERTY_ONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOne(@jakarta.annotation.Nullable Place one) {
     this.one = one;
@@ -92,7 +93,7 @@ public class Reachable {
    * @return all
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALL)
+  @JsonProperty(value = JSON_PROPERTY_ALL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ReachablePlace> getAll() {
@@ -100,7 +101,7 @@ public class Reachable {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALL)
+  @JsonProperty(value = JSON_PROPERTY_ALL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAll(@jakarta.annotation.Nullable List<ReachablePlace> all) {
     this.all = all;

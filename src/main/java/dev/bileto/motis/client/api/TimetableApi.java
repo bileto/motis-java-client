@@ -29,7 +29,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class TimetableApi {
     private ApiClient apiClient;
 
@@ -61,14 +61,13 @@ public class TimetableApi {
      * @param mode Optional. Default is all transit modes.  Only return arrivals/departures of the given modes. 
      * @param radius Optional. Radius in meters.  Default is that only stop times of the parent of the stop itself and all stops with the same name (+ their child stops) are returned.  If set, all stops at parent stations and their child stops in the specified radius are returned. 
      * @param exactRadius Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, only stations that are phyiscally in the radius are considered. If set to &#x60;false&#x60;, additionally to the stations in the radius, equivalences with the same name and children are considered. 
-     * @param fetchStops Experimental. Expect unannounced breaking changes (without version bumps).  Optional. Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the following stops are returned for departures and the previous stops are returned for arrivals. 
      * @param pageCursor Use the cursor to go to the next \&quot;page\&quot; of stop times. Copy the cursor from the last response and keep the original request as is. This will enable you to search for stop times in the next or previous time-window. 
      * @param withScheduledSkippedStops Optional. Include stoptimes where passengers can not alight/board according to schedule.
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return Stoptimes200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec stoptimesRequestCreation(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    private ResponseSpec stoptimesRequestCreation(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'stopId' is set
         if (stopId == null) {
@@ -94,7 +93,6 @@ public class TimetableApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "n", n));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "radius", radius));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "exactRadius", exactRadius));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "fetchStops", fetchStops));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pageCursor", pageCursor));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "language", language));
@@ -124,16 +122,15 @@ public class TimetableApi {
      * @param mode Optional. Default is all transit modes.  Only return arrivals/departures of the given modes. 
      * @param radius Optional. Radius in meters.  Default is that only stop times of the parent of the stop itself and all stops with the same name (+ their child stops) are returned.  If set, all stops at parent stations and their child stops in the specified radius are returned. 
      * @param exactRadius Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, only stations that are phyiscally in the radius are considered. If set to &#x60;false&#x60;, additionally to the stations in the radius, equivalences with the same name and children are considered. 
-     * @param fetchStops Experimental. Expect unannounced breaking changes (without version bumps).  Optional. Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the following stops are returned for departures and the previous stops are returned for arrivals. 
      * @param pageCursor Use the cursor to go to the next \&quot;page\&quot; of stop times. Copy the cursor from the last response and keep the original request as is. This will enable you to search for stop times in the next or previous time-window. 
      * @param withScheduledSkippedStops Optional. Include stoptimes where passengers can not alight/board according to schedule.
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return Stoptimes200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public Stoptimes200Response stoptimes(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    public Stoptimes200Response stoptimes(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
         ParameterizedTypeReference<Stoptimes200Response> localVarReturnType = new ParameterizedTypeReference<Stoptimes200Response>() {};
-        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language).bodyToMono(localVarReturnType).block();
+        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, pageCursor, withScheduledSkippedStops, language).bodyToMono(localVarReturnType).block();
     }
 
     /**
@@ -148,16 +145,15 @@ public class TimetableApi {
      * @param mode Optional. Default is all transit modes.  Only return arrivals/departures of the given modes. 
      * @param radius Optional. Radius in meters.  Default is that only stop times of the parent of the stop itself and all stops with the same name (+ their child stops) are returned.  If set, all stops at parent stations and their child stops in the specified radius are returned. 
      * @param exactRadius Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, only stations that are phyiscally in the radius are considered. If set to &#x60;false&#x60;, additionally to the stations in the radius, equivalences with the same name and children are considered. 
-     * @param fetchStops Experimental. Expect unannounced breaking changes (without version bumps).  Optional. Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the following stops are returned for departures and the previous stops are returned for arrivals. 
      * @param pageCursor Use the cursor to go to the next \&quot;page\&quot; of stop times. Copy the cursor from the last response and keep the original request as is. This will enable you to search for stop times in the next or previous time-window. 
      * @param withScheduledSkippedStops Optional. Include stoptimes where passengers can not alight/board according to schedule.
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return ResponseEntity&lt;Stoptimes200Response&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Stoptimes200Response> stoptimesWithHttpInfo(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    public ResponseEntity<Stoptimes200Response> stoptimesWithHttpInfo(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
         ParameterizedTypeReference<Stoptimes200Response> localVarReturnType = new ParameterizedTypeReference<Stoptimes200Response>() {};
-        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language).toEntity(localVarReturnType).block();
+        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, pageCursor, withScheduledSkippedStops, language).toEntity(localVarReturnType).block();
     }
 
     /**
@@ -172,15 +168,14 @@ public class TimetableApi {
      * @param mode Optional. Default is all transit modes.  Only return arrivals/departures of the given modes. 
      * @param radius Optional. Radius in meters.  Default is that only stop times of the parent of the stop itself and all stops with the same name (+ their child stops) are returned.  If set, all stops at parent stations and their child stops in the specified radius are returned. 
      * @param exactRadius Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, only stations that are phyiscally in the radius are considered. If set to &#x60;false&#x60;, additionally to the stations in the radius, equivalences with the same name and children are considered. 
-     * @param fetchStops Experimental. Expect unannounced breaking changes (without version bumps).  Optional. Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the following stops are returned for departures and the previous stops are returned for arrivals. 
      * @param pageCursor Use the cursor to go to the next \&quot;page\&quot; of stop times. Copy the cursor from the last response and keep the original request as is. This will enable you to search for stop times in the next or previous time-window. 
      * @param withScheduledSkippedStops Optional. Include stoptimes where passengers can not alight/board according to schedule.
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec stoptimesWithResponseSpec(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
-        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language);
+    public ResponseSpec stoptimesWithResponseSpec(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, pageCursor, withScheduledSkippedStops, language);
     }
 
     /**

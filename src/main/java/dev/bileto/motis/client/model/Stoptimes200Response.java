@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -38,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Stoptimes200Response.JSON_PROPERTY_NEXT_PAGE_CURSOR
 })
 @JsonTypeName("stoptimes_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Stoptimes200Response {
   public static final String JSON_PROPERTY_STOP_TIMES = "stopTimes";
   @jakarta.annotation.Nonnull
@@ -78,7 +79,7 @@ public class Stoptimes200Response {
    * @return stopTimes
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STOP_TIMES)
+  @JsonProperty(value = JSON_PROPERTY_STOP_TIMES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<StopTime> getStopTimes() {
@@ -86,7 +87,7 @@ public class Stoptimes200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STOP_TIMES)
+  @JsonProperty(value = JSON_PROPERTY_STOP_TIMES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStopTimes(@jakarta.annotation.Nonnull List<StopTime> stopTimes) {
     this.stopTimes = stopTimes;
@@ -103,7 +104,7 @@ public class Stoptimes200Response {
    * @return place
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PLACE)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Place getPlace() {
@@ -111,7 +112,7 @@ public class Stoptimes200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PLACE)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPlace(@jakarta.annotation.Nonnull Place place) {
     this.place = place;
@@ -128,7 +129,7 @@ public class Stoptimes200Response {
    * @return previousPageCursor
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_PAGE_CURSOR)
+  @JsonProperty(value = JSON_PROPERTY_PREVIOUS_PAGE_CURSOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPreviousPageCursor() {
@@ -136,7 +137,7 @@ public class Stoptimes200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_PAGE_CURSOR)
+  @JsonProperty(value = JSON_PROPERTY_PREVIOUS_PAGE_CURSOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPreviousPageCursor(@jakarta.annotation.Nonnull String previousPageCursor) {
     this.previousPageCursor = previousPageCursor;
@@ -153,7 +154,7 @@ public class Stoptimes200Response {
    * @return nextPageCursor
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NEXT_PAGE_CURSOR)
+  @JsonProperty(value = JSON_PROPERTY_NEXT_PAGE_CURSOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNextPageCursor() {
@@ -161,7 +162,7 @@ public class Stoptimes200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NEXT_PAGE_CURSOR)
+  @JsonProperty(value = JSON_PROPERTY_NEXT_PAGE_CURSOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNextPageCursor(@jakarta.annotation.Nonnull String nextPageCursor) {
     this.nextPageCursor = nextPageCursor;

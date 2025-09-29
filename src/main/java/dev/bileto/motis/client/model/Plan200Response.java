@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -44,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Plan200Response.JSON_PROPERTY_NEXT_PAGE_CURSOR
 })
 @JsonTypeName("plan_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Plan200Response {
   public static final String JSON_PROPERTY_REQUEST_PARAMETERS = "requestParameters";
   @jakarta.annotation.Nonnull
@@ -97,7 +98,7 @@ public class Plan200Response {
    * @return requestParameters
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETERS)
+  @JsonProperty(value = JSON_PROPERTY_REQUEST_PARAMETERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Map<String, String> getRequestParameters() {
@@ -105,7 +106,7 @@ public class Plan200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETERS)
+  @JsonProperty(value = JSON_PROPERTY_REQUEST_PARAMETERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRequestParameters(@jakarta.annotation.Nonnull Map<String, String> requestParameters) {
     this.requestParameters = requestParameters;
@@ -127,7 +128,7 @@ public class Plan200Response {
    * @return debugOutput
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DEBUG_OUTPUT)
+  @JsonProperty(value = JSON_PROPERTY_DEBUG_OUTPUT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Map<String, Integer> getDebugOutput() {
@@ -135,7 +136,7 @@ public class Plan200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEBUG_OUTPUT)
+  @JsonProperty(value = JSON_PROPERTY_DEBUG_OUTPUT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDebugOutput(@jakarta.annotation.Nonnull Map<String, Integer> debugOutput) {
     this.debugOutput = debugOutput;
@@ -152,7 +153,7 @@ public class Plan200Response {
    * @return from
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_FROM)
+  @JsonProperty(value = JSON_PROPERTY_FROM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Place getFrom() {
@@ -160,7 +161,7 @@ public class Plan200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FROM)
+  @JsonProperty(value = JSON_PROPERTY_FROM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setFrom(@jakarta.annotation.Nonnull Place from) {
     this.from = from;
@@ -177,7 +178,7 @@ public class Plan200Response {
    * @return to
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TO)
+  @JsonProperty(value = JSON_PROPERTY_TO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Place getTo() {
@@ -185,7 +186,7 @@ public class Plan200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TO)
+  @JsonProperty(value = JSON_PROPERTY_TO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTo(@jakarta.annotation.Nonnull Place to) {
     this.to = to;
@@ -210,7 +211,7 @@ public class Plan200Response {
    * @return direct
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DIRECT)
+  @JsonProperty(value = JSON_PROPERTY_DIRECT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Itinerary> getDirect() {
@@ -218,7 +219,7 @@ public class Plan200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DIRECT)
+  @JsonProperty(value = JSON_PROPERTY_DIRECT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDirect(@jakarta.annotation.Nonnull List<Itinerary> direct) {
     this.direct = direct;
@@ -243,7 +244,7 @@ public class Plan200Response {
    * @return itineraries
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ITINERARIES)
+  @JsonProperty(value = JSON_PROPERTY_ITINERARIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Itinerary> getItineraries() {
@@ -251,7 +252,7 @@ public class Plan200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ITINERARIES)
+  @JsonProperty(value = JSON_PROPERTY_ITINERARIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setItineraries(@jakarta.annotation.Nonnull List<Itinerary> itineraries) {
     this.itineraries = itineraries;
@@ -268,7 +269,7 @@ public class Plan200Response {
    * @return previousPageCursor
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_PAGE_CURSOR)
+  @JsonProperty(value = JSON_PROPERTY_PREVIOUS_PAGE_CURSOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPreviousPageCursor() {
@@ -276,7 +277,7 @@ public class Plan200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_PAGE_CURSOR)
+  @JsonProperty(value = JSON_PROPERTY_PREVIOUS_PAGE_CURSOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPreviousPageCursor(@jakarta.annotation.Nonnull String previousPageCursor) {
     this.previousPageCursor = previousPageCursor;
@@ -293,7 +294,7 @@ public class Plan200Response {
    * @return nextPageCursor
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NEXT_PAGE_CURSOR)
+  @JsonProperty(value = JSON_PROPERTY_NEXT_PAGE_CURSOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNextPageCursor() {
@@ -301,7 +302,7 @@ public class Plan200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NEXT_PAGE_CURSOR)
+  @JsonProperty(value = JSON_PROPERTY_NEXT_PAGE_CURSOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNextPageCursor(@jakarta.annotation.Nonnull String nextPageCursor) {
     this.nextPageCursor = nextPageCursor;

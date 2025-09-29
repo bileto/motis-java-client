@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   TimeRange.JSON_PROPERTY_START,
   TimeRange.JSON_PROPERTY_END
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class TimeRange {
   public static final String JSON_PROPERTY_START = "start";
   @jakarta.annotation.Nullable
@@ -55,7 +56,7 @@ public class TimeRange {
    * @return start
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_START)
+  @JsonProperty(value = JSON_PROPERTY_START, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getStart() {
@@ -63,7 +64,7 @@ public class TimeRange {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_START)
+  @JsonProperty(value = JSON_PROPERTY_START, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStart(@jakarta.annotation.Nullable OffsetDateTime start) {
     this.start = start;
@@ -80,7 +81,7 @@ public class TimeRange {
    * @return end
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_END)
+  @JsonProperty(value = JSON_PROPERTY_END, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getEnd() {
@@ -88,7 +89,7 @@ public class TimeRange {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_END)
+  @JsonProperty(value = JSON_PROPERTY_END, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnd(@jakarta.annotation.Nullable OffsetDateTime end) {
     this.end = end;

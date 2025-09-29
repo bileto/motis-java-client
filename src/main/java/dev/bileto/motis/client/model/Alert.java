@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -50,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Alert.JSON_PROPERTY_IMAGE_MEDIA_TYPE,
   Alert.JSON_PROPERTY_IMAGE_ALTERNATIVE_TEXT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Alert {
   public static final String JSON_PROPERTY_COMMUNICATION_PERIOD = "communicationPeriod";
   @jakarta.annotation.Nullable
@@ -134,7 +135,7 @@ public class Alert {
    * @return communicationPeriod
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_COMMUNICATION_PERIOD)
+  @JsonProperty(value = JSON_PROPERTY_COMMUNICATION_PERIOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<TimeRange> getCommunicationPeriod() {
@@ -142,7 +143,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_COMMUNICATION_PERIOD)
+  @JsonProperty(value = JSON_PROPERTY_COMMUNICATION_PERIOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCommunicationPeriod(@jakarta.annotation.Nullable List<TimeRange> communicationPeriod) {
     this.communicationPeriod = communicationPeriod;
@@ -167,7 +168,7 @@ public class Alert {
    * @return impactPeriod
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IMPACT_PERIOD)
+  @JsonProperty(value = JSON_PROPERTY_IMPACT_PERIOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<TimeRange> getImpactPeriod() {
@@ -175,7 +176,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IMPACT_PERIOD)
+  @JsonProperty(value = JSON_PROPERTY_IMPACT_PERIOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setImpactPeriod(@jakarta.annotation.Nullable List<TimeRange> impactPeriod) {
     this.impactPeriod = impactPeriod;
@@ -192,7 +193,7 @@ public class Alert {
    * @return cause
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CAUSE)
+  @JsonProperty(value = JSON_PROPERTY_CAUSE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public AlertCause getCause() {
@@ -200,7 +201,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CAUSE)
+  @JsonProperty(value = JSON_PROPERTY_CAUSE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCause(@jakarta.annotation.Nullable AlertCause cause) {
     this.cause = cause;
@@ -217,7 +218,7 @@ public class Alert {
    * @return causeDetail
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CAUSE_DETAIL)
+  @JsonProperty(value = JSON_PROPERTY_CAUSE_DETAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCauseDetail() {
@@ -225,7 +226,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CAUSE_DETAIL)
+  @JsonProperty(value = JSON_PROPERTY_CAUSE_DETAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCauseDetail(@jakarta.annotation.Nullable String causeDetail) {
     this.causeDetail = causeDetail;
@@ -242,7 +243,7 @@ public class Alert {
    * @return effect
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EFFECT)
+  @JsonProperty(value = JSON_PROPERTY_EFFECT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public AlertEffect getEffect() {
@@ -250,7 +251,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EFFECT)
+  @JsonProperty(value = JSON_PROPERTY_EFFECT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEffect(@jakarta.annotation.Nullable AlertEffect effect) {
     this.effect = effect;
@@ -267,7 +268,7 @@ public class Alert {
    * @return effectDetail
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EFFECT_DETAIL)
+  @JsonProperty(value = JSON_PROPERTY_EFFECT_DETAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEffectDetail() {
@@ -275,7 +276,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EFFECT_DETAIL)
+  @JsonProperty(value = JSON_PROPERTY_EFFECT_DETAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEffectDetail(@jakarta.annotation.Nullable String effectDetail) {
     this.effectDetail = effectDetail;
@@ -292,7 +293,7 @@ public class Alert {
    * @return url
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUrl() {
@@ -300,7 +301,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUrl(@jakarta.annotation.Nullable String url) {
     this.url = url;
@@ -317,7 +318,7 @@ public class Alert {
    * @return headerText
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HEADER_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_HEADER_TEXT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getHeaderText() {
@@ -325,7 +326,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HEADER_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_HEADER_TEXT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHeaderText(@jakarta.annotation.Nonnull String headerText) {
     this.headerText = headerText;
@@ -342,7 +343,7 @@ public class Alert {
    * @return descriptionText
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION_TEXT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDescriptionText() {
@@ -350,7 +351,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION_TEXT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDescriptionText(@jakarta.annotation.Nonnull String descriptionText) {
     this.descriptionText = descriptionText;
@@ -367,7 +368,7 @@ public class Alert {
    * @return ttsHeaderText
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TTS_HEADER_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_TTS_HEADER_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTtsHeaderText() {
@@ -375,7 +376,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TTS_HEADER_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_TTS_HEADER_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTtsHeaderText(@jakarta.annotation.Nullable String ttsHeaderText) {
     this.ttsHeaderText = ttsHeaderText;
@@ -392,7 +393,7 @@ public class Alert {
    * @return ttsDescriptionText
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TTS_DESCRIPTION_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_TTS_DESCRIPTION_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTtsDescriptionText() {
@@ -400,7 +401,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TTS_DESCRIPTION_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_TTS_DESCRIPTION_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTtsDescriptionText(@jakarta.annotation.Nullable String ttsDescriptionText) {
     this.ttsDescriptionText = ttsDescriptionText;
@@ -417,7 +418,7 @@ public class Alert {
    * @return severityLevel
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SEVERITY_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_SEVERITY_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public AlertSeverityLevel getSeverityLevel() {
@@ -425,7 +426,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SEVERITY_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_SEVERITY_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSeverityLevel(@jakarta.annotation.Nullable AlertSeverityLevel severityLevel) {
     this.severityLevel = severityLevel;
@@ -442,7 +443,7 @@ public class Alert {
    * @return imageUrl
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IMAGE_URL)
+  @JsonProperty(value = JSON_PROPERTY_IMAGE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getImageUrl() {
@@ -450,7 +451,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IMAGE_URL)
+  @JsonProperty(value = JSON_PROPERTY_IMAGE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setImageUrl(@jakarta.annotation.Nullable String imageUrl) {
     this.imageUrl = imageUrl;
@@ -467,7 +468,7 @@ public class Alert {
    * @return imageMediaType
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IMAGE_MEDIA_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_IMAGE_MEDIA_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getImageMediaType() {
@@ -475,7 +476,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IMAGE_MEDIA_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_IMAGE_MEDIA_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setImageMediaType(@jakarta.annotation.Nullable String imageMediaType) {
     this.imageMediaType = imageMediaType;
@@ -492,7 +493,7 @@ public class Alert {
    * @return imageAlternativeText
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IMAGE_ALTERNATIVE_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_IMAGE_ALTERNATIVE_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getImageAlternativeText() {
@@ -500,7 +501,7 @@ public class Alert {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IMAGE_ALTERNATIVE_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_IMAGE_ALTERNATIVE_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setImageAlternativeText(@jakarta.annotation.Nullable String imageAlternativeText) {
     this.imageAlternativeText = imageAlternativeText;

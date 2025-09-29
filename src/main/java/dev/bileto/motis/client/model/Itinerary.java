@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -40,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Itinerary.JSON_PROPERTY_LEGS,
   Itinerary.JSON_PROPERTY_FARE_TRANSFERS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Itinerary {
   public static final String JSON_PROPERTY_DURATION = "duration";
   @jakarta.annotation.Nonnull
@@ -80,7 +81,7 @@ public class Itinerary {
    * @return duration
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getDuration() {
@@ -88,7 +89,7 @@ public class Itinerary {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDuration(@jakarta.annotation.Nonnull Integer duration) {
     this.duration = duration;
@@ -105,7 +106,7 @@ public class Itinerary {
    * @return startTime
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_START_TIME)
+  @JsonProperty(value = JSON_PROPERTY_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getStartTime() {
@@ -113,7 +114,7 @@ public class Itinerary {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_START_TIME)
+  @JsonProperty(value = JSON_PROPERTY_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStartTime(@jakarta.annotation.Nonnull OffsetDateTime startTime) {
     this.startTime = startTime;
@@ -130,7 +131,7 @@ public class Itinerary {
    * @return endTime
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_END_TIME)
+  @JsonProperty(value = JSON_PROPERTY_END_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getEndTime() {
@@ -138,7 +139,7 @@ public class Itinerary {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_END_TIME)
+  @JsonProperty(value = JSON_PROPERTY_END_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEndTime(@jakarta.annotation.Nonnull OffsetDateTime endTime) {
     this.endTime = endTime;
@@ -155,7 +156,7 @@ public class Itinerary {
    * @return transfers
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getTransfers() {
@@ -163,7 +164,7 @@ public class Itinerary {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTransfers(@jakarta.annotation.Nonnull Integer transfers) {
     this.transfers = transfers;
@@ -188,7 +189,7 @@ public class Itinerary {
    * @return legs
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LEGS)
+  @JsonProperty(value = JSON_PROPERTY_LEGS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Leg> getLegs() {
@@ -196,7 +197,7 @@ public class Itinerary {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LEGS)
+  @JsonProperty(value = JSON_PROPERTY_LEGS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLegs(@jakarta.annotation.Nonnull List<Leg> legs) {
     this.legs = legs;
@@ -221,7 +222,7 @@ public class Itinerary {
    * @return fareTransfers
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FARE_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_FARE_TRANSFERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<FareTransfer> getFareTransfers() {
@@ -229,7 +230,7 @@ public class Itinerary {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FARE_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_FARE_TRANSFERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFareTransfers(@jakarta.annotation.Nullable List<FareTransfer> fareTransfers) {
     this.fareTransfers = fareTransfers;

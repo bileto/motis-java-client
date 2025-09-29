@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -43,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Rental.JSON_PROPERTY_PROPULSION_TYPE,
   Rental.JSON_PROPERTY_RETURN_CONSTRAINT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Rental {
   public static final String JSON_PROPERTY_SYSTEM_ID = "systemId";
   @jakarta.annotation.Nonnull
@@ -107,7 +108,7 @@ public class Rental {
    * @return systemId
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SYSTEM_ID)
+  @JsonProperty(value = JSON_PROPERTY_SYSTEM_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getSystemId() {
@@ -115,7 +116,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SYSTEM_ID)
+  @JsonProperty(value = JSON_PROPERTY_SYSTEM_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSystemId(@jakarta.annotation.Nonnull String systemId) {
     this.systemId = systemId;
@@ -132,7 +133,7 @@ public class Rental {
    * @return systemName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SYSTEM_NAME)
+  @JsonProperty(value = JSON_PROPERTY_SYSTEM_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSystemName() {
@@ -140,7 +141,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SYSTEM_NAME)
+  @JsonProperty(value = JSON_PROPERTY_SYSTEM_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSystemName(@jakarta.annotation.Nullable String systemName) {
     this.systemName = systemName;
@@ -157,7 +158,7 @@ public class Rental {
    * @return url
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUrl() {
@@ -165,7 +166,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUrl(@jakarta.annotation.Nullable String url) {
     this.url = url;
@@ -182,7 +183,7 @@ public class Rental {
    * @return stationName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STATION_NAME)
+  @JsonProperty(value = JSON_PROPERTY_STATION_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getStationName() {
@@ -190,7 +191,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATION_NAME)
+  @JsonProperty(value = JSON_PROPERTY_STATION_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStationName(@jakarta.annotation.Nullable String stationName) {
     this.stationName = stationName;
@@ -207,7 +208,7 @@ public class Rental {
    * @return fromStationName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FROM_STATION_NAME)
+  @JsonProperty(value = JSON_PROPERTY_FROM_STATION_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFromStationName() {
@@ -215,7 +216,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FROM_STATION_NAME)
+  @JsonProperty(value = JSON_PROPERTY_FROM_STATION_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFromStationName(@jakarta.annotation.Nullable String fromStationName) {
     this.fromStationName = fromStationName;
@@ -232,7 +233,7 @@ public class Rental {
    * @return toStationName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TO_STATION_NAME)
+  @JsonProperty(value = JSON_PROPERTY_TO_STATION_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getToStationName() {
@@ -240,7 +241,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TO_STATION_NAME)
+  @JsonProperty(value = JSON_PROPERTY_TO_STATION_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setToStationName(@jakarta.annotation.Nullable String toStationName) {
     this.toStationName = toStationName;
@@ -257,7 +258,7 @@ public class Rental {
    * @return rentalUriAndroid
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RENTAL_URI_ANDROID)
+  @JsonProperty(value = JSON_PROPERTY_RENTAL_URI_ANDROID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRentalUriAndroid() {
@@ -265,7 +266,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RENTAL_URI_ANDROID)
+  @JsonProperty(value = JSON_PROPERTY_RENTAL_URI_ANDROID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRentalUriAndroid(@jakarta.annotation.Nullable String rentalUriAndroid) {
     this.rentalUriAndroid = rentalUriAndroid;
@@ -282,7 +283,7 @@ public class Rental {
    * @return rentalUriIOS
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RENTAL_URI_I_O_S)
+  @JsonProperty(value = JSON_PROPERTY_RENTAL_URI_I_O_S, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRentalUriIOS() {
@@ -290,7 +291,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RENTAL_URI_I_O_S)
+  @JsonProperty(value = JSON_PROPERTY_RENTAL_URI_I_O_S, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRentalUriIOS(@jakarta.annotation.Nullable String rentalUriIOS) {
     this.rentalUriIOS = rentalUriIOS;
@@ -307,7 +308,7 @@ public class Rental {
    * @return rentalUriWeb
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RENTAL_URI_WEB)
+  @JsonProperty(value = JSON_PROPERTY_RENTAL_URI_WEB, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRentalUriWeb() {
@@ -315,7 +316,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RENTAL_URI_WEB)
+  @JsonProperty(value = JSON_PROPERTY_RENTAL_URI_WEB, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRentalUriWeb(@jakarta.annotation.Nullable String rentalUriWeb) {
     this.rentalUriWeb = rentalUriWeb;
@@ -332,7 +333,7 @@ public class Rental {
    * @return formFactor
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORM_FACTOR)
+  @JsonProperty(value = JSON_PROPERTY_FORM_FACTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RentalFormFactor getFormFactor() {
@@ -340,7 +341,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FORM_FACTOR)
+  @JsonProperty(value = JSON_PROPERTY_FORM_FACTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFormFactor(@jakarta.annotation.Nullable RentalFormFactor formFactor) {
     this.formFactor = formFactor;
@@ -357,7 +358,7 @@ public class Rental {
    * @return propulsionType
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROPULSION_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PROPULSION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RentalPropulsionType getPropulsionType() {
@@ -365,7 +366,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROPULSION_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PROPULSION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPropulsionType(@jakarta.annotation.Nullable RentalPropulsionType propulsionType) {
     this.propulsionType = propulsionType;
@@ -382,7 +383,7 @@ public class Rental {
    * @return returnConstraint
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RETURN_CONSTRAINT)
+  @JsonProperty(value = JSON_PROPERTY_RETURN_CONSTRAINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RentalReturnConstraint getReturnConstraint() {
@@ -390,7 +391,7 @@ public class Rental {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RETURN_CONSTRAINT)
+  @JsonProperty(value = JSON_PROPERTY_RETURN_CONSTRAINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setReturnConstraint(@jakarta.annotation.Nullable RentalReturnConstraint returnConstraint) {
     this.returnConstraint = returnConstraint;

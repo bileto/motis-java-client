@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -33,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Initial200Response.JSON_PROPERTY_ZOOM
 })
 @JsonTypeName("initial_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Initial200Response {
   public static final String JSON_PROPERTY_LAT = "lat";
   @jakarta.annotation.Nonnull
@@ -61,7 +62,7 @@ public class Initial200Response {
    * @return lat
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LAT)
+  @JsonProperty(value = JSON_PROPERTY_LAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getLat() {
@@ -69,7 +70,7 @@ public class Initial200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LAT)
+  @JsonProperty(value = JSON_PROPERTY_LAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLat(@jakarta.annotation.Nonnull BigDecimal lat) {
     this.lat = lat;
@@ -86,7 +87,7 @@ public class Initial200Response {
    * @return lon
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LON)
+  @JsonProperty(value = JSON_PROPERTY_LON, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getLon() {
@@ -94,7 +95,7 @@ public class Initial200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LON)
+  @JsonProperty(value = JSON_PROPERTY_LON, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLon(@jakarta.annotation.Nonnull BigDecimal lon) {
     this.lon = lon;
@@ -111,7 +112,7 @@ public class Initial200Response {
    * @return zoom
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ZOOM)
+  @JsonProperty(value = JSON_PROPERTY_ZOOM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getZoom() {
@@ -119,7 +120,7 @@ public class Initial200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ZOOM)
+  @JsonProperty(value = JSON_PROPERTY_ZOOM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setZoom(@jakarta.annotation.Nonnull BigDecimal zoom) {
     this.zoom = zoom;

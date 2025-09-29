@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -34,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Area.JSON_PROPERTY_UNIQUE,
   Area.JSON_PROPERTY_DEFAULT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Area {
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nonnull
@@ -70,7 +71,7 @@ public class Area {
    * @return name
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -78,7 +79,7 @@ public class Area {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@jakarta.annotation.Nonnull String name) {
     this.name = name;
@@ -95,7 +96,7 @@ public class Area {
    * @return adminLevel
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ADMIN_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_ADMIN_LEVEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getAdminLevel() {
@@ -103,7 +104,7 @@ public class Area {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ADMIN_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_ADMIN_LEVEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAdminLevel(@jakarta.annotation.Nonnull BigDecimal adminLevel) {
     this.adminLevel = adminLevel;
@@ -120,7 +121,7 @@ public class Area {
    * @return matched
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MATCHED)
+  @JsonProperty(value = JSON_PROPERTY_MATCHED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getMatched() {
@@ -128,7 +129,7 @@ public class Area {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MATCHED)
+  @JsonProperty(value = JSON_PROPERTY_MATCHED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMatched(@jakarta.annotation.Nonnull Boolean matched) {
     this.matched = matched;
@@ -145,7 +146,7 @@ public class Area {
    * @return unique
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_UNIQUE)
+  @JsonProperty(value = JSON_PROPERTY_UNIQUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getUnique() {
@@ -153,7 +154,7 @@ public class Area {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UNIQUE)
+  @JsonProperty(value = JSON_PROPERTY_UNIQUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUnique(@jakarta.annotation.Nullable Boolean unique) {
     this.unique = unique;
@@ -170,7 +171,7 @@ public class Area {
    * @return _default
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DEFAULT)
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getDefault() {
@@ -178,7 +179,7 @@ public class Area {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEFAULT)
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDefault(@jakarta.annotation.Nullable Boolean _default) {
     this._default = _default;

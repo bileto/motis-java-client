@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   FareMedia.JSON_PROPERTY_FARE_MEDIA_NAME,
   FareMedia.JSON_PROPERTY_FARE_MEDIA_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class FareMedia {
   public static final String JSON_PROPERTY_FARE_MEDIA_NAME = "fareMediaName";
   @jakarta.annotation.Nullable
@@ -55,7 +56,7 @@ public class FareMedia {
    * @return fareMediaName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FARE_MEDIA_NAME)
+  @JsonProperty(value = JSON_PROPERTY_FARE_MEDIA_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFareMediaName() {
@@ -63,7 +64,7 @@ public class FareMedia {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FARE_MEDIA_NAME)
+  @JsonProperty(value = JSON_PROPERTY_FARE_MEDIA_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFareMediaName(@jakarta.annotation.Nullable String fareMediaName) {
     this.fareMediaName = fareMediaName;
@@ -80,7 +81,7 @@ public class FareMedia {
    * @return fareMediaType
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_FARE_MEDIA_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_FARE_MEDIA_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public FareMediaType getFareMediaType() {
@@ -88,7 +89,7 @@ public class FareMedia {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FARE_MEDIA_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_FARE_MEDIA_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setFareMediaType(@jakarta.annotation.Nonnull FareMediaType fareMediaType) {
     this.fareMediaType = fareMediaType;

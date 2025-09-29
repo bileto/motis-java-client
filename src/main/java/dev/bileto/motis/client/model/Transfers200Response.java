@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -39,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Transfers200Response.JSON_PROPERTY_TRANSFERS
 })
 @JsonTypeName("transfers_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Transfers200Response {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nonnull
@@ -75,7 +76,7 @@ public class Transfers200Response {
    * @return place
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PLACE)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Place getPlace() {
@@ -83,7 +84,7 @@ public class Transfers200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PLACE)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPlace(@jakarta.annotation.Nonnull Place place) {
     this.place = place;
@@ -100,7 +101,7 @@ public class Transfers200Response {
    * @return hasFootTransfers
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HAS_FOOT_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_HAS_FOOT_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getHasFootTransfers() {
@@ -108,7 +109,7 @@ public class Transfers200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HAS_FOOT_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_HAS_FOOT_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHasFootTransfers(@jakarta.annotation.Nonnull Boolean hasFootTransfers) {
     this.hasFootTransfers = hasFootTransfers;
@@ -125,7 +126,7 @@ public class Transfers200Response {
    * @return hasWheelchairTransfers
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HAS_WHEELCHAIR_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_HAS_WHEELCHAIR_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getHasWheelchairTransfers() {
@@ -133,7 +134,7 @@ public class Transfers200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HAS_WHEELCHAIR_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_HAS_WHEELCHAIR_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHasWheelchairTransfers(@jakarta.annotation.Nonnull Boolean hasWheelchairTransfers) {
     this.hasWheelchairTransfers = hasWheelchairTransfers;
@@ -150,7 +151,7 @@ public class Transfers200Response {
    * @return hasCarTransfers
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HAS_CAR_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_HAS_CAR_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getHasCarTransfers() {
@@ -158,7 +159,7 @@ public class Transfers200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HAS_CAR_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_HAS_CAR_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHasCarTransfers(@jakarta.annotation.Nonnull Boolean hasCarTransfers) {
     this.hasCarTransfers = hasCarTransfers;
@@ -183,7 +184,7 @@ public class Transfers200Response {
    * @return transfers
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Transfer> getTransfers() {
@@ -191,7 +192,7 @@ public class Transfers200Response {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRANSFERS)
+  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTransfers(@jakarta.annotation.Nonnull List<Transfer> transfers) {
     this.transfers = transfers;

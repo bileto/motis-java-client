@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -36,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   FareTransfer.JSON_PROPERTY_TRANSFER_PRODUCTS,
   FareTransfer.JSON_PROPERTY_EFFECTIVE_FARE_LEG_PRODUCTS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class FareTransfer {
   public static final String JSON_PROPERTY_RULE = "rule";
   @jakarta.annotation.Nullable
@@ -64,7 +65,7 @@ public class FareTransfer {
    * @return rule
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RULE)
+  @JsonProperty(value = JSON_PROPERTY_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public FareTransferRule getRule() {
@@ -72,7 +73,7 @@ public class FareTransfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RULE)
+  @JsonProperty(value = JSON_PROPERTY_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRule(@jakarta.annotation.Nullable FareTransferRule rule) {
     this.rule = rule;
@@ -97,7 +98,7 @@ public class FareTransfer {
    * @return transferProducts
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TRANSFER_PRODUCTS)
+  @JsonProperty(value = JSON_PROPERTY_TRANSFER_PRODUCTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<FareProduct> getTransferProducts() {
@@ -105,7 +106,7 @@ public class FareTransfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRANSFER_PRODUCTS)
+  @JsonProperty(value = JSON_PROPERTY_TRANSFER_PRODUCTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTransferProducts(@jakarta.annotation.Nullable List<FareProduct> transferProducts) {
     this.transferProducts = transferProducts;
@@ -130,7 +131,7 @@ public class FareTransfer {
    * @return effectiveFareLegProducts
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EFFECTIVE_FARE_LEG_PRODUCTS)
+  @JsonProperty(value = JSON_PROPERTY_EFFECTIVE_FARE_LEG_PRODUCTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<List<List<FareProduct>>> getEffectiveFareLegProducts() {
@@ -138,7 +139,7 @@ public class FareTransfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EFFECTIVE_FARE_LEG_PRODUCTS)
+  @JsonProperty(value = JSON_PROPERTY_EFFECTIVE_FARE_LEG_PRODUCTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEffectiveFareLegProducts(@jakarta.annotation.Nonnull List<List<List<FareProduct>>> effectiveFareLegProducts) {
     this.effectiveFareLegProducts = effectiveFareLegProducts;

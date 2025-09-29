@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ReachablePlace.JSON_PROPERTY_DURATION,
   ReachablePlace.JSON_PROPERTY_K
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class ReachablePlace {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nullable
@@ -60,7 +61,7 @@ public class ReachablePlace {
    * @return place
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PLACE)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Place getPlace() {
@@ -68,7 +69,7 @@ public class ReachablePlace {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PLACE)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPlace(@jakarta.annotation.Nullable Place place) {
     this.place = place;
@@ -85,7 +86,7 @@ public class ReachablePlace {
    * @return duration
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getDuration() {
@@ -93,7 +94,7 @@ public class ReachablePlace {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDuration(@jakarta.annotation.Nullable Integer duration) {
     this.duration = duration;
@@ -110,7 +111,7 @@ public class ReachablePlace {
    * @return k
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_K)
+  @JsonProperty(value = JSON_PROPERTY_K, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getK() {
@@ -118,7 +119,7 @@ public class ReachablePlace {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_K)
+  @JsonProperty(value = JSON_PROPERTY_K, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setK(@jakarta.annotation.Nullable Integer k) {
     this.k = k;

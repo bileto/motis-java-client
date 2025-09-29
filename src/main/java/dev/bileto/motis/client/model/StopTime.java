@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -23,9 +24,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import dev.bileto.motis.client.model.Mode;
 import dev.bileto.motis.client.model.PickupDropoffType;
 import dev.bileto.motis.client.model.Place;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -37,7 +35,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StopTime.JSON_PROPERTY_MODE,
   StopTime.JSON_PROPERTY_REAL_TIME,
   StopTime.JSON_PROPERTY_HEADSIGN,
-  StopTime.JSON_PROPERTY_TRIP_TO,
   StopTime.JSON_PROPERTY_AGENCY_ID,
   StopTime.JSON_PROPERTY_AGENCY_NAME,
   StopTime.JSON_PROPERTY_AGENCY_URL,
@@ -49,14 +46,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StopTime.JSON_PROPERTY_ROUTE_LONG_NAME,
   StopTime.JSON_PROPERTY_TRIP_SHORT_NAME,
   StopTime.JSON_PROPERTY_DISPLAY_NAME,
-  StopTime.JSON_PROPERTY_PREVIOUS_STOPS,
-  StopTime.JSON_PROPERTY_NEXT_STOPS,
   StopTime.JSON_PROPERTY_PICKUP_DROPOFF_TYPE,
   StopTime.JSON_PROPERTY_CANCELLED,
   StopTime.JSON_PROPERTY_TRIP_CANCELLED,
   StopTime.JSON_PROPERTY_SOURCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class StopTime {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nonnull
@@ -73,10 +68,6 @@ public class StopTime {
   public static final String JSON_PROPERTY_HEADSIGN = "headsign";
   @jakarta.annotation.Nonnull
   private String headsign;
-
-  public static final String JSON_PROPERTY_TRIP_TO = "tripTo";
-  @jakarta.annotation.Nonnull
-  private Place tripTo;
 
   public static final String JSON_PROPERTY_AGENCY_ID = "agencyId";
   @jakarta.annotation.Nonnull
@@ -122,14 +113,6 @@ public class StopTime {
   @jakarta.annotation.Nonnull
   private String displayName;
 
-  public static final String JSON_PROPERTY_PREVIOUS_STOPS = "previousStops";
-  @jakarta.annotation.Nullable
-  private List<Place> previousStops = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_NEXT_STOPS = "nextStops";
-  @jakarta.annotation.Nullable
-  private List<Place> nextStops = new ArrayList<>();
-
   public static final String JSON_PROPERTY_PICKUP_DROPOFF_TYPE = "pickupDropoffType";
   @jakarta.annotation.Nonnull
   private PickupDropoffType pickupDropoffType;
@@ -160,7 +143,7 @@ public class StopTime {
    * @return place
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PLACE)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Place getPlace() {
@@ -168,7 +151,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PLACE)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPlace(@jakarta.annotation.Nonnull Place place) {
     this.place = place;
@@ -185,7 +168,7 @@ public class StopTime {
    * @return mode
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonProperty(value = JSON_PROPERTY_MODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Mode getMode() {
@@ -193,7 +176,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonProperty(value = JSON_PROPERTY_MODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMode(@jakarta.annotation.Nonnull Mode mode) {
     this.mode = mode;
@@ -210,7 +193,7 @@ public class StopTime {
    * @return realTime
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REAL_TIME)
+  @JsonProperty(value = JSON_PROPERTY_REAL_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getRealTime() {
@@ -218,7 +201,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REAL_TIME)
+  @JsonProperty(value = JSON_PROPERTY_REAL_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRealTime(@jakarta.annotation.Nonnull Boolean realTime) {
     this.realTime = realTime;
@@ -231,11 +214,11 @@ public class StopTime {
   }
 
   /**
-   * The headsign of the bus or train being used. For non-transit legs, null 
+   * For transit legs, the headsign of the bus or train being used. For non-transit legs, null 
    * @return headsign
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HEADSIGN)
+  @JsonProperty(value = JSON_PROPERTY_HEADSIGN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getHeadsign() {
@@ -243,35 +226,10 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HEADSIGN)
+  @JsonProperty(value = JSON_PROPERTY_HEADSIGN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHeadsign(@jakarta.annotation.Nonnull String headsign) {
     this.headsign = headsign;
-  }
-
-  public StopTime tripTo(@jakarta.annotation.Nonnull Place tripTo) {
-    
-    this.tripTo = tripTo;
-    return this;
-  }
-
-  /**
-   * final stop of this trip
-   * @return tripTo
-   */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRIP_TO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Place getTripTo() {
-    return tripTo;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TRIP_TO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTripTo(@jakarta.annotation.Nonnull Place tripTo) {
-    this.tripTo = tripTo;
   }
 
   public StopTime agencyId(@jakarta.annotation.Nonnull String agencyId) {
@@ -285,7 +243,7 @@ public class StopTime {
    * @return agencyId
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENCY_ID)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAgencyId() {
@@ -293,7 +251,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AGENCY_ID)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAgencyId(@jakarta.annotation.Nonnull String agencyId) {
     this.agencyId = agencyId;
@@ -310,7 +268,7 @@ public class StopTime {
    * @return agencyName
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENCY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAgencyName() {
@@ -318,7 +276,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AGENCY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAgencyName(@jakarta.annotation.Nonnull String agencyName) {
     this.agencyName = agencyName;
@@ -335,7 +293,7 @@ public class StopTime {
    * @return agencyUrl
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENCY_URL)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAgencyUrl() {
@@ -343,7 +301,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AGENCY_URL)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAgencyUrl(@jakarta.annotation.Nonnull String agencyUrl) {
     this.agencyUrl = agencyUrl;
@@ -360,7 +318,7 @@ public class StopTime {
    * @return routeColor
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRouteColor() {
@@ -368,7 +326,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteColor(@jakarta.annotation.Nullable String routeColor) {
     this.routeColor = routeColor;
@@ -385,7 +343,7 @@ public class StopTime {
    * @return routeTextColor
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_TEXT_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_TEXT_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRouteTextColor() {
@@ -393,7 +351,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_TEXT_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_TEXT_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteTextColor(@jakarta.annotation.Nullable String routeTextColor) {
     this.routeTextColor = routeTextColor;
@@ -410,7 +368,7 @@ public class StopTime {
    * @return tripId
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRIP_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTripId() {
@@ -418,7 +376,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRIP_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTripId(@jakarta.annotation.Nonnull String tripId) {
     this.tripId = tripId;
@@ -435,7 +393,7 @@ public class StopTime {
    * @return routeType
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getRouteType() {
@@ -443,7 +401,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteType(@jakarta.annotation.Nullable Integer routeType) {
     this.routeType = routeType;
@@ -460,7 +418,7 @@ public class StopTime {
    * @return routeShortName
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ROUTE_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_SHORT_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getRouteShortName() {
@@ -468,7 +426,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_SHORT_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRouteShortName(@jakarta.annotation.Nonnull String routeShortName) {
     this.routeShortName = routeShortName;
@@ -485,7 +443,7 @@ public class StopTime {
    * @return routeLongName
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ROUTE_LONG_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_LONG_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getRouteLongName() {
@@ -493,7 +451,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_LONG_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_LONG_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRouteLongName(@jakarta.annotation.Nonnull String routeLongName) {
     this.routeLongName = routeLongName;
@@ -510,7 +468,7 @@ public class StopTime {
    * @return tripShortName
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRIP_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_SHORT_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTripShortName() {
@@ -518,7 +476,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRIP_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_SHORT_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTripShortName(@jakarta.annotation.Nonnull String tripShortName) {
     this.tripShortName = tripShortName;
@@ -535,7 +493,7 @@ public class StopTime {
    * @return displayName
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDisplayName() {
@@ -543,76 +501,10 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDisplayName(@jakarta.annotation.Nonnull String displayName) {
     this.displayName = displayName;
-  }
-
-  public StopTime previousStops(@jakarta.annotation.Nullable List<Place> previousStops) {
-    
-    this.previousStops = previousStops;
-    return this;
-  }
-
-  public StopTime addPreviousStopsItem(Place previousStopsItem) {
-    if (this.previousStops == null) {
-      this.previousStops = new ArrayList<>();
-    }
-    this.previousStops.add(previousStopsItem);
-    return this;
-  }
-
-  /**
-   * Experimental. Expect unannounced breaking changes (without version bumps).  Stops on the trips before this stop. Returned only if &#x60;fetchStop&#x60; and &#x60;arriveBy&#x60; are &#x60;true&#x60;. 
-   * @return previousStops
-   */
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_STOPS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Place> getPreviousStops() {
-    return previousStops;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_STOPS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPreviousStops(@jakarta.annotation.Nullable List<Place> previousStops) {
-    this.previousStops = previousStops;
-  }
-
-  public StopTime nextStops(@jakarta.annotation.Nullable List<Place> nextStops) {
-    
-    this.nextStops = nextStops;
-    return this;
-  }
-
-  public StopTime addNextStopsItem(Place nextStopsItem) {
-    if (this.nextStops == null) {
-      this.nextStops = new ArrayList<>();
-    }
-    this.nextStops.add(nextStopsItem);
-    return this;
-  }
-
-  /**
-   * Experimental. Expect unannounced breaking changes (without version bumps).  Stops on the trips after this stop. Returned only if &#x60;fetchStop&#x60; is &#x60;true&#x60; and &#x60;arriveBy&#x60; is &#x60;false&#x60;. 
-   * @return nextStops
-   */
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NEXT_STOPS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Place> getNextStops() {
-    return nextStops;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NEXT_STOPS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNextStops(@jakarta.annotation.Nullable List<Place> nextStops) {
-    this.nextStops = nextStops;
   }
 
   public StopTime pickupDropoffType(@jakarta.annotation.Nonnull PickupDropoffType pickupDropoffType) {
@@ -626,7 +518,7 @@ public class StopTime {
    * @return pickupDropoffType
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PICKUP_DROPOFF_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PICKUP_DROPOFF_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public PickupDropoffType getPickupDropoffType() {
@@ -634,7 +526,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PICKUP_DROPOFF_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PICKUP_DROPOFF_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPickupDropoffType(@jakarta.annotation.Nonnull PickupDropoffType pickupDropoffType) {
     this.pickupDropoffType = pickupDropoffType;
@@ -651,7 +543,7 @@ public class StopTime {
    * @return cancelled
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CANCELLED)
+  @JsonProperty(value = JSON_PROPERTY_CANCELLED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getCancelled() {
@@ -659,7 +551,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CANCELLED)
+  @JsonProperty(value = JSON_PROPERTY_CANCELLED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCancelled(@jakarta.annotation.Nonnull Boolean cancelled) {
     this.cancelled = cancelled;
@@ -676,7 +568,7 @@ public class StopTime {
    * @return tripCancelled
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRIP_CANCELLED)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_CANCELLED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getTripCancelled() {
@@ -684,7 +576,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRIP_CANCELLED)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_CANCELLED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTripCancelled(@jakarta.annotation.Nonnull Boolean tripCancelled) {
     this.tripCancelled = tripCancelled;
@@ -701,7 +593,7 @@ public class StopTime {
    * @return source
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SOURCE)
+  @JsonProperty(value = JSON_PROPERTY_SOURCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getSource() {
@@ -709,7 +601,7 @@ public class StopTime {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SOURCE)
+  @JsonProperty(value = JSON_PROPERTY_SOURCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSource(@jakarta.annotation.Nonnull String source) {
     this.source = source;
@@ -729,7 +621,6 @@ public class StopTime {
         Objects.equals(this.mode, stopTime.mode) &&
         Objects.equals(this.realTime, stopTime.realTime) &&
         Objects.equals(this.headsign, stopTime.headsign) &&
-        Objects.equals(this.tripTo, stopTime.tripTo) &&
         Objects.equals(this.agencyId, stopTime.agencyId) &&
         Objects.equals(this.agencyName, stopTime.agencyName) &&
         Objects.equals(this.agencyUrl, stopTime.agencyUrl) &&
@@ -741,8 +632,6 @@ public class StopTime {
         Objects.equals(this.routeLongName, stopTime.routeLongName) &&
         Objects.equals(this.tripShortName, stopTime.tripShortName) &&
         Objects.equals(this.displayName, stopTime.displayName) &&
-        Objects.equals(this.previousStops, stopTime.previousStops) &&
-        Objects.equals(this.nextStops, stopTime.nextStops) &&
         Objects.equals(this.pickupDropoffType, stopTime.pickupDropoffType) &&
         Objects.equals(this.cancelled, stopTime.cancelled) &&
         Objects.equals(this.tripCancelled, stopTime.tripCancelled) &&
@@ -751,7 +640,7 @@ public class StopTime {
 
   @Override
   public int hashCode() {
-    return Objects.hash(place, mode, realTime, headsign, tripTo, agencyId, agencyName, agencyUrl, routeColor, routeTextColor, tripId, routeType, routeShortName, routeLongName, tripShortName, displayName, previousStops, nextStops, pickupDropoffType, cancelled, tripCancelled, source);
+    return Objects.hash(place, mode, realTime, headsign, agencyId, agencyName, agencyUrl, routeColor, routeTextColor, tripId, routeType, routeShortName, routeLongName, tripShortName, displayName, pickupDropoffType, cancelled, tripCancelled, source);
   }
 
   @Override
@@ -762,7 +651,6 @@ public class StopTime {
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("    realTime: ").append(toIndentedString(realTime)).append("\n");
     sb.append("    headsign: ").append(toIndentedString(headsign)).append("\n");
-    sb.append("    tripTo: ").append(toIndentedString(tripTo)).append("\n");
     sb.append("    agencyId: ").append(toIndentedString(agencyId)).append("\n");
     sb.append("    agencyName: ").append(toIndentedString(agencyName)).append("\n");
     sb.append("    agencyUrl: ").append(toIndentedString(agencyUrl)).append("\n");
@@ -774,8 +662,6 @@ public class StopTime {
     sb.append("    routeLongName: ").append(toIndentedString(routeLongName)).append("\n");
     sb.append("    tripShortName: ").append(toIndentedString(tripShortName)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    previousStops: ").append(toIndentedString(previousStops)).append("\n");
-    sb.append("    nextStops: ").append(toIndentedString(nextStops)).append("\n");
     sb.append("    pickupDropoffType: ").append(toIndentedString(pickupDropoffType)).append("\n");
     sb.append("    cancelled: ").append(toIndentedString(cancelled)).append("\n");
     sb.append("    tripCancelled: ").append(toIndentedString(tripCancelled)).append("\n");

@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -38,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Transfer.JSON_PROPERTY_WHEELCHAIR_USES_ELEVATOR,
   Transfer.JSON_PROPERTY_CAR
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Transfer {
   public static final String JSON_PROPERTY_TO = "to";
   @jakarta.annotation.Nonnull
@@ -86,7 +87,7 @@ public class Transfer {
    * @return to
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TO)
+  @JsonProperty(value = JSON_PROPERTY_TO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Place getTo() {
@@ -94,7 +95,7 @@ public class Transfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TO)
+  @JsonProperty(value = JSON_PROPERTY_TO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTo(@jakarta.annotation.Nonnull Place to) {
     this.to = to;
@@ -111,7 +112,7 @@ public class Transfer {
    * @return _default
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DEFAULT)
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getDefault() {
@@ -119,7 +120,7 @@ public class Transfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEFAULT)
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDefault(@jakarta.annotation.Nullable BigDecimal _default) {
     this._default = _default;
@@ -136,7 +137,7 @@ public class Transfer {
    * @return foot
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FOOT)
+  @JsonProperty(value = JSON_PROPERTY_FOOT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getFoot() {
@@ -144,7 +145,7 @@ public class Transfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FOOT)
+  @JsonProperty(value = JSON_PROPERTY_FOOT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFoot(@jakarta.annotation.Nullable BigDecimal foot) {
     this.foot = foot;
@@ -161,7 +162,7 @@ public class Transfer {
    * @return footRouted
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FOOT_ROUTED)
+  @JsonProperty(value = JSON_PROPERTY_FOOT_ROUTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getFootRouted() {
@@ -169,7 +170,7 @@ public class Transfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FOOT_ROUTED)
+  @JsonProperty(value = JSON_PROPERTY_FOOT_ROUTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFootRouted(@jakarta.annotation.Nullable BigDecimal footRouted) {
     this.footRouted = footRouted;
@@ -186,7 +187,7 @@ public class Transfer {
    * @return wheelchair
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WHEELCHAIR)
+  @JsonProperty(value = JSON_PROPERTY_WHEELCHAIR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getWheelchair() {
@@ -194,7 +195,7 @@ public class Transfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WHEELCHAIR)
+  @JsonProperty(value = JSON_PROPERTY_WHEELCHAIR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWheelchair(@jakarta.annotation.Nullable BigDecimal wheelchair) {
     this.wheelchair = wheelchair;
@@ -211,7 +212,7 @@ public class Transfer {
    * @return wheelchairRouted
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WHEELCHAIR_ROUTED)
+  @JsonProperty(value = JSON_PROPERTY_WHEELCHAIR_ROUTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getWheelchairRouted() {
@@ -219,7 +220,7 @@ public class Transfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WHEELCHAIR_ROUTED)
+  @JsonProperty(value = JSON_PROPERTY_WHEELCHAIR_ROUTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWheelchairRouted(@jakarta.annotation.Nullable BigDecimal wheelchairRouted) {
     this.wheelchairRouted = wheelchairRouted;
@@ -236,7 +237,7 @@ public class Transfer {
    * @return wheelchairUsesElevator
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WHEELCHAIR_USES_ELEVATOR)
+  @JsonProperty(value = JSON_PROPERTY_WHEELCHAIR_USES_ELEVATOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getWheelchairUsesElevator() {
@@ -244,7 +245,7 @@ public class Transfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WHEELCHAIR_USES_ELEVATOR)
+  @JsonProperty(value = JSON_PROPERTY_WHEELCHAIR_USES_ELEVATOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWheelchairUsesElevator(@jakarta.annotation.Nullable Boolean wheelchairUsesElevator) {
     this.wheelchairUsesElevator = wheelchairUsesElevator;
@@ -261,7 +262,7 @@ public class Transfer {
    * @return car
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CAR)
+  @JsonProperty(value = JSON_PROPERTY_CAR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getCar() {
@@ -269,7 +270,7 @@ public class Transfer {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CAR)
+  @JsonProperty(value = JSON_PROPERTY_CAR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCar(@jakarta.annotation.Nullable BigDecimal car) {
     this.car = car;

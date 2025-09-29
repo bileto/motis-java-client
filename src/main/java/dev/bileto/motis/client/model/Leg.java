@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -51,7 +52,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_DISTANCE,
   Leg.JSON_PROPERTY_INTERLINE_WITH_PREVIOUS_LEG,
   Leg.JSON_PROPERTY_HEADSIGN,
-  Leg.JSON_PROPERTY_TRIP_TO,
   Leg.JSON_PROPERTY_ROUTE_COLOR,
   Leg.JSON_PROPERTY_ROUTE_TEXT_COLOR,
   Leg.JSON_PROPERTY_ROUTE_TYPE,
@@ -74,7 +74,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_ALERTS,
   Leg.JSON_PROPERTY_LOOPED_CALENDAR_SINCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Leg {
   public static final String JSON_PROPERTY_MODE = "mode";
   @jakarta.annotation.Nonnull
@@ -127,10 +127,6 @@ public class Leg {
   public static final String JSON_PROPERTY_HEADSIGN = "headsign";
   @jakarta.annotation.Nullable
   private String headsign;
-
-  public static final String JSON_PROPERTY_TRIP_TO = "tripTo";
-  @jakarta.annotation.Nullable
-  private Place tripTo;
 
   public static final String JSON_PROPERTY_ROUTE_COLOR = "routeColor";
   @jakarta.annotation.Nullable
@@ -230,7 +226,7 @@ public class Leg {
    * @return mode
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonProperty(value = JSON_PROPERTY_MODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Mode getMode() {
@@ -238,7 +234,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonProperty(value = JSON_PROPERTY_MODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMode(@jakarta.annotation.Nonnull Mode mode) {
     this.mode = mode;
@@ -255,7 +251,7 @@ public class Leg {
    * @return from
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_FROM)
+  @JsonProperty(value = JSON_PROPERTY_FROM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Place getFrom() {
@@ -263,7 +259,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FROM)
+  @JsonProperty(value = JSON_PROPERTY_FROM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setFrom(@jakarta.annotation.Nonnull Place from) {
     this.from = from;
@@ -280,7 +276,7 @@ public class Leg {
    * @return to
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TO)
+  @JsonProperty(value = JSON_PROPERTY_TO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Place getTo() {
@@ -288,7 +284,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TO)
+  @JsonProperty(value = JSON_PROPERTY_TO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTo(@jakarta.annotation.Nonnull Place to) {
     this.to = to;
@@ -305,7 +301,7 @@ public class Leg {
    * @return duration
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getDuration() {
@@ -313,7 +309,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDuration(@jakarta.annotation.Nonnull Integer duration) {
     this.duration = duration;
@@ -330,7 +326,7 @@ public class Leg {
    * @return startTime
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_START_TIME)
+  @JsonProperty(value = JSON_PROPERTY_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getStartTime() {
@@ -338,7 +334,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_START_TIME)
+  @JsonProperty(value = JSON_PROPERTY_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStartTime(@jakarta.annotation.Nonnull OffsetDateTime startTime) {
     this.startTime = startTime;
@@ -355,7 +351,7 @@ public class Leg {
    * @return endTime
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_END_TIME)
+  @JsonProperty(value = JSON_PROPERTY_END_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getEndTime() {
@@ -363,7 +359,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_END_TIME)
+  @JsonProperty(value = JSON_PROPERTY_END_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEndTime(@jakarta.annotation.Nonnull OffsetDateTime endTime) {
     this.endTime = endTime;
@@ -380,7 +376,7 @@ public class Leg {
    * @return scheduledStartTime
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_START_TIME)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getScheduledStartTime() {
@@ -388,7 +384,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_START_TIME)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScheduledStartTime(@jakarta.annotation.Nonnull OffsetDateTime scheduledStartTime) {
     this.scheduledStartTime = scheduledStartTime;
@@ -405,7 +401,7 @@ public class Leg {
    * @return scheduledEndTime
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_END_TIME)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_END_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getScheduledEndTime() {
@@ -413,7 +409,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCHEDULED_END_TIME)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_END_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScheduledEndTime(@jakarta.annotation.Nonnull OffsetDateTime scheduledEndTime) {
     this.scheduledEndTime = scheduledEndTime;
@@ -430,7 +426,7 @@ public class Leg {
    * @return realTime
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REAL_TIME)
+  @JsonProperty(value = JSON_PROPERTY_REAL_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getRealTime() {
@@ -438,7 +434,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REAL_TIME)
+  @JsonProperty(value = JSON_PROPERTY_REAL_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRealTime(@jakarta.annotation.Nonnull Boolean realTime) {
     this.realTime = realTime;
@@ -455,7 +451,7 @@ public class Leg {
    * @return scheduled
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SCHEDULED)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getScheduled() {
@@ -463,7 +459,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCHEDULED)
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScheduled(@jakarta.annotation.Nonnull Boolean scheduled) {
     this.scheduled = scheduled;
@@ -480,7 +476,7 @@ public class Leg {
    * @return distance
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISTANCE)
+  @JsonProperty(value = JSON_PROPERTY_DISTANCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getDistance() {
@@ -488,7 +484,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISTANCE)
+  @JsonProperty(value = JSON_PROPERTY_DISTANCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDistance(@jakarta.annotation.Nullable BigDecimal distance) {
     this.distance = distance;
@@ -505,7 +501,7 @@ public class Leg {
    * @return interlineWithPreviousLeg
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INTERLINE_WITH_PREVIOUS_LEG)
+  @JsonProperty(value = JSON_PROPERTY_INTERLINE_WITH_PREVIOUS_LEG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getInterlineWithPreviousLeg() {
@@ -513,7 +509,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INTERLINE_WITH_PREVIOUS_LEG)
+  @JsonProperty(value = JSON_PROPERTY_INTERLINE_WITH_PREVIOUS_LEG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setInterlineWithPreviousLeg(@jakarta.annotation.Nullable Boolean interlineWithPreviousLeg) {
     this.interlineWithPreviousLeg = interlineWithPreviousLeg;
@@ -530,7 +526,7 @@ public class Leg {
    * @return headsign
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HEADSIGN)
+  @JsonProperty(value = JSON_PROPERTY_HEADSIGN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getHeadsign() {
@@ -538,35 +534,10 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HEADSIGN)
+  @JsonProperty(value = JSON_PROPERTY_HEADSIGN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHeadsign(@jakarta.annotation.Nullable String headsign) {
     this.headsign = headsign;
-  }
-
-  public Leg tripTo(@jakarta.annotation.Nullable Place tripTo) {
-    
-    this.tripTo = tripTo;
-    return this;
-  }
-
-  /**
-   * final stop of this trip (can differ from headsign)
-   * @return tripTo
-   */
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TRIP_TO)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Place getTripTo() {
-    return tripTo;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TRIP_TO)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTripTo(@jakarta.annotation.Nullable Place tripTo) {
-    this.tripTo = tripTo;
   }
 
   public Leg routeColor(@jakarta.annotation.Nullable String routeColor) {
@@ -580,7 +551,7 @@ public class Leg {
    * @return routeColor
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRouteColor() {
@@ -588,7 +559,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteColor(@jakarta.annotation.Nullable String routeColor) {
     this.routeColor = routeColor;
@@ -605,7 +576,7 @@ public class Leg {
    * @return routeTextColor
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_TEXT_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_TEXT_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRouteTextColor() {
@@ -613,7 +584,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_TEXT_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_TEXT_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteTextColor(@jakarta.annotation.Nullable String routeTextColor) {
     this.routeTextColor = routeTextColor;
@@ -630,7 +601,7 @@ public class Leg {
    * @return routeType
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getRouteType() {
@@ -638,7 +609,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteType(@jakarta.annotation.Nullable Integer routeType) {
     this.routeType = routeType;
@@ -655,7 +626,7 @@ public class Leg {
    * @return agencyName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENCY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAgencyName() {
@@ -663,7 +634,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AGENCY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgencyName(@jakarta.annotation.Nullable String agencyName) {
     this.agencyName = agencyName;
@@ -680,7 +651,7 @@ public class Leg {
    * @return agencyUrl
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENCY_URL)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAgencyUrl() {
@@ -688,7 +659,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AGENCY_URL)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgencyUrl(@jakarta.annotation.Nullable String agencyUrl) {
     this.agencyUrl = agencyUrl;
@@ -705,7 +676,7 @@ public class Leg {
    * @return agencyId
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENCY_ID)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAgencyId() {
@@ -713,7 +684,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AGENCY_ID)
+  @JsonProperty(value = JSON_PROPERTY_AGENCY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgencyId(@jakarta.annotation.Nullable String agencyId) {
     this.agencyId = agencyId;
@@ -730,7 +701,7 @@ public class Leg {
    * @return tripId
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TRIP_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTripId() {
@@ -738,7 +709,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRIP_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTripId(@jakarta.annotation.Nullable String tripId) {
     this.tripId = tripId;
@@ -755,7 +726,7 @@ public class Leg {
    * @return routeShortName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_SHORT_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRouteShortName() {
@@ -763,7 +734,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_SHORT_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteShortName(@jakarta.annotation.Nullable String routeShortName) {
     this.routeShortName = routeShortName;
@@ -780,7 +751,7 @@ public class Leg {
    * @return routeLongName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_LONG_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_LONG_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRouteLongName() {
@@ -788,7 +759,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_LONG_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_LONG_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteLongName(@jakarta.annotation.Nullable String routeLongName) {
     this.routeLongName = routeLongName;
@@ -805,7 +776,7 @@ public class Leg {
    * @return tripShortName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TRIP_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_SHORT_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTripShortName() {
@@ -813,7 +784,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRIP_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_SHORT_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTripShortName(@jakarta.annotation.Nullable String tripShortName) {
     this.tripShortName = tripShortName;
@@ -830,7 +801,7 @@ public class Leg {
    * @return displayName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
@@ -838,7 +809,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
     this.displayName = displayName;
@@ -855,7 +826,7 @@ public class Leg {
    * @return cancelled
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CANCELLED)
+  @JsonProperty(value = JSON_PROPERTY_CANCELLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getCancelled() {
@@ -863,7 +834,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CANCELLED)
+  @JsonProperty(value = JSON_PROPERTY_CANCELLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCancelled(@jakarta.annotation.Nullable Boolean cancelled) {
     this.cancelled = cancelled;
@@ -880,7 +851,7 @@ public class Leg {
    * @return source
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SOURCE)
+  @JsonProperty(value = JSON_PROPERTY_SOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSource() {
@@ -888,7 +859,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SOURCE)
+  @JsonProperty(value = JSON_PROPERTY_SOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSource(@jakarta.annotation.Nullable String source) {
     this.source = source;
@@ -913,7 +884,7 @@ public class Leg {
    * @return intermediateStops
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INTERMEDIATE_STOPS)
+  @JsonProperty(value = JSON_PROPERTY_INTERMEDIATE_STOPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Place> getIntermediateStops() {
@@ -921,7 +892,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INTERMEDIATE_STOPS)
+  @JsonProperty(value = JSON_PROPERTY_INTERMEDIATE_STOPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIntermediateStops(@jakarta.annotation.Nullable List<Place> intermediateStops) {
     this.intermediateStops = intermediateStops;
@@ -938,7 +909,7 @@ public class Leg {
    * @return legGeometry
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LEG_GEOMETRY)
+  @JsonProperty(value = JSON_PROPERTY_LEG_GEOMETRY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public EncodedPolyline getLegGeometry() {
@@ -946,7 +917,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LEG_GEOMETRY)
+  @JsonProperty(value = JSON_PROPERTY_LEG_GEOMETRY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLegGeometry(@jakarta.annotation.Nonnull EncodedPolyline legGeometry) {
     this.legGeometry = legGeometry;
@@ -971,7 +942,7 @@ public class Leg {
    * @return steps
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STEPS)
+  @JsonProperty(value = JSON_PROPERTY_STEPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<StepInstruction> getSteps() {
@@ -979,7 +950,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STEPS)
+  @JsonProperty(value = JSON_PROPERTY_STEPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSteps(@jakarta.annotation.Nullable List<StepInstruction> steps) {
     this.steps = steps;
@@ -996,7 +967,7 @@ public class Leg {
    * @return rental
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RENTAL)
+  @JsonProperty(value = JSON_PROPERTY_RENTAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Rental getRental() {
@@ -1004,7 +975,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RENTAL)
+  @JsonProperty(value = JSON_PROPERTY_RENTAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRental(@jakarta.annotation.Nullable Rental rental) {
     this.rental = rental;
@@ -1021,7 +992,7 @@ public class Leg {
    * @return fareTransferIndex
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FARE_TRANSFER_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_FARE_TRANSFER_INDEX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getFareTransferIndex() {
@@ -1029,7 +1000,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FARE_TRANSFER_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_FARE_TRANSFER_INDEX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFareTransferIndex(@jakarta.annotation.Nullable Integer fareTransferIndex) {
     this.fareTransferIndex = fareTransferIndex;
@@ -1046,7 +1017,7 @@ public class Leg {
    * @return effectiveFareLegIndex
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EFFECTIVE_FARE_LEG_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_EFFECTIVE_FARE_LEG_INDEX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getEffectiveFareLegIndex() {
@@ -1054,7 +1025,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EFFECTIVE_FARE_LEG_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_EFFECTIVE_FARE_LEG_INDEX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEffectiveFareLegIndex(@jakarta.annotation.Nullable Integer effectiveFareLegIndex) {
     this.effectiveFareLegIndex = effectiveFareLegIndex;
@@ -1079,7 +1050,7 @@ public class Leg {
    * @return alerts
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERTS)
+  @JsonProperty(value = JSON_PROPERTY_ALERTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Alert> getAlerts() {
@@ -1087,7 +1058,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALERTS)
+  @JsonProperty(value = JSON_PROPERTY_ALERTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAlerts(@jakarta.annotation.Nullable List<Alert> alerts) {
     this.alerts = alerts;
@@ -1104,7 +1075,7 @@ public class Leg {
    * @return loopedCalendarSince
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOOPED_CALENDAR_SINCE)
+  @JsonProperty(value = JSON_PROPERTY_LOOPED_CALENDAR_SINCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getLoopedCalendarSince() {
@@ -1112,7 +1083,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOOPED_CALENDAR_SINCE)
+  @JsonProperty(value = JSON_PROPERTY_LOOPED_CALENDAR_SINCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLoopedCalendarSince(@jakarta.annotation.Nullable OffsetDateTime loopedCalendarSince) {
     this.loopedCalendarSince = loopedCalendarSince;
@@ -1141,7 +1112,6 @@ public class Leg {
         Objects.equals(this.distance, leg.distance) &&
         Objects.equals(this.interlineWithPreviousLeg, leg.interlineWithPreviousLeg) &&
         Objects.equals(this.headsign, leg.headsign) &&
-        Objects.equals(this.tripTo, leg.tripTo) &&
         Objects.equals(this.routeColor, leg.routeColor) &&
         Objects.equals(this.routeTextColor, leg.routeTextColor) &&
         Objects.equals(this.routeType, leg.routeType) &&
@@ -1167,7 +1137,7 @@ public class Leg {
 
   @Override
   public int hashCode() {
-    return Objects.hash(mode, from, to, duration, startTime, endTime, scheduledStartTime, scheduledEndTime, realTime, scheduled, distance, interlineWithPreviousLeg, headsign, tripTo, routeColor, routeTextColor, routeType, agencyName, agencyUrl, agencyId, tripId, routeShortName, routeLongName, tripShortName, displayName, cancelled, source, intermediateStops, legGeometry, steps, rental, fareTransferIndex, effectiveFareLegIndex, alerts, loopedCalendarSince);
+    return Objects.hash(mode, from, to, duration, startTime, endTime, scheduledStartTime, scheduledEndTime, realTime, scheduled, distance, interlineWithPreviousLeg, headsign, routeColor, routeTextColor, routeType, agencyName, agencyUrl, agencyId, tripId, routeShortName, routeLongName, tripShortName, displayName, cancelled, source, intermediateStops, legGeometry, steps, rental, fareTransferIndex, effectiveFareLegIndex, alerts, loopedCalendarSince);
   }
 
   @Override
@@ -1187,7 +1157,6 @@ public class Leg {
     sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
     sb.append("    interlineWithPreviousLeg: ").append(toIndentedString(interlineWithPreviousLeg)).append("\n");
     sb.append("    headsign: ").append(toIndentedString(headsign)).append("\n");
-    sb.append("    tripTo: ").append(toIndentedString(tripTo)).append("\n");
     sb.append("    routeColor: ").append(toIndentedString(routeColor)).append("\n");
     sb.append("    routeTextColor: ").append(toIndentedString(routeTextColor)).append("\n");
     sb.append("    routeType: ").append(toIndentedString(routeType)).append("\n");

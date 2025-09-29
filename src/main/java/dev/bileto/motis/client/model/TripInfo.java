@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   TripInfo.JSON_PROPERTY_ROUTE_SHORT_NAME,
   TripInfo.JSON_PROPERTY_DISPLAY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class TripInfo {
   public static final String JSON_PROPERTY_TRIP_ID = "tripId";
   @jakarta.annotation.Nonnull
@@ -59,7 +60,7 @@ public class TripInfo {
    * @return tripId
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRIP_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTripId() {
@@ -67,7 +68,7 @@ public class TripInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRIP_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTripId(@jakarta.annotation.Nonnull String tripId) {
     this.tripId = tripId;
@@ -84,7 +85,7 @@ public class TripInfo {
    * @return routeShortName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_SHORT_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRouteShortName() {
@@ -92,7 +93,7 @@ public class TripInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_SHORT_NAME)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_SHORT_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteShortName(@jakarta.annotation.Nullable String routeShortName) {
     this.routeShortName = routeShortName;
@@ -109,7 +110,7 @@ public class TripInfo {
    * @return displayName
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
@@ -117,7 +118,7 @@ public class TripInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
     this.displayName = displayName;

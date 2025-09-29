@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RiderCategory.JSON_PROPERTY_IS_DEFAULT_FARE_CATEGORY,
   RiderCategory.JSON_PROPERTY_ELIGIBILITY_URL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class RiderCategory {
   public static final String JSON_PROPERTY_RIDER_CATEGORY_NAME = "riderCategoryName";
   @jakarta.annotation.Nonnull
@@ -59,7 +60,7 @@ public class RiderCategory {
    * @return riderCategoryName
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RIDER_CATEGORY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_RIDER_CATEGORY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getRiderCategoryName() {
@@ -67,7 +68,7 @@ public class RiderCategory {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RIDER_CATEGORY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_RIDER_CATEGORY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRiderCategoryName(@jakarta.annotation.Nonnull String riderCategoryName) {
     this.riderCategoryName = riderCategoryName;
@@ -84,7 +85,7 @@ public class RiderCategory {
    * @return isDefaultFareCategory
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FARE_CATEGORY)
+  @JsonProperty(value = JSON_PROPERTY_IS_DEFAULT_FARE_CATEGORY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getIsDefaultFareCategory() {
@@ -92,7 +93,7 @@ public class RiderCategory {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FARE_CATEGORY)
+  @JsonProperty(value = JSON_PROPERTY_IS_DEFAULT_FARE_CATEGORY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIsDefaultFareCategory(@jakarta.annotation.Nonnull Boolean isDefaultFareCategory) {
     this.isDefaultFareCategory = isDefaultFareCategory;
@@ -109,7 +110,7 @@ public class RiderCategory {
    * @return eligibilityUrl
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ELIGIBILITY_URL)
+  @JsonProperty(value = JSON_PROPERTY_ELIGIBILITY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEligibilityUrl() {
@@ -117,7 +118,7 @@ public class RiderCategory {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ELIGIBILITY_URL)
+  @JsonProperty(value = JSON_PROPERTY_ELIGIBILITY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEligibilityUrl(@jakarta.annotation.Nullable String eligibilityUrl) {
     this.eligibilityUrl = eligibilityUrl;

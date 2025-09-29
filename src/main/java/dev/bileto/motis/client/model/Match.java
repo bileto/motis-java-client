@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,13 +43,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Match.JSON_PROPERTY_LEVEL,
   Match.JSON_PROPERTY_STREET,
   Match.JSON_PROPERTY_HOUSE_NUMBER,
-  Match.JSON_PROPERTY_COUNTRY,
   Match.JSON_PROPERTY_ZIP,
   Match.JSON_PROPERTY_TZ,
   Match.JSON_PROPERTY_AREAS,
   Match.JSON_PROPERTY_SCORE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Match {
   public static final String JSON_PROPERTY_TYPE = "type";
   @jakarta.annotation.Nonnull
@@ -86,10 +86,6 @@ public class Match {
   @jakarta.annotation.Nullable
   private String houseNumber;
 
-  public static final String JSON_PROPERTY_COUNTRY = "country";
-  @jakarta.annotation.Nullable
-  private String country;
-
   public static final String JSON_PROPERTY_ZIP = "zip";
   @jakarta.annotation.Nullable
   private String zip;
@@ -120,7 +116,7 @@ public class Match {
    * @return type
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public LocationType getType() {
@@ -128,7 +124,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@jakarta.annotation.Nonnull LocationType type) {
     this.type = type;
@@ -153,7 +149,7 @@ public class Match {
    * @return tokens
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TOKENS)
+  @JsonProperty(value = JSON_PROPERTY_TOKENS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<List<BigDecimal>> getTokens() {
@@ -161,7 +157,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKENS)
+  @JsonProperty(value = JSON_PROPERTY_TOKENS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTokens(@jakarta.annotation.Nonnull List<List<BigDecimal>> tokens) {
     this.tokens = tokens;
@@ -178,7 +174,7 @@ public class Match {
    * @return name
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -186,7 +182,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@jakarta.annotation.Nonnull String name) {
     this.name = name;
@@ -203,7 +199,7 @@ public class Match {
    * @return id
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
@@ -211,7 +207,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(@jakarta.annotation.Nonnull String id) {
     this.id = id;
@@ -228,7 +224,7 @@ public class Match {
    * @return lat
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LAT)
+  @JsonProperty(value = JSON_PROPERTY_LAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getLat() {
@@ -236,7 +232,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LAT)
+  @JsonProperty(value = JSON_PROPERTY_LAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLat(@jakarta.annotation.Nonnull BigDecimal lat) {
     this.lat = lat;
@@ -253,7 +249,7 @@ public class Match {
    * @return lon
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LON)
+  @JsonProperty(value = JSON_PROPERTY_LON, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getLon() {
@@ -261,7 +257,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LON)
+  @JsonProperty(value = JSON_PROPERTY_LON, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLon(@jakarta.annotation.Nonnull BigDecimal lon) {
     this.lon = lon;
@@ -278,7 +274,7 @@ public class Match {
    * @return level
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getLevel() {
@@ -286,7 +282,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LEVEL)
+  @JsonProperty(value = JSON_PROPERTY_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLevel(@jakarta.annotation.Nullable BigDecimal level) {
     this.level = level;
@@ -303,7 +299,7 @@ public class Match {
    * @return street
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STREET)
+  @JsonProperty(value = JSON_PROPERTY_STREET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getStreet() {
@@ -311,7 +307,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STREET)
+  @JsonProperty(value = JSON_PROPERTY_STREET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStreet(@jakarta.annotation.Nullable String street) {
     this.street = street;
@@ -328,7 +324,7 @@ public class Match {
    * @return houseNumber
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HOUSE_NUMBER)
+  @JsonProperty(value = JSON_PROPERTY_HOUSE_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getHouseNumber() {
@@ -336,35 +332,10 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HOUSE_NUMBER)
+  @JsonProperty(value = JSON_PROPERTY_HOUSE_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHouseNumber(@jakarta.annotation.Nullable String houseNumber) {
     this.houseNumber = houseNumber;
-  }
-
-  public Match country(@jakarta.annotation.Nullable String country) {
-    
-    this.country = country;
-    return this;
-  }
-
-  /**
-   * ISO3166-1 country code from OpenStreetMap
-   * @return country
-   */
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_COUNTRY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCountry() {
-    return country;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_COUNTRY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCountry(@jakarta.annotation.Nullable String country) {
-    this.country = country;
   }
 
   public Match zip(@jakarta.annotation.Nullable String zip) {
@@ -378,7 +349,7 @@ public class Match {
    * @return zip
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ZIP)
+  @JsonProperty(value = JSON_PROPERTY_ZIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getZip() {
@@ -386,7 +357,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ZIP)
+  @JsonProperty(value = JSON_PROPERTY_ZIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setZip(@jakarta.annotation.Nullable String zip) {
     this.zip = zip;
@@ -403,7 +374,7 @@ public class Match {
    * @return tz
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TZ)
+  @JsonProperty(value = JSON_PROPERTY_TZ, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTz() {
@@ -411,7 +382,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TZ)
+  @JsonProperty(value = JSON_PROPERTY_TZ, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTz(@jakarta.annotation.Nullable String tz) {
     this.tz = tz;
@@ -436,7 +407,7 @@ public class Match {
    * @return areas
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AREAS)
+  @JsonProperty(value = JSON_PROPERTY_AREAS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Area> getAreas() {
@@ -444,7 +415,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AREAS)
+  @JsonProperty(value = JSON_PROPERTY_AREAS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAreas(@jakarta.annotation.Nonnull List<Area> areas) {
     this.areas = areas;
@@ -461,7 +432,7 @@ public class Match {
    * @return score
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SCORE)
+  @JsonProperty(value = JSON_PROPERTY_SCORE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getScore() {
@@ -469,7 +440,7 @@ public class Match {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCORE)
+  @JsonProperty(value = JSON_PROPERTY_SCORE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScore(@jakarta.annotation.Nonnull BigDecimal score) {
     this.score = score;
@@ -494,7 +465,6 @@ public class Match {
         Objects.equals(this.level, match.level) &&
         Objects.equals(this.street, match.street) &&
         Objects.equals(this.houseNumber, match.houseNumber) &&
-        Objects.equals(this.country, match.country) &&
         Objects.equals(this.zip, match.zip) &&
         Objects.equals(this.tz, match.tz) &&
         Objects.equals(this.areas, match.areas) &&
@@ -503,7 +473,7 @@ public class Match {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, tokens, name, id, lat, lon, level, street, houseNumber, country, zip, tz, areas, score);
+    return Objects.hash(type, tokens, name, id, lat, lon, level, street, houseNumber, zip, tz, areas, score);
   }
 
   @Override
@@ -519,7 +489,6 @@ public class Match {
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    street: ").append(toIndentedString(street)).append("\n");
     sb.append("    houseNumber: ").append(toIndentedString(houseNumber)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    zip: ").append(toIndentedString(zip)).append("\n");
     sb.append("    tz: ").append(toIndentedString(tz)).append("\n");
     sb.append("    areas: ").append(toIndentedString(areas)).append("\n");

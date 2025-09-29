@@ -15,6 +15,7 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -36,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   FareProduct.JSON_PROPERTY_RIDER_CATEGORY,
   FareProduct.JSON_PROPERTY_MEDIA
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class FareProduct {
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nonnull
@@ -72,7 +73,7 @@ public class FareProduct {
    * @return name
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -80,7 +81,7 @@ public class FareProduct {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@jakarta.annotation.Nonnull String name) {
     this.name = name;
@@ -97,7 +98,7 @@ public class FareProduct {
    * @return amount
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AMOUNT)
+  @JsonProperty(value = JSON_PROPERTY_AMOUNT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getAmount() {
@@ -105,7 +106,7 @@ public class FareProduct {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AMOUNT)
+  @JsonProperty(value = JSON_PROPERTY_AMOUNT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAmount(@jakarta.annotation.Nonnull BigDecimal amount) {
     this.amount = amount;
@@ -122,7 +123,7 @@ public class FareProduct {
    * @return currency
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CURRENCY)
+  @JsonProperty(value = JSON_PROPERTY_CURRENCY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCurrency() {
@@ -130,7 +131,7 @@ public class FareProduct {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CURRENCY)
+  @JsonProperty(value = JSON_PROPERTY_CURRENCY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCurrency(@jakarta.annotation.Nonnull String currency) {
     this.currency = currency;
@@ -147,7 +148,7 @@ public class FareProduct {
    * @return riderCategory
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RIDER_CATEGORY)
+  @JsonProperty(value = JSON_PROPERTY_RIDER_CATEGORY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RiderCategory getRiderCategory() {
@@ -155,7 +156,7 @@ public class FareProduct {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RIDER_CATEGORY)
+  @JsonProperty(value = JSON_PROPERTY_RIDER_CATEGORY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRiderCategory(@jakarta.annotation.Nullable RiderCategory riderCategory) {
     this.riderCategory = riderCategory;
@@ -172,7 +173,7 @@ public class FareProduct {
    * @return media
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MEDIA)
+  @JsonProperty(value = JSON_PROPERTY_MEDIA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public FareMedia getMedia() {
@@ -180,7 +181,7 @@ public class FareProduct {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MEDIA)
+  @JsonProperty(value = JSON_PROPERTY_MEDIA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMedia(@jakarta.annotation.Nullable FareMedia media) {
     this.media = media;
