@@ -3,6 +3,7 @@ package dev.bileto.motis.client.api;
 import dev.bileto.motis.client.ApiClient;
 
 import java.math.BigDecimal;
+import dev.bileto.motis.client.model.Error;
 import dev.bileto.motis.client.model.Initial200Response;
 import java.time.OffsetDateTime;
 import dev.bileto.motis.client.model.Place;
@@ -53,6 +54,7 @@ public class MapApi {
     /**
      * initial location to view the map at after loading based on where public transport should be visible
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - latitude, longitude and zoom level to set the map to
      * @return Initial200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
@@ -83,6 +85,7 @@ public class MapApi {
     /**
      * initial location to view the map at after loading based on where public transport should be visible
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - latitude, longitude and zoom level to set the map to
      * @return Initial200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
@@ -95,6 +98,7 @@ public class MapApi {
     /**
      * initial location to view the map at after loading based on where public transport should be visible
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - latitude, longitude and zoom level to set the map to
      * @return ResponseEntity&lt;Initial200Response&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
@@ -107,6 +111,7 @@ public class MapApi {
     /**
      * initial location to view the map at after loading based on where public transport should be visible
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - latitude, longitude and zoom level to set the map to
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
@@ -118,6 +123,7 @@ public class MapApi {
     /**
      * Get all available levels for a map section
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - array of available levels
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -161,6 +167,7 @@ public class MapApi {
     /**
      * Get all available levels for a map section
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - array of available levels
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -175,6 +182,7 @@ public class MapApi {
     /**
      * Get all available levels for a map section
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - array of available levels
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -189,6 +197,7 @@ public class MapApi {
     /**
      * Get all available levels for a map section
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - array of available levels
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -202,6 +211,7 @@ public class MapApi {
     /**
      * Get all stops for a map section
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -245,6 +255,7 @@ public class MapApi {
     /**
      * Get all stops for a map section
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -259,6 +270,7 @@ public class MapApi {
     /**
      * Get all stops for a map section
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -273,6 +285,7 @@ public class MapApi {
     /**
      * Get all stops for a map section
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -286,6 +299,7 @@ public class MapApi {
     /**
      * Given a area frame (box defined by top right and bottom left corner) and a time frame, it returns all trips and their respective shapes that operate in this area + time frame. Trips are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - a list of trips
      * @param zoom current zoom level
      * @param min latitude,longitude pair of the lower right coordinate
@@ -341,12 +355,13 @@ public class MapApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<TripSegment> localVarReturnType = new ParameterizedTypeReference<TripSegment>() {};
-        return apiClient.invokeAPI("/api/v4/map/trips", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v5/map/trips", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
      * Given a area frame (box defined by top right and bottom left corner) and a time frame, it returns all trips and their respective shapes that operate in this area + time frame. Trips are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - a list of trips
      * @param zoom current zoom level
      * @param min latitude,longitude pair of the lower right coordinate
@@ -364,6 +379,7 @@ public class MapApi {
     /**
      * Given a area frame (box defined by top right and bottom left corner) and a time frame, it returns all trips and their respective shapes that operate in this area + time frame. Trips are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - a list of trips
      * @param zoom current zoom level
      * @param min latitude,longitude pair of the lower right coordinate
@@ -381,6 +397,7 @@ public class MapApi {
     /**
      * Given a area frame (box defined by top right and bottom left corner) and a time frame, it returns all trips and their respective shapes that operate in this area + time frame. Trips are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - a list of trips
      * @param zoom current zoom level
      * @param min latitude,longitude pair of the lower right coordinate

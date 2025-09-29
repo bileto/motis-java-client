@@ -24,6 +24,7 @@ src/main/java/dev/bileto/motis/client/model/Direction.java
 src/main/java/dev/bileto/motis/client/model/Duration.java
 src/main/java/dev/bileto/motis/client/model/ElevationCosts.java
 src/main/java/dev/bileto/motis/client/model/EncodedPolyline.java
+src/main/java/dev/bileto/motis/client/model/Error.java
 src/main/java/dev/bileto/motis/client/model/FareMedia.java
 src/main/java/dev/bileto/motis/client/model/FareMediaType.java
 src/main/java/dev/bileto/motis/client/model/FareProduct.java

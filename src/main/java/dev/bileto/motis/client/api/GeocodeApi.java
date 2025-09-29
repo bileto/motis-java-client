@@ -3,6 +3,7 @@ package dev.bileto.motis.client.api;
 import dev.bileto.motis.client.ApiClient;
 
 import java.math.BigDecimal;
+import dev.bileto.motis.client.model.Error;
 import dev.bileto.motis.client.model.LocationType;
 import dev.bileto.motis.client.model.Match;
 
@@ -51,6 +52,7 @@ public class GeocodeApi {
     /**
      * Autocompletion &amp; geocoding that resolves user input addresses including coordinates
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the text to a location
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
@@ -96,6 +98,7 @@ public class GeocodeApi {
     /**
      * Autocompletion &amp; geocoding that resolves user input addresses including coordinates
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the text to a location
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
@@ -113,6 +116,7 @@ public class GeocodeApi {
     /**
      * Autocompletion &amp; geocoding that resolves user input addresses including coordinates
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the text to a location
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
@@ -130,6 +134,7 @@ public class GeocodeApi {
     /**
      * Autocompletion &amp; geocoding that resolves user input addresses including coordinates
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the text to a location
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
@@ -146,6 +151,7 @@ public class GeocodeApi {
     /**
      * Translate coordinates to the closest address(es)/places/stops.
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the coordinates to a location
      * @param place latitude, longitude in degrees
      * @param type Optional. Default is all types.  Only return results of the given type. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
@@ -185,6 +191,7 @@ public class GeocodeApi {
     /**
      * Translate coordinates to the closest address(es)/places/stops.
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the coordinates to a location
      * @param place latitude, longitude in degrees
      * @param type Optional. Default is all types.  Only return results of the given type. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
@@ -199,6 +206,7 @@ public class GeocodeApi {
     /**
      * Translate coordinates to the closest address(es)/places/stops.
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the coordinates to a location
      * @param place latitude, longitude in degrees
      * @param type Optional. Default is all types.  Only return results of the given type. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
@@ -213,6 +221,7 @@ public class GeocodeApi {
     /**
      * Translate coordinates to the closest address(es)/places/stops.
      * 
+     * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the coordinates to a location
      * @param place latitude, longitude in degrees
      * @param type Optional. Default is all types.  Only return results of the given type. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 

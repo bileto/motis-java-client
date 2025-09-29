@@ -21,48 +21,47 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Object containing duration if a path was found or none if no path was found
+ * Error
  */
 @JsonPropertyOrder({
-  Duration.JSON_PROPERTY_DURATION
+  Error.JSON_PROPERTY_ERROR
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class Duration {
-  public static final String JSON_PROPERTY_DURATION = "duration";
+public class Error {
+  public static final String JSON_PROPERTY_ERROR = "error";
   @jakarta.annotation.Nullable
-  private BigDecimal duration;
+  private String error;
 
-  public Duration() {
+  public Error() {
   }
 
-  public Duration duration(@jakarta.annotation.Nullable BigDecimal duration) {
+  public Error error(@jakarta.annotation.Nullable String error) {
     
-    this.duration = duration;
+    this.error = error;
     return this;
   }
 
   /**
-   * duration in seconds if a path was found, otherwise missing
-   * @return duration
+   * Get error
+   * @return error
    */
   @jakarta.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = false)
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BigDecimal getDuration() {
-    return duration;
+  public String getError() {
+    return error;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = false)
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDuration(@jakarta.annotation.Nullable BigDecimal duration) {
-    this.duration = duration;
+  public void setError(@jakarta.annotation.Nullable String error) {
+    this.error = error;
   }
 
 
@@ -74,20 +73,20 @@ public class Duration {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Duration duration = (Duration) o;
-    return Objects.equals(this.duration, duration.duration);
+    Error error = (Error) o;
+    return Objects.equals(this.error, error.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration);
+    return Objects.hash(error);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Duration {\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("class Error {\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }
