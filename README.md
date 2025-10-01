@@ -4,6 +4,11 @@
 
 The code is generated from the MOTIS openapi specfication. Git submodule `ext/motis` links the MOTIS project at the time of code generation.
 
+In order to sync local MOTIS repo with the commit specified in project, run
+```shell
+git submodule update --init --recursive
+```
+
 In order to download latest MOTIS changes, run 
 
 ```shell
