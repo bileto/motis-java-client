@@ -62,7 +62,7 @@ public class GeocodeApi {
      * @return List&lt;Match&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec geocodeRequestCreation(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable String language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    private ResponseSpec geocodeRequestCreation(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'text' is set
         if (text == null) {
@@ -77,7 +77,7 @@ public class GeocodeApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "text", text));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "language", language));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "language", language));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "placeBias", placeBias));
@@ -108,7 +108,7 @@ public class GeocodeApi {
      * @return List&lt;Match&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public List<Match> geocode(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable String language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    public List<Match> geocode(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
         return geocodeRequestCreation(text, language, type, place, placeBias).bodyToFlux(localVarReturnType).collectList().block();
     }
@@ -126,7 +126,7 @@ public class GeocodeApi {
      * @return ResponseEntity&lt;List&lt;Match&gt;&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<List<Match>> geocodeWithHttpInfo(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable String language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    public ResponseEntity<List<Match>> geocodeWithHttpInfo(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
         return geocodeRequestCreation(text, language, type, place, placeBias).toEntityList(localVarReturnType).block();
     }
@@ -144,7 +144,7 @@ public class GeocodeApi {
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec geocodeWithResponseSpec(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable String language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    public ResponseSpec geocodeWithResponseSpec(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
         return geocodeRequestCreation(text, language, type, place, placeBias);
     }
 

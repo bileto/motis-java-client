@@ -1,5 +1,9 @@
 # MOTIS (Journey Planner) API Java Client
 
+## Versioning
+
+[Semantic versioning](https://semver.org/) is not applied. MOTIS API Java Client matches versioning of the [MOTIS](https://github.com/motis-project/motis) itself. Major, minor, and patch version correspond to the release of MOTIS `openapi.yaml`, and forth number is iteration of releases for given MOTIS version.
+
 ## Build
 
 The code is generated from the MOTIS openapi specfication. Git submodule `ext/motis` links the MOTIS project at the time of code generation.
@@ -73,6 +77,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.bileto:motis-java-client:0.0.0-SNAPSHOT'
+    implementation 'dev.bileto:motis-java-client:1.2.3.4'
 }
 ```

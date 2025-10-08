@@ -70,7 +70,7 @@ public class TimetableApi {
      * @return Stoptimes200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec stoptimesRequestCreation(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    private ResponseSpec stoptimesRequestCreation(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'stopId' is set
         if (stopId == null) {
@@ -99,7 +99,7 @@ public class TimetableApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "fetchStops", fetchStops));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pageCursor", pageCursor));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "language", language));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "language", language));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -134,7 +134,7 @@ public class TimetableApi {
      * @return Stoptimes200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public Stoptimes200Response stoptimes(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    public Stoptimes200Response stoptimes(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<Stoptimes200Response> localVarReturnType = new ParameterizedTypeReference<Stoptimes200Response>() {};
         return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language).bodyToMono(localVarReturnType).block();
     }
@@ -159,7 +159,7 @@ public class TimetableApi {
      * @return ResponseEntity&lt;Stoptimes200Response&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Stoptimes200Response> stoptimesWithHttpInfo(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    public ResponseEntity<Stoptimes200Response> stoptimesWithHttpInfo(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<Stoptimes200Response> localVarReturnType = new ParameterizedTypeReference<Stoptimes200Response>() {};
         return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language).toEntity(localVarReturnType).block();
     }
@@ -184,7 +184,7 @@ public class TimetableApi {
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec stoptimesWithResponseSpec(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    public ResponseSpec stoptimesWithResponseSpec(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language);
     }
 
@@ -200,7 +200,7 @@ public class TimetableApi {
      * @return Itinerary
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec tripRequestCreation(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    private ResponseSpec tripRequestCreation(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'tripId' is set
         if (tripId == null) {
@@ -217,7 +217,7 @@ public class TimetableApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "tripId", tripId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "joinInterlinedLegs", joinInterlinedLegs));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "language", language));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "language", language));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -244,7 +244,7 @@ public class TimetableApi {
      * @return Itinerary
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public Itinerary trip(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    public Itinerary trip(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<Itinerary> localVarReturnType = new ParameterizedTypeReference<Itinerary>() {};
         return tripRequestCreation(tripId, withScheduledSkippedStops, joinInterlinedLegs, language).bodyToMono(localVarReturnType).block();
     }
@@ -261,7 +261,7 @@ public class TimetableApi {
      * @return ResponseEntity&lt;Itinerary&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Itinerary> tripWithHttpInfo(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    public ResponseEntity<Itinerary> tripWithHttpInfo(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<Itinerary> localVarReturnType = new ParameterizedTypeReference<Itinerary>() {};
         return tripRequestCreation(tripId, withScheduledSkippedStops, joinInterlinedLegs, language).toEntity(localVarReturnType).block();
     }
@@ -278,7 +278,7 @@ public class TimetableApi {
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec tripWithResponseSpec(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable String language) throws WebClientResponseException {
+    public ResponseSpec tripWithResponseSpec(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         return tripRequestCreation(tripId, withScheduledSkippedStops, joinInterlinedLegs, language);
     }
 }
