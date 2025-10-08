@@ -86,14 +86,14 @@ publishing {
                 name = 'MOTIS Java Client'
                 description = 'Java client for MOTIS API'
                 url = 'https://github.com/bileto/motis-java-client'
-                
+/*                
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
                         url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
                 }
-                
+*/
                 developers {
                     developer {
                         id = 'bileto'
