@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import dev.bileto.motis.client.model.Area;
 import dev.bileto.motis.client.model.LocationType;
+import dev.bileto.motis.client.model.Mode;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  */
 @JsonPropertyOrder({
   Match.JSON_PROPERTY_TYPE,
+  Match.JSON_PROPERTY_CATEGORY,
   Match.JSON_PROPERTY_TOKENS,
   Match.JSON_PROPERTY_NAME,
   Match.JSON_PROPERTY_ID,
@@ -47,13 +49,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Match.JSON_PROPERTY_ZIP,
   Match.JSON_PROPERTY_TZ,
   Match.JSON_PROPERTY_AREAS,
-  Match.JSON_PROPERTY_SCORE
+  Match.JSON_PROPERTY_SCORE,
+  Match.JSON_PROPERTY_MODES,
+  Match.JSON_PROPERTY_IMPORTANCE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Match {
   public static final String JSON_PROPERTY_TYPE = "type";
   @jakarta.annotation.Nonnull
   private LocationType type;
+
+  public static final String JSON_PROPERTY_CATEGORY = "category";
+  @jakarta.annotation.Nullable
+  private String category;
 
   public static final String JSON_PROPERTY_TOKENS = "tokens";
   @jakarta.annotation.Nonnull
@@ -107,6 +115,14 @@ public class Match {
   @jakarta.annotation.Nonnull
   private BigDecimal score;
 
+  public static final String JSON_PROPERTY_MODES = "modes";
+  @jakarta.annotation.Nullable
+  private List<Mode> modes = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_IMPORTANCE = "importance";
+  @jakarta.annotation.Nullable
+  private BigDecimal importance;
+
   public Match() {
   }
 
@@ -133,6 +149,31 @@ public class Match {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@jakarta.annotation.Nonnull LocationType type) {
     this.type = type;
+  }
+
+  public Match category(@jakarta.annotation.Nullable String category) {
+    
+    this.category = category;
+    return this;
+  }
+
+  /**
+   * Experimental. Type categories might be adjusted.  For OSM stop locations: the amenity type based on https://wiki.openstreetmap.org/wiki/OpenStreetMap_Carto/Symbols 
+   * @return category
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CATEGORY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getCategory() {
+    return category;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CATEGORY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCategory(@jakarta.annotation.Nullable String category) {
+    this.category = category;
   }
 
   public Match tokens(@jakarta.annotation.Nonnull List<List<BigDecimal>> tokens) {
@@ -476,6 +517,64 @@ public class Match {
     this.score = score;
   }
 
+  public Match modes(@jakarta.annotation.Nullable List<Mode> modes) {
+    
+    this.modes = modes;
+    return this;
+  }
+
+  public Match addModesItem(Mode modesItem) {
+    if (this.modes == null) {
+      this.modes = new ArrayList<>();
+    }
+    this.modes.add(modesItem);
+    return this;
+  }
+
+  /**
+   * available transport modes for stops
+   * @return modes
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MODES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Mode> getModes() {
+    return modes;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MODES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setModes(@jakarta.annotation.Nullable List<Mode> modes) {
+    this.modes = modes;
+  }
+
+  public Match importance(@jakarta.annotation.Nullable BigDecimal importance) {
+    
+    this.importance = importance;
+    return this;
+  }
+
+  /**
+   * importance of a stop, normalized from [0, 1]
+   * @return importance
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IMPORTANCE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BigDecimal getImportance() {
+    return importance;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IMPORTANCE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setImportance(@jakarta.annotation.Nullable BigDecimal importance) {
+    this.importance = importance;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -487,6 +586,7 @@ public class Match {
     }
     Match match = (Match) o;
     return Objects.equals(this.type, match.type) &&
+        Objects.equals(this.category, match.category) &&
         Objects.equals(this.tokens, match.tokens) &&
         Objects.equals(this.name, match.name) &&
         Objects.equals(this.id, match.id) &&
@@ -499,12 +599,14 @@ public class Match {
         Objects.equals(this.zip, match.zip) &&
         Objects.equals(this.tz, match.tz) &&
         Objects.equals(this.areas, match.areas) &&
-        Objects.equals(this.score, match.score);
+        Objects.equals(this.score, match.score) &&
+        Objects.equals(this.modes, match.modes) &&
+        Objects.equals(this.importance, match.importance);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, tokens, name, id, lat, lon, level, street, houseNumber, country, zip, tz, areas, score);
+    return Objects.hash(type, category, tokens, name, id, lat, lon, level, street, houseNumber, country, zip, tz, areas, score, modes, importance);
   }
 
   @Override
@@ -512,6 +614,7 @@ public class Match {
     StringBuilder sb = new StringBuilder();
     sb.append("class Match {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    tokens: ").append(toIndentedString(tokens)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -525,6 +628,8 @@ public class Match {
     sb.append("    tz: ").append(toIndentedString(tz)).append("\n");
     sb.append("    areas: ").append(toIndentedString(areas)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
+    sb.append("    modes: ").append(toIndentedString(modes)).append("\n");
+    sb.append("    importance: ").append(toIndentedString(importance)).append("\n");
     sb.append("}");
     return sb.toString();
   }

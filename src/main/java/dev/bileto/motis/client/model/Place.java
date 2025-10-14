@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonPropertyOrder({
   Place.JSON_PROPERTY_NAME,
   Place.JSON_PROPERTY_STOP_ID,
+  Place.JSON_PROPERTY_IMPORTANCE,
   Place.JSON_PROPERTY_LAT,
   Place.JSON_PROPERTY_LON,
   Place.JSON_PROPERTY_LEVEL,
@@ -68,6 +69,10 @@ public class Place {
   public static final String JSON_PROPERTY_STOP_ID = "stopId";
   @jakarta.annotation.Nullable
   private String stopId;
+
+  public static final String JSON_PROPERTY_IMPORTANCE = "importance";
+  @jakarta.annotation.Nullable
+  private BigDecimal importance;
 
   public static final String JSON_PROPERTY_LAT = "lat";
   @jakarta.annotation.Nonnull
@@ -200,6 +205,31 @@ public class Place {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStopId(@jakarta.annotation.Nullable String stopId) {
     this.stopId = stopId;
+  }
+
+  public Place importance(@jakarta.annotation.Nullable BigDecimal importance) {
+    
+    this.importance = importance;
+    return this;
+  }
+
+  /**
+   * The importance of the stop between 0-1.
+   * @return importance
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IMPORTANCE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BigDecimal getImportance() {
+    return importance;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IMPORTANCE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setImportance(@jakarta.annotation.Nullable BigDecimal importance) {
+    this.importance = importance;
   }
 
   public Place lat(@jakarta.annotation.Nonnull BigDecimal lat) {
@@ -722,6 +752,7 @@ public class Place {
     Place place = (Place) o;
     return Objects.equals(this.name, place.name) &&
         Objects.equals(this.stopId, place.stopId) &&
+        Objects.equals(this.importance, place.importance) &&
         Objects.equals(this.lat, place.lat) &&
         Objects.equals(this.lon, place.lon) &&
         Objects.equals(this.level, place.level) &&
@@ -746,7 +777,7 @@ public class Place {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, stopId, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow);
+    return Objects.hash(name, stopId, importance, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow);
   }
 
   @Override
@@ -755,6 +786,7 @@ public class Place {
     sb.append("class Place {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    stopId: ").append(toIndentedString(stopId)).append("\n");
+    sb.append("    importance: ").append(toIndentedString(importance)).append("\n");
     sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
     sb.append("    lon: ").append(toIndentedString(lon)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");

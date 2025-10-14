@@ -34,6 +34,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  */
 @JsonPropertyOrder({
   Transfers200Response.JSON_PROPERTY_PLACE,
+  Transfers200Response.JSON_PROPERTY_ROOT,
+  Transfers200Response.JSON_PROPERTY_EQUIVALENCES,
   Transfers200Response.JSON_PROPERTY_HAS_FOOT_TRANSFERS,
   Transfers200Response.JSON_PROPERTY_HAS_WHEELCHAIR_TRANSFERS,
   Transfers200Response.JSON_PROPERTY_HAS_CAR_TRANSFERS,
@@ -45,6 +47,14 @@ public class Transfers200Response {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nonnull
   private Place place;
+
+  public static final String JSON_PROPERTY_ROOT = "root";
+  @jakarta.annotation.Nonnull
+  private Place root;
+
+  public static final String JSON_PROPERTY_EQUIVALENCES = "equivalences";
+  @jakarta.annotation.Nonnull
+  private List<Place> equivalences = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HAS_FOOT_TRANSFERS = "hasFootTransfers";
   @jakarta.annotation.Nonnull
@@ -88,6 +98,64 @@ public class Transfers200Response {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPlace(@jakarta.annotation.Nonnull Place place) {
     this.place = place;
+  }
+
+  public Transfers200Response root(@jakarta.annotation.Nonnull Place root) {
+    
+    this.root = root;
+    return this;
+  }
+
+  /**
+   * Get root
+   * @return root
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ROOT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Place getRoot() {
+    return root;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ROOT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setRoot(@jakarta.annotation.Nonnull Place root) {
+    this.root = root;
+  }
+
+  public Transfers200Response equivalences(@jakarta.annotation.Nonnull List<Place> equivalences) {
+    
+    this.equivalences = equivalences;
+    return this;
+  }
+
+  public Transfers200Response addEquivalencesItem(Place equivalencesItem) {
+    if (this.equivalences == null) {
+      this.equivalences = new ArrayList<>();
+    }
+    this.equivalences.add(equivalencesItem);
+    return this;
+  }
+
+  /**
+   * Get equivalences
+   * @return equivalences
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_EQUIVALENCES, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<Place> getEquivalences() {
+    return equivalences;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EQUIVALENCES, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEquivalences(@jakarta.annotation.Nonnull List<Place> equivalences) {
+    this.equivalences = equivalences;
   }
 
   public Transfers200Response hasFootTransfers(@jakarta.annotation.Nonnull Boolean hasFootTransfers) {
@@ -209,6 +277,8 @@ public class Transfers200Response {
     }
     Transfers200Response transfers200Response = (Transfers200Response) o;
     return Objects.equals(this.place, transfers200Response.place) &&
+        Objects.equals(this.root, transfers200Response.root) &&
+        Objects.equals(this.equivalences, transfers200Response.equivalences) &&
         Objects.equals(this.hasFootTransfers, transfers200Response.hasFootTransfers) &&
         Objects.equals(this.hasWheelchairTransfers, transfers200Response.hasWheelchairTransfers) &&
         Objects.equals(this.hasCarTransfers, transfers200Response.hasCarTransfers) &&
@@ -217,7 +287,7 @@ public class Transfers200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(place, hasFootTransfers, hasWheelchairTransfers, hasCarTransfers, transfers);
+    return Objects.hash(place, root, equivalences, hasFootTransfers, hasWheelchairTransfers, hasCarTransfers, transfers);
   }
 
   @Override
@@ -225,6 +295,8 @@ public class Transfers200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class Transfers200Response {\n");
     sb.append("    place: ").append(toIndentedString(place)).append("\n");
+    sb.append("    root: ").append(toIndentedString(root)).append("\n");
+    sb.append("    equivalences: ").append(toIndentedString(equivalences)).append("\n");
     sb.append("    hasFootTransfers: ").append(toIndentedString(hasFootTransfers)).append("\n");
     sb.append("    hasWheelchairTransfers: ").append(toIndentedString(hasWheelchairTransfers)).append("\n");
     sb.append("    hasCarTransfers: ").append(toIndentedString(hasCarTransfers)).append("\n");
