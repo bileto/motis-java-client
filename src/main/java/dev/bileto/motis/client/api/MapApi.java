@@ -32,7 +32,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class MapApi {
     private ApiClient apiClient;
 
@@ -210,20 +210,22 @@ public class MapApi {
     }
 
     /**
-     * Get all rental stations and vehicles for a map section or provider
-     * If neither the map section (&#x60;min&#x60; and &#x60;max&#x60;) nor the &#x60;providers&#x60; parameter is provided, returns a list of all available rental providers, but no station, vehicle or zone data.  Either the map section (&#x60;min&#x60; and &#x60;max&#x60;) or the &#x60;providers&#x60; parameter must be provided to retrieve station, vehicle and zone data.  If only the map section is provided, all data in the area is returned. If only the &#x60;providers&#x60; parameter is provided, all data for the given providers is returned. If both parameters are provided, only data for the given providers in the map section is returned. 
+     * Get a list of rental providers or all rental stations and vehicles for a map section or provider 
+     * If neither the map section (&#x60;min&#x60; and &#x60;max&#x60;) nor a provider filter (either &#x60;providerGroups&#x60; or &#x60;providers&#x60;) is provided, returns a list of all available rental providers, but no station, vehicle or zone data. Provide the &#x60;withProviders&#x3D;false&#x60; parameter to retrieve only provider groups if detailed feed information is not required.  Either the map section (&#x60;min&#x60; and &#x60;max&#x60;) or the provider filter (either &#x60;providerGroups&#x60; or &#x60;providers&#x60;) must be provided to retrieve station, vehicle and zone data.  If only the map section is provided, all data in the area is returned. If only the provider filter is provided, all data for the given providers is returned. If both parameters are provided, only data for the given providers in the map section is returned. 
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - Rentals in the map section or for the given providers
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
-     * @param providers A list of rental providers to return. If empty (the default), all providers in the map section are returned. 
+     * @param providerGroups A list of rental provider groups to return. If both &#x60;providerGroups&#x60; and &#x60;providers&#x60; are empty/not specified, all providers in the map section are returned. 
+     * @param providers A list of rental providers to return. If both &#x60;providerGroups&#x60; and &#x60;providers&#x60; are empty/not specified, all providers in the map section are returned. 
+     * @param withProviders Optional. Include providers in output. If false, only provider groups are returned.  Also affects the providers list for each provider group. 
      * @param withStations Optional. Include stations in output (requires at least min+max or providers filter).
      * @param withVehicles Optional. Include free-floating vehicles in output (requires at least min+max or providers filter).
      * @param withZones Optional. Include geofencing zones in output (requires at least min+max or providers filter).
      * @return Rentals200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec rentalsRequestCreation(@jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max, @jakarta.annotation.Nullable List<String> providers, @jakarta.annotation.Nullable Boolean withStations, @jakarta.annotation.Nullable Boolean withVehicles, @jakarta.annotation.Nullable Boolean withZones) throws WebClientResponseException {
+    private ResponseSpec rentalsRequestCreation(@jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max, @jakarta.annotation.Nullable List<String> providerGroups, @jakarta.annotation.Nullable List<String> providers, @jakarta.annotation.Nullable Boolean withProviders, @jakarta.annotation.Nullable Boolean withStations, @jakarta.annotation.Nullable Boolean withVehicles, @jakarta.annotation.Nullable Boolean withZones) throws WebClientResponseException {
         Object postBody = null;
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
@@ -235,7 +237,9 @@ public class MapApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "providers", providers));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "providerGroups", providerGroups));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "providers", providers));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withProviders", withProviders));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withStations", withStations));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withVehicles", withVehicles));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withZones", withZones));
@@ -250,63 +254,69 @@ public class MapApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<Rentals200Response> localVarReturnType = new ParameterizedTypeReference<Rentals200Response>() {};
-        return apiClient.invokeAPI("/api/v1/map/rentals", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v1/rentals", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
-     * Get all rental stations and vehicles for a map section or provider
-     * If neither the map section (&#x60;min&#x60; and &#x60;max&#x60;) nor the &#x60;providers&#x60; parameter is provided, returns a list of all available rental providers, but no station, vehicle or zone data.  Either the map section (&#x60;min&#x60; and &#x60;max&#x60;) or the &#x60;providers&#x60; parameter must be provided to retrieve station, vehicle and zone data.  If only the map section is provided, all data in the area is returned. If only the &#x60;providers&#x60; parameter is provided, all data for the given providers is returned. If both parameters are provided, only data for the given providers in the map section is returned. 
+     * Get a list of rental providers or all rental stations and vehicles for a map section or provider 
+     * If neither the map section (&#x60;min&#x60; and &#x60;max&#x60;) nor a provider filter (either &#x60;providerGroups&#x60; or &#x60;providers&#x60;) is provided, returns a list of all available rental providers, but no station, vehicle or zone data. Provide the &#x60;withProviders&#x3D;false&#x60; parameter to retrieve only provider groups if detailed feed information is not required.  Either the map section (&#x60;min&#x60; and &#x60;max&#x60;) or the provider filter (either &#x60;providerGroups&#x60; or &#x60;providers&#x60;) must be provided to retrieve station, vehicle and zone data.  If only the map section is provided, all data in the area is returned. If only the provider filter is provided, all data for the given providers is returned. If both parameters are provided, only data for the given providers in the map section is returned. 
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - Rentals in the map section or for the given providers
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
-     * @param providers A list of rental providers to return. If empty (the default), all providers in the map section are returned. 
+     * @param providerGroups A list of rental provider groups to return. If both &#x60;providerGroups&#x60; and &#x60;providers&#x60; are empty/not specified, all providers in the map section are returned. 
+     * @param providers A list of rental providers to return. If both &#x60;providerGroups&#x60; and &#x60;providers&#x60; are empty/not specified, all providers in the map section are returned. 
+     * @param withProviders Optional. Include providers in output. If false, only provider groups are returned.  Also affects the providers list for each provider group. 
      * @param withStations Optional. Include stations in output (requires at least min+max or providers filter).
      * @param withVehicles Optional. Include free-floating vehicles in output (requires at least min+max or providers filter).
      * @param withZones Optional. Include geofencing zones in output (requires at least min+max or providers filter).
      * @return Rentals200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public Rentals200Response rentals(@jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max, @jakarta.annotation.Nullable List<String> providers, @jakarta.annotation.Nullable Boolean withStations, @jakarta.annotation.Nullable Boolean withVehicles, @jakarta.annotation.Nullable Boolean withZones) throws WebClientResponseException {
+    public Rentals200Response rentals(@jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max, @jakarta.annotation.Nullable List<String> providerGroups, @jakarta.annotation.Nullable List<String> providers, @jakarta.annotation.Nullable Boolean withProviders, @jakarta.annotation.Nullable Boolean withStations, @jakarta.annotation.Nullable Boolean withVehicles, @jakarta.annotation.Nullable Boolean withZones) throws WebClientResponseException {
         ParameterizedTypeReference<Rentals200Response> localVarReturnType = new ParameterizedTypeReference<Rentals200Response>() {};
-        return rentalsRequestCreation(min, max, providers, withStations, withVehicles, withZones).bodyToMono(localVarReturnType).block();
+        return rentalsRequestCreation(min, max, providerGroups, providers, withProviders, withStations, withVehicles, withZones).bodyToMono(localVarReturnType).block();
     }
 
     /**
-     * Get all rental stations and vehicles for a map section or provider
-     * If neither the map section (&#x60;min&#x60; and &#x60;max&#x60;) nor the &#x60;providers&#x60; parameter is provided, returns a list of all available rental providers, but no station, vehicle or zone data.  Either the map section (&#x60;min&#x60; and &#x60;max&#x60;) or the &#x60;providers&#x60; parameter must be provided to retrieve station, vehicle and zone data.  If only the map section is provided, all data in the area is returned. If only the &#x60;providers&#x60; parameter is provided, all data for the given providers is returned. If both parameters are provided, only data for the given providers in the map section is returned. 
+     * Get a list of rental providers or all rental stations and vehicles for a map section or provider 
+     * If neither the map section (&#x60;min&#x60; and &#x60;max&#x60;) nor a provider filter (either &#x60;providerGroups&#x60; or &#x60;providers&#x60;) is provided, returns a list of all available rental providers, but no station, vehicle or zone data. Provide the &#x60;withProviders&#x3D;false&#x60; parameter to retrieve only provider groups if detailed feed information is not required.  Either the map section (&#x60;min&#x60; and &#x60;max&#x60;) or the provider filter (either &#x60;providerGroups&#x60; or &#x60;providers&#x60;) must be provided to retrieve station, vehicle and zone data.  If only the map section is provided, all data in the area is returned. If only the provider filter is provided, all data for the given providers is returned. If both parameters are provided, only data for the given providers in the map section is returned. 
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - Rentals in the map section or for the given providers
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
-     * @param providers A list of rental providers to return. If empty (the default), all providers in the map section are returned. 
+     * @param providerGroups A list of rental provider groups to return. If both &#x60;providerGroups&#x60; and &#x60;providers&#x60; are empty/not specified, all providers in the map section are returned. 
+     * @param providers A list of rental providers to return. If both &#x60;providerGroups&#x60; and &#x60;providers&#x60; are empty/not specified, all providers in the map section are returned. 
+     * @param withProviders Optional. Include providers in output. If false, only provider groups are returned.  Also affects the providers list for each provider group. 
      * @param withStations Optional. Include stations in output (requires at least min+max or providers filter).
      * @param withVehicles Optional. Include free-floating vehicles in output (requires at least min+max or providers filter).
      * @param withZones Optional. Include geofencing zones in output (requires at least min+max or providers filter).
      * @return ResponseEntity&lt;Rentals200Response&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Rentals200Response> rentalsWithHttpInfo(@jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max, @jakarta.annotation.Nullable List<String> providers, @jakarta.annotation.Nullable Boolean withStations, @jakarta.annotation.Nullable Boolean withVehicles, @jakarta.annotation.Nullable Boolean withZones) throws WebClientResponseException {
+    public ResponseEntity<Rentals200Response> rentalsWithHttpInfo(@jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max, @jakarta.annotation.Nullable List<String> providerGroups, @jakarta.annotation.Nullable List<String> providers, @jakarta.annotation.Nullable Boolean withProviders, @jakarta.annotation.Nullable Boolean withStations, @jakarta.annotation.Nullable Boolean withVehicles, @jakarta.annotation.Nullable Boolean withZones) throws WebClientResponseException {
         ParameterizedTypeReference<Rentals200Response> localVarReturnType = new ParameterizedTypeReference<Rentals200Response>() {};
-        return rentalsRequestCreation(min, max, providers, withStations, withVehicles, withZones).toEntity(localVarReturnType).block();
+        return rentalsRequestCreation(min, max, providerGroups, providers, withProviders, withStations, withVehicles, withZones).toEntity(localVarReturnType).block();
     }
 
     /**
-     * Get all rental stations and vehicles for a map section or provider
-     * If neither the map section (&#x60;min&#x60; and &#x60;max&#x60;) nor the &#x60;providers&#x60; parameter is provided, returns a list of all available rental providers, but no station, vehicle or zone data.  Either the map section (&#x60;min&#x60; and &#x60;max&#x60;) or the &#x60;providers&#x60; parameter must be provided to retrieve station, vehicle and zone data.  If only the map section is provided, all data in the area is returned. If only the &#x60;providers&#x60; parameter is provided, all data for the given providers is returned. If both parameters are provided, only data for the given providers in the map section is returned. 
+     * Get a list of rental providers or all rental stations and vehicles for a map section or provider 
+     * If neither the map section (&#x60;min&#x60; and &#x60;max&#x60;) nor a provider filter (either &#x60;providerGroups&#x60; or &#x60;providers&#x60;) is provided, returns a list of all available rental providers, but no station, vehicle or zone data. Provide the &#x60;withProviders&#x3D;false&#x60; parameter to retrieve only provider groups if detailed feed information is not required.  Either the map section (&#x60;min&#x60; and &#x60;max&#x60;) or the provider filter (either &#x60;providerGroups&#x60; or &#x60;providers&#x60;) must be provided to retrieve station, vehicle and zone data.  If only the map section is provided, all data in the area is returned. If only the provider filter is provided, all data for the given providers is returned. If both parameters are provided, only data for the given providers in the map section is returned. 
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - Rentals in the map section or for the given providers
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
-     * @param providers A list of rental providers to return. If empty (the default), all providers in the map section are returned. 
+     * @param providerGroups A list of rental provider groups to return. If both &#x60;providerGroups&#x60; and &#x60;providers&#x60; are empty/not specified, all providers in the map section are returned. 
+     * @param providers A list of rental providers to return. If both &#x60;providerGroups&#x60; and &#x60;providers&#x60; are empty/not specified, all providers in the map section are returned. 
+     * @param withProviders Optional. Include providers in output. If false, only provider groups are returned.  Also affects the providers list for each provider group. 
      * @param withStations Optional. Include stations in output (requires at least min+max or providers filter).
      * @param withVehicles Optional. Include free-floating vehicles in output (requires at least min+max or providers filter).
      * @param withZones Optional. Include geofencing zones in output (requires at least min+max or providers filter).
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec rentalsWithResponseSpec(@jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max, @jakarta.annotation.Nullable List<String> providers, @jakarta.annotation.Nullable Boolean withStations, @jakarta.annotation.Nullable Boolean withVehicles, @jakarta.annotation.Nullable Boolean withZones) throws WebClientResponseException {
-        return rentalsRequestCreation(min, max, providers, withStations, withVehicles, withZones);
+    public ResponseSpec rentalsWithResponseSpec(@jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max, @jakarta.annotation.Nullable List<String> providerGroups, @jakarta.annotation.Nullable List<String> providers, @jakarta.annotation.Nullable Boolean withProviders, @jakarta.annotation.Nullable Boolean withStations, @jakarta.annotation.Nullable Boolean withVehicles, @jakarta.annotation.Nullable Boolean withZones) throws WebClientResponseException {
+        return rentalsRequestCreation(min, max, providerGroups, providers, withProviders, withStations, withVehicles, withZones);
     }
 
     /**

@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonPropertyOrder({
   Error.JSON_PROPERTY_ERROR
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Error {
   public static final String JSON_PROPERTY_ERROR = "error";
   @jakarta.annotation.Nullable

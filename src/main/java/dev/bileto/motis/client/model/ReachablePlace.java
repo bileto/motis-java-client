@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ReachablePlace.JSON_PROPERTY_DURATION,
   ReachablePlace.JSON_PROPERTY_K
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class ReachablePlace {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nullable

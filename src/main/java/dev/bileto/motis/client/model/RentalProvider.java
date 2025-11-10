@@ -37,16 +37,18 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonPropertyOrder({
   RentalProvider.JSON_PROPERTY_ID,
   RentalProvider.JSON_PROPERTY_NAME,
+  RentalProvider.JSON_PROPERTY_GROUP_ID,
   RentalProvider.JSON_PROPERTY_OPERATOR,
   RentalProvider.JSON_PROPERTY_URL,
   RentalProvider.JSON_PROPERTY_PURCHASE_URL,
+  RentalProvider.JSON_PROPERTY_COLOR,
   RentalProvider.JSON_PROPERTY_BBOX,
   RentalProvider.JSON_PROPERTY_VEHICLE_TYPES,
   RentalProvider.JSON_PROPERTY_FORM_FACTORS,
   RentalProvider.JSON_PROPERTY_DEFAULT_RESTRICTIONS,
   RentalProvider.JSON_PROPERTY_GLOBAL_GEOFENCING_RULES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class RentalProvider {
   public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nonnull
@@ -55,6 +57,10 @@ public class RentalProvider {
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nonnull
   private String name;
+
+  public static final String JSON_PROPERTY_GROUP_ID = "groupId";
+  @jakarta.annotation.Nonnull
+  private String groupId;
 
   public static final String JSON_PROPERTY_OPERATOR = "operator";
   @jakarta.annotation.Nullable
@@ -67,6 +73,10 @@ public class RentalProvider {
   public static final String JSON_PROPERTY_PURCHASE_URL = "purchaseUrl";
   @jakarta.annotation.Nullable
   private String purchaseUrl;
+
+  public static final String JSON_PROPERTY_COLOR = "color";
+  @jakarta.annotation.Nullable
+  private String color;
 
   public static final String JSON_PROPERTY_BBOX = "bbox";
   @jakarta.annotation.Nonnull
@@ -139,6 +149,31 @@ public class RentalProvider {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@jakarta.annotation.Nonnull String name) {
     this.name = name;
+  }
+
+  public RentalProvider groupId(@jakarta.annotation.Nonnull String groupId) {
+    
+    this.groupId = groupId;
+    return this;
+  }
+
+  /**
+   * Id of the rental provider group this provider belongs to
+   * @return groupId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getGroupId() {
+    return groupId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setGroupId(@jakarta.annotation.Nonnull String groupId) {
+    this.groupId = groupId;
   }
 
   public RentalProvider operator(@jakarta.annotation.Nullable String operator) {
@@ -214,6 +249,31 @@ public class RentalProvider {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPurchaseUrl(@jakarta.annotation.Nullable String purchaseUrl) {
     this.purchaseUrl = purchaseUrl;
+  }
+
+  public RentalProvider color(@jakarta.annotation.Nullable String color) {
+    
+    this.color = color;
+    return this;
+  }
+
+  /**
+   * Color associated with this provider, in hexadecimal RGB format (e.g. \&quot;#FF0000\&quot; for red). Can be empty. 
+   * @return color
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getColor() {
+    return color;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setColor(@jakarta.annotation.Nullable String color) {
+    this.color = color;
   }
 
   public RentalProvider bbox(@jakarta.annotation.Nonnull List<BigDecimal> bbox) {
@@ -385,9 +445,11 @@ public class RentalProvider {
     RentalProvider rentalProvider = (RentalProvider) o;
     return Objects.equals(this.id, rentalProvider.id) &&
         Objects.equals(this.name, rentalProvider.name) &&
+        Objects.equals(this.groupId, rentalProvider.groupId) &&
         Objects.equals(this.operator, rentalProvider.operator) &&
         Objects.equals(this.url, rentalProvider.url) &&
         Objects.equals(this.purchaseUrl, rentalProvider.purchaseUrl) &&
+        Objects.equals(this.color, rentalProvider.color) &&
         Objects.equals(this.bbox, rentalProvider.bbox) &&
         Objects.equals(this.vehicleTypes, rentalProvider.vehicleTypes) &&
         Objects.equals(this.formFactors, rentalProvider.formFactors) &&
@@ -397,7 +459,7 @@ public class RentalProvider {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, operator, url, purchaseUrl, bbox, vehicleTypes, formFactors, defaultRestrictions, globalGeofencingRules);
+    return Objects.hash(id, name, groupId, operator, url, purchaseUrl, color, bbox, vehicleTypes, formFactors, defaultRestrictions, globalGeofencingRules);
   }
 
   @Override
@@ -406,9 +468,11 @@ public class RentalProvider {
     sb.append("class RentalProvider {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
     sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    purchaseUrl: ").append(toIndentedString(purchaseUrl)).append("\n");
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    bbox: ").append(toIndentedString(bbox)).append("\n");
     sb.append("    vehicleTypes: ").append(toIndentedString(vehicleTypes)).append("\n");
     sb.append("    formFactors: ").append(toIndentedString(formFactors)).append("\n");

@@ -31,9 +31,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * Vehicle rental
  */
 @JsonPropertyOrder({
+  Rental.JSON_PROPERTY_PROVIDER_ID,
+  Rental.JSON_PROPERTY_PROVIDER_GROUP_ID,
   Rental.JSON_PROPERTY_SYSTEM_ID,
   Rental.JSON_PROPERTY_SYSTEM_NAME,
   Rental.JSON_PROPERTY_URL,
+  Rental.JSON_PROPERTY_COLOR,
   Rental.JSON_PROPERTY_STATION_NAME,
   Rental.JSON_PROPERTY_FROM_STATION_NAME,
   Rental.JSON_PROPERTY_TO_STATION_NAME,
@@ -44,8 +47,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Rental.JSON_PROPERTY_PROPULSION_TYPE,
   Rental.JSON_PROPERTY_RETURN_CONSTRAINT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Rental {
+  public static final String JSON_PROPERTY_PROVIDER_ID = "providerId";
+  @jakarta.annotation.Nonnull
+  private String providerId;
+
+  public static final String JSON_PROPERTY_PROVIDER_GROUP_ID = "providerGroupId";
+  @jakarta.annotation.Nonnull
+  private String providerGroupId;
+
   public static final String JSON_PROPERTY_SYSTEM_ID = "systemId";
   @jakarta.annotation.Nonnull
   private String systemId;
@@ -57,6 +68,10 @@ public class Rental {
   public static final String JSON_PROPERTY_URL = "url";
   @jakarta.annotation.Nullable
   private String url;
+
+  public static final String JSON_PROPERTY_COLOR = "color";
+  @jakarta.annotation.Nullable
+  private String color;
 
   public static final String JSON_PROPERTY_STATION_NAME = "stationName";
   @jakarta.annotation.Nullable
@@ -95,6 +110,56 @@ public class Rental {
   private RentalReturnConstraint returnConstraint;
 
   public Rental() {
+  }
+
+  public Rental providerId(@jakarta.annotation.Nonnull String providerId) {
+    
+    this.providerId = providerId;
+    return this;
+  }
+
+  /**
+   * Rental provider ID
+   * @return providerId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getProviderId() {
+    return providerId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProviderId(@jakarta.annotation.Nonnull String providerId) {
+    this.providerId = providerId;
+  }
+
+  public Rental providerGroupId(@jakarta.annotation.Nonnull String providerGroupId) {
+    
+    this.providerGroupId = providerGroupId;
+    return this;
+  }
+
+  /**
+   * Rental provider group ID
+   * @return providerGroupId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getProviderGroupId() {
+    return providerGroupId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProviderGroupId(@jakarta.annotation.Nonnull String providerGroupId) {
+    this.providerGroupId = providerGroupId;
   }
 
   public Rental systemId(@jakarta.annotation.Nonnull String systemId) {
@@ -170,6 +235,31 @@ public class Rental {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUrl(@jakarta.annotation.Nullable String url) {
     this.url = url;
+  }
+
+  public Rental color(@jakarta.annotation.Nullable String color) {
+    
+    this.color = color;
+    return this;
+  }
+
+  /**
+   * Color associated with this provider, in hexadecimal RGB format (e.g. \&quot;#FF0000\&quot; for red). Can be empty. 
+   * @return color
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getColor() {
+    return color;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setColor(@jakarta.annotation.Nullable String color) {
+    this.color = color;
   }
 
   public Rental stationName(@jakarta.annotation.Nullable String stationName) {
@@ -407,9 +497,12 @@ public class Rental {
       return false;
     }
     Rental rental = (Rental) o;
-    return Objects.equals(this.systemId, rental.systemId) &&
+    return Objects.equals(this.providerId, rental.providerId) &&
+        Objects.equals(this.providerGroupId, rental.providerGroupId) &&
+        Objects.equals(this.systemId, rental.systemId) &&
         Objects.equals(this.systemName, rental.systemName) &&
         Objects.equals(this.url, rental.url) &&
+        Objects.equals(this.color, rental.color) &&
         Objects.equals(this.stationName, rental.stationName) &&
         Objects.equals(this.fromStationName, rental.fromStationName) &&
         Objects.equals(this.toStationName, rental.toStationName) &&
@@ -423,16 +516,19 @@ public class Rental {
 
   @Override
   public int hashCode() {
-    return Objects.hash(systemId, systemName, url, stationName, fromStationName, toStationName, rentalUriAndroid, rentalUriIOS, rentalUriWeb, formFactor, propulsionType, returnConstraint);
+    return Objects.hash(providerId, providerGroupId, systemId, systemName, url, color, stationName, fromStationName, toStationName, rentalUriAndroid, rentalUriIOS, rentalUriWeb, formFactor, propulsionType, returnConstraint);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Rental {\n");
+    sb.append("    providerId: ").append(toIndentedString(providerId)).append("\n");
+    sb.append("    providerGroupId: ").append(toIndentedString(providerGroupId)).append("\n");
     sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
     sb.append("    systemName: ").append(toIndentedString(systemName)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    stationName: ").append(toIndentedString(stationName)).append("\n");
     sb.append("    fromStationName: ").append(toIndentedString(fromStationName)).append("\n");
     sb.append("    toStationName: ").append(toIndentedString(toStationName)).append("\n");

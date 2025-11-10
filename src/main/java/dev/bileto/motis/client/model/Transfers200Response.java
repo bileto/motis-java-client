@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Transfers200Response.JSON_PROPERTY_TRANSFERS
 })
 @JsonTypeName("transfers_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Transfers200Response {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nonnull

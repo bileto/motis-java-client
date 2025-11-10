@@ -30,7 +30,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class TimetableApi {
     private ApiClient apiClient;
 
@@ -92,14 +92,14 @@ public class TimetableApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "direction", direction));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "mode", mode));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "mode", mode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "n", n));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "radius", radius));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "exactRadius", exactRadius));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "fetchStops", fetchStops));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pageCursor", pageCursor));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "language", language));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -217,7 +217,7 @@ public class TimetableApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "tripId", tripId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "joinInterlinedLegs", joinInterlinedLegs));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "language", language));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
 
         final String[] localVarAccepts = { 
             "application/json"

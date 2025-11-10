@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StepInstruction.JSON_PROPERTY_ELEVATION_UP,
   StepInstruction.JSON_PROPERTY_ELEVATION_DOWN
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class StepInstruction {
   public static final String JSON_PROPERTY_RELATIVE_DIRECTION = "relativeDirection";
   @jakarta.annotation.Nonnull

@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   EncodedPolyline.JSON_PROPERTY_PRECISION,
   EncodedPolyline.JSON_PROPERTY_LENGTH
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class EncodedPolyline {
   public static final String JSON_PROPERTY_POINTS = "points";
   @jakarta.annotation.Nonnull

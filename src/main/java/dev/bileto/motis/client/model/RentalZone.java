@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import dev.bileto.motis.client.model.EncodedPolyline;
 import dev.bileto.motis.client.model.RentalZoneRestrictions;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,16 +35,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  */
 @JsonPropertyOrder({
   RentalZone.JSON_PROPERTY_PROVIDER_ID,
+  RentalZone.JSON_PROPERTY_PROVIDER_GROUP_ID,
   RentalZone.JSON_PROPERTY_NAME,
   RentalZone.JSON_PROPERTY_Z,
+  RentalZone.JSON_PROPERTY_BBOX,
   RentalZone.JSON_PROPERTY_AREA,
   RentalZone.JSON_PROPERTY_RULES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class RentalZone {
   public static final String JSON_PROPERTY_PROVIDER_ID = "providerId";
   @jakarta.annotation.Nonnull
   private String providerId;
+
+  public static final String JSON_PROPERTY_PROVIDER_GROUP_ID = "providerGroupId";
+  @jakarta.annotation.Nonnull
+  private String providerGroupId;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nullable
@@ -52,6 +59,10 @@ public class RentalZone {
   public static final String JSON_PROPERTY_Z = "z";
   @jakarta.annotation.Nonnull
   private Integer z;
+
+  public static final String JSON_PROPERTY_BBOX = "bbox";
+  @jakarta.annotation.Nonnull
+  private List<BigDecimal> bbox = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AREA = "area";
   @jakarta.annotation.Nonnull
@@ -87,6 +98,31 @@ public class RentalZone {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProviderId(@jakarta.annotation.Nonnull String providerId) {
     this.providerId = providerId;
+  }
+
+  public RentalZone providerGroupId(@jakarta.annotation.Nonnull String providerGroupId) {
+    
+    this.providerGroupId = providerGroupId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of the rental provider group
+   * @return providerGroupId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getProviderGroupId() {
+    return providerGroupId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProviderGroupId(@jakarta.annotation.Nonnull String providerGroupId) {
+    this.providerGroupId = providerGroupId;
   }
 
   public RentalZone name(@jakarta.annotation.Nullable String name) {
@@ -137,6 +173,39 @@ public class RentalZone {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setZ(@jakarta.annotation.Nonnull Integer z) {
     this.z = z;
+  }
+
+  public RentalZone bbox(@jakarta.annotation.Nonnull List<BigDecimal> bbox) {
+    
+    this.bbox = bbox;
+    return this;
+  }
+
+  public RentalZone addBboxItem(BigDecimal bboxItem) {
+    if (this.bbox == null) {
+      this.bbox = new ArrayList<>();
+    }
+    this.bbox.add(bboxItem);
+    return this;
+  }
+
+  /**
+   * Bounding box of the area covered by this zone, [west, south, east, north] as [lon, lat, lon, lat] 
+   * @return bbox
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_BBOX, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<BigDecimal> getBbox() {
+    return bbox;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BBOX, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setBbox(@jakarta.annotation.Nonnull List<BigDecimal> bbox) {
+    this.bbox = bbox;
   }
 
   public RentalZone area(@jakarta.annotation.Nonnull List<List<EncodedPolyline>> area) {
@@ -216,15 +285,17 @@ public class RentalZone {
     }
     RentalZone rentalZone = (RentalZone) o;
     return Objects.equals(this.providerId, rentalZone.providerId) &&
+        Objects.equals(this.providerGroupId, rentalZone.providerGroupId) &&
         Objects.equals(this.name, rentalZone.name) &&
         Objects.equals(this.z, rentalZone.z) &&
+        Objects.equals(this.bbox, rentalZone.bbox) &&
         Objects.equals(this.area, rentalZone.area) &&
         Objects.equals(this.rules, rentalZone.rules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(providerId, name, z, area, rules);
+    return Objects.hash(providerId, providerGroupId, name, z, bbox, area, rules);
   }
 
   @Override
@@ -232,8 +303,10 @@ public class RentalZone {
     StringBuilder sb = new StringBuilder();
     sb.append("class RentalZone {\n");
     sb.append("    providerId: ").append(toIndentedString(providerId)).append("\n");
+    sb.append("    providerGroupId: ").append(toIndentedString(providerGroupId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    z: ").append(toIndentedString(z)).append("\n");
+    sb.append("    bbox: ").append(toIndentedString(bbox)).append("\n");
     sb.append("    area: ").append(toIndentedString(area)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("}");

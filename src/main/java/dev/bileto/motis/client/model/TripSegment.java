@@ -49,7 +49,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   TripSegment.JSON_PROPERTY_REAL_TIME,
   TripSegment.JSON_PROPERTY_POLYLINE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class TripSegment {
   public static final String JSON_PROPERTY_TRIPS = "trips";
   @jakarta.annotation.Nonnull

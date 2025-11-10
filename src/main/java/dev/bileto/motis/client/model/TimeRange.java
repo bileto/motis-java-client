@@ -32,20 +32,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   TimeRange.JSON_PROPERTY_START,
   TimeRange.JSON_PROPERTY_END
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class TimeRange {
   public static final String JSON_PROPERTY_START = "start";
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   private OffsetDateTime start;
 
   public static final String JSON_PROPERTY_END = "end";
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   private OffsetDateTime end;
 
   public TimeRange() {
   }
 
-  public TimeRange start(@jakarta.annotation.Nullable OffsetDateTime start) {
+  public TimeRange start(@jakarta.annotation.Nonnull OffsetDateTime start) {
     
     this.start = start;
     return this;
@@ -55,22 +55,22 @@ public class TimeRange {
    * If missing, the interval starts at minus infinity. If a TimeRange is provided, either start or end must be provided - both fields cannot be empty. 
    * @return start
    */
-  @jakarta.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_START, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_START, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getStart() {
     return start;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_START, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStart(@jakarta.annotation.Nullable OffsetDateTime start) {
+  @JsonProperty(value = JSON_PROPERTY_START, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setStart(@jakarta.annotation.Nonnull OffsetDateTime start) {
     this.start = start;
   }
 
-  public TimeRange end(@jakarta.annotation.Nullable OffsetDateTime end) {
+  public TimeRange end(@jakarta.annotation.Nonnull OffsetDateTime end) {
     
     this.end = end;
     return this;
@@ -80,18 +80,18 @@ public class TimeRange {
    * If missing, the interval ends at plus infinity. If a TimeRange is provided, either start or end must be provided - both fields cannot be empty. 
    * @return end
    */
-  @jakarta.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_END, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_END, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getEnd() {
     return end;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_END, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnd(@jakarta.annotation.Nullable OffsetDateTime end) {
+  @JsonProperty(value = JSON_PROPERTY_END, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEnd(@jakarta.annotation.Nonnull OffsetDateTime end) {
     this.end = end;
   }
 

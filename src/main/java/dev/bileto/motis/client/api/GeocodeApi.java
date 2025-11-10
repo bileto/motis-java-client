@@ -29,7 +29,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class GeocodeApi {
     private ApiClient apiClient;
 
@@ -77,7 +77,7 @@ public class GeocodeApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "text", text));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "language", language));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "placeBias", placeBias));

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import dev.bileto.motis.client.model.RentalProvider;
+import dev.bileto.motis.client.model.RentalProviderGroup;
 import dev.bileto.motis.client.model.RentalStation;
 import dev.bileto.motis.client.model.RentalVehicle;
 import dev.bileto.motis.client.model.RentalZone;
@@ -35,14 +36,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * Rentals200Response
  */
 @JsonPropertyOrder({
+  Rentals200Response.JSON_PROPERTY_PROVIDER_GROUPS,
   Rentals200Response.JSON_PROPERTY_PROVIDERS,
   Rentals200Response.JSON_PROPERTY_STATIONS,
   Rentals200Response.JSON_PROPERTY_VEHICLES,
   Rentals200Response.JSON_PROPERTY_ZONES
 })
 @JsonTypeName("rentals_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Rentals200Response {
+  public static final String JSON_PROPERTY_PROVIDER_GROUPS = "providerGroups";
+  @jakarta.annotation.Nonnull
+  private List<RentalProviderGroup> providerGroups = new ArrayList<>();
+
   public static final String JSON_PROPERTY_PROVIDERS = "providers";
   @jakarta.annotation.Nonnull
   private List<RentalProvider> providers = new ArrayList<>();
@@ -60,6 +66,39 @@ public class Rentals200Response {
   private List<RentalZone> zones = new ArrayList<>();
 
   public Rentals200Response() {
+  }
+
+  public Rentals200Response providerGroups(@jakarta.annotation.Nonnull List<RentalProviderGroup> providerGroups) {
+    
+    this.providerGroups = providerGroups;
+    return this;
+  }
+
+  public Rentals200Response addProviderGroupsItem(RentalProviderGroup providerGroupsItem) {
+    if (this.providerGroups == null) {
+      this.providerGroups = new ArrayList<>();
+    }
+    this.providerGroups.add(providerGroupsItem);
+    return this;
+  }
+
+  /**
+   * Get providerGroups
+   * @return providerGroups
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUPS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<RentalProviderGroup> getProviderGroups() {
+    return providerGroups;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUPS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProviderGroups(@jakarta.annotation.Nonnull List<RentalProviderGroup> providerGroups) {
+    this.providerGroups = providerGroups;
   }
 
   public Rentals200Response providers(@jakarta.annotation.Nonnull List<RentalProvider> providers) {
@@ -204,7 +243,8 @@ public class Rentals200Response {
       return false;
     }
     Rentals200Response rentals200Response = (Rentals200Response) o;
-    return Objects.equals(this.providers, rentals200Response.providers) &&
+    return Objects.equals(this.providerGroups, rentals200Response.providerGroups) &&
+        Objects.equals(this.providers, rentals200Response.providers) &&
         Objects.equals(this.stations, rentals200Response.stations) &&
         Objects.equals(this.vehicles, rentals200Response.vehicles) &&
         Objects.equals(this.zones, rentals200Response.zones);
@@ -212,13 +252,14 @@ public class Rentals200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(providers, stations, vehicles, zones);
+    return Objects.hash(providerGroups, providers, stations, vehicles, zones);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Rentals200Response {\n");
+    sb.append("    providerGroups: ").append(toIndentedString(providerGroups)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    stations: ").append(toIndentedString(stations)).append("\n");
     sb.append("    vehicles: ").append(toIndentedString(vehicles)).append("\n");

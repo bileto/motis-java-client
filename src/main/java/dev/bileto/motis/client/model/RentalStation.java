@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonPropertyOrder({
   RentalStation.JSON_PROPERTY_ID,
   RentalStation.JSON_PROPERTY_PROVIDER_ID,
+  RentalStation.JSON_PROPERTY_PROVIDER_GROUP_ID,
   RentalStation.JSON_PROPERTY_NAME,
   RentalStation.JSON_PROPERTY_LAT,
   RentalStation.JSON_PROPERTY_LON,
@@ -52,9 +53,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RentalStation.JSON_PROPERTY_FORM_FACTORS,
   RentalStation.JSON_PROPERTY_VEHICLE_TYPES_AVAILABLE,
   RentalStation.JSON_PROPERTY_VEHICLE_DOCKS_AVAILABLE,
-  RentalStation.JSON_PROPERTY_STATION_AREA
+  RentalStation.JSON_PROPERTY_STATION_AREA,
+  RentalStation.JSON_PROPERTY_BBOX
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class RentalStation {
   public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nonnull
@@ -63,6 +65,10 @@ public class RentalStation {
   public static final String JSON_PROPERTY_PROVIDER_ID = "providerId";
   @jakarta.annotation.Nonnull
   private String providerId;
+
+  public static final String JSON_PROPERTY_PROVIDER_GROUP_ID = "providerGroupId";
+  @jakarta.annotation.Nonnull
+  private String providerGroupId;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nonnull
@@ -124,6 +130,10 @@ public class RentalStation {
   @jakarta.annotation.Nullable
   private List<List<EncodedPolyline>> stationArea = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_BBOX = "bbox";
+  @jakarta.annotation.Nonnull
+  private List<BigDecimal> bbox = new ArrayList<>();
+
   public RentalStation() {
   }
 
@@ -175,6 +185,31 @@ public class RentalStation {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProviderId(@jakarta.annotation.Nonnull String providerId) {
     this.providerId = providerId;
+  }
+
+  public RentalStation providerGroupId(@jakarta.annotation.Nonnull String providerGroupId) {
+    
+    this.providerGroupId = providerGroupId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of the rental provider group
+   * @return providerGroupId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getProviderGroupId() {
+    return providerGroupId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProviderGroupId(@jakarta.annotation.Nonnull String providerGroupId) {
+    this.providerGroupId = providerGroupId;
   }
 
   public RentalStation name(@jakarta.annotation.Nonnull String name) {
@@ -578,6 +613,39 @@ public class RentalStation {
     this.stationArea = stationArea;
   }
 
+  public RentalStation bbox(@jakarta.annotation.Nonnull List<BigDecimal> bbox) {
+    
+    this.bbox = bbox;
+    return this;
+  }
+
+  public RentalStation addBboxItem(BigDecimal bboxItem) {
+    if (this.bbox == null) {
+      this.bbox = new ArrayList<>();
+    }
+    this.bbox.add(bboxItem);
+    return this;
+  }
+
+  /**
+   * Bounding box of the area covered by this station, [west, south, east, north] as [lon, lat, lon, lat] 
+   * @return bbox
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_BBOX, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<BigDecimal> getBbox() {
+    return bbox;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BBOX, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setBbox(@jakarta.annotation.Nonnull List<BigDecimal> bbox) {
+    this.bbox = bbox;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -590,6 +658,7 @@ public class RentalStation {
     RentalStation rentalStation = (RentalStation) o;
     return Objects.equals(this.id, rentalStation.id) &&
         Objects.equals(this.providerId, rentalStation.providerId) &&
+        Objects.equals(this.providerGroupId, rentalStation.providerGroupId) &&
         Objects.equals(this.name, rentalStation.name) &&
         Objects.equals(this.lat, rentalStation.lat) &&
         Objects.equals(this.lon, rentalStation.lon) &&
@@ -604,12 +673,13 @@ public class RentalStation {
         Objects.equals(this.formFactors, rentalStation.formFactors) &&
         Objects.equals(this.vehicleTypesAvailable, rentalStation.vehicleTypesAvailable) &&
         Objects.equals(this.vehicleDocksAvailable, rentalStation.vehicleDocksAvailable) &&
-        Objects.equals(this.stationArea, rentalStation.stationArea);
+        Objects.equals(this.stationArea, rentalStation.stationArea) &&
+        Objects.equals(this.bbox, rentalStation.bbox);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, providerId, name, lat, lon, address, crossStreet, rentalUriAndroid, rentalUriIOS, rentalUriWeb, isRenting, isReturning, numVehiclesAvailable, formFactors, vehicleTypesAvailable, vehicleDocksAvailable, stationArea);
+    return Objects.hash(id, providerId, providerGroupId, name, lat, lon, address, crossStreet, rentalUriAndroid, rentalUriIOS, rentalUriWeb, isRenting, isReturning, numVehiclesAvailable, formFactors, vehicleTypesAvailable, vehicleDocksAvailable, stationArea, bbox);
   }
 
   @Override
@@ -618,6 +688,7 @@ public class RentalStation {
     sb.append("class RentalStation {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    providerId: ").append(toIndentedString(providerId)).append("\n");
+    sb.append("    providerGroupId: ").append(toIndentedString(providerGroupId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
     sb.append("    lon: ").append(toIndentedString(lon)).append("\n");
@@ -633,6 +704,7 @@ public class RentalStation {
     sb.append("    vehicleTypesAvailable: ").append(toIndentedString(vehicleTypesAvailable)).append("\n");
     sb.append("    vehicleDocksAvailable: ").append(toIndentedString(vehicleDocksAvailable)).append("\n");
     sb.append("    stationArea: ").append(toIndentedString(stationArea)).append("\n");
+    sb.append("    bbox: ").append(toIndentedString(bbox)).append("\n");
     sb.append("}");
     return sb.toString();
   }

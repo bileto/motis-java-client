@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonPropertyOrder({
   RentalVehicle.JSON_PROPERTY_ID,
   RentalVehicle.JSON_PROPERTY_PROVIDER_ID,
+  RentalVehicle.JSON_PROPERTY_PROVIDER_GROUP_ID,
   RentalVehicle.JSON_PROPERTY_TYPE_ID,
   RentalVehicle.JSON_PROPERTY_LAT,
   RentalVehicle.JSON_PROPERTY_LON,
@@ -48,7 +49,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RentalVehicle.JSON_PROPERTY_RENTAL_URI_I_O_S,
   RentalVehicle.JSON_PROPERTY_RENTAL_URI_WEB
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class RentalVehicle {
   public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nonnull
@@ -57,6 +58,10 @@ public class RentalVehicle {
   public static final String JSON_PROPERTY_PROVIDER_ID = "providerId";
   @jakarta.annotation.Nonnull
   private String providerId;
+
+  public static final String JSON_PROPERTY_PROVIDER_GROUP_ID = "providerGroupId";
+  @jakarta.annotation.Nonnull
+  private String providerGroupId;
 
   public static final String JSON_PROPERTY_TYPE_ID = "typeId";
   @jakarta.annotation.Nonnull
@@ -161,6 +166,31 @@ public class RentalVehicle {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProviderId(@jakarta.annotation.Nonnull String providerId) {
     this.providerId = providerId;
+  }
+
+  public RentalVehicle providerGroupId(@jakarta.annotation.Nonnull String providerGroupId) {
+    
+    this.providerGroupId = providerGroupId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of the rental provider group
+   * @return providerGroupId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getProviderGroupId() {
+    return providerGroupId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProviderGroupId(@jakarta.annotation.Nonnull String providerGroupId) {
+    this.providerGroupId = providerGroupId;
   }
 
   public RentalVehicle typeId(@jakarta.annotation.Nonnull String typeId) {
@@ -500,6 +530,7 @@ public class RentalVehicle {
     RentalVehicle rentalVehicle = (RentalVehicle) o;
     return Objects.equals(this.id, rentalVehicle.id) &&
         Objects.equals(this.providerId, rentalVehicle.providerId) &&
+        Objects.equals(this.providerGroupId, rentalVehicle.providerGroupId) &&
         Objects.equals(this.typeId, rentalVehicle.typeId) &&
         Objects.equals(this.lat, rentalVehicle.lat) &&
         Objects.equals(this.lon, rentalVehicle.lon) &&
@@ -517,7 +548,7 @@ public class RentalVehicle {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, providerId, typeId, lat, lon, formFactor, propulsionType, returnConstraint, stationId, homeStationId, isReserved, isDisabled, rentalUriAndroid, rentalUriIOS, rentalUriWeb);
+    return Objects.hash(id, providerId, providerGroupId, typeId, lat, lon, formFactor, propulsionType, returnConstraint, stationId, homeStationId, isReserved, isDisabled, rentalUriAndroid, rentalUriIOS, rentalUriWeb);
   }
 
   @Override
@@ -526,6 +557,7 @@ public class RentalVehicle {
     sb.append("class RentalVehicle {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    providerId: ").append(toIndentedString(providerId)).append("\n");
+    sb.append("    providerGroupId: ").append(toIndentedString(providerGroupId)).append("\n");
     sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
     sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
     sb.append("    lon: ").append(toIndentedString(lon)).append("\n");

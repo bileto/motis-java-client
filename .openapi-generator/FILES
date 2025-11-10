@@ -46,6 +46,7 @@ src/main/java/dev/bileto/motis/client/model/Rental.java
 src/main/java/dev/bileto/motis/client/model/RentalFormFactor.java
 src/main/java/dev/bileto/motis/client/model/RentalPropulsionType.java
 src/main/java/dev/bileto/motis/client/model/RentalProvider.java
+src/main/java/dev/bileto/motis/client/model/RentalProviderGroup.java
 src/main/java/dev/bileto/motis/client/model/RentalReturnConstraint.java
 src/main/java/dev/bileto/motis/client/model/RentalStation.java
 src/main/java/dev/bileto/motis/client/model/RentalVehicle.java

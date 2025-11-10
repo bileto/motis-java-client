@@ -32,16 +32,21 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  */
 @JsonPropertyOrder({
   RentalVehicleType.JSON_PROPERTY_ID,
+  RentalVehicleType.JSON_PROPERTY_NAME,
   RentalVehicleType.JSON_PROPERTY_FORM_FACTOR,
   RentalVehicleType.JSON_PROPERTY_PROPULSION_TYPE,
   RentalVehicleType.JSON_PROPERTY_RETURN_CONSTRAINT,
   RentalVehicleType.JSON_PROPERTY_RETURN_CONSTRAINT_GUESSED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class RentalVehicleType {
   public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nonnull
   private String id;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @jakarta.annotation.Nullable
+  private String name;
 
   public static final String JSON_PROPERTY_FORM_FACTOR = "formFactor";
   @jakarta.annotation.Nonnull
@@ -85,6 +90,31 @@ public class RentalVehicleType {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(@jakarta.annotation.Nonnull String id) {
     this.id = id;
+  }
+
+  public RentalVehicleType name(@jakarta.annotation.Nullable String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Public name of the vehicle type (can be empty)
+   * @return name
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getName() {
+    return name;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@jakarta.annotation.Nullable String name) {
+    this.name = name;
   }
 
   public RentalVehicleType formFactor(@jakarta.annotation.Nonnull RentalFormFactor formFactor) {
@@ -198,6 +228,7 @@ public class RentalVehicleType {
     }
     RentalVehicleType rentalVehicleType = (RentalVehicleType) o;
     return Objects.equals(this.id, rentalVehicleType.id) &&
+        Objects.equals(this.name, rentalVehicleType.name) &&
         Objects.equals(this.formFactor, rentalVehicleType.formFactor) &&
         Objects.equals(this.propulsionType, rentalVehicleType.propulsionType) &&
         Objects.equals(this.returnConstraint, rentalVehicleType.returnConstraint) &&
@@ -206,7 +237,7 @@ public class RentalVehicleType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, formFactor, propulsionType, returnConstraint, returnConstraintGuessed);
+    return Objects.hash(id, name, formFactor, propulsionType, returnConstraint, returnConstraintGuessed);
   }
 
   @Override
@@ -214,6 +245,7 @@ public class RentalVehicleType {
     StringBuilder sb = new StringBuilder();
     sb.append("class RentalVehicleType {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    formFactor: ").append(toIndentedString(formFactor)).append("\n");
     sb.append("    propulsionType: ").append(toIndentedString(propulsionType)).append("\n");
     sb.append("    returnConstraint: ").append(toIndentedString(returnConstraint)).append("\n");
