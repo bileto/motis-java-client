@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonPropertyOrder({
   Place.JSON_PROPERTY_NAME,
   Place.JSON_PROPERTY_STOP_ID,
+  Place.JSON_PROPERTY_PARENT_ID,
   Place.JSON_PROPERTY_IMPORTANCE,
   Place.JSON_PROPERTY_LAT,
   Place.JSON_PROPERTY_LON,
@@ -69,6 +70,10 @@ public class Place {
   public static final String JSON_PROPERTY_STOP_ID = "stopId";
   @jakarta.annotation.Nullable
   private String stopId;
+
+  public static final String JSON_PROPERTY_PARENT_ID = "parentId";
+  @jakarta.annotation.Nullable
+  private String parentId;
 
   public static final String JSON_PROPERTY_IMPORTANCE = "importance";
   @jakarta.annotation.Nullable
@@ -205,6 +210,31 @@ public class Place {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStopId(@jakarta.annotation.Nullable String stopId) {
     this.stopId = stopId;
+  }
+
+  public Place parentId(@jakarta.annotation.Nullable String parentId) {
+    
+    this.parentId = parentId;
+    return this;
+  }
+
+  /**
+   * If it&#39;s not a root stop, this field contains the &#x60;stopId&#x60; of the parent stop.
+   * @return parentId
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PARENT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getParentId() {
+    return parentId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PARENT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setParentId(@jakarta.annotation.Nullable String parentId) {
+    this.parentId = parentId;
   }
 
   public Place importance(@jakarta.annotation.Nullable BigDecimal importance) {
@@ -752,6 +782,7 @@ public class Place {
     Place place = (Place) o;
     return Objects.equals(this.name, place.name) &&
         Objects.equals(this.stopId, place.stopId) &&
+        Objects.equals(this.parentId, place.parentId) &&
         Objects.equals(this.importance, place.importance) &&
         Objects.equals(this.lat, place.lat) &&
         Objects.equals(this.lon, place.lon) &&
@@ -777,7 +808,7 @@ public class Place {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, stopId, importance, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow);
+    return Objects.hash(name, stopId, parentId, importance, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow);
   }
 
   @Override
@@ -786,6 +817,7 @@ public class Place {
     sb.append("class Place {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    stopId: ").append(toIndentedString(stopId)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    importance: ").append(toIndentedString(importance)).append("\n");
     sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
     sb.append("    lon: ").append(toIndentedString(lon)).append("\n");

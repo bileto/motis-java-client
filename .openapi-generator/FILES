@@ -36,6 +36,7 @@ src/main/java/dev/bileto/motis/client/model/Leg.java
 src/main/java/dev/bileto/motis/client/model/LocationType.java
 src/main/java/dev/bileto/motis/client/model/Match.java
 src/main/java/dev/bileto/motis/client/model/Mode.java
+src/main/java/dev/bileto/motis/client/model/OneToManyParams.java
 src/main/java/dev/bileto/motis/client/model/PedestrianProfile.java
 src/main/java/dev/bileto/motis/client/model/PickupDropoffType.java
 src/main/java/dev/bileto/motis/client/model/Place.java

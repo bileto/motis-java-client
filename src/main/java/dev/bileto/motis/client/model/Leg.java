@@ -53,6 +53,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_INTERLINE_WITH_PREVIOUS_LEG,
   Leg.JSON_PROPERTY_HEADSIGN,
   Leg.JSON_PROPERTY_TRIP_TO,
+  Leg.JSON_PROPERTY_ROUTE_ID,
+  Leg.JSON_PROPERTY_DIRECTION_ID,
   Leg.JSON_PROPERTY_ROUTE_COLOR,
   Leg.JSON_PROPERTY_ROUTE_TEXT_COLOR,
   Leg.JSON_PROPERTY_ROUTE_TYPE,
@@ -132,6 +134,14 @@ public class Leg {
   public static final String JSON_PROPERTY_TRIP_TO = "tripTo";
   @jakarta.annotation.Nullable
   private Place tripTo;
+
+  public static final String JSON_PROPERTY_ROUTE_ID = "routeId";
+  @jakarta.annotation.Nullable
+  private String routeId;
+
+  public static final String JSON_PROPERTY_DIRECTION_ID = "directionId";
+  @jakarta.annotation.Nullable
+  private String directionId;
 
   public static final String JSON_PROPERTY_ROUTE_COLOR = "routeColor";
   @jakarta.annotation.Nullable
@@ -568,6 +578,56 @@ public class Leg {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTripTo(@jakarta.annotation.Nullable Place tripTo) {
     this.tripTo = tripTo;
+  }
+
+  public Leg routeId(@jakarta.annotation.Nullable String routeId) {
+    
+    this.routeId = routeId;
+    return this;
+  }
+
+  /**
+   * Get routeId
+   * @return routeId
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getRouteId() {
+    return routeId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRouteId(@jakarta.annotation.Nullable String routeId) {
+    this.routeId = routeId;
+  }
+
+  public Leg directionId(@jakarta.annotation.Nullable String directionId) {
+    
+    this.directionId = directionId;
+    return this;
+  }
+
+  /**
+   * Get directionId
+   * @return directionId
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DIRECTION_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDirectionId() {
+    return directionId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DIRECTION_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDirectionId(@jakarta.annotation.Nullable String directionId) {
+    this.directionId = directionId;
   }
 
   public Leg routeColor(@jakarta.annotation.Nullable String routeColor) {
@@ -1143,6 +1203,8 @@ public class Leg {
         Objects.equals(this.interlineWithPreviousLeg, leg.interlineWithPreviousLeg) &&
         Objects.equals(this.headsign, leg.headsign) &&
         Objects.equals(this.tripTo, leg.tripTo) &&
+        Objects.equals(this.routeId, leg.routeId) &&
+        Objects.equals(this.directionId, leg.directionId) &&
         Objects.equals(this.routeColor, leg.routeColor) &&
         Objects.equals(this.routeTextColor, leg.routeTextColor) &&
         Objects.equals(this.routeType, leg.routeType) &&
@@ -1168,7 +1230,7 @@ public class Leg {
 
   @Override
   public int hashCode() {
-    return Objects.hash(mode, from, to, duration, startTime, endTime, scheduledStartTime, scheduledEndTime, realTime, scheduled, distance, interlineWithPreviousLeg, headsign, tripTo, routeColor, routeTextColor, routeType, agencyName, agencyUrl, agencyId, tripId, routeShortName, routeLongName, tripShortName, displayName, cancelled, source, intermediateStops, legGeometry, steps, rental, fareTransferIndex, effectiveFareLegIndex, alerts, loopedCalendarSince);
+    return Objects.hash(mode, from, to, duration, startTime, endTime, scheduledStartTime, scheduledEndTime, realTime, scheduled, distance, interlineWithPreviousLeg, headsign, tripTo, routeId, directionId, routeColor, routeTextColor, routeType, agencyName, agencyUrl, agencyId, tripId, routeShortName, routeLongName, tripShortName, displayName, cancelled, source, intermediateStops, legGeometry, steps, rental, fareTransferIndex, effectiveFareLegIndex, alerts, loopedCalendarSince);
   }
 
   @Override
@@ -1189,6 +1251,8 @@ public class Leg {
     sb.append("    interlineWithPreviousLeg: ").append(toIndentedString(interlineWithPreviousLeg)).append("\n");
     sb.append("    headsign: ").append(toIndentedString(headsign)).append("\n");
     sb.append("    tripTo: ").append(toIndentedString(tripTo)).append("\n");
+    sb.append("    routeId: ").append(toIndentedString(routeId)).append("\n");
+    sb.append("    directionId: ").append(toIndentedString(directionId)).append("\n");
     sb.append("    routeColor: ").append(toIndentedString(routeColor)).append("\n");
     sb.append("    routeTextColor: ").append(toIndentedString(routeTextColor)).append("\n");
     sb.append("    routeType: ").append(toIndentedString(routeType)).append("\n");

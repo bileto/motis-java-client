@@ -52,7 +52,7 @@ public class GeocodeApiTests {
 
     @Test
     public void testGeocodeApi() {
-        var matches = api.geocode("Praha", null, null, null, null);
+        var matches = api.geocode("Praha", null, null, null, null, null);
 
         assertNotNull(matches);
         assertEquals(1, matches.size(), "API should return 1 match on geocoding");

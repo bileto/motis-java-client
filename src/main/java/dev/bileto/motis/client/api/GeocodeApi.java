@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import dev.bileto.motis.client.model.Error;
 import dev.bileto.motis.client.model.LocationType;
 import dev.bileto.motis.client.model.Match;
+import dev.bileto.motis.client.model.Mode;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,12 +58,13 @@ public class GeocodeApi {
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @param type Optional. Default is all types.  Only return results of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param mode Optional. Filter stops by available transport modes. Defaults to applying no filter. 
      * @param place Optional. Used for biasing results towards the coordinate.  Format: latitude,longitude in degrees 
      * @param placeBias Optional. Used for biasing results towards the coordinate. Higher number &#x3D; higher bias. 
      * @return List&lt;Match&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec geocodeRequestCreation(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    private ResponseSpec geocodeRequestCreation(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'text' is set
         if (text == null) {
@@ -79,6 +81,7 @@ public class GeocodeApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "text", text));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "mode", mode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "placeBias", placeBias));
 
@@ -103,14 +106,15 @@ public class GeocodeApi {
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @param type Optional. Default is all types.  Only return results of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param mode Optional. Filter stops by available transport modes. Defaults to applying no filter. 
      * @param place Optional. Used for biasing results towards the coordinate.  Format: latitude,longitude in degrees 
      * @param placeBias Optional. Used for biasing results towards the coordinate. Higher number &#x3D; higher bias. 
      * @return List&lt;Match&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public List<Match> geocode(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    public List<Match> geocode(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
-        return geocodeRequestCreation(text, language, type, place, placeBias).bodyToFlux(localVarReturnType).collectList().block();
+        return geocodeRequestCreation(text, language, type, mode, place, placeBias).bodyToFlux(localVarReturnType).collectList().block();
     }
 
     /**
@@ -121,14 +125,15 @@ public class GeocodeApi {
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @param type Optional. Default is all types.  Only return results of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param mode Optional. Filter stops by available transport modes. Defaults to applying no filter. 
      * @param place Optional. Used for biasing results towards the coordinate.  Format: latitude,longitude in degrees 
      * @param placeBias Optional. Used for biasing results towards the coordinate. Higher number &#x3D; higher bias. 
      * @return ResponseEntity&lt;List&lt;Match&gt;&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<List<Match>> geocodeWithHttpInfo(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    public ResponseEntity<List<Match>> geocodeWithHttpInfo(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
-        return geocodeRequestCreation(text, language, type, place, placeBias).toEntityList(localVarReturnType).block();
+        return geocodeRequestCreation(text, language, type, mode, place, placeBias).toEntityList(localVarReturnType).block();
     }
 
     /**
@@ -139,13 +144,14 @@ public class GeocodeApi {
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @param type Optional. Default is all types.  Only return results of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param mode Optional. Filter stops by available transport modes. Defaults to applying no filter. 
      * @param place Optional. Used for biasing results towards the coordinate.  Format: latitude,longitude in degrees 
      * @param placeBias Optional. Used for biasing results towards the coordinate. Higher number &#x3D; higher bias. 
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec geocodeWithResponseSpec(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
-        return geocodeRequestCreation(text, language, type, place, placeBias);
+    public ResponseSpec geocodeWithResponseSpec(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+        return geocodeRequestCreation(text, language, type, mode, place, placeBias);
     }
 
     /**

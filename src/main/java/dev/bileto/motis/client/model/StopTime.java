@@ -42,6 +42,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StopTime.JSON_PROPERTY_AGENCY_ID,
   StopTime.JSON_PROPERTY_AGENCY_NAME,
   StopTime.JSON_PROPERTY_AGENCY_URL,
+  StopTime.JSON_PROPERTY_ROUTE_ID,
+  StopTime.JSON_PROPERTY_DIRECTION_ID,
   StopTime.JSON_PROPERTY_ROUTE_COLOR,
   StopTime.JSON_PROPERTY_ROUTE_TEXT_COLOR,
   StopTime.JSON_PROPERTY_TRIP_ID,
@@ -90,6 +92,14 @@ public class StopTime {
   public static final String JSON_PROPERTY_AGENCY_URL = "agencyUrl";
   @jakarta.annotation.Nonnull
   private String agencyUrl;
+
+  public static final String JSON_PROPERTY_ROUTE_ID = "routeId";
+  @jakarta.annotation.Nonnull
+  private String routeId;
+
+  public static final String JSON_PROPERTY_DIRECTION_ID = "directionId";
+  @jakarta.annotation.Nonnull
+  private String directionId;
 
   public static final String JSON_PROPERTY_ROUTE_COLOR = "routeColor";
   @jakarta.annotation.Nullable
@@ -348,6 +358,56 @@ public class StopTime {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAgencyUrl(@jakarta.annotation.Nonnull String agencyUrl) {
     this.agencyUrl = agencyUrl;
+  }
+
+  public StopTime routeId(@jakarta.annotation.Nonnull String routeId) {
+    
+    this.routeId = routeId;
+    return this;
+  }
+
+  /**
+   * Get routeId
+   * @return routeId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getRouteId() {
+    return routeId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setRouteId(@jakarta.annotation.Nonnull String routeId) {
+    this.routeId = routeId;
+  }
+
+  public StopTime directionId(@jakarta.annotation.Nonnull String directionId) {
+    
+    this.directionId = directionId;
+    return this;
+  }
+
+  /**
+   * Get directionId
+   * @return directionId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_DIRECTION_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getDirectionId() {
+    return directionId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DIRECTION_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDirectionId(@jakarta.annotation.Nonnull String directionId) {
+    this.directionId = directionId;
   }
 
   public StopTime routeColor(@jakarta.annotation.Nullable String routeColor) {
@@ -734,6 +794,8 @@ public class StopTime {
         Objects.equals(this.agencyId, stopTime.agencyId) &&
         Objects.equals(this.agencyName, stopTime.agencyName) &&
         Objects.equals(this.agencyUrl, stopTime.agencyUrl) &&
+        Objects.equals(this.routeId, stopTime.routeId) &&
+        Objects.equals(this.directionId, stopTime.directionId) &&
         Objects.equals(this.routeColor, stopTime.routeColor) &&
         Objects.equals(this.routeTextColor, stopTime.routeTextColor) &&
         Objects.equals(this.tripId, stopTime.tripId) &&
@@ -752,7 +814,7 @@ public class StopTime {
 
   @Override
   public int hashCode() {
-    return Objects.hash(place, mode, realTime, headsign, tripTo, agencyId, agencyName, agencyUrl, routeColor, routeTextColor, tripId, routeType, routeShortName, routeLongName, tripShortName, displayName, previousStops, nextStops, pickupDropoffType, cancelled, tripCancelled, source);
+    return Objects.hash(place, mode, realTime, headsign, tripTo, agencyId, agencyName, agencyUrl, routeId, directionId, routeColor, routeTextColor, tripId, routeType, routeShortName, routeLongName, tripShortName, displayName, previousStops, nextStops, pickupDropoffType, cancelled, tripCancelled, source);
   }
 
   @Override
@@ -767,6 +829,8 @@ public class StopTime {
     sb.append("    agencyId: ").append(toIndentedString(agencyId)).append("\n");
     sb.append("    agencyName: ").append(toIndentedString(agencyName)).append("\n");
     sb.append("    agencyUrl: ").append(toIndentedString(agencyUrl)).append("\n");
+    sb.append("    routeId: ").append(toIndentedString(routeId)).append("\n");
+    sb.append("    directionId: ").append(toIndentedString(directionId)).append("\n");
     sb.append("    routeColor: ").append(toIndentedString(routeColor)).append("\n");
     sb.append("    routeTextColor: ").append(toIndentedString(routeTextColor)).append("\n");
     sb.append("    tripId: ").append(toIndentedString(tripId)).append("\n");
