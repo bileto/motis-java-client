@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import dev.bileto.motis.client.model.ServerConfig;
 import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -31,7 +32,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonPropertyOrder({
   Initial200Response.JSON_PROPERTY_LAT,
   Initial200Response.JSON_PROPERTY_LON,
-  Initial200Response.JSON_PROPERTY_ZOOM
+  Initial200Response.JSON_PROPERTY_ZOOM,
+  Initial200Response.JSON_PROPERTY_SERVER_CONFIG
 })
 @JsonTypeName("initial_200_response")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
@@ -47,6 +49,10 @@ public class Initial200Response {
   public static final String JSON_PROPERTY_ZOOM = "zoom";
   @jakarta.annotation.Nonnull
   private BigDecimal zoom;
+
+  public static final String JSON_PROPERTY_SERVER_CONFIG = "serverConfig";
+  @jakarta.annotation.Nullable
+  private ServerConfig serverConfig;
 
   public Initial200Response() {
   }
@@ -126,6 +132,31 @@ public class Initial200Response {
     this.zoom = zoom;
   }
 
+  public Initial200Response serverConfig(@jakarta.annotation.Nullable ServerConfig serverConfig) {
+    
+    this.serverConfig = serverConfig;
+    return this;
+  }
+
+  /**
+   * Get serverConfig
+   * @return serverConfig
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SERVER_CONFIG, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ServerConfig getServerConfig() {
+    return serverConfig;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SERVER_CONFIG, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setServerConfig(@jakarta.annotation.Nullable ServerConfig serverConfig) {
+    this.serverConfig = serverConfig;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -138,12 +169,13 @@ public class Initial200Response {
     Initial200Response initial200Response = (Initial200Response) o;
     return Objects.equals(this.lat, initial200Response.lat) &&
         Objects.equals(this.lon, initial200Response.lon) &&
-        Objects.equals(this.zoom, initial200Response.zoom);
+        Objects.equals(this.zoom, initial200Response.zoom) &&
+        Objects.equals(this.serverConfig, initial200Response.serverConfig);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lat, lon, zoom);
+    return Objects.hash(lat, lon, zoom, serverConfig);
   }
 
   @Override
@@ -153,6 +185,7 @@ public class Initial200Response {
     sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
     sb.append("    lon: ").append(toIndentedString(lon)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
+    sb.append("    serverConfig: ").append(toIndentedString(serverConfig)).append("\n");
     sb.append("}");
     return sb.toString();
   }

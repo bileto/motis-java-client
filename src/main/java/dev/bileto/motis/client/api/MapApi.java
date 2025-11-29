@@ -56,7 +56,7 @@ public class MapApi {
      * initial location to view the map at after loading based on where public transport should be visible
      * 
      * <p><b>400</b> - Bad Request
-     * <p><b>200</b> - latitude, longitude and zoom level to set the map to
+     * <p><b>200</b> - latitude, longitude, zoom level to set the map to, and routing options configuration and limits
      * @return Initial200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
@@ -87,7 +87,7 @@ public class MapApi {
      * initial location to view the map at after loading based on where public transport should be visible
      * 
      * <p><b>400</b> - Bad Request
-     * <p><b>200</b> - latitude, longitude and zoom level to set the map to
+     * <p><b>200</b> - latitude, longitude, zoom level to set the map to, and routing options configuration and limits
      * @return Initial200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
@@ -100,7 +100,7 @@ public class MapApi {
      * initial location to view the map at after loading based on where public transport should be visible
      * 
      * <p><b>400</b> - Bad Request
-     * <p><b>200</b> - latitude, longitude and zoom level to set the map to
+     * <p><b>200</b> - latitude, longitude, zoom level to set the map to, and routing options configuration and limits
      * @return ResponseEntity&lt;Initial200Response&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
@@ -113,7 +113,7 @@ public class MapApi {
      * initial location to view the map at after loading based on where public transport should be visible
      * 
      * <p><b>400</b> - Bad Request
-     * <p><b>200</b> - latitude, longitude and zoom level to set the map to
+     * <p><b>200</b> - latitude, longitude, zoom level to set the map to, and routing options configuration and limits
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
