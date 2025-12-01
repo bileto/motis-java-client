@@ -24,7 +24,7 @@ dependencies {
 
     implementation 'org.openapitools:jackson-databind-nullable:0.2.8'
 
-    implementation 'org.springframework:spring-webflux:6.2.14'
+    implementation 'org.springframework:spring-webflux:7.0.1'
     implementation 'io.projectreactor.netty:reactor-netty:1.2.11'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.20.1'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.20'
@@ -35,11 +35,11 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'org.junit.jupiter:junit-jupiter:6.0.1'
     testImplementation 'org.mockito:mockito-core:5.20.0'
-    testImplementation 'org.springframework:spring-test:6.2.14'
+    testImplementation 'org.springframework:spring-test:7.0.1'
     testImplementation 'io.projectreactor:reactor-test:3.8.0'
     testImplementation 'com.squareup.okhttp3:mockwebserver3:5.3.2'
 
-    testRuntimeOnly 'org.springframework:spring-context:6.2.14'
+    testRuntimeOnly 'org.springframework:spring-context:7.0.1'
 }
 
 test {
