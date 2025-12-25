@@ -6,7 +6,7 @@
 
 ## Build
 
-The code is generated from the MOTIS openapi specfication. Git submodule `ext/motis` links the MOTIS project at the time of code generation.
+The code is generated from the MOTIS openapi specification. Git submodule `ext/motis` links the MOTIS project at the time of code generation.
 
 In order to sync local MOTIS repo with the commit specified in project, run
 ```shell
@@ -41,7 +41,7 @@ This project is configured to publish to GitHub Packages. To publish manually:
    export GITHUB_TOKEN=your-github-personal-access-token
    ```
 
-2. Run the publish task:
+2. Run the `publish` task:
    ```shell
    ./gradlew publish
    ```

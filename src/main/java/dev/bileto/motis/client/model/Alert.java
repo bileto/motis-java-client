@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * An alert, indicating some sort of incident in the public transit network.
  */
 @JsonPropertyOrder({
+  Alert.JSON_PROPERTY_CODE,
   Alert.JSON_PROPERTY_COMMUNICATION_PERIOD,
   Alert.JSON_PROPERTY_IMPACT_PERIOD,
   Alert.JSON_PROPERTY_CAUSE,
@@ -53,6 +54,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Alert {
+  public static final String JSON_PROPERTY_CODE = "code";
+  @jakarta.annotation.Nullable
+  private String code;
+
   public static final String JSON_PROPERTY_COMMUNICATION_PERIOD = "communicationPeriod";
   @jakarta.annotation.Nullable
   private List<TimeRange> communicationPeriod = new ArrayList<>();
@@ -114,6 +119,31 @@ public class Alert {
   private String imageAlternativeText;
 
   public Alert() {
+  }
+
+  public Alert code(@jakarta.annotation.Nullable String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Attribute or notice code (e.g. for HRDF or NeTEx)
+   * @return code
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getCode() {
+    return code;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCode(@jakarta.annotation.Nullable String code) {
+    this.code = code;
   }
 
   public Alert communicationPeriod(@jakarta.annotation.Nullable List<TimeRange> communicationPeriod) {
@@ -517,7 +547,8 @@ public class Alert {
       return false;
     }
     Alert alert = (Alert) o;
-    return Objects.equals(this.communicationPeriod, alert.communicationPeriod) &&
+    return Objects.equals(this.code, alert.code) &&
+        Objects.equals(this.communicationPeriod, alert.communicationPeriod) &&
         Objects.equals(this.impactPeriod, alert.impactPeriod) &&
         Objects.equals(this.cause, alert.cause) &&
         Objects.equals(this.causeDetail, alert.causeDetail) &&
@@ -536,13 +567,14 @@ public class Alert {
 
   @Override
   public int hashCode() {
-    return Objects.hash(communicationPeriod, impactPeriod, cause, causeDetail, effect, effectDetail, url, headerText, descriptionText, ttsHeaderText, ttsDescriptionText, severityLevel, imageUrl, imageMediaType, imageAlternativeText);
+    return Objects.hash(code, communicationPeriod, impactPeriod, cause, causeDetail, effect, effectDetail, url, headerText, descriptionText, ttsHeaderText, ttsDescriptionText, severityLevel, imageUrl, imageMediaType, imageAlternativeText);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Alert {\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    communicationPeriod: ").append(toIndentedString(communicationPeriod)).append("\n");
     sb.append("    impactPeriod: ").append(toIndentedString(impactPeriod)).append("\n");
     sb.append("    cause: ").append(toIndentedString(cause)).append("\n");

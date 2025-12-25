@@ -55,6 +55,9 @@ openApiGenerate {
     modelPackage = 'dev.bileto.motis.client.model'
     invokerPackage = 'dev.bileto.motis.client'
 
+    // Use custom templates
+    templateDir = "${rootDir}/src/main/resources/openapi-templates"
+
     configOptions = [
         annotationLibrary: 'none',
         library: 'webclient',
