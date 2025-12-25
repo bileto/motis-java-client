@@ -15,7 +15,6 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   OneToManyParams.JSON_PROPERTY_ELEVATION_COSTS,
   OneToManyParams.JSON_PROPERTY_ARRIVE_BY
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class OneToManyParams {
   public static final String JSON_PROPERTY_ONE = "one";
   @jakarta.annotation.Nonnull
@@ -66,7 +65,7 @@ public class OneToManyParams {
 
   public static final String JSON_PROPERTY_ELEVATION_COSTS = "elevationCosts";
   @jakarta.annotation.Nonnull
-  private ElevationCosts elevationCosts;
+  private ElevationCosts elevationCosts = ElevationCosts.NONE;
 
   public static final String JSON_PROPERTY_ARRIVE_BY = "arriveBy";
   @jakarta.annotation.Nonnull

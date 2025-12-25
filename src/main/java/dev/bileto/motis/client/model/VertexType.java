@@ -15,13 +15,11 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Locale;
 
 /**
  * - &#x60;NORMAL&#x60; - latitude / longitude coordinate or address - &#x60;BIKESHARE&#x60; - bike sharing station - &#x60;TRANSIT&#x60; - transit stop 

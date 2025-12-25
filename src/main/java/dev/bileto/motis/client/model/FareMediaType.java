@@ -15,13 +15,11 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Locale;
 
 /**
  * - &#x60;NONE&#x60;: No fare media involved (e.g., cash payment) - &#x60;PAPER_TICKET&#x60;: Physical paper ticket - &#x60;TRANSIT_CARD&#x60;: Physical transit card with stored value - &#x60;CONTACTLESS_EMV&#x60;: cEMV (contactless payment) - &#x60;MOBILE_APP&#x60;: Mobile app with virtual transit cards/passes 

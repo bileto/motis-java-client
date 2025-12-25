@@ -15,7 +15,6 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -45,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Plan200Response.JSON_PROPERTY_NEXT_PAGE_CURSOR
 })
 @JsonTypeName("plan_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class Plan200Response {
   public static final String JSON_PROPERTY_REQUEST_PARAMETERS = "requestParameters";
   @jakarta.annotation.Nonnull

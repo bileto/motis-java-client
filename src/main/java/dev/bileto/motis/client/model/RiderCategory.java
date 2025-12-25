@@ -15,7 +15,6 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RiderCategory.JSON_PROPERTY_IS_DEFAULT_FARE_CATEGORY,
   RiderCategory.JSON_PROPERTY_ELIGIBILITY_URL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class RiderCategory {
   public static final String JSON_PROPERTY_RIDER_CATEGORY_NAME = "riderCategoryName";
   @jakarta.annotation.Nonnull

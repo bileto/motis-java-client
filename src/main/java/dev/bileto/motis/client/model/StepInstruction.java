@@ -15,7 +15,6 @@ package dev.bileto.motis.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -46,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StepInstruction.JSON_PROPERTY_ELEVATION_UP,
   StepInstruction.JSON_PROPERTY_ELEVATION_DOWN
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class StepInstruction {
   public static final String JSON_PROPERTY_RELATIVE_DIRECTION = "relativeDirection";
   @jakarta.annotation.Nonnull
