@@ -124,7 +124,10 @@ public class MapApi {
     /**
      * Get all available levels for a map section
      * 
+     * <p><b>500</b> - Internal Server Error
+     * <p><b>422</b> - Unprocessable Entity
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
      * <p><b>200</b> - array of available levels
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -168,7 +171,10 @@ public class MapApi {
     /**
      * Get all available levels for a map section
      * 
+     * <p><b>500</b> - Internal Server Error
+     * <p><b>422</b> - Unprocessable Entity
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
      * <p><b>200</b> - array of available levels
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -183,7 +189,10 @@ public class MapApi {
     /**
      * Get all available levels for a map section
      * 
+     * <p><b>500</b> - Internal Server Error
+     * <p><b>422</b> - Unprocessable Entity
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
      * <p><b>200</b> - array of available levels
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -198,7 +207,10 @@ public class MapApi {
     /**
      * Get all available levels for a map section
      * 
+     * <p><b>500</b> - Internal Server Error
+     * <p><b>422</b> - Unprocessable Entity
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
      * <p><b>200</b> - array of available levels
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -332,7 +344,10 @@ public class MapApi {
     /**
      * Get all stops for a map section
      * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -378,7 +393,10 @@ public class MapApi {
     /**
      * Get all stops for a map section
      * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -394,7 +412,10 @@ public class MapApi {
     /**
      * Get all stops for a map section
      * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -410,7 +431,10 @@ public class MapApi {
     /**
      * Get all stops for a map section
      * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
@@ -425,7 +449,10 @@ public class MapApi {
     /**
      * Given a area frame (box defined by top right and bottom left corner) and a time frame, it returns all trips and their respective shapes that operate in this area + time frame. Trips are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
+     * <p><b>422</b> - Unprocessable Entity
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
      * <p><b>200</b> - a list of trips
      * @param zoom current zoom level
      * @param min latitude,longitude pair of the lower right coordinate
@@ -489,7 +516,10 @@ public class MapApi {
     /**
      * Given a area frame (box defined by top right and bottom left corner) and a time frame, it returns all trips and their respective shapes that operate in this area + time frame. Trips are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
+     * <p><b>422</b> - Unprocessable Entity
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
      * <p><b>200</b> - a list of trips
      * @param zoom current zoom level
      * @param min latitude,longitude pair of the lower right coordinate
@@ -508,7 +538,10 @@ public class MapApi {
     /**
      * Given a area frame (box defined by top right and bottom left corner) and a time frame, it returns all trips and their respective shapes that operate in this area + time frame. Trips are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
+     * <p><b>422</b> - Unprocessable Entity
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
      * <p><b>200</b> - a list of trips
      * @param zoom current zoom level
      * @param min latitude,longitude pair of the lower right coordinate
@@ -527,7 +560,10 @@ public class MapApi {
     /**
      * Given a area frame (box defined by top right and bottom left corner) and a time frame, it returns all trips and their respective shapes that operate in this area + time frame. Trips are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
+     * <p><b>422</b> - Unprocessable Entity
      * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
      * <p><b>200</b> - a list of trips
      * @param zoom current zoom level
      * @param min latitude,longitude pair of the lower right coordinate

@@ -51,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_DISTANCE,
   Leg.JSON_PROPERTY_INTERLINE_WITH_PREVIOUS_LEG,
   Leg.JSON_PROPERTY_HEADSIGN,
+  Leg.JSON_PROPERTY_TRIP_FROM,
   Leg.JSON_PROPERTY_TRIP_TO,
   Leg.JSON_PROPERTY_ROUTE_ID,
   Leg.JSON_PROPERTY_DIRECTION_ID,
@@ -74,7 +75,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_FARE_TRANSFER_INDEX,
   Leg.JSON_PROPERTY_EFFECTIVE_FARE_LEG_INDEX,
   Leg.JSON_PROPERTY_ALERTS,
-  Leg.JSON_PROPERTY_LOOPED_CALENDAR_SINCE
+  Leg.JSON_PROPERTY_LOOPED_CALENDAR_SINCE,
+  Leg.JSON_PROPERTY_BIKES_ALLOWED
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class Leg {
@@ -129,6 +131,10 @@ public class Leg {
   public static final String JSON_PROPERTY_HEADSIGN = "headsign";
   @jakarta.annotation.Nullable
   private String headsign;
+
+  public static final String JSON_PROPERTY_TRIP_FROM = "tripFrom";
+  @jakarta.annotation.Nullable
+  private Place tripFrom;
 
   public static final String JSON_PROPERTY_TRIP_TO = "tripTo";
   @jakarta.annotation.Nullable
@@ -225,6 +231,10 @@ public class Leg {
   public static final String JSON_PROPERTY_LOOPED_CALENDAR_SINCE = "loopedCalendarSince";
   @jakarta.annotation.Nullable
   private OffsetDateTime loopedCalendarSince;
+
+  public static final String JSON_PROPERTY_BIKES_ALLOWED = "bikesAllowed";
+  @jakarta.annotation.Nullable
+  private Boolean bikesAllowed;
 
   public Leg() {
   }
@@ -552,6 +562,31 @@ public class Leg {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHeadsign(@jakarta.annotation.Nullable String headsign) {
     this.headsign = headsign;
+  }
+
+  public Leg tripFrom(@jakarta.annotation.Nullable Place tripFrom) {
+    
+    this.tripFrom = tripFrom;
+    return this;
+  }
+
+  /**
+   * first stop of this trip
+   * @return tripFrom
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TRIP_FROM, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Place getTripFrom() {
+    return tripFrom;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TRIP_FROM, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTripFrom(@jakarta.annotation.Nullable Place tripFrom) {
+    this.tripFrom = tripFrom;
   }
 
   public Leg tripTo(@jakarta.annotation.Nullable Place tripTo) {
@@ -1178,6 +1213,31 @@ public class Leg {
     this.loopedCalendarSince = loopedCalendarSince;
   }
 
+  public Leg bikesAllowed(@jakarta.annotation.Nullable Boolean bikesAllowed) {
+    
+    this.bikesAllowed = bikesAllowed;
+    return this;
+  }
+
+  /**
+   * Whether bikes can be carried on this leg. 
+   * @return bikesAllowed
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_BIKES_ALLOWED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getBikesAllowed() {
+    return bikesAllowed;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BIKES_ALLOWED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBikesAllowed(@jakarta.annotation.Nullable Boolean bikesAllowed) {
+    this.bikesAllowed = bikesAllowed;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -1201,6 +1261,7 @@ public class Leg {
         Objects.equals(this.distance, leg.distance) &&
         Objects.equals(this.interlineWithPreviousLeg, leg.interlineWithPreviousLeg) &&
         Objects.equals(this.headsign, leg.headsign) &&
+        Objects.equals(this.tripFrom, leg.tripFrom) &&
         Objects.equals(this.tripTo, leg.tripTo) &&
         Objects.equals(this.routeId, leg.routeId) &&
         Objects.equals(this.directionId, leg.directionId) &&
@@ -1224,12 +1285,13 @@ public class Leg {
         Objects.equals(this.fareTransferIndex, leg.fareTransferIndex) &&
         Objects.equals(this.effectiveFareLegIndex, leg.effectiveFareLegIndex) &&
         Objects.equals(this.alerts, leg.alerts) &&
-        Objects.equals(this.loopedCalendarSince, leg.loopedCalendarSince);
+        Objects.equals(this.loopedCalendarSince, leg.loopedCalendarSince) &&
+        Objects.equals(this.bikesAllowed, leg.bikesAllowed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mode, from, to, duration, startTime, endTime, scheduledStartTime, scheduledEndTime, realTime, scheduled, distance, interlineWithPreviousLeg, headsign, tripTo, routeId, directionId, routeColor, routeTextColor, routeType, agencyName, agencyUrl, agencyId, tripId, routeShortName, routeLongName, tripShortName, displayName, cancelled, source, intermediateStops, legGeometry, steps, rental, fareTransferIndex, effectiveFareLegIndex, alerts, loopedCalendarSince);
+    return Objects.hash(mode, from, to, duration, startTime, endTime, scheduledStartTime, scheduledEndTime, realTime, scheduled, distance, interlineWithPreviousLeg, headsign, tripFrom, tripTo, routeId, directionId, routeColor, routeTextColor, routeType, agencyName, agencyUrl, agencyId, tripId, routeShortName, routeLongName, tripShortName, displayName, cancelled, source, intermediateStops, legGeometry, steps, rental, fareTransferIndex, effectiveFareLegIndex, alerts, loopedCalendarSince, bikesAllowed);
   }
 
   @Override
@@ -1249,6 +1311,7 @@ public class Leg {
     sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
     sb.append("    interlineWithPreviousLeg: ").append(toIndentedString(interlineWithPreviousLeg)).append("\n");
     sb.append("    headsign: ").append(toIndentedString(headsign)).append("\n");
+    sb.append("    tripFrom: ").append(toIndentedString(tripFrom)).append("\n");
     sb.append("    tripTo: ").append(toIndentedString(tripTo)).append("\n");
     sb.append("    routeId: ").append(toIndentedString(routeId)).append("\n");
     sb.append("    directionId: ").append(toIndentedString(directionId)).append("\n");
@@ -1273,6 +1336,7 @@ public class Leg {
     sb.append("    effectiveFareLegIndex: ").append(toIndentedString(effectiveFareLegIndex)).append("\n");
     sb.append("    alerts: ").append(toIndentedString(alerts)).append("\n");
     sb.append("    loopedCalendarSince: ").append(toIndentedString(loopedCalendarSince)).append("\n");
+    sb.append("    bikesAllowed: ").append(toIndentedString(bikesAllowed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

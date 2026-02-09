@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StopTime.JSON_PROPERTY_MODE,
   StopTime.JSON_PROPERTY_REAL_TIME,
   StopTime.JSON_PROPERTY_HEADSIGN,
+  StopTime.JSON_PROPERTY_TRIP_FROM,
   StopTime.JSON_PROPERTY_TRIP_TO,
   StopTime.JSON_PROPERTY_AGENCY_ID,
   StopTime.JSON_PROPERTY_AGENCY_NAME,
@@ -75,6 +76,10 @@ public class StopTime {
   public static final String JSON_PROPERTY_HEADSIGN = "headsign";
   @jakarta.annotation.Nonnull
   private String headsign;
+
+  public static final String JSON_PROPERTY_TRIP_FROM = "tripFrom";
+  @jakarta.annotation.Nonnull
+  private Place tripFrom;
 
   public static final String JSON_PROPERTY_TRIP_TO = "tripTo";
   @jakarta.annotation.Nonnull
@@ -257,6 +262,31 @@ public class StopTime {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHeadsign(@jakarta.annotation.Nonnull String headsign) {
     this.headsign = headsign;
+  }
+
+  public StopTime tripFrom(@jakarta.annotation.Nonnull Place tripFrom) {
+    
+    this.tripFrom = tripFrom;
+    return this;
+  }
+
+  /**
+   * first stop of this trip
+   * @return tripFrom
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TRIP_FROM, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Place getTripFrom() {
+    return tripFrom;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TRIP_FROM, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTripFrom(@jakarta.annotation.Nonnull Place tripFrom) {
+    this.tripFrom = tripFrom;
   }
 
   public StopTime tripTo(@jakarta.annotation.Nonnull Place tripTo) {
@@ -789,6 +819,7 @@ public class StopTime {
         Objects.equals(this.mode, stopTime.mode) &&
         Objects.equals(this.realTime, stopTime.realTime) &&
         Objects.equals(this.headsign, stopTime.headsign) &&
+        Objects.equals(this.tripFrom, stopTime.tripFrom) &&
         Objects.equals(this.tripTo, stopTime.tripTo) &&
         Objects.equals(this.agencyId, stopTime.agencyId) &&
         Objects.equals(this.agencyName, stopTime.agencyName) &&
@@ -813,7 +844,7 @@ public class StopTime {
 
   @Override
   public int hashCode() {
-    return Objects.hash(place, mode, realTime, headsign, tripTo, agencyId, agencyName, agencyUrl, routeId, directionId, routeColor, routeTextColor, tripId, routeType, routeShortName, routeLongName, tripShortName, displayName, previousStops, nextStops, pickupDropoffType, cancelled, tripCancelled, source);
+    return Objects.hash(place, mode, realTime, headsign, tripFrom, tripTo, agencyId, agencyName, agencyUrl, routeId, directionId, routeColor, routeTextColor, tripId, routeType, routeShortName, routeLongName, tripShortName, displayName, previousStops, nextStops, pickupDropoffType, cancelled, tripCancelled, source);
   }
 
   @Override
@@ -824,6 +855,7 @@ public class StopTime {
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("    realTime: ").append(toIndentedString(realTime)).append("\n");
     sb.append("    headsign: ").append(toIndentedString(headsign)).append("\n");
+    sb.append("    tripFrom: ").append(toIndentedString(tripFrom)).append("\n");
     sb.append("    tripTo: ").append(toIndentedString(tripTo)).append("\n");
     sb.append("    agencyId: ").append(toIndentedString(agencyId)).append("\n");
     sb.append("    agencyName: ").append(toIndentedString(agencyName)).append("\n");

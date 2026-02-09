@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import dev.bileto.motis.client.model.Alert;
+import dev.bileto.motis.client.model.Mode;
 import dev.bileto.motis.client.model.PickupDropoffType;
 import dev.bileto.motis.client.model.VertexType;
 import java.math.BigDecimal;
@@ -58,7 +59,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Place.JSON_PROPERTY_FLEX,
   Place.JSON_PROPERTY_FLEX_ID,
   Place.JSON_PROPERTY_FLEX_START_PICKUP_DROP_OFF_WINDOW,
-  Place.JSON_PROPERTY_FLEX_END_PICKUP_DROP_OFF_WINDOW
+  Place.JSON_PROPERTY_FLEX_END_PICKUP_DROP_OFF_WINDOW,
+  Place.JSON_PROPERTY_MODES
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class Place {
@@ -157,6 +159,10 @@ public class Place {
   public static final String JSON_PROPERTY_FLEX_END_PICKUP_DROP_OFF_WINDOW = "flexEndPickupDropOffWindow";
   @jakarta.annotation.Nullable
   private OffsetDateTime flexEndPickupDropOffWindow;
+
+  public static final String JSON_PROPERTY_MODES = "modes";
+  @jakarta.annotation.Nullable
+  private List<Mode> modes = new ArrayList<>();
 
   public Place() {
   }
@@ -769,6 +775,39 @@ public class Place {
     this.flexEndPickupDropOffWindow = flexEndPickupDropOffWindow;
   }
 
+  public Place modes(@jakarta.annotation.Nullable List<Mode> modes) {
+    
+    this.modes = modes;
+    return this;
+  }
+
+  public Place addModesItem(Mode modesItem) {
+    if (this.modes == null) {
+      this.modes = new ArrayList<>();
+    }
+    this.modes.add(modesItem);
+    return this;
+  }
+
+  /**
+   * available transport modes for stops
+   * @return modes
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MODES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Mode> getModes() {
+    return modes;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MODES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setModes(@jakarta.annotation.Nullable List<Mode> modes) {
+    this.modes = modes;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -802,12 +841,13 @@ public class Place {
         Objects.equals(this.flex, place.flex) &&
         Objects.equals(this.flexId, place.flexId) &&
         Objects.equals(this.flexStartPickupDropOffWindow, place.flexStartPickupDropOffWindow) &&
-        Objects.equals(this.flexEndPickupDropOffWindow, place.flexEndPickupDropOffWindow);
+        Objects.equals(this.flexEndPickupDropOffWindow, place.flexEndPickupDropOffWindow) &&
+        Objects.equals(this.modes, place.modes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, stopId, parentId, importance, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow);
+    return Objects.hash(name, stopId, parentId, importance, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow, modes);
   }
 
   @Override
@@ -838,6 +878,7 @@ public class Place {
     sb.append("    flexId: ").append(toIndentedString(flexId)).append("\n");
     sb.append("    flexStartPickupDropOffWindow: ").append(toIndentedString(flexStartPickupDropOffWindow)).append("\n");
     sb.append("    flexEndPickupDropOffWindow: ").append(toIndentedString(flexEndPickupDropOffWindow)).append("\n");
+    sb.append("    modes: ").append(toIndentedString(modes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

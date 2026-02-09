@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * # Street modes    - &#x60;WALK&#x60;   - &#x60;BIKE&#x60;   - &#x60;RENTAL&#x60; Experimental. Expect unannounced breaking changes (without version bumps) for all parameters and returned structs.   - &#x60;CAR&#x60;   - &#x60;CAR_PARKING&#x60; Experimental. Expect unannounced breaking changes (without version bumps) for all parameters and returned structs.   - &#x60;CAR_DROPOFF&#x60; Experimental. Expect unannounced breaking changes (without version bumps) for all perameters and returned structs.   - &#x60;ODM&#x60; on-demand taxis from the Prima+ÖV Project   - &#x60;RIDE_SHARING&#x60; ride sharing from the Prima+ÖV Project   - &#x60;FLEX&#x60; flexible transports  # Transit modes    - &#x60;TRANSIT&#x60;: translates to &#x60;RAIL,TRAM,BUS,FERRY,AIRPLANE,COACH,CABLE_CAR,FUNICULAR,AREAL_LIFT,OTHER&#x60;   - &#x60;TRAM&#x60;: trams   - &#x60;SUBWAY&#x60;: subway trains (Paris Metro, London Underground, but also NYC Subway, Hamburger Hochbahn, and other non-underground services)   - &#x60;FERRY&#x60;: ferries   - &#x60;AIRPLANE&#x60;: airline flights   - &#x60;BUS&#x60;: short distance buses (does not include &#x60;COACH&#x60;)   - &#x60;COACH&#x60;: long distance buses (does not include &#x60;BUS&#x60;)   - &#x60;RAIL&#x60;: translates to &#x60;HIGHSPEED_RAIL,LONG_DISTANCE,NIGHT_RAIL,REGIONAL_RAIL,REGIONAL_FAST_RAIL,SUBURBAN,SUBWAY&#x60;   - &#x60;SUBURBAN&#x60;: suburban trains (e.g. S-Bahn, RER, Elizabeth Line, ...)   - &#x60;HIGHSPEED_RAIL&#x60;: long distance high speed trains (e.g. TGV)   - &#x60;LONG_DISTANCE&#x60;: long distance inter city trains   - &#x60;NIGHT_RAIL&#x60;: long distance night trains   - &#x60;REGIONAL_FAST_RAIL&#x60;: regional express routes that skip low traffic stops to be faster   - &#x60;REGIONAL_RAIL&#x60;: regional train   - &#x60;FUNICULAR&#x60;: Funicular. Any rail system designed for steep inclines.   - &#x60;AERIAL_LIFT&#x60;: Aerial lift, suspended cable car (e.g., gondola lift, aerial tramway). Cable transport where cabins, cars, gondolas or open chairs are suspended by means of one or more cables.   - &#x60;ODM&#x60;: demand responsive transport   - &#x60;AREAL_LIFT&#x60;: deprecated   - &#x60;METRO&#x60;: deprecated   - &#x60;CABLE_CAR&#x60;: deprecated 
+ * # Street modes    - &#x60;WALK&#x60;   - &#x60;BIKE&#x60;   - &#x60;RENTAL&#x60; Experimental. Expect unannounced breaking changes (without version bumps) for all parameters and returned structs.   - &#x60;CAR&#x60;   - &#x60;CAR_PARKING&#x60; Experimental. Expect unannounced breaking changes (without version bumps) for all parameters and returned structs.   - &#x60;CAR_DROPOFF&#x60; Experimental. Expect unannounced breaking changes (without version bumps) for all perameters and returned structs.   - &#x60;ODM&#x60; on-demand taxis from the Prima+ÖV Project   - &#x60;RIDE_SHARING&#x60; ride sharing from the Prima+ÖV Project   - &#x60;FLEX&#x60; flexible transports  # Transit modes    - &#x60;TRANSIT&#x60;: translates to &#x60;TRAM,FERRY,AIRPLANE,BUS,COACH,RAIL,ODM,FUNICULAR,AERIAL_LIFT,OTHER&#x60;   - &#x60;TRAM&#x60;: trams   - &#x60;SUBWAY&#x60;: subway trains (Paris Metro, London Underground, but also NYC Subway, Hamburger Hochbahn, and other non-underground services)   - &#x60;FERRY&#x60;: ferries   - &#x60;AIRPLANE&#x60;: airline flights   - &#x60;BUS&#x60;: short distance buses (does not include &#x60;COACH&#x60;)   - &#x60;COACH&#x60;: long distance buses (does not include &#x60;BUS&#x60;)   - &#x60;RAIL&#x60;: translates to &#x60;HIGHSPEED_RAIL,LONG_DISTANCE,NIGHT_RAIL,REGIONAL_RAIL,REGIONAL_FAST_RAIL,SUBURBAN,SUBWAY&#x60;   - &#x60;HIGHSPEED_RAIL&#x60;: long distance high speed trains (e.g. TGV)   - &#x60;LONG_DISTANCE&#x60;: long distance inter city trains   - &#x60;NIGHT_RAIL&#x60;: long distance night trains   - &#x60;REGIONAL_FAST_RAIL&#x60;: regional express routes that skip low traffic stops to be faster   - &#x60;REGIONAL_RAIL&#x60;: regional train   - &#x60;SUBURBAN&#x60;: suburban trains (e.g. S-Bahn, RER, Elizabeth Line, ...)   - &#x60;ODM&#x60;: demand responsive transport   - &#x60;FUNICULAR&#x60;: Funicular. Any rail system designed for steep inclines.   - &#x60;AERIAL_LIFT&#x60;: Aerial lift, suspended cable car (e.g., gondola lift, aerial tramway). Cable transport where cabins, cars, gondolas or open chairs are suspended by means of one or more cables.   - &#x60;AREAL_LIFT&#x60;: deprecated   - &#x60;METRO&#x60;: deprecated   - &#x60;CABLE_CAR&#x60;: deprecated 
  */
 public enum Mode {
   
@@ -54,8 +54,6 @@ public enum Mode {
   
   AIRPLANE("AIRPLANE"),
   
-  SUBURBAN("SUBURBAN"),
-  
   BUS("BUS"),
   
   COACH("COACH"),
@@ -72,7 +70,7 @@ public enum Mode {
   
   REGIONAL_RAIL("REGIONAL_RAIL"),
   
-  CABLE_CAR("CABLE_CAR"),
+  SUBURBAN("SUBURBAN"),
   
   FUNICULAR("FUNICULAR"),
   
@@ -82,7 +80,9 @@ public enum Mode {
   
   AREAL_LIFT("AREAL_LIFT"),
   
-  METRO("METRO");
+  METRO("METRO"),
+  
+  CABLE_CAR("CABLE_CAR");
 
   private String value;
 

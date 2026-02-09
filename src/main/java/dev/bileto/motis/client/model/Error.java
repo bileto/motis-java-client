@@ -32,34 +32,34 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class Error {
   public static final String JSON_PROPERTY_ERROR = "error";
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   private String error;
 
   public Error() {
   }
 
-  public Error error(@jakarta.annotation.Nullable String error) {
+  public Error error(@jakarta.annotation.Nonnull String error) {
     
     this.error = error;
     return this;
   }
 
   /**
-   * Get error
+   * error message
    * @return error
    */
-  @jakarta.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getError() {
     return error;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@jakarta.annotation.Nullable String error) {
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setError(@jakarta.annotation.Nonnull String error) {
     this.error = error;
   }
 
