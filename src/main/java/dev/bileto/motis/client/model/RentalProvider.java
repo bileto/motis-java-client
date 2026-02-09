@@ -47,7 +47,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RentalProvider.JSON_PROPERTY_DEFAULT_RESTRICTIONS,
   RentalProvider.JSON_PROPERTY_GLOBAL_GEOFENCING_RULES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class RentalProvider {
   public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nonnull

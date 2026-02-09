@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Rental.JSON_PROPERTY_PROPULSION_TYPE,
   Rental.JSON_PROPERTY_RETURN_CONSTRAINT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class Rental {
   public static final String JSON_PROPERTY_PROVIDER_ID = "providerId";
   @jakarta.annotation.Nonnull

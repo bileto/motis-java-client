@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   OneToManyParams.JSON_PROPERTY_ELEVATION_COSTS,
   OneToManyParams.JSON_PROPERTY_ARRIVE_BY
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class OneToManyParams {
   public static final String JSON_PROPERTY_ONE = "one";
   @jakarta.annotation.Nonnull

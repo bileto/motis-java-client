@@ -78,7 +78,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_LOOPED_CALENDAR_SINCE,
   Leg.JSON_PROPERTY_BIKES_ALLOWED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class Leg {
   public static final String JSON_PROPERTY_MODE = "mode";
   @jakarta.annotation.Nonnull

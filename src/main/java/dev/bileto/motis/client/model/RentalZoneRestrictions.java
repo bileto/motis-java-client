@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RentalZoneRestrictions.JSON_PROPERTY_RIDE_THROUGH_ALLOWED,
   RentalZoneRestrictions.JSON_PROPERTY_STATION_PARKING
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class RentalZoneRestrictions {
   public static final String JSON_PROPERTY_VEHICLE_TYPE_IDXS = "vehicleTypeIdxs";
   @jakarta.annotation.Nonnull

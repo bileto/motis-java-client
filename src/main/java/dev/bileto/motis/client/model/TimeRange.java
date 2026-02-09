@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   TimeRange.JSON_PROPERTY_START,
   TimeRange.JSON_PROPERTY_END
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class TimeRange {
   public static final String JSON_PROPERTY_START = "start";
   @jakarta.annotation.Nonnull

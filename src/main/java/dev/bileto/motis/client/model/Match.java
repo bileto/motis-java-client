@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Match.JSON_PROPERTY_MODES,
   Match.JSON_PROPERTY_IMPORTANCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class Match {
   public static final String JSON_PROPERTY_TYPE = "type";
   @jakarta.annotation.Nonnull

@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RentalZone.JSON_PROPERTY_AREA,
   RentalZone.JSON_PROPERTY_RULES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class RentalZone {
   public static final String JSON_PROPERTY_PROVIDER_ID = "providerId";
   @jakarta.annotation.Nonnull

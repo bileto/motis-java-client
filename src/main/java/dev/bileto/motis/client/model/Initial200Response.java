@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Initial200Response.JSON_PROPERTY_SERVER_CONFIG
 })
 @JsonTypeName("initial_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class Initial200Response {
   public static final String JSON_PROPERTY_LAT = "lat";
   @jakarta.annotation.Nonnull

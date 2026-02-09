@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Alert.JSON_PROPERTY_IMAGE_MEDIA_TYPE,
   Alert.JSON_PROPERTY_IMAGE_ALTERNATIVE_TEXT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class Alert {
   public static final String JSON_PROPERTY_CODE = "code";
   @jakarta.annotation.Nullable
