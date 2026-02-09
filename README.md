@@ -70,8 +70,8 @@ repositories {
         name = "GitHubPackages"
         url = uri("https://maven.pkg.github.com/bileto/motis-java-client")
         credentials {
-            username = System.getenv("GITHUB_USERNAME") ?: project.findProperty("gpr.user")
-            password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")
+            username = System.getenv("GITHUB_USERNAME") ?: project.findProperty("GITHUB_USERNAME")
+            password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("GITHUB_TOKEN")
         }
     }
 }
