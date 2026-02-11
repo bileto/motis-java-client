@@ -13,10 +13,12 @@ In order to sync local MOTIS repo with the commit specified in project, run
 git submodule update --init --recursive
 ```
 
-In order to download latest MOTIS changes, run 
+In order to download given tag version of MOTIS changes, run following commands:
 
 ```shell
-git submodule foreach git pull origin master
+cd ext/motis
+git fetch --tags
+git checkout tags/vX.X.X
 ```
 
 To generate code based on the current `ext/motis/openapi.yaml`, run
