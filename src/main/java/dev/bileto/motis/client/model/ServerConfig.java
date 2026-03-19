@@ -31,11 +31,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ServerConfig.JSON_PROPERTY_HAS_ELEVATION,
   ServerConfig.JSON_PROPERTY_HAS_ROUTED_TRANSFERS,
   ServerConfig.JSON_PROPERTY_HAS_STREET_ROUTING,
+  ServerConfig.JSON_PROPERTY_MAX_ONE_TO_MANY_SIZE,
   ServerConfig.JSON_PROPERTY_MAX_ONE_TO_ALL_TRAVEL_TIME_LIMIT,
   ServerConfig.JSON_PROPERTY_MAX_PRE_POST_TRANSIT_TIME_LIMIT,
-  ServerConfig.JSON_PROPERTY_MAX_DIRECT_TIME_LIMIT
+  ServerConfig.JSON_PROPERTY_MAX_DIRECT_TIME_LIMIT,
+  ServerConfig.JSON_PROPERTY_SHAPES_DEBUG_ENABLED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ServerConfig {
   public static final String JSON_PROPERTY_HAS_ELEVATION = "hasElevation";
   @jakarta.annotation.Nonnull
@@ -49,8 +51,12 @@ public class ServerConfig {
   @jakarta.annotation.Nonnull
   private Boolean hasStreetRouting;
 
+  public static final String JSON_PROPERTY_MAX_ONE_TO_MANY_SIZE = "maxOneToManySize";
+  @jakarta.annotation.Nonnull
+  private BigDecimal maxOneToManySize;
+
   public static final String JSON_PROPERTY_MAX_ONE_TO_ALL_TRAVEL_TIME_LIMIT = "maxOneToAllTravelTimeLimit";
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   private BigDecimal maxOneToAllTravelTimeLimit;
 
   public static final String JSON_PROPERTY_MAX_PRE_POST_TRANSIT_TIME_LIMIT = "maxPrePostTransitTimeLimit";
@@ -60,6 +66,10 @@ public class ServerConfig {
   public static final String JSON_PROPERTY_MAX_DIRECT_TIME_LIMIT = "maxDirectTimeLimit";
   @jakarta.annotation.Nonnull
   private BigDecimal maxDirectTimeLimit;
+
+  public static final String JSON_PROPERTY_SHAPES_DEBUG_ENABLED = "shapesDebugEnabled";
+  @jakarta.annotation.Nonnull
+  private Boolean shapesDebugEnabled;
 
   public ServerConfig() {
   }
@@ -139,7 +149,32 @@ public class ServerConfig {
     this.hasStreetRouting = hasStreetRouting;
   }
 
-  public ServerConfig maxOneToAllTravelTimeLimit(@jakarta.annotation.Nullable BigDecimal maxOneToAllTravelTimeLimit) {
+  public ServerConfig maxOneToManySize(@jakarta.annotation.Nonnull BigDecimal maxOneToManySize) {
+    
+    this.maxOneToManySize = maxOneToManySize;
+    return this;
+  }
+
+  /**
+   * limit for the number of &#x60;many&#x60; locations for one-to-many requests 
+   * @return maxOneToManySize
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_MAX_ONE_TO_MANY_SIZE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public BigDecimal getMaxOneToManySize() {
+    return maxOneToManySize;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAX_ONE_TO_MANY_SIZE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMaxOneToManySize(@jakarta.annotation.Nonnull BigDecimal maxOneToManySize) {
+    this.maxOneToManySize = maxOneToManySize;
+  }
+
+  public ServerConfig maxOneToAllTravelTimeLimit(@jakarta.annotation.Nonnull BigDecimal maxOneToAllTravelTimeLimit) {
     
     this.maxOneToAllTravelTimeLimit = maxOneToAllTravelTimeLimit;
     return this;
@@ -149,18 +184,18 @@ public class ServerConfig {
    * limit for maxTravelTime API param in minutes
    * @return maxOneToAllTravelTimeLimit
    */
-  @jakarta.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_MAX_ONE_TO_ALL_TRAVEL_TIME_LIMIT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_MAX_ONE_TO_ALL_TRAVEL_TIME_LIMIT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getMaxOneToAllTravelTimeLimit() {
     return maxOneToAllTravelTimeLimit;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_MAX_ONE_TO_ALL_TRAVEL_TIME_LIMIT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxOneToAllTravelTimeLimit(@jakarta.annotation.Nullable BigDecimal maxOneToAllTravelTimeLimit) {
+  @JsonProperty(value = JSON_PROPERTY_MAX_ONE_TO_ALL_TRAVEL_TIME_LIMIT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMaxOneToAllTravelTimeLimit(@jakarta.annotation.Nonnull BigDecimal maxOneToAllTravelTimeLimit) {
     this.maxOneToAllTravelTimeLimit = maxOneToAllTravelTimeLimit;
   }
 
@@ -214,6 +249,31 @@ public class ServerConfig {
     this.maxDirectTimeLimit = maxDirectTimeLimit;
   }
 
+  public ServerConfig shapesDebugEnabled(@jakarta.annotation.Nonnull Boolean shapesDebugEnabled) {
+    
+    this.shapesDebugEnabled = shapesDebugEnabled;
+    return this;
+  }
+
+  /**
+   * true if experimental route shapes debug download API is enabled
+   * @return shapesDebugEnabled
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_SHAPES_DEBUG_ENABLED, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Boolean getShapesDebugEnabled() {
+    return shapesDebugEnabled;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SHAPES_DEBUG_ENABLED, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setShapesDebugEnabled(@jakarta.annotation.Nonnull Boolean shapesDebugEnabled) {
+    this.shapesDebugEnabled = shapesDebugEnabled;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -227,14 +287,16 @@ public class ServerConfig {
     return Objects.equals(this.hasElevation, serverConfig.hasElevation) &&
         Objects.equals(this.hasRoutedTransfers, serverConfig.hasRoutedTransfers) &&
         Objects.equals(this.hasStreetRouting, serverConfig.hasStreetRouting) &&
+        Objects.equals(this.maxOneToManySize, serverConfig.maxOneToManySize) &&
         Objects.equals(this.maxOneToAllTravelTimeLimit, serverConfig.maxOneToAllTravelTimeLimit) &&
         Objects.equals(this.maxPrePostTransitTimeLimit, serverConfig.maxPrePostTransitTimeLimit) &&
-        Objects.equals(this.maxDirectTimeLimit, serverConfig.maxDirectTimeLimit);
+        Objects.equals(this.maxDirectTimeLimit, serverConfig.maxDirectTimeLimit) &&
+        Objects.equals(this.shapesDebugEnabled, serverConfig.shapesDebugEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasElevation, hasRoutedTransfers, hasStreetRouting, maxOneToAllTravelTimeLimit, maxPrePostTransitTimeLimit, maxDirectTimeLimit);
+    return Objects.hash(hasElevation, hasRoutedTransfers, hasStreetRouting, maxOneToManySize, maxOneToAllTravelTimeLimit, maxPrePostTransitTimeLimit, maxDirectTimeLimit, shapesDebugEnabled);
   }
 
   @Override
@@ -244,9 +306,11 @@ public class ServerConfig {
     sb.append("    hasElevation: ").append(toIndentedString(hasElevation)).append("\n");
     sb.append("    hasRoutedTransfers: ").append(toIndentedString(hasRoutedTransfers)).append("\n");
     sb.append("    hasStreetRouting: ").append(toIndentedString(hasStreetRouting)).append("\n");
+    sb.append("    maxOneToManySize: ").append(toIndentedString(maxOneToManySize)).append("\n");
     sb.append("    maxOneToAllTravelTimeLimit: ").append(toIndentedString(maxOneToAllTravelTimeLimit)).append("\n");
     sb.append("    maxPrePostTransitTimeLimit: ").append(toIndentedString(maxPrePostTransitTimeLimit)).append("\n");
     sb.append("    maxDirectTimeLimit: ").append(toIndentedString(maxDirectTimeLimit)).append("\n");
+    sb.append("    shapesDebugEnabled: ").append(toIndentedString(shapesDebugEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

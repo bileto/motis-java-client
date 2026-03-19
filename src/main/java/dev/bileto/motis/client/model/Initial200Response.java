@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Initial200Response.JSON_PROPERTY_SERVER_CONFIG
 })
 @JsonTypeName("initial_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Initial200Response {
   public static final String JSON_PROPERTY_LAT = "lat";
   @jakarta.annotation.Nonnull
@@ -50,7 +50,7 @@ public class Initial200Response {
   private BigDecimal zoom;
 
   public static final String JSON_PROPERTY_SERVER_CONFIG = "serverConfig";
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   private ServerConfig serverConfig;
 
   public Initial200Response() {
@@ -131,7 +131,7 @@ public class Initial200Response {
     this.zoom = zoom;
   }
 
-  public Initial200Response serverConfig(@jakarta.annotation.Nullable ServerConfig serverConfig) {
+  public Initial200Response serverConfig(@jakarta.annotation.Nonnull ServerConfig serverConfig) {
     
     this.serverConfig = serverConfig;
     return this;
@@ -141,18 +141,18 @@ public class Initial200Response {
    * Get serverConfig
    * @return serverConfig
    */
-  @jakarta.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SERVER_CONFIG, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_SERVER_CONFIG, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public ServerConfig getServerConfig() {
     return serverConfig;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_SERVER_CONFIG, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServerConfig(@jakarta.annotation.Nullable ServerConfig serverConfig) {
+  @JsonProperty(value = JSON_PROPERTY_SERVER_CONFIG, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setServerConfig(@jakarta.annotation.Nonnull ServerConfig serverConfig) {
     this.serverConfig = serverConfig;
   }
 

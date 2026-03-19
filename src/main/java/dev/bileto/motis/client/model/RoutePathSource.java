@@ -11,41 +11,51 @@
  */
 
 
-package dev.bileto.motis.client.auth;
+package dev.bileto.motis.client.model;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.util.MultiValueMap;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class HttpBasicAuth implements Authentication {
-    private String username;
-    private String password;
+/**
+ * Gets or Sets RoutePathSource
+ */
+public enum RoutePathSource {
+  
+  NONE("NONE"),
+  
+  TIMETABLE("TIMETABLE"),
+  
+  ROUTED("ROUTED");
 
-    public String getUsername() {
-        return username;
+  private String value;
+
+  RoutePathSource(String value) {
+    this.value = value;
+  }
+
+  @JsonValue
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  @JsonCreator
+  public static RoutePathSource fromValue(String value) {
+    for (RoutePathSource b : RoutePathSource.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
     }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public void applyToParams(MultiValueMap<String, String> queryParams, HttpHeaders headerParams, MultiValueMap<String, String> cookieParams) {
-        if (username == null && password == null) {
-            return;
-        }
-        String str = (username == null ? "" : username) + ":" + (password == null ? "" : password);
-        headerParams.add(HttpHeaders.AUTHORIZATION, "Basic " + Base64.getEncoder().encodeToString(str.getBytes(StandardCharsets.UTF_8)));
-    }
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+  }
 }
+

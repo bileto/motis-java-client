@@ -20,47 +20,80 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Error
+ * Object containing a single element of a ParetoSet
  */
 @JsonPropertyOrder({
-  Error.JSON_PROPERTY_ERROR
+  ParetoSetEntry.JSON_PROPERTY_DURATION,
+  ParetoSetEntry.JSON_PROPERTY_TRANSFERS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class Error {
-  public static final String JSON_PROPERTY_ERROR = "error";
+public class ParetoSetEntry {
+  public static final String JSON_PROPERTY_DURATION = "duration";
   @jakarta.annotation.Nonnull
-  private String error;
+  private BigDecimal duration;
 
-  public Error() {
+  public static final String JSON_PROPERTY_TRANSFERS = "transfers";
+  @jakarta.annotation.Nonnull
+  private Integer transfers;
+
+  public ParetoSetEntry() {
   }
 
-  public Error error(@jakarta.annotation.Nonnull String error) {
+  public ParetoSetEntry duration(@jakarta.annotation.Nonnull BigDecimal duration) {
     
-    this.error = error;
+    this.duration = duration;
     return this;
   }
 
   /**
-   * error message
-   * @return error
+   * duration in seconds for the the best solution using &#x60;transfer&#x60; transfers  Notice that the resolution is currently in minutes, because of implementation details 
+   * minimum: 0.0
+   * @return duration
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getError() {
-    return error;
+  public BigDecimal getDuration() {
+    return duration;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setError(@jakarta.annotation.Nonnull String error) {
-    this.error = error;
+  public void setDuration(@jakarta.annotation.Nonnull BigDecimal duration) {
+    this.duration = duration;
+  }
+
+  public ParetoSetEntry transfers(@jakarta.annotation.Nonnull Integer transfers) {
+    
+    this.transfers = transfers;
+    return this;
+  }
+
+  /**
+   * The minimal number of transfers required to arrive within &#x60;duration&#x60; seconds  transfers&#x3D;0: Direct transit connecion without any transfers transfers&#x3D;1: Transit connection with 1 transfer 
+   * minimum: 0
+   * @return transfers
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getTransfers() {
+    return transfers;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTransfers(@jakarta.annotation.Nonnull Integer transfers) {
+    this.transfers = transfers;
   }
 
 
@@ -72,20 +105,22 @@ public class Error {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Error error = (Error) o;
-    return Objects.equals(this.error, error.error);
+    ParetoSetEntry paretoSetEntry = (ParetoSetEntry) o;
+    return Objects.equals(this.duration, paretoSetEntry.duration) &&
+        Objects.equals(this.transfers, paretoSetEntry.transfers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error);
+    return Objects.hash(duration, transfers);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Error {\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class ParetoSetEntry {\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    transfers: ").append(toIndentedString(transfers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

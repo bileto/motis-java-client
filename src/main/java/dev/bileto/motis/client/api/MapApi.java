@@ -8,6 +8,7 @@ import dev.bileto.motis.client.model.Initial200Response;
 import java.time.OffsetDateTime;
 import dev.bileto.motis.client.model.Place;
 import dev.bileto.motis.client.model.Rentals200Response;
+import dev.bileto.motis.client.model.Routes200Response;
 import dev.bileto.motis.client.model.TripSegment;
 
 import java.util.HashMap;
@@ -32,7 +33,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MapApi {
     private ApiClient apiClient;
 
@@ -342,6 +343,120 @@ public class MapApi {
     }
 
     /**
+     * Given an area frame (box defined by the top-right and bottom-left corners), it returns all routes and their respective shapes that operate within this area. Routes are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
+     * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
+     * <p><b>200</b> - a list of routes in the area
+     * @param zoom current zoom level
+     * @param min latitude,longitude pair of the lower right coordinate
+     * @param max latitude,longitude pair of the upper left coordinate
+     * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
+     * @return Routes200Response
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec routesRequestCreation(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        Object postBody = null;
+        // verify the required parameter 'zoom' is set
+        if (zoom == null) {
+            throw new WebClientResponseException("Missing the required parameter 'zoom' when calling routes", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'min' is set
+        if (min == null) {
+            throw new WebClientResponseException("Missing the required parameter 'min' when calling routes", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'max' is set
+        if (max == null) {
+            throw new WebClientResponseException("Missing the required parameter 'max' when calling routes", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "zoom", zoom));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
+
+        final String[] localVarAccepts = { 
+            "application/json"
+        };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {  };
+
+        ParameterizedTypeReference<Routes200Response> localVarReturnType = new ParameterizedTypeReference<Routes200Response>() {};
+        return apiClient.invokeAPI("/api/experimental/map/routes", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Given an area frame (box defined by the top-right and bottom-left corners), it returns all routes and their respective shapes that operate within this area. Routes are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
+     * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
+     * <p><b>200</b> - a list of routes in the area
+     * @param zoom current zoom level
+     * @param min latitude,longitude pair of the lower right coordinate
+     * @param max latitude,longitude pair of the upper left coordinate
+     * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
+     * @return Routes200Response
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Routes200Response routes(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        ParameterizedTypeReference<Routes200Response> localVarReturnType = new ParameterizedTypeReference<Routes200Response>() {};
+        return routesRequestCreation(zoom, min, max, language).bodyToMono(localVarReturnType).block();
+    }
+
+    /**
+     * Given an area frame (box defined by the top-right and bottom-left corners), it returns all routes and their respective shapes that operate within this area. Routes are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
+     * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
+     * <p><b>200</b> - a list of routes in the area
+     * @param zoom current zoom level
+     * @param min latitude,longitude pair of the lower right coordinate
+     * @param max latitude,longitude pair of the upper left coordinate
+     * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
+     * @return ResponseEntity&lt;Routes200Response&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<Routes200Response> routesWithHttpInfo(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        ParameterizedTypeReference<Routes200Response> localVarReturnType = new ParameterizedTypeReference<Routes200Response>() {};
+        return routesRequestCreation(zoom, min, max, language).toEntity(localVarReturnType).block();
+    }
+
+    /**
+     * Given an area frame (box defined by the top-right and bottom-left corners), it returns all routes and their respective shapes that operate within this area. Routes are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
+     * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
+     * <p><b>200</b> - a list of routes in the area
+     * @param zoom current zoom level
+     * @param min latitude,longitude pair of the lower right coordinate
+     * @param max latitude,longitude pair of the upper left coordinate
+     * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec routesWithResponseSpec(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        return routesRequestCreation(zoom, min, max, language);
+    }
+
+    /**
      * Get all stops for a map section
      * 
      * <p><b>422</b> - Unprocessable Entity
@@ -459,11 +574,12 @@ public class MapApi {
      * @param max latitude,longitude pair of the upper left coordinate
      * @param startTime start of the time window
      * @param endTime end if the time window
+     * @param precision precision of returned polylines. Recommended to set based on zoom: &#x60;zoom &gt;&#x3D; 11 ? 5 : zoom &gt;&#x3D; 8 ? 4 : zoom &gt;&#x3D; 5 ? 3 : 2&#x60;
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return List&lt;TripSegment&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec tripsRequestCreation(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nonnull OffsetDateTime startTime, @jakarta.annotation.Nonnull OffsetDateTime endTime, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    private ResponseSpec tripsRequestCreation(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nonnull OffsetDateTime startTime, @jakarta.annotation.Nonnull OffsetDateTime endTime, @jakarta.annotation.Nullable BigDecimal precision, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'zoom' is set
         if (zoom == null) {
@@ -498,6 +614,7 @@ public class MapApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "startTime", startTime));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "endTime", endTime));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "precision", precision));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
 
         final String[] localVarAccepts = { 
@@ -526,13 +643,14 @@ public class MapApi {
      * @param max latitude,longitude pair of the upper left coordinate
      * @param startTime start of the time window
      * @param endTime end if the time window
+     * @param precision precision of returned polylines. Recommended to set based on zoom: &#x60;zoom &gt;&#x3D; 11 ? 5 : zoom &gt;&#x3D; 8 ? 4 : zoom &gt;&#x3D; 5 ? 3 : 2&#x60;
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return List&lt;TripSegment&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public List<TripSegment> trips(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nonnull OffsetDateTime startTime, @jakarta.annotation.Nonnull OffsetDateTime endTime, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    public List<TripSegment> trips(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nonnull OffsetDateTime startTime, @jakarta.annotation.Nonnull OffsetDateTime endTime, @jakarta.annotation.Nullable BigDecimal precision, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<TripSegment> localVarReturnType = new ParameterizedTypeReference<TripSegment>() {};
-        return tripsRequestCreation(zoom, min, max, startTime, endTime, language).bodyToFlux(localVarReturnType).collectList().block();
+        return tripsRequestCreation(zoom, min, max, startTime, endTime, precision, language).bodyToFlux(localVarReturnType).collectList().block();
     }
 
     /**
@@ -548,13 +666,14 @@ public class MapApi {
      * @param max latitude,longitude pair of the upper left coordinate
      * @param startTime start of the time window
      * @param endTime end if the time window
+     * @param precision precision of returned polylines. Recommended to set based on zoom: &#x60;zoom &gt;&#x3D; 11 ? 5 : zoom &gt;&#x3D; 8 ? 4 : zoom &gt;&#x3D; 5 ? 3 : 2&#x60;
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return ResponseEntity&lt;List&lt;TripSegment&gt;&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<List<TripSegment>> tripsWithHttpInfo(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nonnull OffsetDateTime startTime, @jakarta.annotation.Nonnull OffsetDateTime endTime, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    public ResponseEntity<List<TripSegment>> tripsWithHttpInfo(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nonnull OffsetDateTime startTime, @jakarta.annotation.Nonnull OffsetDateTime endTime, @jakarta.annotation.Nullable BigDecimal precision, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<TripSegment> localVarReturnType = new ParameterizedTypeReference<TripSegment>() {};
-        return tripsRequestCreation(zoom, min, max, startTime, endTime, language).toEntityList(localVarReturnType).block();
+        return tripsRequestCreation(zoom, min, max, startTime, endTime, precision, language).toEntityList(localVarReturnType).block();
     }
 
     /**
@@ -570,11 +689,12 @@ public class MapApi {
      * @param max latitude,longitude pair of the upper left coordinate
      * @param startTime start of the time window
      * @param endTime end if the time window
+     * @param precision precision of returned polylines. Recommended to set based on zoom: &#x60;zoom &gt;&#x3D; 11 ? 5 : zoom &gt;&#x3D; 8 ? 4 : zoom &gt;&#x3D; 5 ? 3 : 2&#x60;
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec tripsWithResponseSpec(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nonnull OffsetDateTime startTime, @jakarta.annotation.Nonnull OffsetDateTime endTime, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
-        return tripsRequestCreation(zoom, min, max, startTime, endTime, language);
+    public ResponseSpec tripsWithResponseSpec(@jakarta.annotation.Nonnull BigDecimal zoom, @jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nonnull OffsetDateTime startTime, @jakarta.annotation.Nonnull OffsetDateTime endTime, @jakarta.annotation.Nullable BigDecimal precision, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        return tripsRequestCreation(zoom, min, max, startTime, endTime, precision, language);
     }
 }

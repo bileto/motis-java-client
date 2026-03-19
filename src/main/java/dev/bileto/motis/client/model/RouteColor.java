@@ -24,43 +24,73 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Error
+ * RouteColor
  */
 @JsonPropertyOrder({
-  Error.JSON_PROPERTY_ERROR
+  RouteColor.JSON_PROPERTY_COLOR,
+  RouteColor.JSON_PROPERTY_TEXT_COLOR
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class Error {
-  public static final String JSON_PROPERTY_ERROR = "error";
+public class RouteColor {
+  public static final String JSON_PROPERTY_COLOR = "color";
   @jakarta.annotation.Nonnull
-  private String error;
+  private String color;
 
-  public Error() {
+  public static final String JSON_PROPERTY_TEXT_COLOR = "textColor";
+  @jakarta.annotation.Nonnull
+  private String textColor;
+
+  public RouteColor() {
   }
 
-  public Error error(@jakarta.annotation.Nonnull String error) {
+  public RouteColor color(@jakarta.annotation.Nonnull String color) {
     
-    this.error = error;
+    this.color = color;
     return this;
   }
 
   /**
-   * error message
-   * @return error
+   * Get color
+   * @return color
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonProperty(value = JSON_PROPERTY_COLOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getError() {
-    return error;
+  public String getColor() {
+    return color;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonProperty(value = JSON_PROPERTY_COLOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setError(@jakarta.annotation.Nonnull String error) {
-    this.error = error;
+  public void setColor(@jakarta.annotation.Nonnull String color) {
+    this.color = color;
+  }
+
+  public RouteColor textColor(@jakarta.annotation.Nonnull String textColor) {
+    
+    this.textColor = textColor;
+    return this;
+  }
+
+  /**
+   * Get textColor
+   * @return textColor
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TEXT_COLOR, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getTextColor() {
+    return textColor;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TEXT_COLOR, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTextColor(@jakarta.annotation.Nonnull String textColor) {
+    this.textColor = textColor;
   }
 
 
@@ -72,20 +102,22 @@ public class Error {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Error error = (Error) o;
-    return Objects.equals(this.error, error.error);
+    RouteColor routeColor = (RouteColor) o;
+    return Objects.equals(this.color, routeColor.color) &&
+        Objects.equals(this.textColor, routeColor.textColor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error);
+    return Objects.hash(color, textColor);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Error {\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class RouteColor {\n");
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
+    sb.append("    textColor: ").append(toIndentedString(textColor)).append("\n");
     sb.append("}");
     return sb.toString();
   }

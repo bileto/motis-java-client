@@ -20,108 +20,127 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import dev.bileto.motis.client.model.EncodedPolyline;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * EncodedPolyline
+ * Shared polyline used by one or more route segments
  */
 @JsonPropertyOrder({
-  EncodedPolyline.JSON_PROPERTY_POINTS,
-  EncodedPolyline.JSON_PROPERTY_PRECISION,
-  EncodedPolyline.JSON_PROPERTY_LENGTH
+  RoutePolyline.JSON_PROPERTY_POLYLINE,
+  RoutePolyline.JSON_PROPERTY_COLORS,
+  RoutePolyline.JSON_PROPERTY_ROUTE_INDEXES
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class EncodedPolyline {
-  public static final String JSON_PROPERTY_POINTS = "points";
+public class RoutePolyline {
+  public static final String JSON_PROPERTY_POLYLINE = "polyline";
   @jakarta.annotation.Nonnull
-  private String points;
+  private EncodedPolyline polyline;
 
-  public static final String JSON_PROPERTY_PRECISION = "precision";
+  public static final String JSON_PROPERTY_COLORS = "colors";
   @jakarta.annotation.Nonnull
-  private Integer precision;
+  private List<String> colors = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_LENGTH = "length";
+  public static final String JSON_PROPERTY_ROUTE_INDEXES = "routeIndexes";
   @jakarta.annotation.Nonnull
-  private Integer length;
+  private List<Integer> routeIndexes = new ArrayList<>();
 
-  public EncodedPolyline() {
+  public RoutePolyline() {
   }
 
-  public EncodedPolyline points(@jakarta.annotation.Nonnull String points) {
+  public RoutePolyline polyline(@jakarta.annotation.Nonnull EncodedPolyline polyline) {
     
-    this.points = points;
+    this.polyline = polyline;
     return this;
   }
 
   /**
-   * The encoded points of the polyline using the Google polyline encoding.
-   * @return points
+   * Get polyline
+   * @return polyline
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_POINTS, required = true)
+  @JsonProperty(value = JSON_PROPERTY_POLYLINE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getPoints() {
-    return points;
+  public EncodedPolyline getPolyline() {
+    return polyline;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_POINTS, required = true)
+  @JsonProperty(value = JSON_PROPERTY_POLYLINE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPoints(@jakarta.annotation.Nonnull String points) {
-    this.points = points;
+  public void setPolyline(@jakarta.annotation.Nonnull EncodedPolyline polyline) {
+    this.polyline = polyline;
   }
 
-  public EncodedPolyline precision(@jakarta.annotation.Nonnull Integer precision) {
+  public RoutePolyline colors(@jakarta.annotation.Nonnull List<String> colors) {
     
-    this.precision = precision;
+    this.colors = colors;
+    return this;
+  }
+
+  public RoutePolyline addColorsItem(String colorsItem) {
+    if (this.colors == null) {
+      this.colors = new ArrayList<>();
+    }
+    this.colors.add(colorsItem);
     return this;
   }
 
   /**
-   * The precision of the returned polyline (7 for /v1, 6 for /v2) Be aware that with precision 7, coordinates with |longitude| &gt; 107.37 are undefined/will overflow. 
-   * @return precision
+   * Unique route colors of routes containing this segment
+   * @return colors
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PRECISION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_COLORS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Integer getPrecision() {
-    return precision;
+  public List<String> getColors() {
+    return colors;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PRECISION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_COLORS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrecision(@jakarta.annotation.Nonnull Integer precision) {
-    this.precision = precision;
+  public void setColors(@jakarta.annotation.Nonnull List<String> colors) {
+    this.colors = colors;
   }
 
-  public EncodedPolyline length(@jakarta.annotation.Nonnull Integer length) {
+  public RoutePolyline routeIndexes(@jakarta.annotation.Nonnull List<Integer> routeIndexes) {
     
-    this.length = length;
+    this.routeIndexes = routeIndexes;
+    return this;
+  }
+
+  public RoutePolyline addRouteIndexesItem(Integer routeIndexesItem) {
+    if (this.routeIndexes == null) {
+      this.routeIndexes = new ArrayList<>();
+    }
+    this.routeIndexes.add(routeIndexesItem);
     return this;
   }
 
   /**
-   * The number of points in the string
-   * minimum: 0
-   * @return length
+   * Indexes into the top-level routes array for routes containing this segment
+   * @return routeIndexes
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_LENGTH, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_INDEXES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Integer getLength() {
-    return length;
+  public List<Integer> getRouteIndexes() {
+    return routeIndexes;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_LENGTH, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_INDEXES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLength(@jakarta.annotation.Nonnull Integer length) {
-    this.length = length;
+  public void setRouteIndexes(@jakarta.annotation.Nonnull List<Integer> routeIndexes) {
+    this.routeIndexes = routeIndexes;
   }
 
 
@@ -133,24 +152,24 @@ public class EncodedPolyline {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EncodedPolyline encodedPolyline = (EncodedPolyline) o;
-    return Objects.equals(this.points, encodedPolyline.points) &&
-        Objects.equals(this.precision, encodedPolyline.precision) &&
-        Objects.equals(this.length, encodedPolyline.length);
+    RoutePolyline routePolyline = (RoutePolyline) o;
+    return Objects.equals(this.polyline, routePolyline.polyline) &&
+        Objects.equals(this.colors, routePolyline.colors) &&
+        Objects.equals(this.routeIndexes, routePolyline.routeIndexes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(points, precision, length);
+    return Objects.hash(polyline, colors, routeIndexes);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EncodedPolyline {\n");
-    sb.append("    points: ").append(toIndentedString(points)).append("\n");
-    sb.append("    precision: ").append(toIndentedString(precision)).append("\n");
-    sb.append("    length: ").append(toIndentedString(length)).append("\n");
+    sb.append("class RoutePolyline {\n");
+    sb.append("    polyline: ").append(toIndentedString(polyline)).append("\n");
+    sb.append("    colors: ").append(toIndentedString(colors)).append("\n");
+    sb.append("    routeIndexes: ").append(toIndentedString(routeIndexes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

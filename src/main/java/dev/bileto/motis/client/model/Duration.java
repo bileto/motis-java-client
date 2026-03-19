@@ -28,13 +28,18 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * Object containing duration if a path was found or none if no path was found
  */
 @JsonPropertyOrder({
-  Duration.JSON_PROPERTY_DURATION
+  Duration.JSON_PROPERTY_DURATION,
+  Duration.JSON_PROPERTY_DISTANCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Duration {
   public static final String JSON_PROPERTY_DURATION = "duration";
   @jakarta.annotation.Nullable
   private BigDecimal duration;
+
+  public static final String JSON_PROPERTY_DISTANCE = "distance";
+  @jakarta.annotation.Nullable
+  private BigDecimal distance;
 
   public Duration() {
   }
@@ -47,6 +52,7 @@ public class Duration {
 
   /**
    * duration in seconds if a path was found, otherwise missing
+   * minimum: 0.0
    * @return duration
    */
   @jakarta.annotation.Nullable
@@ -64,6 +70,32 @@ public class Duration {
     this.duration = duration;
   }
 
+  public Duration distance(@jakarta.annotation.Nullable BigDecimal distance) {
+    
+    this.distance = distance;
+    return this;
+  }
+
+  /**
+   * distance in meters if a path was found and distance computation was requested, otherwise missing
+   * minimum: 0.0
+   * @return distance
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DISTANCE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BigDecimal getDistance() {
+    return distance;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DISTANCE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDistance(@jakarta.annotation.Nullable BigDecimal distance) {
+    this.distance = distance;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -74,12 +106,13 @@ public class Duration {
       return false;
     }
     Duration duration = (Duration) o;
-    return Objects.equals(this.duration, duration.duration);
+    return Objects.equals(this.duration, duration.duration) &&
+        Objects.equals(this.distance, duration.distance);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration);
+    return Objects.hash(duration, distance);
   }
 
   @Override
@@ -87,6 +120,7 @@ public class Duration {
     StringBuilder sb = new StringBuilder();
     sb.append("class Duration {\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
     sb.append("}");
     return sb.toString();
   }

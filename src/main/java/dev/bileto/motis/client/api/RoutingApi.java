@@ -8,6 +8,9 @@ import dev.bileto.motis.client.model.ElevationCosts;
 import dev.bileto.motis.client.model.Error;
 import dev.bileto.motis.client.model.Mode;
 import java.time.OffsetDateTime;
+import dev.bileto.motis.client.model.OneToManyIntermodalParams;
+import dev.bileto.motis.client.model.OneToManyIntermodalResponse;
+import dev.bileto.motis.client.model.OneToManyParams;
 import dev.bileto.motis.client.model.PedestrianProfile;
 import dev.bileto.motis.client.model.Plan200Response;
 import dev.bileto.motis.client.model.Reachable;
@@ -36,7 +39,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RoutingApi {
     private ApiClient apiClient;
 
@@ -255,17 +258,21 @@ public class RoutingApi {
      * Street routing from one to many places or many to one. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the query. 
      * 
      * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
      * @param one geo location as latitude;longitude
-     * @param many geo locations as latitude;longitude,latitude;longitude,...
+     * @param many geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
      * @param mode routing profile to use (currently supported: \\&#x60;WALK\\&#x60;, \\&#x60;BIKE\\&#x60;, \\&#x60;CAR\\&#x60;) 
-     * @param max maximum travel time in seconds
+     * @param max maximum travel time in seconds. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;.
      * @param maxMatchingDistance maximum matching distance in meters to match geo coordinates to the street network
      * @param arriveBy true &#x3D; many to one false &#x3D; one to many 
      * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
+     * @param withDistance Optional. Default is &#x60;false&#x60;. If true, the response includes the distance in meters for each path. This requires path reconstruction and is slower than duration-only queries. 
      * @return List&lt;Duration&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec oneToManyRequestCreation(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nonnull Mode mode, @jakarta.annotation.Nonnull BigDecimal max, @jakarta.annotation.Nonnull BigDecimal maxMatchingDistance, @jakarta.annotation.Nonnull Boolean arriveBy, @jakarta.annotation.Nullable ElevationCosts elevationCosts) throws WebClientResponseException {
+    private ResponseSpec oneToManyRequestCreation(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nonnull Mode mode, @jakarta.annotation.Nonnull BigDecimal max, @jakarta.annotation.Nonnull BigDecimal maxMatchingDistance, @jakarta.annotation.Nonnull Boolean arriveBy, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean withDistance) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'one' is set
         if (one == null) {
@@ -306,6 +313,7 @@ public class RoutingApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withDistance", withDistance));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -324,56 +332,453 @@ public class RoutingApi {
      * Street routing from one to many places or many to one. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the query. 
      * 
      * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
      * @param one geo location as latitude;longitude
-     * @param many geo locations as latitude;longitude,latitude;longitude,...
+     * @param many geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
      * @param mode routing profile to use (currently supported: \\&#x60;WALK\\&#x60;, \\&#x60;BIKE\\&#x60;, \\&#x60;CAR\\&#x60;) 
-     * @param max maximum travel time in seconds
+     * @param max maximum travel time in seconds. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;.
      * @param maxMatchingDistance maximum matching distance in meters to match geo coordinates to the street network
      * @param arriveBy true &#x3D; many to one false &#x3D; one to many 
      * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
+     * @param withDistance Optional. Default is &#x60;false&#x60;. If true, the response includes the distance in meters for each path. This requires path reconstruction and is slower than duration-only queries. 
      * @return List&lt;Duration&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public List<Duration> oneToMany(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nonnull Mode mode, @jakarta.annotation.Nonnull BigDecimal max, @jakarta.annotation.Nonnull BigDecimal maxMatchingDistance, @jakarta.annotation.Nonnull Boolean arriveBy, @jakarta.annotation.Nullable ElevationCosts elevationCosts) throws WebClientResponseException {
+    public List<Duration> oneToMany(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nonnull Mode mode, @jakarta.annotation.Nonnull BigDecimal max, @jakarta.annotation.Nonnull BigDecimal maxMatchingDistance, @jakarta.annotation.Nonnull Boolean arriveBy, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean withDistance) throws WebClientResponseException {
         ParameterizedTypeReference<Duration> localVarReturnType = new ParameterizedTypeReference<Duration>() {};
-        return oneToManyRequestCreation(one, many, mode, max, maxMatchingDistance, arriveBy, elevationCosts).bodyToFlux(localVarReturnType).collectList().block();
+        return oneToManyRequestCreation(one, many, mode, max, maxMatchingDistance, arriveBy, elevationCosts, withDistance).bodyToFlux(localVarReturnType).collectList().block();
     }
 
     /**
      * Street routing from one to many places or many to one. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the query. 
      * 
      * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
      * @param one geo location as latitude;longitude
-     * @param many geo locations as latitude;longitude,latitude;longitude,...
+     * @param many geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
      * @param mode routing profile to use (currently supported: \\&#x60;WALK\\&#x60;, \\&#x60;BIKE\\&#x60;, \\&#x60;CAR\\&#x60;) 
-     * @param max maximum travel time in seconds
+     * @param max maximum travel time in seconds. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;.
      * @param maxMatchingDistance maximum matching distance in meters to match geo coordinates to the street network
      * @param arriveBy true &#x3D; many to one false &#x3D; one to many 
      * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
+     * @param withDistance Optional. Default is &#x60;false&#x60;. If true, the response includes the distance in meters for each path. This requires path reconstruction and is slower than duration-only queries. 
      * @return ResponseEntity&lt;List&lt;Duration&gt;&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<List<Duration>> oneToManyWithHttpInfo(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nonnull Mode mode, @jakarta.annotation.Nonnull BigDecimal max, @jakarta.annotation.Nonnull BigDecimal maxMatchingDistance, @jakarta.annotation.Nonnull Boolean arriveBy, @jakarta.annotation.Nullable ElevationCosts elevationCosts) throws WebClientResponseException {
+    public ResponseEntity<List<Duration>> oneToManyWithHttpInfo(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nonnull Mode mode, @jakarta.annotation.Nonnull BigDecimal max, @jakarta.annotation.Nonnull BigDecimal maxMatchingDistance, @jakarta.annotation.Nonnull Boolean arriveBy, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean withDistance) throws WebClientResponseException {
         ParameterizedTypeReference<Duration> localVarReturnType = new ParameterizedTypeReference<Duration>() {};
-        return oneToManyRequestCreation(one, many, mode, max, maxMatchingDistance, arriveBy, elevationCosts).toEntityList(localVarReturnType).block();
+        return oneToManyRequestCreation(one, many, mode, max, maxMatchingDistance, arriveBy, elevationCosts, withDistance).toEntityList(localVarReturnType).block();
     }
 
     /**
      * Street routing from one to many places or many to one. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the query. 
      * 
      * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
      * @param one geo location as latitude;longitude
-     * @param many geo locations as latitude;longitude,latitude;longitude,...
+     * @param many geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
      * @param mode routing profile to use (currently supported: \\&#x60;WALK\\&#x60;, \\&#x60;BIKE\\&#x60;, \\&#x60;CAR\\&#x60;) 
-     * @param max maximum travel time in seconds
+     * @param max maximum travel time in seconds. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;.
      * @param maxMatchingDistance maximum matching distance in meters to match geo coordinates to the street network
      * @param arriveBy true &#x3D; many to one false &#x3D; one to many 
      * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
+     * @param withDistance Optional. Default is &#x60;false&#x60;. If true, the response includes the distance in meters for each path. This requires path reconstruction and is slower than duration-only queries. 
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec oneToManyWithResponseSpec(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nonnull Mode mode, @jakarta.annotation.Nonnull BigDecimal max, @jakarta.annotation.Nonnull BigDecimal maxMatchingDistance, @jakarta.annotation.Nonnull Boolean arriveBy, @jakarta.annotation.Nullable ElevationCosts elevationCosts) throws WebClientResponseException {
-        return oneToManyRequestCreation(one, many, mode, max, maxMatchingDistance, arriveBy, elevationCosts);
+    public ResponseSpec oneToManyWithResponseSpec(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nonnull Mode mode, @jakarta.annotation.Nonnull BigDecimal max, @jakarta.annotation.Nonnull BigDecimal maxMatchingDistance, @jakarta.annotation.Nonnull Boolean arriveBy, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean withDistance) throws WebClientResponseException {
+        return oneToManyRequestCreation(one, many, mode, max, maxMatchingDistance, arriveBy, elevationCosts, withDistance);
+    }
+
+    /**
+     * One to many routing Computes the minimal duration from one place to many or vice versa. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the query. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param one geo location as latitude;longitude
+     * @param many geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
+     * @param time Optional. Defaults to the current time.  Departure time ($arriveBy&#x3D;false) / arrival date ($arriveBy&#x3D;true), 
+     * @param maxTravelTime The maximum travel time in minutes. If not provided, the routing uses the value hardcoded in the server which is usually quite high.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the least transfers) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance. 
+     * @param maxMatchingDistance maximum matching distance in meters to match geo coordinates to the street network
+     * @param arriveBy Optional. Defaults to false, i.e. one to many search  true &#x3D; many to one false &#x3D; one to many 
+     * @param maxTransfers The maximum number of allowed transfers (i.e. interchanges between transit legs, pre- and postTransit do not count as transfers). &#x60;maxTransfers&#x3D;0&#x60; searches for direct transit connections without any transfers. If you want to search only for non-transit connections (&#x60;FOOT&#x60;, &#x60;CAR&#x60;, etc.), send an empty &#x60;transitModes&#x60; parameter instead.  If not provided, the routing uses the server-side default value which is hardcoded and very high to cover all use cases.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the fastest) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance. 
+     * @param minTransferTime Optional. Default is 0 minutes.  Minimum transfer time for each transfer in minutes. 
+     * @param additionalTransferTime Optional. Default is 0 minutes.  Additional transfer time reserved for each transfer in minutes. 
+     * @param transferTimeFactor Optional. Default is 1.0  Factor to multiply minimum required transfer times with. Values smaller than 1.0 are not supported. 
+     * @param useRoutedTransfers Optional. Default is &#x60;false&#x60;.  Whether to use transfers routed on OpenStreetMap data. 
+     * @param pedestrianProfile Optional. Default is &#x60;FOOT&#x60;.  Accessibility profile to use for pedestrian routing in transfers between transit connections and the first and last mile respectively. 
+     * @param pedestrianSpeed Optional  Average speed for pedestrian routing. 
+     * @param cyclingSpeed Optional  Average speed for bike routing. 
+     * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  The profile is used for routing on both the first and last mile.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
+     * @param transitModes Optional. Default is &#x60;TRANSIT&#x60; which allows all transit modes (no restriction). Allowed modes for the transit part. If empty, no transit connections will be computed. For example, this can be used to allow only &#x60;SUBURBAN,SUBWAY,TRAM&#x60;. 
+     * @param preTransitModes Optional. Default is &#x60;WALK&#x60;. Does not apply to direct connections (see &#x60;directMode&#x60;).  A list of modes that are allowed to be used for the first mile, i.e. from the coordinates to the first transit stop. Example: &#x60;WALK,BIKE_SHARING&#x60;. 
+     * @param postTransitModes Optional. Default is &#x60;WALK&#x60;. Does not apply to direct connections (see &#x60;directMode&#x60;).  A list of modes that are allowed to be used for the last mile, i.e. from the last transit stop to the target coordinates. Example: &#x60;WALK,BIKE_SHARING&#x60;. 
+     * @param directMode Default is &#x60;WALK&#x60; which will compute walking routes as direct connections.  Mode used for direction connections from start to destination without using transit.  Currently supported non-transit modes: \\&#x60;WALK\\&#x60;, \\&#x60;BIKE\\&#x60;, \\&#x60;CAR\\&#x60; 
+     * @param maxPreTransitTime Optional. Default is 15min which is &#x60;900&#x60;. Maximum time in seconds for the first street leg. Is limited by server config variable &#x60;street_routing_max_prepost_transit_seconds&#x60;. 
+     * @param maxPostTransitTime Optional. Default is 15min which is &#x60;900&#x60;. Maximum time in seconds for the last street leg. Is limited by server config variable &#x60;street_routing_max_prepost_transit_seconds&#x60;. 
+     * @param maxDirectTime Optional. Default is 30min which is &#x60;1800&#x60;. Maximum time in seconds for direct connections.  If a value smaller than either &#x60;maxPreTransitTime&#x60; or &#x60;maxPostTransitTime&#x60; is used, their maximum is set instead. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;. 
+     * @param withDistance Optional. Default is &#x60;false&#x60;. If true, the response includes the distance in meters for each path. This requires path reconstruction and is slower than duration-only queries.  &#x60;withDistance&#x60; is currently limited to street routing. 
+     * @param requireBikeTransport Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, all used transit trips are required to allow bike carriage. 
+     * @param requireCarTransport Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, all used transit trips are required to allow car carriage. 
+     * @return OneToManyIntermodalResponse
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec oneToManyIntermodalRequestCreation(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable Mode directMode, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable Boolean withDistance, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport) throws WebClientResponseException {
+        Object postBody = null;
+        // verify the required parameter 'one' is set
+        if (one == null) {
+            throw new WebClientResponseException("Missing the required parameter 'one' when calling oneToManyIntermodal", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'many' is set
+        if (many == null) {
+            throw new WebClientResponseException("Missing the required parameter 'many' when calling oneToManyIntermodal", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "one", one));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "many", many));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTravelTime", maxTravelTime));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTransfers", maxTransfers));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "minTransferTime", minTransferTime));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "additionalTransferTime", additionalTransferTime));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "transferTimeFactor", transferTimeFactor));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "useRoutedTransfers", useRoutedTransfers));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianProfile", pedestrianProfile));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianSpeed", pedestrianSpeed));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "cyclingSpeed", cyclingSpeed));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "transitModes", transitModes));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitModes", preTransitModes));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitModes", postTransitModes));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "directMode", directMode));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPreTransitTime", maxPreTransitTime));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPostTransitTime", maxPostTransitTime));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxDirectTime", maxDirectTime));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withDistance", withDistance));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireBikeTransport", requireBikeTransport));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireCarTransport", requireCarTransport));
+
+        final String[] localVarAccepts = { 
+            "application/json"
+        };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {  };
+
+        ParameterizedTypeReference<OneToManyIntermodalResponse> localVarReturnType = new ParameterizedTypeReference<OneToManyIntermodalResponse>() {};
+        return apiClient.invokeAPI("/api/experimental/one-to-many-intermodal", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * One to many routing Computes the minimal duration from one place to many or vice versa. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the query. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param one geo location as latitude;longitude
+     * @param many geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
+     * @param time Optional. Defaults to the current time.  Departure time ($arriveBy&#x3D;false) / arrival date ($arriveBy&#x3D;true), 
+     * @param maxTravelTime The maximum travel time in minutes. If not provided, the routing uses the value hardcoded in the server which is usually quite high.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the least transfers) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance. 
+     * @param maxMatchingDistance maximum matching distance in meters to match geo coordinates to the street network
+     * @param arriveBy Optional. Defaults to false, i.e. one to many search  true &#x3D; many to one false &#x3D; one to many 
+     * @param maxTransfers The maximum number of allowed transfers (i.e. interchanges between transit legs, pre- and postTransit do not count as transfers). &#x60;maxTransfers&#x3D;0&#x60; searches for direct transit connections without any transfers. If you want to search only for non-transit connections (&#x60;FOOT&#x60;, &#x60;CAR&#x60;, etc.), send an empty &#x60;transitModes&#x60; parameter instead.  If not provided, the routing uses the server-side default value which is hardcoded and very high to cover all use cases.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the fastest) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance. 
+     * @param minTransferTime Optional. Default is 0 minutes.  Minimum transfer time for each transfer in minutes. 
+     * @param additionalTransferTime Optional. Default is 0 minutes.  Additional transfer time reserved for each transfer in minutes. 
+     * @param transferTimeFactor Optional. Default is 1.0  Factor to multiply minimum required transfer times with. Values smaller than 1.0 are not supported. 
+     * @param useRoutedTransfers Optional. Default is &#x60;false&#x60;.  Whether to use transfers routed on OpenStreetMap data. 
+     * @param pedestrianProfile Optional. Default is &#x60;FOOT&#x60;.  Accessibility profile to use for pedestrian routing in transfers between transit connections and the first and last mile respectively. 
+     * @param pedestrianSpeed Optional  Average speed for pedestrian routing. 
+     * @param cyclingSpeed Optional  Average speed for bike routing. 
+     * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  The profile is used for routing on both the first and last mile.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
+     * @param transitModes Optional. Default is &#x60;TRANSIT&#x60; which allows all transit modes (no restriction). Allowed modes for the transit part. If empty, no transit connections will be computed. For example, this can be used to allow only &#x60;SUBURBAN,SUBWAY,TRAM&#x60;. 
+     * @param preTransitModes Optional. Default is &#x60;WALK&#x60;. Does not apply to direct connections (see &#x60;directMode&#x60;).  A list of modes that are allowed to be used for the first mile, i.e. from the coordinates to the first transit stop. Example: &#x60;WALK,BIKE_SHARING&#x60;. 
+     * @param postTransitModes Optional. Default is &#x60;WALK&#x60;. Does not apply to direct connections (see &#x60;directMode&#x60;).  A list of modes that are allowed to be used for the last mile, i.e. from the last transit stop to the target coordinates. Example: &#x60;WALK,BIKE_SHARING&#x60;. 
+     * @param directMode Default is &#x60;WALK&#x60; which will compute walking routes as direct connections.  Mode used for direction connections from start to destination without using transit.  Currently supported non-transit modes: \\&#x60;WALK\\&#x60;, \\&#x60;BIKE\\&#x60;, \\&#x60;CAR\\&#x60; 
+     * @param maxPreTransitTime Optional. Default is 15min which is &#x60;900&#x60;. Maximum time in seconds for the first street leg. Is limited by server config variable &#x60;street_routing_max_prepost_transit_seconds&#x60;. 
+     * @param maxPostTransitTime Optional. Default is 15min which is &#x60;900&#x60;. Maximum time in seconds for the last street leg. Is limited by server config variable &#x60;street_routing_max_prepost_transit_seconds&#x60;. 
+     * @param maxDirectTime Optional. Default is 30min which is &#x60;1800&#x60;. Maximum time in seconds for direct connections.  If a value smaller than either &#x60;maxPreTransitTime&#x60; or &#x60;maxPostTransitTime&#x60; is used, their maximum is set instead. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;. 
+     * @param withDistance Optional. Default is &#x60;false&#x60;. If true, the response includes the distance in meters for each path. This requires path reconstruction and is slower than duration-only queries.  &#x60;withDistance&#x60; is currently limited to street routing. 
+     * @param requireBikeTransport Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, all used transit trips are required to allow bike carriage. 
+     * @param requireCarTransport Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, all used transit trips are required to allow car carriage. 
+     * @return OneToManyIntermodalResponse
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public OneToManyIntermodalResponse oneToManyIntermodal(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable Mode directMode, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable Boolean withDistance, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport) throws WebClientResponseException {
+        ParameterizedTypeReference<OneToManyIntermodalResponse> localVarReturnType = new ParameterizedTypeReference<OneToManyIntermodalResponse>() {};
+        return oneToManyIntermodalRequestCreation(one, many, time, maxTravelTime, maxMatchingDistance, arriveBy, maxTransfers, minTransferTime, additionalTransferTime, transferTimeFactor, useRoutedTransfers, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, transitModes, preTransitModes, postTransitModes, directMode, maxPreTransitTime, maxPostTransitTime, maxDirectTime, withDistance, requireBikeTransport, requireCarTransport).bodyToMono(localVarReturnType).block();
+    }
+
+    /**
+     * One to many routing Computes the minimal duration from one place to many or vice versa. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the query. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param one geo location as latitude;longitude
+     * @param many geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
+     * @param time Optional. Defaults to the current time.  Departure time ($arriveBy&#x3D;false) / arrival date ($arriveBy&#x3D;true), 
+     * @param maxTravelTime The maximum travel time in minutes. If not provided, the routing uses the value hardcoded in the server which is usually quite high.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the least transfers) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance. 
+     * @param maxMatchingDistance maximum matching distance in meters to match geo coordinates to the street network
+     * @param arriveBy Optional. Defaults to false, i.e. one to many search  true &#x3D; many to one false &#x3D; one to many 
+     * @param maxTransfers The maximum number of allowed transfers (i.e. interchanges between transit legs, pre- and postTransit do not count as transfers). &#x60;maxTransfers&#x3D;0&#x60; searches for direct transit connections without any transfers. If you want to search only for non-transit connections (&#x60;FOOT&#x60;, &#x60;CAR&#x60;, etc.), send an empty &#x60;transitModes&#x60; parameter instead.  If not provided, the routing uses the server-side default value which is hardcoded and very high to cover all use cases.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the fastest) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance. 
+     * @param minTransferTime Optional. Default is 0 minutes.  Minimum transfer time for each transfer in minutes. 
+     * @param additionalTransferTime Optional. Default is 0 minutes.  Additional transfer time reserved for each transfer in minutes. 
+     * @param transferTimeFactor Optional. Default is 1.0  Factor to multiply minimum required transfer times with. Values smaller than 1.0 are not supported. 
+     * @param useRoutedTransfers Optional. Default is &#x60;false&#x60;.  Whether to use transfers routed on OpenStreetMap data. 
+     * @param pedestrianProfile Optional. Default is &#x60;FOOT&#x60;.  Accessibility profile to use for pedestrian routing in transfers between transit connections and the first and last mile respectively. 
+     * @param pedestrianSpeed Optional  Average speed for pedestrian routing. 
+     * @param cyclingSpeed Optional  Average speed for bike routing. 
+     * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  The profile is used for routing on both the first and last mile.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
+     * @param transitModes Optional. Default is &#x60;TRANSIT&#x60; which allows all transit modes (no restriction). Allowed modes for the transit part. If empty, no transit connections will be computed. For example, this can be used to allow only &#x60;SUBURBAN,SUBWAY,TRAM&#x60;. 
+     * @param preTransitModes Optional. Default is &#x60;WALK&#x60;. Does not apply to direct connections (see &#x60;directMode&#x60;).  A list of modes that are allowed to be used for the first mile, i.e. from the coordinates to the first transit stop. Example: &#x60;WALK,BIKE_SHARING&#x60;. 
+     * @param postTransitModes Optional. Default is &#x60;WALK&#x60;. Does not apply to direct connections (see &#x60;directMode&#x60;).  A list of modes that are allowed to be used for the last mile, i.e. from the last transit stop to the target coordinates. Example: &#x60;WALK,BIKE_SHARING&#x60;. 
+     * @param directMode Default is &#x60;WALK&#x60; which will compute walking routes as direct connections.  Mode used for direction connections from start to destination without using transit.  Currently supported non-transit modes: \\&#x60;WALK\\&#x60;, \\&#x60;BIKE\\&#x60;, \\&#x60;CAR\\&#x60; 
+     * @param maxPreTransitTime Optional. Default is 15min which is &#x60;900&#x60;. Maximum time in seconds for the first street leg. Is limited by server config variable &#x60;street_routing_max_prepost_transit_seconds&#x60;. 
+     * @param maxPostTransitTime Optional. Default is 15min which is &#x60;900&#x60;. Maximum time in seconds for the last street leg. Is limited by server config variable &#x60;street_routing_max_prepost_transit_seconds&#x60;. 
+     * @param maxDirectTime Optional. Default is 30min which is &#x60;1800&#x60;. Maximum time in seconds for direct connections.  If a value smaller than either &#x60;maxPreTransitTime&#x60; or &#x60;maxPostTransitTime&#x60; is used, their maximum is set instead. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;. 
+     * @param withDistance Optional. Default is &#x60;false&#x60;. If true, the response includes the distance in meters for each path. This requires path reconstruction and is slower than duration-only queries.  &#x60;withDistance&#x60; is currently limited to street routing. 
+     * @param requireBikeTransport Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, all used transit trips are required to allow bike carriage. 
+     * @param requireCarTransport Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, all used transit trips are required to allow car carriage. 
+     * @return ResponseEntity&lt;OneToManyIntermodalResponse&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<OneToManyIntermodalResponse> oneToManyIntermodalWithHttpInfo(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable Mode directMode, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable Boolean withDistance, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport) throws WebClientResponseException {
+        ParameterizedTypeReference<OneToManyIntermodalResponse> localVarReturnType = new ParameterizedTypeReference<OneToManyIntermodalResponse>() {};
+        return oneToManyIntermodalRequestCreation(one, many, time, maxTravelTime, maxMatchingDistance, arriveBy, maxTransfers, minTransferTime, additionalTransferTime, transferTimeFactor, useRoutedTransfers, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, transitModes, preTransitModes, postTransitModes, directMode, maxPreTransitTime, maxPostTransitTime, maxDirectTime, withDistance, requireBikeTransport, requireCarTransport).toEntity(localVarReturnType).block();
+    }
+
+    /**
+     * One to many routing Computes the minimal duration from one place to many or vice versa. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the query. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param one geo location as latitude;longitude
+     * @param many geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
+     * @param time Optional. Defaults to the current time.  Departure time ($arriveBy&#x3D;false) / arrival date ($arriveBy&#x3D;true), 
+     * @param maxTravelTime The maximum travel time in minutes. If not provided, the routing uses the value hardcoded in the server which is usually quite high.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the least transfers) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance. 
+     * @param maxMatchingDistance maximum matching distance in meters to match geo coordinates to the street network
+     * @param arriveBy Optional. Defaults to false, i.e. one to many search  true &#x3D; many to one false &#x3D; one to many 
+     * @param maxTransfers The maximum number of allowed transfers (i.e. interchanges between transit legs, pre- and postTransit do not count as transfers). &#x60;maxTransfers&#x3D;0&#x60; searches for direct transit connections without any transfers. If you want to search only for non-transit connections (&#x60;FOOT&#x60;, &#x60;CAR&#x60;, etc.), send an empty &#x60;transitModes&#x60; parameter instead.  If not provided, the routing uses the server-side default value which is hardcoded and very high to cover all use cases.  *Warning*: Use with care. Setting this too low can lead to optimal (e.g. the fastest) journeys not being found. If this value is too low to reach the destination at all, it can lead to slow routing performance. 
+     * @param minTransferTime Optional. Default is 0 minutes.  Minimum transfer time for each transfer in minutes. 
+     * @param additionalTransferTime Optional. Default is 0 minutes.  Additional transfer time reserved for each transfer in minutes. 
+     * @param transferTimeFactor Optional. Default is 1.0  Factor to multiply minimum required transfer times with. Values smaller than 1.0 are not supported. 
+     * @param useRoutedTransfers Optional. Default is &#x60;false&#x60;.  Whether to use transfers routed on OpenStreetMap data. 
+     * @param pedestrianProfile Optional. Default is &#x60;FOOT&#x60;.  Accessibility profile to use for pedestrian routing in transfers between transit connections and the first and last mile respectively. 
+     * @param pedestrianSpeed Optional  Average speed for pedestrian routing. 
+     * @param cyclingSpeed Optional  Average speed for bike routing. 
+     * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  The profile is used for routing on both the first and last mile.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
+     * @param transitModes Optional. Default is &#x60;TRANSIT&#x60; which allows all transit modes (no restriction). Allowed modes for the transit part. If empty, no transit connections will be computed. For example, this can be used to allow only &#x60;SUBURBAN,SUBWAY,TRAM&#x60;. 
+     * @param preTransitModes Optional. Default is &#x60;WALK&#x60;. Does not apply to direct connections (see &#x60;directMode&#x60;).  A list of modes that are allowed to be used for the first mile, i.e. from the coordinates to the first transit stop. Example: &#x60;WALK,BIKE_SHARING&#x60;. 
+     * @param postTransitModes Optional. Default is &#x60;WALK&#x60;. Does not apply to direct connections (see &#x60;directMode&#x60;).  A list of modes that are allowed to be used for the last mile, i.e. from the last transit stop to the target coordinates. Example: &#x60;WALK,BIKE_SHARING&#x60;. 
+     * @param directMode Default is &#x60;WALK&#x60; which will compute walking routes as direct connections.  Mode used for direction connections from start to destination without using transit.  Currently supported non-transit modes: \\&#x60;WALK\\&#x60;, \\&#x60;BIKE\\&#x60;, \\&#x60;CAR\\&#x60; 
+     * @param maxPreTransitTime Optional. Default is 15min which is &#x60;900&#x60;. Maximum time in seconds for the first street leg. Is limited by server config variable &#x60;street_routing_max_prepost_transit_seconds&#x60;. 
+     * @param maxPostTransitTime Optional. Default is 15min which is &#x60;900&#x60;. Maximum time in seconds for the last street leg. Is limited by server config variable &#x60;street_routing_max_prepost_transit_seconds&#x60;. 
+     * @param maxDirectTime Optional. Default is 30min which is &#x60;1800&#x60;. Maximum time in seconds for direct connections.  If a value smaller than either &#x60;maxPreTransitTime&#x60; or &#x60;maxPostTransitTime&#x60; is used, their maximum is set instead. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;. 
+     * @param withDistance Optional. Default is &#x60;false&#x60;. If true, the response includes the distance in meters for each path. This requires path reconstruction and is slower than duration-only queries.  &#x60;withDistance&#x60; is currently limited to street routing. 
+     * @param requireBikeTransport Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, all used transit trips are required to allow bike carriage. 
+     * @param requireCarTransport Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, all used transit trips are required to allow car carriage. 
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec oneToManyIntermodalWithResponseSpec(@jakarta.annotation.Nonnull String one, @jakarta.annotation.Nonnull List<String> many, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable Mode directMode, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable Boolean withDistance, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport) throws WebClientResponseException {
+        return oneToManyIntermodalRequestCreation(one, many, time, maxTravelTime, maxMatchingDistance, arriveBy, maxTransfers, minTransferTime, additionalTransferTime, transferTimeFactor, useRoutedTransfers, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, transitModes, preTransitModes, postTransitModes, directMode, maxPreTransitTime, maxPostTransitTime, maxDirectTime, withDistance, requireBikeTransport, requireCarTransport);
+    }
+
+    /**
+     * One to many routing Computes the minimal duration from one place to many or vice versa. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the request body. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param oneToManyIntermodalParams The oneToManyIntermodalParams parameter
+     * @return OneToManyIntermodalResponse
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec oneToManyIntermodalPostRequestCreation(@jakarta.annotation.Nonnull OneToManyIntermodalParams oneToManyIntermodalParams) throws WebClientResponseException {
+        Object postBody = oneToManyIntermodalParams;
+        // verify the required parameter 'oneToManyIntermodalParams' is set
+        if (oneToManyIntermodalParams == null) {
+            throw new WebClientResponseException("Missing the required parameter 'oneToManyIntermodalParams' when calling oneToManyIntermodalPost", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { 
+            "application/json"
+        };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {  };
+
+        ParameterizedTypeReference<OneToManyIntermodalResponse> localVarReturnType = new ParameterizedTypeReference<OneToManyIntermodalResponse>() {};
+        return apiClient.invokeAPI("/api/experimental/one-to-many-intermodal", HttpMethod.POST, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * One to many routing Computes the minimal duration from one place to many or vice versa. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the request body. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param oneToManyIntermodalParams The oneToManyIntermodalParams parameter
+     * @return OneToManyIntermodalResponse
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public OneToManyIntermodalResponse oneToManyIntermodalPost(@jakarta.annotation.Nonnull OneToManyIntermodalParams oneToManyIntermodalParams) throws WebClientResponseException {
+        ParameterizedTypeReference<OneToManyIntermodalResponse> localVarReturnType = new ParameterizedTypeReference<OneToManyIntermodalResponse>() {};
+        return oneToManyIntermodalPostRequestCreation(oneToManyIntermodalParams).bodyToMono(localVarReturnType).block();
+    }
+
+    /**
+     * One to many routing Computes the minimal duration from one place to many or vice versa. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the request body. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param oneToManyIntermodalParams The oneToManyIntermodalParams parameter
+     * @return ResponseEntity&lt;OneToManyIntermodalResponse&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<OneToManyIntermodalResponse> oneToManyIntermodalPostWithHttpInfo(@jakarta.annotation.Nonnull OneToManyIntermodalParams oneToManyIntermodalParams) throws WebClientResponseException {
+        ParameterizedTypeReference<OneToManyIntermodalResponse> localVarReturnType = new ParameterizedTypeReference<OneToManyIntermodalResponse>() {};
+        return oneToManyIntermodalPostRequestCreation(oneToManyIntermodalParams).toEntity(localVarReturnType).block();
+    }
+
+    /**
+     * One to many routing Computes the minimal duration from one place to many or vice versa. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the request body. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param oneToManyIntermodalParams The oneToManyIntermodalParams parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec oneToManyIntermodalPostWithResponseSpec(@jakarta.annotation.Nonnull OneToManyIntermodalParams oneToManyIntermodalParams) throws WebClientResponseException {
+        return oneToManyIntermodalPostRequestCreation(oneToManyIntermodalParams);
+    }
+
+    /**
+     * Street routing from one to many places or many to one. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the request body. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param oneToManyParams The oneToManyParams parameter
+     * @return List&lt;Duration&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec oneToManyPostRequestCreation(@jakarta.annotation.Nonnull OneToManyParams oneToManyParams) throws WebClientResponseException {
+        Object postBody = oneToManyParams;
+        // verify the required parameter 'oneToManyParams' is set
+        if (oneToManyParams == null) {
+            throw new WebClientResponseException("Missing the required parameter 'oneToManyParams' when calling oneToManyPost", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { 
+            "application/json"
+        };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {  };
+
+        ParameterizedTypeReference<Duration> localVarReturnType = new ParameterizedTypeReference<Duration>() {};
+        return apiClient.invokeAPI("/api/v1/one-to-many", HttpMethod.POST, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Street routing from one to many places or many to one. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the request body. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param oneToManyParams The oneToManyParams parameter
+     * @return List&lt;Duration&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public List<Duration> oneToManyPost(@jakarta.annotation.Nonnull OneToManyParams oneToManyParams) throws WebClientResponseException {
+        ParameterizedTypeReference<Duration> localVarReturnType = new ParameterizedTypeReference<Duration>() {};
+        return oneToManyPostRequestCreation(oneToManyParams).bodyToFlux(localVarReturnType).collectList().block();
+    }
+
+    /**
+     * Street routing from one to many places or many to one. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the request body. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param oneToManyParams The oneToManyParams parameter
+     * @return ResponseEntity&lt;List&lt;Duration&gt;&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<List<Duration>> oneToManyPostWithHttpInfo(@jakarta.annotation.Nonnull OneToManyParams oneToManyParams) throws WebClientResponseException {
+        ParameterizedTypeReference<Duration> localVarReturnType = new ParameterizedTypeReference<Duration>() {};
+        return oneToManyPostRequestCreation(oneToManyParams).toEntityList(localVarReturnType).block();
+    }
+
+    /**
+     * Street routing from one to many places or many to one. The order in the response array corresponds to the order of coordinates of the \\&#x60;many\\&#x60; parameter in the request body. 
+     * 
+     * <p><b>200</b> - A list of durations. If no path was found, the object is empty. 
+     * <p><b>400</b> - Bad Request
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>500</b> - Internal Server Error
+     * @param oneToManyParams The oneToManyParams parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec oneToManyPostWithResponseSpec(@jakarta.annotation.Nonnull OneToManyParams oneToManyParams) throws WebClientResponseException {
+        return oneToManyPostRequestCreation(oneToManyParams);
     }
 
     /**
@@ -400,7 +805,8 @@ public class RoutingApi {
      * @param cyclingSpeed Optional  Average speed for bike routing. 
      * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  The profile is used for direct routing, on the first mile, and last mile.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
      * @param useRoutedTransfers Optional. Default is &#x60;false&#x60;.  Whether to use transfers routed on OpenStreetMap data. 
-     * @param detailedTransfers - true: Compute transfer polylines and step instructions. - false: Only return basic information (start time, end time, duration) for transfers. 
+     * @param detailedTransfers Controls if transfer polylines and step instructions are returned.  If not set, this parameter inherits the value of &#x60;detailedLegs&#x60;.  - true: Compute transfer polylines and step instructions. - false: Return empty &#x60;legGeometry&#x60; and omit &#x60;steps&#x60; for transfers. 
+     * @param detailedLegs Controls if &#x60;legGeometry&#x60; and &#x60;steps&#x60; are returned for direct legs, pre-/post-transit legs and transit legs. 
      * @param joinInterlinedLegs Optional. Default is &#x60;true&#x60;.  Controls if a journey section with stay-seated transfers is returned: - &#x60;joinInterlinedLegs&#x3D;false&#x60;: as several legs (full information about all trip numbers, headsigns, etc.).   Legs that do not require a transfer (stay-seated transfer) are marked with &#x60;interlineWithPreviousLeg&#x3D;true&#x60;. - &#x60;joinInterlinedLegs&#x3D;true&#x60; (default behavior): as only one joined leg containing all stops 
      * @param transitModes Optional. Default is &#x60;TRANSIT&#x60; which allows all transit modes (no restriction). Allowed modes for the transit part. If empty, no transit connections will be computed. For example, this can be used to allow only &#x60;SUBURBAN,SUBWAY,TRAM&#x60;. 
      * @param directModes Optional. Default is &#x60;WALK&#x60; which will compute walking routes as direct connections.  Modes used for direction connections from start to destination without using transit. Results will be returned on the &#x60;direct&#x60; key.  Note: Direct connections will only be returned on the first call. For paging calls, they can be omitted.  Note: Transit connections that are slower than the fastest direct connection will not show up. This is being used as a cut-off during transit routing to speed up the search. To prevent this, it&#39;s possible to send two separate requests (one with only &#x60;transitModes&#x60; and one with only &#x60;directModes&#x60;).  Note: the output &#x60;direct&#x60; array will stay empty if the input param &#x60;maxDirectTime&#x60; makes any direct trip impossible.  Only non-transit modes such as &#x60;WALK&#x60;, &#x60;BIKE&#x60;, &#x60;CAR&#x60;, &#x60;BIKE_SHARING&#x60;, etc. can be used. 
@@ -445,7 +851,7 @@ public class RoutingApi {
      * @return Plan200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec planRequestCreation(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
+    private ResponseSpec planRequestCreation(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'fromPlace' is set
         if (fromPlace == null) {
@@ -480,6 +886,7 @@ public class RoutingApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "useRoutedTransfers", useRoutedTransfers));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "detailedTransfers", detailedTransfers));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "detailedLegs", detailedLegs));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "joinInterlinedLegs", joinInterlinedLegs));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "transitModes", transitModes));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directModes", directModes));
@@ -559,7 +966,8 @@ public class RoutingApi {
      * @param cyclingSpeed Optional  Average speed for bike routing. 
      * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  The profile is used for direct routing, on the first mile, and last mile.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
      * @param useRoutedTransfers Optional. Default is &#x60;false&#x60;.  Whether to use transfers routed on OpenStreetMap data. 
-     * @param detailedTransfers - true: Compute transfer polylines and step instructions. - false: Only return basic information (start time, end time, duration) for transfers. 
+     * @param detailedTransfers Controls if transfer polylines and step instructions are returned.  If not set, this parameter inherits the value of &#x60;detailedLegs&#x60;.  - true: Compute transfer polylines and step instructions. - false: Return empty &#x60;legGeometry&#x60; and omit &#x60;steps&#x60; for transfers. 
+     * @param detailedLegs Controls if &#x60;legGeometry&#x60; and &#x60;steps&#x60; are returned for direct legs, pre-/post-transit legs and transit legs. 
      * @param joinInterlinedLegs Optional. Default is &#x60;true&#x60;.  Controls if a journey section with stay-seated transfers is returned: - &#x60;joinInterlinedLegs&#x3D;false&#x60;: as several legs (full information about all trip numbers, headsigns, etc.).   Legs that do not require a transfer (stay-seated transfer) are marked with &#x60;interlineWithPreviousLeg&#x3D;true&#x60;. - &#x60;joinInterlinedLegs&#x3D;true&#x60; (default behavior): as only one joined leg containing all stops 
      * @param transitModes Optional. Default is &#x60;TRANSIT&#x60; which allows all transit modes (no restriction). Allowed modes for the transit part. If empty, no transit connections will be computed. For example, this can be used to allow only &#x60;SUBURBAN,SUBWAY,TRAM&#x60;. 
      * @param directModes Optional. Default is &#x60;WALK&#x60; which will compute walking routes as direct connections.  Modes used for direction connections from start to destination without using transit. Results will be returned on the &#x60;direct&#x60; key.  Note: Direct connections will only be returned on the first call. For paging calls, they can be omitted.  Note: Transit connections that are slower than the fastest direct connection will not show up. This is being used as a cut-off during transit routing to speed up the search. To prevent this, it&#39;s possible to send two separate requests (one with only &#x60;transitModes&#x60; and one with only &#x60;directModes&#x60;).  Note: the output &#x60;direct&#x60; array will stay empty if the input param &#x60;maxDirectTime&#x60; makes any direct trip impossible.  Only non-transit modes such as &#x60;WALK&#x60;, &#x60;BIKE&#x60;, &#x60;CAR&#x60;, &#x60;BIKE_SHARING&#x60;, etc. can be used. 
@@ -604,9 +1012,9 @@ public class RoutingApi {
      * @return Plan200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public Plan200Response plan(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
+    public Plan200Response plan(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
         ParameterizedTypeReference<Plan200Response> localVarReturnType = new ParameterizedTypeReference<Plan200Response>() {};
-        return planRequestCreation(fromPlace, toPlace, via, viaMinimumStay, time, maxTransfers, maxTravelTime, minTransferTime, additionalTransferTime, transferTimeFactor, maxMatchingDistance, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, useRoutedTransfers, detailedTransfers, joinInterlinedLegs, transitModes, directModes, preTransitModes, postTransitModes, directRentalFormFactors, preTransitRentalFormFactors, postTransitRentalFormFactors, directRentalPropulsionTypes, preTransitRentalPropulsionTypes, postTransitRentalPropulsionTypes, directRentalProviders, directRentalProviderGroups, preTransitRentalProviders, preTransitRentalProviderGroups, postTransitRentalProviders, postTransitRentalProviderGroups, ignoreDirectRentalReturnConstraints, ignorePreTransitRentalReturnConstraints, ignorePostTransitRentalReturnConstraints, numItineraries, maxItineraries, pageCursor, timetableView, arriveBy, searchWindow, requireBikeTransport, requireCarTransport, maxPreTransitTime, maxPostTransitTime, maxDirectTime, fastestDirectFactor, timeout, passengers, luggage, slowDirect, fastestSlowDirectFactor, withFares, withScheduledSkippedStops, language, algorithm).bodyToMono(localVarReturnType).block();
+        return planRequestCreation(fromPlace, toPlace, via, viaMinimumStay, time, maxTransfers, maxTravelTime, minTransferTime, additionalTransferTime, transferTimeFactor, maxMatchingDistance, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, useRoutedTransfers, detailedTransfers, detailedLegs, joinInterlinedLegs, transitModes, directModes, preTransitModes, postTransitModes, directRentalFormFactors, preTransitRentalFormFactors, postTransitRentalFormFactors, directRentalPropulsionTypes, preTransitRentalPropulsionTypes, postTransitRentalPropulsionTypes, directRentalProviders, directRentalProviderGroups, preTransitRentalProviders, preTransitRentalProviderGroups, postTransitRentalProviders, postTransitRentalProviderGroups, ignoreDirectRentalReturnConstraints, ignorePreTransitRentalReturnConstraints, ignorePostTransitRentalReturnConstraints, numItineraries, maxItineraries, pageCursor, timetableView, arriveBy, searchWindow, requireBikeTransport, requireCarTransport, maxPreTransitTime, maxPostTransitTime, maxDirectTime, fastestDirectFactor, timeout, passengers, luggage, slowDirect, fastestSlowDirectFactor, withFares, withScheduledSkippedStops, language, algorithm).bodyToMono(localVarReturnType).block();
     }
 
     /**
@@ -633,7 +1041,8 @@ public class RoutingApi {
      * @param cyclingSpeed Optional  Average speed for bike routing. 
      * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  The profile is used for direct routing, on the first mile, and last mile.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
      * @param useRoutedTransfers Optional. Default is &#x60;false&#x60;.  Whether to use transfers routed on OpenStreetMap data. 
-     * @param detailedTransfers - true: Compute transfer polylines and step instructions. - false: Only return basic information (start time, end time, duration) for transfers. 
+     * @param detailedTransfers Controls if transfer polylines and step instructions are returned.  If not set, this parameter inherits the value of &#x60;detailedLegs&#x60;.  - true: Compute transfer polylines and step instructions. - false: Return empty &#x60;legGeometry&#x60; and omit &#x60;steps&#x60; for transfers. 
+     * @param detailedLegs Controls if &#x60;legGeometry&#x60; and &#x60;steps&#x60; are returned for direct legs, pre-/post-transit legs and transit legs. 
      * @param joinInterlinedLegs Optional. Default is &#x60;true&#x60;.  Controls if a journey section with stay-seated transfers is returned: - &#x60;joinInterlinedLegs&#x3D;false&#x60;: as several legs (full information about all trip numbers, headsigns, etc.).   Legs that do not require a transfer (stay-seated transfer) are marked with &#x60;interlineWithPreviousLeg&#x3D;true&#x60;. - &#x60;joinInterlinedLegs&#x3D;true&#x60; (default behavior): as only one joined leg containing all stops 
      * @param transitModes Optional. Default is &#x60;TRANSIT&#x60; which allows all transit modes (no restriction). Allowed modes for the transit part. If empty, no transit connections will be computed. For example, this can be used to allow only &#x60;SUBURBAN,SUBWAY,TRAM&#x60;. 
      * @param directModes Optional. Default is &#x60;WALK&#x60; which will compute walking routes as direct connections.  Modes used for direction connections from start to destination without using transit. Results will be returned on the &#x60;direct&#x60; key.  Note: Direct connections will only be returned on the first call. For paging calls, they can be omitted.  Note: Transit connections that are slower than the fastest direct connection will not show up. This is being used as a cut-off during transit routing to speed up the search. To prevent this, it&#39;s possible to send two separate requests (one with only &#x60;transitModes&#x60; and one with only &#x60;directModes&#x60;).  Note: the output &#x60;direct&#x60; array will stay empty if the input param &#x60;maxDirectTime&#x60; makes any direct trip impossible.  Only non-transit modes such as &#x60;WALK&#x60;, &#x60;BIKE&#x60;, &#x60;CAR&#x60;, &#x60;BIKE_SHARING&#x60;, etc. can be used. 
@@ -678,9 +1087,9 @@ public class RoutingApi {
      * @return ResponseEntity&lt;Plan200Response&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Plan200Response> planWithHttpInfo(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
+    public ResponseEntity<Plan200Response> planWithHttpInfo(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
         ParameterizedTypeReference<Plan200Response> localVarReturnType = new ParameterizedTypeReference<Plan200Response>() {};
-        return planRequestCreation(fromPlace, toPlace, via, viaMinimumStay, time, maxTransfers, maxTravelTime, minTransferTime, additionalTransferTime, transferTimeFactor, maxMatchingDistance, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, useRoutedTransfers, detailedTransfers, joinInterlinedLegs, transitModes, directModes, preTransitModes, postTransitModes, directRentalFormFactors, preTransitRentalFormFactors, postTransitRentalFormFactors, directRentalPropulsionTypes, preTransitRentalPropulsionTypes, postTransitRentalPropulsionTypes, directRentalProviders, directRentalProviderGroups, preTransitRentalProviders, preTransitRentalProviderGroups, postTransitRentalProviders, postTransitRentalProviderGroups, ignoreDirectRentalReturnConstraints, ignorePreTransitRentalReturnConstraints, ignorePostTransitRentalReturnConstraints, numItineraries, maxItineraries, pageCursor, timetableView, arriveBy, searchWindow, requireBikeTransport, requireCarTransport, maxPreTransitTime, maxPostTransitTime, maxDirectTime, fastestDirectFactor, timeout, passengers, luggage, slowDirect, fastestSlowDirectFactor, withFares, withScheduledSkippedStops, language, algorithm).toEntity(localVarReturnType).block();
+        return planRequestCreation(fromPlace, toPlace, via, viaMinimumStay, time, maxTransfers, maxTravelTime, minTransferTime, additionalTransferTime, transferTimeFactor, maxMatchingDistance, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, useRoutedTransfers, detailedTransfers, detailedLegs, joinInterlinedLegs, transitModes, directModes, preTransitModes, postTransitModes, directRentalFormFactors, preTransitRentalFormFactors, postTransitRentalFormFactors, directRentalPropulsionTypes, preTransitRentalPropulsionTypes, postTransitRentalPropulsionTypes, directRentalProviders, directRentalProviderGroups, preTransitRentalProviders, preTransitRentalProviderGroups, postTransitRentalProviders, postTransitRentalProviderGroups, ignoreDirectRentalReturnConstraints, ignorePreTransitRentalReturnConstraints, ignorePostTransitRentalReturnConstraints, numItineraries, maxItineraries, pageCursor, timetableView, arriveBy, searchWindow, requireBikeTransport, requireCarTransport, maxPreTransitTime, maxPostTransitTime, maxDirectTime, fastestDirectFactor, timeout, passengers, luggage, slowDirect, fastestSlowDirectFactor, withFares, withScheduledSkippedStops, language, algorithm).toEntity(localVarReturnType).block();
     }
 
     /**
@@ -707,7 +1116,8 @@ public class RoutingApi {
      * @param cyclingSpeed Optional  Average speed for bike routing. 
      * @param elevationCosts Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  The profile is used for direct routing, on the first mile, and last mile.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
      * @param useRoutedTransfers Optional. Default is &#x60;false&#x60;.  Whether to use transfers routed on OpenStreetMap data. 
-     * @param detailedTransfers - true: Compute transfer polylines and step instructions. - false: Only return basic information (start time, end time, duration) for transfers. 
+     * @param detailedTransfers Controls if transfer polylines and step instructions are returned.  If not set, this parameter inherits the value of &#x60;detailedLegs&#x60;.  - true: Compute transfer polylines and step instructions. - false: Return empty &#x60;legGeometry&#x60; and omit &#x60;steps&#x60; for transfers. 
+     * @param detailedLegs Controls if &#x60;legGeometry&#x60; and &#x60;steps&#x60; are returned for direct legs, pre-/post-transit legs and transit legs. 
      * @param joinInterlinedLegs Optional. Default is &#x60;true&#x60;.  Controls if a journey section with stay-seated transfers is returned: - &#x60;joinInterlinedLegs&#x3D;false&#x60;: as several legs (full information about all trip numbers, headsigns, etc.).   Legs that do not require a transfer (stay-seated transfer) are marked with &#x60;interlineWithPreviousLeg&#x3D;true&#x60;. - &#x60;joinInterlinedLegs&#x3D;true&#x60; (default behavior): as only one joined leg containing all stops 
      * @param transitModes Optional. Default is &#x60;TRANSIT&#x60; which allows all transit modes (no restriction). Allowed modes for the transit part. If empty, no transit connections will be computed. For example, this can be used to allow only &#x60;SUBURBAN,SUBWAY,TRAM&#x60;. 
      * @param directModes Optional. Default is &#x60;WALK&#x60; which will compute walking routes as direct connections.  Modes used for direction connections from start to destination without using transit. Results will be returned on the &#x60;direct&#x60; key.  Note: Direct connections will only be returned on the first call. For paging calls, they can be omitted.  Note: Transit connections that are slower than the fastest direct connection will not show up. This is being used as a cut-off during transit routing to speed up the search. To prevent this, it&#39;s possible to send two separate requests (one with only &#x60;transitModes&#x60; and one with only &#x60;directModes&#x60;).  Note: the output &#x60;direct&#x60; array will stay empty if the input param &#x60;maxDirectTime&#x60; makes any direct trip impossible.  Only non-transit modes such as &#x60;WALK&#x60;, &#x60;BIKE&#x60;, &#x60;CAR&#x60;, &#x60;BIKE_SHARING&#x60;, etc. can be used. 
@@ -752,7 +1162,7 @@ public class RoutingApi {
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec planWithResponseSpec(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
-        return planRequestCreation(fromPlace, toPlace, via, viaMinimumStay, time, maxTransfers, maxTravelTime, minTransferTime, additionalTransferTime, transferTimeFactor, maxMatchingDistance, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, useRoutedTransfers, detailedTransfers, joinInterlinedLegs, transitModes, directModes, preTransitModes, postTransitModes, directRentalFormFactors, preTransitRentalFormFactors, postTransitRentalFormFactors, directRentalPropulsionTypes, preTransitRentalPropulsionTypes, postTransitRentalPropulsionTypes, directRentalProviders, directRentalProviderGroups, preTransitRentalProviders, preTransitRentalProviderGroups, postTransitRentalProviders, postTransitRentalProviderGroups, ignoreDirectRentalReturnConstraints, ignorePreTransitRentalReturnConstraints, ignorePostTransitRentalReturnConstraints, numItineraries, maxItineraries, pageCursor, timetableView, arriveBy, searchWindow, requireBikeTransport, requireCarTransport, maxPreTransitTime, maxPostTransitTime, maxDirectTime, fastestDirectFactor, timeout, passengers, luggage, slowDirect, fastestSlowDirectFactor, withFares, withScheduledSkippedStops, language, algorithm);
+    public ResponseSpec planWithResponseSpec(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
+        return planRequestCreation(fromPlace, toPlace, via, viaMinimumStay, time, maxTransfers, maxTravelTime, minTransferTime, additionalTransferTime, transferTimeFactor, maxMatchingDistance, pedestrianProfile, pedestrianSpeed, cyclingSpeed, elevationCosts, useRoutedTransfers, detailedTransfers, detailedLegs, joinInterlinedLegs, transitModes, directModes, preTransitModes, postTransitModes, directRentalFormFactors, preTransitRentalFormFactors, postTransitRentalFormFactors, directRentalPropulsionTypes, preTransitRentalPropulsionTypes, postTransitRentalPropulsionTypes, directRentalProviders, directRentalProviderGroups, preTransitRentalProviders, preTransitRentalProviderGroups, postTransitRentalProviders, postTransitRentalProviderGroups, ignoreDirectRentalReturnConstraints, ignorePreTransitRentalReturnConstraints, ignorePostTransitRentalReturnConstraints, numItineraries, maxItineraries, pageCursor, timetableView, arriveBy, searchWindow, requireBikeTransport, requireCarTransport, maxPreTransitTime, maxPostTransitTime, maxDirectTime, fastestDirectFactor, timeout, passengers, luggage, slowDirect, fastestSlowDirectFactor, withFares, withScheduledSkippedStops, language, algorithm);
     }
 }

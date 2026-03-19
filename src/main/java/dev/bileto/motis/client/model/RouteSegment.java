@@ -24,43 +24,103 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Error
+ * Route segment between two stops to show a route on a map
  */
 @JsonPropertyOrder({
-  Error.JSON_PROPERTY_ERROR
+  RouteSegment.JSON_PROPERTY_FROM,
+  RouteSegment.JSON_PROPERTY_TO,
+  RouteSegment.JSON_PROPERTY_POLYLINE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class Error {
-  public static final String JSON_PROPERTY_ERROR = "error";
+public class RouteSegment {
+  public static final String JSON_PROPERTY_FROM = "from";
   @jakarta.annotation.Nonnull
-  private String error;
+  private Integer from;
 
-  public Error() {
+  public static final String JSON_PROPERTY_TO = "to";
+  @jakarta.annotation.Nonnull
+  private Integer to;
+
+  public static final String JSON_PROPERTY_POLYLINE = "polyline";
+  @jakarta.annotation.Nonnull
+  private Integer polyline;
+
+  public RouteSegment() {
   }
 
-  public Error error(@jakarta.annotation.Nonnull String error) {
+  public RouteSegment from(@jakarta.annotation.Nonnull Integer from) {
     
-    this.error = error;
+    this.from = from;
     return this;
   }
 
   /**
-   * error message
-   * @return error
+   * Index into the top-level route stops array
+   * @return from
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonProperty(value = JSON_PROPERTY_FROM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getError() {
-    return error;
+  public Integer getFrom() {
+    return from;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonProperty(value = JSON_PROPERTY_FROM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setError(@jakarta.annotation.Nonnull String error) {
-    this.error = error;
+  public void setFrom(@jakarta.annotation.Nonnull Integer from) {
+    this.from = from;
+  }
+
+  public RouteSegment to(@jakarta.annotation.Nonnull Integer to) {
+    
+    this.to = to;
+    return this;
+  }
+
+  /**
+   * Index into the top-level route stops array
+   * @return to
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TO, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getTo() {
+    return to;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TO, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTo(@jakarta.annotation.Nonnull Integer to) {
+    this.to = to;
+  }
+
+  public RouteSegment polyline(@jakarta.annotation.Nonnull Integer polyline) {
+    
+    this.polyline = polyline;
+    return this;
+  }
+
+  /**
+   * Index into the top-level route polylines array
+   * @return polyline
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_POLYLINE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getPolyline() {
+    return polyline;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_POLYLINE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPolyline(@jakarta.annotation.Nonnull Integer polyline) {
+    this.polyline = polyline;
   }
 
 
@@ -72,20 +132,24 @@ public class Error {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Error error = (Error) o;
-    return Objects.equals(this.error, error.error);
+    RouteSegment routeSegment = (RouteSegment) o;
+    return Objects.equals(this.from, routeSegment.from) &&
+        Objects.equals(this.to, routeSegment.to) &&
+        Objects.equals(this.polyline, routeSegment.polyline);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error);
+    return Objects.hash(from, to, polyline);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Error {\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class RouteSegment {\n");
+    sb.append("    from: ").append(toIndentedString(from)).append("\n");
+    sb.append("    to: ").append(toIndentedString(to)).append("\n");
+    sb.append("    polyline: ").append(toIndentedString(polyline)).append("\n");
     sb.append("}");
     return sb.toString();
   }

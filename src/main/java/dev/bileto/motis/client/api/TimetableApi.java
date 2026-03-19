@@ -30,7 +30,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimetableApi {
     private ApiClient apiClient;
 
@@ -59,11 +59,13 @@ public class TimetableApi {
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of departures/arrivals
      * @param stopId stop id of the stop to retrieve departures/arrivals for
-     * @param n the number of events
+     * @param center Anchor coordinate. Format: latitude,longitude pair. Used as fallback when \&quot;stopId\&quot; is missing or can&#39;t be found. If both are provided and \&quot;stopId\&quot; resolves, \&quot;stopId\&quot; is used. If \&quot;stopId\&quot; does not resolve, \&quot;center\&quot; is used instead. \&quot;radius\&quot; is required when querying by \&quot;center\&quot; (i.e. without a valid \&quot;stopId\&quot;). 
      * @param time Optional. Defaults to the current time. 
      * @param arriveBy Optional. Default is &#x60;false&#x60;.    - &#x60;arriveBy&#x3D;true&#x60;: the parameters &#x60;date&#x60; and &#x60;time&#x60; refer to the arrival time   - &#x60;arriveBy&#x3D;false&#x60;: the parameters &#x60;date&#x60; and &#x60;time&#x60; refer to the departure time 
      * @param direction This parameter will be ignored in case &#x60;pageCursor&#x60; is set.  Optional. Default is   - &#x60;LATER&#x60; for &#x60;arriveBy&#x3D;false&#x60;   - &#x60;EARLIER&#x60; for &#x60;arriveBy&#x3D;true&#x60;  The response will contain the next &#x60;n&#x60; arrivals / departures in case &#x60;EARLIER&#x60; is selected and the previous &#x60;n&#x60; arrivals / departures if &#x60;LATER&#x60; is selected. 
+     * @param window Optional. Window in seconds around &#x60;time&#x60;. Limiting the response to those that are at most &#x60;window&#x60; seconds aways in time. If both &#x60;n&#x60; and &#x60;window&#x60; are set, it uses whichever returns more. 
      * @param mode Optional. Default is all transit modes.  Only return arrivals/departures of the given modes. 
+     * @param n Minimum number of events to return. If both &#x60;n&#x60; and &#x60;window&#x60; are provided, the API uses whichever returns more events. 
      * @param radius Optional. Radius in meters.  Default is that only stop times of the parent of the stop itself and all stops with the same name (+ their child stops) are returned.  If set, all stops at parent stations and their child stops in the specified radius are returned. 
      * @param exactRadius Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, only stations that are phyiscally in the radius are considered. If set to &#x60;false&#x60;, additionally to the stations in the radius, equivalences with the same name and children are considered. 
      * @param fetchStops Experimental. Expect unannounced breaking changes (without version bumps).  Optional. Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the following stops are returned for departures and the previous stops are returned for arrivals. 
@@ -74,16 +76,8 @@ public class TimetableApi {
      * @return Stoptimes200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec stoptimesRequestCreation(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable Boolean withAlerts) throws WebClientResponseException {
+    private ResponseSpec stoptimesRequestCreation(@jakarta.annotation.Nullable String stopId, @jakarta.annotation.Nullable String center, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable Integer window, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer n, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable Boolean withAlerts) throws WebClientResponseException {
         Object postBody = null;
-        // verify the required parameter 'stopId' is set
-        if (stopId == null) {
-            throw new WebClientResponseException("Missing the required parameter 'stopId' when calling stoptimes", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
-        }
-        // verify the required parameter 'n' is set
-        if (n == null) {
-            throw new WebClientResponseException("Missing the required parameter 'n' when calling stoptimes", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
-        }
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
@@ -93,9 +87,11 @@ public class TimetableApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "stopId", stopId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "center", center));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "direction", direction));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "window", window));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "mode", mode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "n", n));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "radius", radius));
@@ -128,11 +124,13 @@ public class TimetableApi {
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of departures/arrivals
      * @param stopId stop id of the stop to retrieve departures/arrivals for
-     * @param n the number of events
+     * @param center Anchor coordinate. Format: latitude,longitude pair. Used as fallback when \&quot;stopId\&quot; is missing or can&#39;t be found. If both are provided and \&quot;stopId\&quot; resolves, \&quot;stopId\&quot; is used. If \&quot;stopId\&quot; does not resolve, \&quot;center\&quot; is used instead. \&quot;radius\&quot; is required when querying by \&quot;center\&quot; (i.e. without a valid \&quot;stopId\&quot;). 
      * @param time Optional. Defaults to the current time. 
      * @param arriveBy Optional. Default is &#x60;false&#x60;.    - &#x60;arriveBy&#x3D;true&#x60;: the parameters &#x60;date&#x60; and &#x60;time&#x60; refer to the arrival time   - &#x60;arriveBy&#x3D;false&#x60;: the parameters &#x60;date&#x60; and &#x60;time&#x60; refer to the departure time 
      * @param direction This parameter will be ignored in case &#x60;pageCursor&#x60; is set.  Optional. Default is   - &#x60;LATER&#x60; for &#x60;arriveBy&#x3D;false&#x60;   - &#x60;EARLIER&#x60; for &#x60;arriveBy&#x3D;true&#x60;  The response will contain the next &#x60;n&#x60; arrivals / departures in case &#x60;EARLIER&#x60; is selected and the previous &#x60;n&#x60; arrivals / departures if &#x60;LATER&#x60; is selected. 
+     * @param window Optional. Window in seconds around &#x60;time&#x60;. Limiting the response to those that are at most &#x60;window&#x60; seconds aways in time. If both &#x60;n&#x60; and &#x60;window&#x60; are set, it uses whichever returns more. 
      * @param mode Optional. Default is all transit modes.  Only return arrivals/departures of the given modes. 
+     * @param n Minimum number of events to return. If both &#x60;n&#x60; and &#x60;window&#x60; are provided, the API uses whichever returns more events. 
      * @param radius Optional. Radius in meters.  Default is that only stop times of the parent of the stop itself and all stops with the same name (+ their child stops) are returned.  If set, all stops at parent stations and their child stops in the specified radius are returned. 
      * @param exactRadius Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, only stations that are phyiscally in the radius are considered. If set to &#x60;false&#x60;, additionally to the stations in the radius, equivalences with the same name and children are considered. 
      * @param fetchStops Experimental. Expect unannounced breaking changes (without version bumps).  Optional. Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the following stops are returned for departures and the previous stops are returned for arrivals. 
@@ -143,9 +141,9 @@ public class TimetableApi {
      * @return Stoptimes200Response
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public Stoptimes200Response stoptimes(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable Boolean withAlerts) throws WebClientResponseException {
+    public Stoptimes200Response stoptimes(@jakarta.annotation.Nullable String stopId, @jakarta.annotation.Nullable String center, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable Integer window, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer n, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable Boolean withAlerts) throws WebClientResponseException {
         ParameterizedTypeReference<Stoptimes200Response> localVarReturnType = new ParameterizedTypeReference<Stoptimes200Response>() {};
-        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language, withAlerts).bodyToMono(localVarReturnType).block();
+        return stoptimesRequestCreation(stopId, center, time, arriveBy, direction, window, mode, n, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language, withAlerts).bodyToMono(localVarReturnType).block();
     }
 
     /**
@@ -157,11 +155,13 @@ public class TimetableApi {
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of departures/arrivals
      * @param stopId stop id of the stop to retrieve departures/arrivals for
-     * @param n the number of events
+     * @param center Anchor coordinate. Format: latitude,longitude pair. Used as fallback when \&quot;stopId\&quot; is missing or can&#39;t be found. If both are provided and \&quot;stopId\&quot; resolves, \&quot;stopId\&quot; is used. If \&quot;stopId\&quot; does not resolve, \&quot;center\&quot; is used instead. \&quot;radius\&quot; is required when querying by \&quot;center\&quot; (i.e. without a valid \&quot;stopId\&quot;). 
      * @param time Optional. Defaults to the current time. 
      * @param arriveBy Optional. Default is &#x60;false&#x60;.    - &#x60;arriveBy&#x3D;true&#x60;: the parameters &#x60;date&#x60; and &#x60;time&#x60; refer to the arrival time   - &#x60;arriveBy&#x3D;false&#x60;: the parameters &#x60;date&#x60; and &#x60;time&#x60; refer to the departure time 
      * @param direction This parameter will be ignored in case &#x60;pageCursor&#x60; is set.  Optional. Default is   - &#x60;LATER&#x60; for &#x60;arriveBy&#x3D;false&#x60;   - &#x60;EARLIER&#x60; for &#x60;arriveBy&#x3D;true&#x60;  The response will contain the next &#x60;n&#x60; arrivals / departures in case &#x60;EARLIER&#x60; is selected and the previous &#x60;n&#x60; arrivals / departures if &#x60;LATER&#x60; is selected. 
+     * @param window Optional. Window in seconds around &#x60;time&#x60;. Limiting the response to those that are at most &#x60;window&#x60; seconds aways in time. If both &#x60;n&#x60; and &#x60;window&#x60; are set, it uses whichever returns more. 
      * @param mode Optional. Default is all transit modes.  Only return arrivals/departures of the given modes. 
+     * @param n Minimum number of events to return. If both &#x60;n&#x60; and &#x60;window&#x60; are provided, the API uses whichever returns more events. 
      * @param radius Optional. Radius in meters.  Default is that only stop times of the parent of the stop itself and all stops with the same name (+ their child stops) are returned.  If set, all stops at parent stations and their child stops in the specified radius are returned. 
      * @param exactRadius Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, only stations that are phyiscally in the radius are considered. If set to &#x60;false&#x60;, additionally to the stations in the radius, equivalences with the same name and children are considered. 
      * @param fetchStops Experimental. Expect unannounced breaking changes (without version bumps).  Optional. Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the following stops are returned for departures and the previous stops are returned for arrivals. 
@@ -172,9 +172,9 @@ public class TimetableApi {
      * @return ResponseEntity&lt;Stoptimes200Response&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Stoptimes200Response> stoptimesWithHttpInfo(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable Boolean withAlerts) throws WebClientResponseException {
+    public ResponseEntity<Stoptimes200Response> stoptimesWithHttpInfo(@jakarta.annotation.Nullable String stopId, @jakarta.annotation.Nullable String center, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable Integer window, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer n, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable Boolean withAlerts) throws WebClientResponseException {
         ParameterizedTypeReference<Stoptimes200Response> localVarReturnType = new ParameterizedTypeReference<Stoptimes200Response>() {};
-        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language, withAlerts).toEntity(localVarReturnType).block();
+        return stoptimesRequestCreation(stopId, center, time, arriveBy, direction, window, mode, n, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language, withAlerts).toEntity(localVarReturnType).block();
     }
 
     /**
@@ -186,11 +186,13 @@ public class TimetableApi {
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of departures/arrivals
      * @param stopId stop id of the stop to retrieve departures/arrivals for
-     * @param n the number of events
+     * @param center Anchor coordinate. Format: latitude,longitude pair. Used as fallback when \&quot;stopId\&quot; is missing or can&#39;t be found. If both are provided and \&quot;stopId\&quot; resolves, \&quot;stopId\&quot; is used. If \&quot;stopId\&quot; does not resolve, \&quot;center\&quot; is used instead. \&quot;radius\&quot; is required when querying by \&quot;center\&quot; (i.e. without a valid \&quot;stopId\&quot;). 
      * @param time Optional. Defaults to the current time. 
      * @param arriveBy Optional. Default is &#x60;false&#x60;.    - &#x60;arriveBy&#x3D;true&#x60;: the parameters &#x60;date&#x60; and &#x60;time&#x60; refer to the arrival time   - &#x60;arriveBy&#x3D;false&#x60;: the parameters &#x60;date&#x60; and &#x60;time&#x60; refer to the departure time 
      * @param direction This parameter will be ignored in case &#x60;pageCursor&#x60; is set.  Optional. Default is   - &#x60;LATER&#x60; for &#x60;arriveBy&#x3D;false&#x60;   - &#x60;EARLIER&#x60; for &#x60;arriveBy&#x3D;true&#x60;  The response will contain the next &#x60;n&#x60; arrivals / departures in case &#x60;EARLIER&#x60; is selected and the previous &#x60;n&#x60; arrivals / departures if &#x60;LATER&#x60; is selected. 
+     * @param window Optional. Window in seconds around &#x60;time&#x60;. Limiting the response to those that are at most &#x60;window&#x60; seconds aways in time. If both &#x60;n&#x60; and &#x60;window&#x60; are set, it uses whichever returns more. 
      * @param mode Optional. Default is all transit modes.  Only return arrivals/departures of the given modes. 
+     * @param n Minimum number of events to return. If both &#x60;n&#x60; and &#x60;window&#x60; are provided, the API uses whichever returns more events. 
      * @param radius Optional. Radius in meters.  Default is that only stop times of the parent of the stop itself and all stops with the same name (+ their child stops) are returned.  If set, all stops at parent stations and their child stops in the specified radius are returned. 
      * @param exactRadius Optional. Default is &#x60;false&#x60;.  If set to &#x60;true&#x60;, only stations that are phyiscally in the radius are considered. If set to &#x60;false&#x60;, additionally to the stations in the radius, equivalences with the same name and children are considered. 
      * @param fetchStops Experimental. Expect unannounced breaking changes (without version bumps).  Optional. Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the following stops are returned for departures and the previous stops are returned for arrivals. 
@@ -201,8 +203,8 @@ public class TimetableApi {
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec stoptimesWithResponseSpec(@jakarta.annotation.Nonnull String stopId, @jakarta.annotation.Nonnull Integer n, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable Boolean withAlerts) throws WebClientResponseException {
-        return stoptimesRequestCreation(stopId, n, time, arriveBy, direction, mode, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language, withAlerts);
+    public ResponseSpec stoptimesWithResponseSpec(@jakarta.annotation.Nullable String stopId, @jakarta.annotation.Nullable String center, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable String direction, @jakarta.annotation.Nullable Integer window, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable Integer n, @jakarta.annotation.Nullable Integer radius, @jakarta.annotation.Nullable Boolean exactRadius, @jakarta.annotation.Nullable Boolean fetchStops, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable Boolean withAlerts) throws WebClientResponseException {
+        return stoptimesRequestCreation(stopId, center, time, arriveBy, direction, window, mode, n, radius, exactRadius, fetchStops, pageCursor, withScheduledSkippedStops, language, withAlerts);
     }
 
     /**
@@ -215,12 +217,13 @@ public class TimetableApi {
      * <p><b>500</b> - Internal Server Error
      * @param tripId trip identifier (e.g. from an itinerary leg or stop event)
      * @param withScheduledSkippedStops Optional. Include intermediate stops where passengers can not alight/board according to schedule.
+     * @param detailedLegs Controls if &#x60;legGeometry&#x60; is returned for transit legs.  The default value is &#x60;true&#x60;. 
      * @param joinInterlinedLegs Optional. Default is &#x60;true&#x60;.  Controls if a trip with stay-seated transfers is returned: - &#x60;joinInterlinedLegs&#x3D;false&#x60;: as several legs (full information about all trip numbers, headsigns, etc.).   Legs that do not require a transfer (stay-seated transfer) are marked with &#x60;interlineWithPreviousLeg&#x3D;true&#x60;. - &#x60;joinInterlinedLegs&#x3D;true&#x60; (default behavior): as only one joined leg containing all stops 
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return Itinerary
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec tripRequestCreation(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    private ResponseSpec tripRequestCreation(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'tripId' is set
         if (tripId == null) {
@@ -236,6 +239,7 @@ public class TimetableApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "tripId", tripId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "detailedLegs", detailedLegs));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "joinInterlinedLegs", joinInterlinedLegs));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
 
@@ -262,14 +266,15 @@ public class TimetableApi {
      * <p><b>500</b> - Internal Server Error
      * @param tripId trip identifier (e.g. from an itinerary leg or stop event)
      * @param withScheduledSkippedStops Optional. Include intermediate stops where passengers can not alight/board according to schedule.
+     * @param detailedLegs Controls if &#x60;legGeometry&#x60; is returned for transit legs.  The default value is &#x60;true&#x60;. 
      * @param joinInterlinedLegs Optional. Default is &#x60;true&#x60;.  Controls if a trip with stay-seated transfers is returned: - &#x60;joinInterlinedLegs&#x3D;false&#x60;: as several legs (full information about all trip numbers, headsigns, etc.).   Legs that do not require a transfer (stay-seated transfer) are marked with &#x60;interlineWithPreviousLeg&#x3D;true&#x60;. - &#x60;joinInterlinedLegs&#x3D;true&#x60; (default behavior): as only one joined leg containing all stops 
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return Itinerary
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public Itinerary trip(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    public Itinerary trip(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<Itinerary> localVarReturnType = new ParameterizedTypeReference<Itinerary>() {};
-        return tripRequestCreation(tripId, withScheduledSkippedStops, joinInterlinedLegs, language).bodyToMono(localVarReturnType).block();
+        return tripRequestCreation(tripId, withScheduledSkippedStops, detailedLegs, joinInterlinedLegs, language).bodyToMono(localVarReturnType).block();
     }
 
     /**
@@ -282,14 +287,15 @@ public class TimetableApi {
      * <p><b>500</b> - Internal Server Error
      * @param tripId trip identifier (e.g. from an itinerary leg or stop event)
      * @param withScheduledSkippedStops Optional. Include intermediate stops where passengers can not alight/board according to schedule.
+     * @param detailedLegs Controls if &#x60;legGeometry&#x60; is returned for transit legs.  The default value is &#x60;true&#x60;. 
      * @param joinInterlinedLegs Optional. Default is &#x60;true&#x60;.  Controls if a trip with stay-seated transfers is returned: - &#x60;joinInterlinedLegs&#x3D;false&#x60;: as several legs (full information about all trip numbers, headsigns, etc.).   Legs that do not require a transfer (stay-seated transfer) are marked with &#x60;interlineWithPreviousLeg&#x3D;true&#x60;. - &#x60;joinInterlinedLegs&#x3D;true&#x60; (default behavior): as only one joined leg containing all stops 
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return ResponseEntity&lt;Itinerary&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Itinerary> tripWithHttpInfo(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    public ResponseEntity<Itinerary> tripWithHttpInfo(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<Itinerary> localVarReturnType = new ParameterizedTypeReference<Itinerary>() {};
-        return tripRequestCreation(tripId, withScheduledSkippedStops, joinInterlinedLegs, language).toEntity(localVarReturnType).block();
+        return tripRequestCreation(tripId, withScheduledSkippedStops, detailedLegs, joinInterlinedLegs, language).toEntity(localVarReturnType).block();
     }
 
     /**
@@ -302,12 +308,13 @@ public class TimetableApi {
      * <p><b>500</b> - Internal Server Error
      * @param tripId trip identifier (e.g. from an itinerary leg or stop event)
      * @param withScheduledSkippedStops Optional. Include intermediate stops where passengers can not alight/board according to schedule.
+     * @param detailedLegs Controls if &#x60;legGeometry&#x60; is returned for transit legs.  The default value is &#x60;true&#x60;. 
      * @param joinInterlinedLegs Optional. Default is &#x60;true&#x60;.  Controls if a trip with stay-seated transfers is returned: - &#x60;joinInterlinedLegs&#x3D;false&#x60;: as several legs (full information about all trip numbers, headsigns, etc.).   Legs that do not require a transfer (stay-seated transfer) are marked with &#x60;interlineWithPreviousLeg&#x3D;true&#x60;. - &#x60;joinInterlinedLegs&#x3D;true&#x60; (default behavior): as only one joined leg containing all stops 
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec tripWithResponseSpec(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
-        return tripRequestCreation(tripId, withScheduledSkippedStops, joinInterlinedLegs, language);
+    public ResponseSpec tripWithResponseSpec(@jakarta.annotation.Nonnull String tripId, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        return tripRequestCreation(tripId, withScheduledSkippedStops, detailedLegs, joinInterlinedLegs, language);
     }
 }

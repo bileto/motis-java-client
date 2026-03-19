@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import dev.bileto.motis.client.model.Alert;
+import dev.bileto.motis.client.model.Category;
 import dev.bileto.motis.client.model.EncodedPolyline;
 import dev.bileto.motis.client.model.Mode;
 import dev.bileto.motis.client.model.Place;
@@ -53,7 +54,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_HEADSIGN,
   Leg.JSON_PROPERTY_TRIP_FROM,
   Leg.JSON_PROPERTY_TRIP_TO,
+  Leg.JSON_PROPERTY_CATEGORY,
   Leg.JSON_PROPERTY_ROUTE_ID,
+  Leg.JSON_PROPERTY_ROUTE_URL,
   Leg.JSON_PROPERTY_DIRECTION_ID,
   Leg.JSON_PROPERTY_ROUTE_COLOR,
   Leg.JSON_PROPERTY_ROUTE_TEXT_COLOR,
@@ -78,7 +81,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_LOOPED_CALENDAR_SINCE,
   Leg.JSON_PROPERTY_BIKES_ALLOWED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Leg {
   public static final String JSON_PROPERTY_MODE = "mode";
   @jakarta.annotation.Nonnull
@@ -140,9 +143,17 @@ public class Leg {
   @jakarta.annotation.Nullable
   private Place tripTo;
 
+  public static final String JSON_PROPERTY_CATEGORY = "category";
+  @jakarta.annotation.Nullable
+  private Category category;
+
   public static final String JSON_PROPERTY_ROUTE_ID = "routeId";
   @jakarta.annotation.Nullable
   private String routeId;
+
+  public static final String JSON_PROPERTY_ROUTE_URL = "routeUrl";
+  @jakarta.annotation.Nullable
+  private String routeUrl;
 
   public static final String JSON_PROPERTY_DIRECTION_ID = "directionId";
   @jakarta.annotation.Nullable
@@ -614,6 +625,31 @@ public class Leg {
     this.tripTo = tripTo;
   }
 
+  public Leg category(@jakarta.annotation.Nullable Category category) {
+    
+    this.category = category;
+    return this;
+  }
+
+  /**
+   * Get category
+   * @return category
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CATEGORY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Category getCategory() {
+    return category;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CATEGORY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCategory(@jakarta.annotation.Nullable Category category) {
+    this.category = category;
+  }
+
   public Leg routeId(@jakarta.annotation.Nullable String routeId) {
     
     this.routeId = routeId;
@@ -637,6 +673,31 @@ public class Leg {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRouteId(@jakarta.annotation.Nullable String routeId) {
     this.routeId = routeId;
+  }
+
+  public Leg routeUrl(@jakarta.annotation.Nullable String routeUrl) {
+    
+    this.routeUrl = routeUrl;
+    return this;
+  }
+
+  /**
+   * Get routeUrl
+   * @return routeUrl
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getRouteUrl() {
+    return routeUrl;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRouteUrl(@jakarta.annotation.Nullable String routeUrl) {
+    this.routeUrl = routeUrl;
   }
 
   public Leg directionId(@jakarta.annotation.Nullable String directionId) {
@@ -1029,7 +1090,7 @@ public class Leg {
   }
 
   /**
-   * Get legGeometry
+   * Encoded geometry of the leg. If detailed leg output is disabled, this is returned as an empty polyline. 
    * @return legGeometry
    */
   @jakarta.annotation.Nonnull
@@ -1062,7 +1123,7 @@ public class Leg {
   }
 
   /**
-   * A series of turn by turn instructions used for walking, biking and driving. 
+   * A series of turn by turn instructions used for walking, biking and driving. This field is omitted if the request disables detailed leg output. 
    * @return steps
    */
   @jakarta.annotation.Nullable
@@ -1263,7 +1324,9 @@ public class Leg {
         Objects.equals(this.headsign, leg.headsign) &&
         Objects.equals(this.tripFrom, leg.tripFrom) &&
         Objects.equals(this.tripTo, leg.tripTo) &&
+        Objects.equals(this.category, leg.category) &&
         Objects.equals(this.routeId, leg.routeId) &&
+        Objects.equals(this.routeUrl, leg.routeUrl) &&
         Objects.equals(this.directionId, leg.directionId) &&
         Objects.equals(this.routeColor, leg.routeColor) &&
         Objects.equals(this.routeTextColor, leg.routeTextColor) &&
@@ -1291,7 +1354,7 @@ public class Leg {
 
   @Override
   public int hashCode() {
-    return Objects.hash(mode, from, to, duration, startTime, endTime, scheduledStartTime, scheduledEndTime, realTime, scheduled, distance, interlineWithPreviousLeg, headsign, tripFrom, tripTo, routeId, directionId, routeColor, routeTextColor, routeType, agencyName, agencyUrl, agencyId, tripId, routeShortName, routeLongName, tripShortName, displayName, cancelled, source, intermediateStops, legGeometry, steps, rental, fareTransferIndex, effectiveFareLegIndex, alerts, loopedCalendarSince, bikesAllowed);
+    return Objects.hash(mode, from, to, duration, startTime, endTime, scheduledStartTime, scheduledEndTime, realTime, scheduled, distance, interlineWithPreviousLeg, headsign, tripFrom, tripTo, category, routeId, routeUrl, directionId, routeColor, routeTextColor, routeType, agencyName, agencyUrl, agencyId, tripId, routeShortName, routeLongName, tripShortName, displayName, cancelled, source, intermediateStops, legGeometry, steps, rental, fareTransferIndex, effectiveFareLegIndex, alerts, loopedCalendarSince, bikesAllowed);
   }
 
   @Override
@@ -1313,7 +1376,9 @@ public class Leg {
     sb.append("    headsign: ").append(toIndentedString(headsign)).append("\n");
     sb.append("    tripFrom: ").append(toIndentedString(tripFrom)).append("\n");
     sb.append("    tripTo: ").append(toIndentedString(tripTo)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    routeId: ").append(toIndentedString(routeId)).append("\n");
+    sb.append("    routeUrl: ").append(toIndentedString(routeUrl)).append("\n");
     sb.append("    directionId: ").append(toIndentedString(directionId)).append("\n");
     sb.append("    routeColor: ").append(toIndentedString(routeColor)).append("\n");
     sb.append("    routeTextColor: ").append(toIndentedString(routeTextColor)).append("\n");

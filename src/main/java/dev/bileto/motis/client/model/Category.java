@@ -24,43 +24,103 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Error
+ * not available for GTFS datasets by default For NeTEx it contains information about the vehicle category, e.g. IC/InterCity 
  */
 @JsonPropertyOrder({
-  Error.JSON_PROPERTY_ERROR
+  Category.JSON_PROPERTY_ID,
+  Category.JSON_PROPERTY_NAME,
+  Category.JSON_PROPERTY_SHORT_NAME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class Error {
-  public static final String JSON_PROPERTY_ERROR = "error";
+public class Category {
+  public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nonnull
-  private String error;
+  private String id;
 
-  public Error() {
+  public static final String JSON_PROPERTY_NAME = "name";
+  @jakarta.annotation.Nonnull
+  private String name;
+
+  public static final String JSON_PROPERTY_SHORT_NAME = "shortName";
+  @jakarta.annotation.Nonnull
+  private String shortName;
+
+  public Category() {
   }
 
-  public Error error(@jakarta.annotation.Nonnull String error) {
+  public Category id(@jakarta.annotation.Nonnull String id) {
     
-    this.error = error;
+    this.id = id;
     return this;
   }
 
   /**
-   * error message
-   * @return error
+   * Get id
+   * @return id
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getError() {
-    return error;
+  public String getId() {
+    return id;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setError(@jakarta.annotation.Nonnull String error) {
-    this.error = error;
+  public void setId(@jakarta.annotation.Nonnull String id) {
+    this.id = id;
+  }
+
+  public Category name(@jakarta.annotation.Nonnull String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getName() {
+    return name;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setName(@jakarta.annotation.Nonnull String name) {
+    this.name = name;
+  }
+
+  public Category shortName(@jakarta.annotation.Nonnull String shortName) {
+    
+    this.shortName = shortName;
+    return this;
+  }
+
+  /**
+   * Get shortName
+   * @return shortName
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_SHORT_NAME, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getShortName() {
+    return shortName;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SHORT_NAME, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setShortName(@jakarta.annotation.Nonnull String shortName) {
+    this.shortName = shortName;
   }
 
 
@@ -72,20 +132,24 @@ public class Error {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Error error = (Error) o;
-    return Objects.equals(this.error, error.error);
+    Category category = (Category) o;
+    return Objects.equals(this.id, category.id) &&
+        Objects.equals(this.name, category.name) &&
+        Objects.equals(this.shortName, category.shortName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error);
+    return Objects.hash(id, name, shortName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Error {\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class Category {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    shortName: ").append(toIndentedString(shortName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

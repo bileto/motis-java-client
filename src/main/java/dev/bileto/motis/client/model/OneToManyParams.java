@@ -39,9 +39,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   OneToManyParams.JSON_PROPERTY_MAX,
   OneToManyParams.JSON_PROPERTY_MAX_MATCHING_DISTANCE,
   OneToManyParams.JSON_PROPERTY_ELEVATION_COSTS,
-  OneToManyParams.JSON_PROPERTY_ARRIVE_BY
+  OneToManyParams.JSON_PROPERTY_ARRIVE_BY,
+  OneToManyParams.JSON_PROPERTY_WITH_DISTANCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OneToManyParams {
   public static final String JSON_PROPERTY_ONE = "one";
   @jakarta.annotation.Nonnull
@@ -64,12 +65,16 @@ public class OneToManyParams {
   private BigDecimal maxMatchingDistance;
 
   public static final String JSON_PROPERTY_ELEVATION_COSTS = "elevationCosts";
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   private ElevationCosts elevationCosts = ElevationCosts.NONE;
 
   public static final String JSON_PROPERTY_ARRIVE_BY = "arriveBy";
   @jakarta.annotation.Nonnull
   private Boolean arriveBy;
+
+  public static final String JSON_PROPERTY_WITH_DISTANCE = "withDistance";
+  @jakarta.annotation.Nullable
+  private Boolean withDistance = false;
 
   public OneToManyParams() {
   }
@@ -114,7 +119,7 @@ public class OneToManyParams {
   }
 
   /**
-   * geo locations as latitude;longitude,latitude;longitude,...
+   * geo locations as latitude;longitude,latitude;longitude,...  The number of accepted locations is limited by server config variable &#x60;onetomany_max_many&#x60;. 
    * @return many
    */
   @jakarta.annotation.Nonnull
@@ -164,7 +169,7 @@ public class OneToManyParams {
   }
 
   /**
-   * maximum travel time in seconds
+   * maximum travel time in seconds. Is limited by server config variable &#x60;street_routing_max_direct_seconds&#x60;.
    * @return max
    */
   @jakarta.annotation.Nonnull
@@ -207,7 +212,7 @@ public class OneToManyParams {
     this.maxMatchingDistance = maxMatchingDistance;
   }
 
-  public OneToManyParams elevationCosts(@jakarta.annotation.Nonnull ElevationCosts elevationCosts) {
+  public OneToManyParams elevationCosts(@jakarta.annotation.Nullable ElevationCosts elevationCosts) {
     
     this.elevationCosts = elevationCosts;
     return this;
@@ -217,18 +222,18 @@ public class OneToManyParams {
    * Optional. Default is &#x60;NONE&#x60;.  Set an elevation cost profile, to penalize routes with incline. - &#x60;NONE&#x60;: No additional costs for elevations. This is the default behavior - &#x60;LOW&#x60;: Add a low cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if small detours are required. - &#x60;HIGH&#x60;: Add a high cost for increase in elevation and incline along the way. This will prefer routes with less ascent, if larger detours are required.  As using an elevation costs profile will increase the travel duration, routing through steep terrain may exceed the maximal allowed duration, causing a location to appear unreachable. Increasing the maximum travel time for these segments may resolve this issue.  Elevation cost profiles are currently used by following street modes: - &#x60;BIKE&#x60; 
    * @return elevationCosts
    */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ELEVATION_COSTS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ELEVATION_COSTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ElevationCosts getElevationCosts() {
     return elevationCosts;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ELEVATION_COSTS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setElevationCosts(@jakarta.annotation.Nonnull ElevationCosts elevationCosts) {
+  @JsonProperty(value = JSON_PROPERTY_ELEVATION_COSTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setElevationCosts(@jakarta.annotation.Nullable ElevationCosts elevationCosts) {
     this.elevationCosts = elevationCosts;
   }
 
@@ -257,6 +262,31 @@ public class OneToManyParams {
     this.arriveBy = arriveBy;
   }
 
+  public OneToManyParams withDistance(@jakarta.annotation.Nullable Boolean withDistance) {
+    
+    this.withDistance = withDistance;
+    return this;
+  }
+
+  /**
+   * If true, the response includes the distance in meters for each path. This requires path reconstruction and may be slower than duration-only queries. 
+   * @return withDistance
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_WITH_DISTANCE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getWithDistance() {
+    return withDistance;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_WITH_DISTANCE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWithDistance(@jakarta.annotation.Nullable Boolean withDistance) {
+    this.withDistance = withDistance;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -273,12 +303,13 @@ public class OneToManyParams {
         Objects.equals(this.max, oneToManyParams.max) &&
         Objects.equals(this.maxMatchingDistance, oneToManyParams.maxMatchingDistance) &&
         Objects.equals(this.elevationCosts, oneToManyParams.elevationCosts) &&
-        Objects.equals(this.arriveBy, oneToManyParams.arriveBy);
+        Objects.equals(this.arriveBy, oneToManyParams.arriveBy) &&
+        Objects.equals(this.withDistance, oneToManyParams.withDistance);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(one, many, mode, max, maxMatchingDistance, elevationCosts, arriveBy);
+    return Objects.hash(one, many, mode, max, maxMatchingDistance, elevationCosts, arriveBy, withDistance);
   }
 
   @Override
@@ -292,6 +323,7 @@ public class OneToManyParams {
     sb.append("    maxMatchingDistance: ").append(toIndentedString(maxMatchingDistance)).append("\n");
     sb.append("    elevationCosts: ").append(toIndentedString(elevationCosts)).append("\n");
     sb.append("    arriveBy: ").append(toIndentedString(arriveBy)).append("\n");
+    sb.append("    withDistance: ").append(toIndentedString(withDistance)).append("\n");
     sb.append("}");
     return sb.toString();
   }

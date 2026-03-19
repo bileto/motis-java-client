@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StopTime.JSON_PROPERTY_AGENCY_NAME,
   StopTime.JSON_PROPERTY_AGENCY_URL,
   StopTime.JSON_PROPERTY_ROUTE_ID,
+  StopTime.JSON_PROPERTY_ROUTE_URL,
   StopTime.JSON_PROPERTY_DIRECTION_ID,
   StopTime.JSON_PROPERTY_ROUTE_COLOR,
   StopTime.JSON_PROPERTY_ROUTE_TEXT_COLOR,
@@ -59,7 +60,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StopTime.JSON_PROPERTY_TRIP_CANCELLED,
   StopTime.JSON_PROPERTY_SOURCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class StopTime {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nonnull
@@ -100,6 +101,10 @@ public class StopTime {
   public static final String JSON_PROPERTY_ROUTE_ID = "routeId";
   @jakarta.annotation.Nonnull
   private String routeId;
+
+  public static final String JSON_PROPERTY_ROUTE_URL = "routeUrl";
+  @jakarta.annotation.Nullable
+  private String routeUrl;
 
   public static final String JSON_PROPERTY_DIRECTION_ID = "directionId";
   @jakarta.annotation.Nonnull
@@ -412,6 +417,31 @@ public class StopTime {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRouteId(@jakarta.annotation.Nonnull String routeId) {
     this.routeId = routeId;
+  }
+
+  public StopTime routeUrl(@jakarta.annotation.Nullable String routeUrl) {
+    
+    this.routeUrl = routeUrl;
+    return this;
+  }
+
+  /**
+   * Get routeUrl
+   * @return routeUrl
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getRouteUrl() {
+    return routeUrl;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRouteUrl(@jakarta.annotation.Nullable String routeUrl) {
+    this.routeUrl = routeUrl;
   }
 
   public StopTime directionId(@jakarta.annotation.Nonnull String directionId) {
@@ -825,6 +855,7 @@ public class StopTime {
         Objects.equals(this.agencyName, stopTime.agencyName) &&
         Objects.equals(this.agencyUrl, stopTime.agencyUrl) &&
         Objects.equals(this.routeId, stopTime.routeId) &&
+        Objects.equals(this.routeUrl, stopTime.routeUrl) &&
         Objects.equals(this.directionId, stopTime.directionId) &&
         Objects.equals(this.routeColor, stopTime.routeColor) &&
         Objects.equals(this.routeTextColor, stopTime.routeTextColor) &&
@@ -844,7 +875,7 @@ public class StopTime {
 
   @Override
   public int hashCode() {
-    return Objects.hash(place, mode, realTime, headsign, tripFrom, tripTo, agencyId, agencyName, agencyUrl, routeId, directionId, routeColor, routeTextColor, tripId, routeType, routeShortName, routeLongName, tripShortName, displayName, previousStops, nextStops, pickupDropoffType, cancelled, tripCancelled, source);
+    return Objects.hash(place, mode, realTime, headsign, tripFrom, tripTo, agencyId, agencyName, agencyUrl, routeId, routeUrl, directionId, routeColor, routeTextColor, tripId, routeType, routeShortName, routeLongName, tripShortName, displayName, previousStops, nextStops, pickupDropoffType, cancelled, tripCancelled, source);
   }
 
   @Override
@@ -861,6 +892,7 @@ public class StopTime {
     sb.append("    agencyName: ").append(toIndentedString(agencyName)).append("\n");
     sb.append("    agencyUrl: ").append(toIndentedString(agencyUrl)).append("\n");
     sb.append("    routeId: ").append(toIndentedString(routeId)).append("\n");
+    sb.append("    routeUrl: ").append(toIndentedString(routeUrl)).append("\n");
     sb.append("    directionId: ").append(toIndentedString(directionId)).append("\n");
     sb.append("    routeColor: ").append(toIndentedString(routeColor)).append("\n");
     sb.append("    routeTextColor: ").append(toIndentedString(routeTextColor)).append("\n");
