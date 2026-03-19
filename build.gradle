@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'org.openapi.generator' version '7.19.0'
+    id 'org.openapi.generator' version '7.20.0'
     id 'com.github.ben-manes.versions' version'0.53.0'
 }
 
