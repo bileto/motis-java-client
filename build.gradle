@@ -62,7 +62,9 @@ openApiGenerate {
     // Use custom templates
     templateDir = "${rootDir}/src/main/resources/openapi-templates"
 
-    generateSupportingFiles.set(false)
+    globalProperties = [
+        supportingFiles: ''
+    ]
 
     configOptions = [
         annotationLibrary: 'none',
