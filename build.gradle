@@ -63,7 +63,9 @@ openApiGenerate {
     templateDir = "${rootDir}/src/main/resources/openapi-templates"
 
     globalProperties = [
-        supportingFiles: ''
+        apis: '',
+        models: '',
+        supportingFiles: 'false'
     ]
 
     configOptions = [

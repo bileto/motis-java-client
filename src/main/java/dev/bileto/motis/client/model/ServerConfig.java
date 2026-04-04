@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * ServerConfig
  */
 @JsonPropertyOrder({
+  ServerConfig.JSON_PROPERTY_MOTIS_VERSION,
   ServerConfig.JSON_PROPERTY_HAS_ELEVATION,
   ServerConfig.JSON_PROPERTY_HAS_ROUTED_TRANSFERS,
   ServerConfig.JSON_PROPERTY_HAS_STREET_ROUTING,
@@ -39,6 +40,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ServerConfig {
+  public static final String JSON_PROPERTY_MOTIS_VERSION = "motisVersion";
+  @jakarta.annotation.Nonnull
+  private String motisVersion;
+
   public static final String JSON_PROPERTY_HAS_ELEVATION = "hasElevation";
   @jakarta.annotation.Nonnull
   private Boolean hasElevation;
@@ -72,6 +77,31 @@ public class ServerConfig {
   private Boolean shapesDebugEnabled;
 
   public ServerConfig() {
+  }
+
+  public ServerConfig motisVersion(@jakarta.annotation.Nonnull String motisVersion) {
+    
+    this.motisVersion = motisVersion;
+    return this;
+  }
+
+  /**
+   * the version of this MOTIS server
+   * @return motisVersion
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_MOTIS_VERSION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getMotisVersion() {
+    return motisVersion;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MOTIS_VERSION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMotisVersion(@jakarta.annotation.Nonnull String motisVersion) {
+    this.motisVersion = motisVersion;
   }
 
   public ServerConfig hasElevation(@jakarta.annotation.Nonnull Boolean hasElevation) {
@@ -284,7 +314,8 @@ public class ServerConfig {
       return false;
     }
     ServerConfig serverConfig = (ServerConfig) o;
-    return Objects.equals(this.hasElevation, serverConfig.hasElevation) &&
+    return Objects.equals(this.motisVersion, serverConfig.motisVersion) &&
+        Objects.equals(this.hasElevation, serverConfig.hasElevation) &&
         Objects.equals(this.hasRoutedTransfers, serverConfig.hasRoutedTransfers) &&
         Objects.equals(this.hasStreetRouting, serverConfig.hasStreetRouting) &&
         Objects.equals(this.maxOneToManySize, serverConfig.maxOneToManySize) &&
@@ -296,13 +327,14 @@ public class ServerConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasElevation, hasRoutedTransfers, hasStreetRouting, maxOneToManySize, maxOneToAllTravelTimeLimit, maxPrePostTransitTimeLimit, maxDirectTimeLimit, shapesDebugEnabled);
+    return Objects.hash(motisVersion, hasElevation, hasRoutedTransfers, hasStreetRouting, maxOneToManySize, maxOneToAllTravelTimeLimit, maxPrePostTransitTimeLimit, maxDirectTimeLimit, shapesDebugEnabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ServerConfig {\n");
+    sb.append("    motisVersion: ").append(toIndentedString(motisVersion)).append("\n");
     sb.append("    hasElevation: ").append(toIndentedString(hasElevation)).append("\n");
     sb.append("    hasRoutedTransfers: ").append(toIndentedString(hasRoutedTransfers)).append("\n");
     sb.append("    hasStreetRouting: ").append(toIndentedString(hasStreetRouting)).append("\n");
