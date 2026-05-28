@@ -60,7 +60,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StopTime.JSON_PROPERTY_TRIP_CANCELLED,
   StopTime.JSON_PROPERTY_SOURCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class StopTime {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nonnull
@@ -917,10 +917,7 @@ public class StopTime {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

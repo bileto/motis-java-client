@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   OneToManyIntermodalResponse.JSON_PROPERTY_STREET_DURATIONS,
   OneToManyIntermodalResponse.JSON_PROPERTY_TRANSIT_DURATIONS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class OneToManyIntermodalResponse {
   public static final String JSON_PROPERTY_STREET_DURATIONS = "street_durations";
   @jakarta.annotation.Nullable
@@ -148,10 +148,7 @@ public class OneToManyIntermodalResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

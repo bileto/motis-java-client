@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   EncodedPolyline.JSON_PROPERTY_PRECISION,
   EncodedPolyline.JSON_PROPERTY_LENGTH
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class EncodedPolyline {
   public static final String JSON_PROPERTY_POINTS = "points";
   @jakarta.annotation.Nonnull
@@ -160,10 +160,7 @@ public class EncodedPolyline {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

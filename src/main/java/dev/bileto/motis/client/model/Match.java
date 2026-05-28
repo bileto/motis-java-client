@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Match.JSON_PROPERTY_MODES,
   Match.JSON_PROPERTY_IMPORTANCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class Match {
   public static final String JSON_PROPERTY_TYPE = "type";
   @jakarta.annotation.Nonnull
@@ -638,10 +638,7 @@ public class Match {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

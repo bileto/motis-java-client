@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RoutePolyline.JSON_PROPERTY_COLORS,
   RoutePolyline.JSON_PROPERTY_ROUTE_INDEXES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class RoutePolyline {
   public static final String JSON_PROPERTY_POLYLINE = "polyline";
   @jakarta.annotation.Nonnull
@@ -179,10 +179,7 @@ public class RoutePolyline {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

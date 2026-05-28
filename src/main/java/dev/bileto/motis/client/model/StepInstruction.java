@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StepInstruction.JSON_PROPERTY_ELEVATION_UP,
   StepInstruction.JSON_PROPERTY_ELEVATION_DOWN
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class StepInstruction {
   public static final String JSON_PROPERTY_RELATIVE_DIRECTION = "relativeDirection";
   @jakarta.annotation.Nonnull
@@ -514,10 +514,7 @@ public class StepInstruction {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

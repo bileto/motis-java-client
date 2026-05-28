@@ -17,4 +17,6 @@ pom.xml
 README.md
 settings.gradle
 src/main/AndroidManifest.xml
+src/main/java/dev/bileto/motis/client/ServerConfiguration.java
+src/main/java/dev/bileto/motis/client/ServerVariable.java
 src/test/**

@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RiderCategory.JSON_PROPERTY_IS_DEFAULT_FARE_CATEGORY,
   RiderCategory.JSON_PROPERTY_ELIGIBILITY_URL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class RiderCategory {
   public static final String JSON_PROPERTY_RIDER_CATEGORY_NAME = "riderCategoryName";
   @jakarta.annotation.Nonnull
@@ -159,10 +159,7 @@ public class RiderCategory {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

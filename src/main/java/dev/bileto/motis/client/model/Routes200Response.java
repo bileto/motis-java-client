@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Routes200Response.JSON_PROPERTY_ZOOM_FILTERED
 })
 @JsonTypeName("routes_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class Routes200Response {
   public static final String JSON_PROPERTY_ROUTES = "routes";
   @jakarta.annotation.Nonnull
@@ -222,10 +222,7 @@ public class Routes200Response {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

@@ -60,12 +60,12 @@ openApiGenerate {
     invokerPackage = 'dev.bileto.motis.client'
 
     // Use custom templates
-    templateDir = "${rootDir}/src/main/resources/openapi-templates"
+    // templateDir = "${rootDir}/src/main/resources/openapi-templates"
 
     globalProperties = [
         apis: '',
         models: '',
-        supportingFiles: 'false'
+        supportingFiles: ''
     ]
 
     configOptions = [
@@ -75,6 +75,7 @@ openApiGenerate {
         documentationProvider: 'none',
         hideGenerationTimestamp: 'true',
         serializationLibrary: 'jackson',
+        useJackson3: 'false',
         useJakartaEe: 'true',
         useSpringBoot3: 'true',
         webclientBlockingOperations: 'true'

@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Stoptimes200Response.JSON_PROPERTY_NEXT_PAGE_CURSOR
 })
 @JsonTypeName("stoptimes_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class Stoptimes200Response {
   public static final String JSON_PROPERTY_STOP_TIMES = "stopTimes";
   @jakarta.annotation.Nonnull
@@ -205,10 +205,7 @@ public class Stoptimes200Response {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

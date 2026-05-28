@@ -48,7 +48,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   TripSegment.JSON_PROPERTY_REAL_TIME,
   TripSegment.JSON_PROPERTY_POLYLINE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
 public class TripSegment {
   public static final String JSON_PROPERTY_TRIPS = "trips";
   @jakarta.annotation.Nonnull
@@ -463,10 +463,7 @@ public class TripSegment {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }
