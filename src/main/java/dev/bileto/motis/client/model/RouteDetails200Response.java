@@ -30,17 +30,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Routes200Response
+ * RouteDetails200Response
  */
 @JsonPropertyOrder({
-  Routes200Response.JSON_PROPERTY_ROUTES,
-  Routes200Response.JSON_PROPERTY_POLYLINES,
-  Routes200Response.JSON_PROPERTY_STOPS,
-  Routes200Response.JSON_PROPERTY_ZOOM_FILTERED
+  RouteDetails200Response.JSON_PROPERTY_ROUTES,
+  RouteDetails200Response.JSON_PROPERTY_POLYLINES,
+  RouteDetails200Response.JSON_PROPERTY_STOPS,
+  RouteDetails200Response.JSON_PROPERTY_ZOOM_FILTERED
 })
-@JsonTypeName("routes_200_response")
+@JsonTypeName("routeDetails_200_response")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
-public class Routes200Response {
+public class RouteDetails200Response {
   public static final String JSON_PROPERTY_ROUTES = "routes";
   @jakarta.annotation.Nonnull
   private List<RouteInfo> routes = new ArrayList<>();
@@ -57,16 +57,16 @@ public class Routes200Response {
   @jakarta.annotation.Nonnull
   private Boolean zoomFiltered;
 
-  public Routes200Response() {
+  public RouteDetails200Response() {
   }
 
-  public Routes200Response routes(@jakarta.annotation.Nonnull List<RouteInfo> routes) {
+  public RouteDetails200Response routes(@jakarta.annotation.Nonnull List<RouteInfo> routes) {
     
     this.routes = routes;
     return this;
   }
 
-  public Routes200Response addRoutesItem(RouteInfo routesItem) {
+  public RouteDetails200Response addRoutesItem(RouteInfo routesItem) {
     if (this.routes == null) {
       this.routes = new ArrayList<>();
     }
@@ -93,13 +93,13 @@ public class Routes200Response {
     this.routes = routes;
   }
 
-  public Routes200Response polylines(@jakarta.annotation.Nonnull List<RoutePolyline> polylines) {
+  public RouteDetails200Response polylines(@jakarta.annotation.Nonnull List<RoutePolyline> polylines) {
     
     this.polylines = polylines;
     return this;
   }
 
-  public Routes200Response addPolylinesItem(RoutePolyline polylinesItem) {
+  public RouteDetails200Response addPolylinesItem(RoutePolyline polylinesItem) {
     if (this.polylines == null) {
       this.polylines = new ArrayList<>();
     }
@@ -126,13 +126,13 @@ public class Routes200Response {
     this.polylines = polylines;
   }
 
-  public Routes200Response stops(@jakarta.annotation.Nonnull List<Place> stops) {
+  public RouteDetails200Response stops(@jakarta.annotation.Nonnull List<Place> stops) {
     
     this.stops = stops;
     return this;
   }
 
-  public Routes200Response addStopsItem(Place stopsItem) {
+  public RouteDetails200Response addStopsItem(Place stopsItem) {
     if (this.stops == null) {
       this.stops = new ArrayList<>();
     }
@@ -159,14 +159,14 @@ public class Routes200Response {
     this.stops = stops;
   }
 
-  public Routes200Response zoomFiltered(@jakarta.annotation.Nonnull Boolean zoomFiltered) {
+  public RouteDetails200Response zoomFiltered(@jakarta.annotation.Nonnull Boolean zoomFiltered) {
     
     this.zoomFiltered = zoomFiltered;
     return this;
   }
 
   /**
-   * Indicates whether some routes were filtered out due to the zoom level. 
+   * Always false for this endpoint.
    * @return zoomFiltered
    */
   @jakarta.annotation.Nonnull
@@ -193,11 +193,11 @@ public class Routes200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Routes200Response routes200Response = (Routes200Response) o;
-    return Objects.equals(this.routes, routes200Response.routes) &&
-        Objects.equals(this.polylines, routes200Response.polylines) &&
-        Objects.equals(this.stops, routes200Response.stops) &&
-        Objects.equals(this.zoomFiltered, routes200Response.zoomFiltered);
+    RouteDetails200Response routeDetails200Response = (RouteDetails200Response) o;
+    return Objects.equals(this.routes, routeDetails200Response.routes) &&
+        Objects.equals(this.polylines, routeDetails200Response.polylines) &&
+        Objects.equals(this.stops, routeDetails200Response.stops) &&
+        Objects.equals(this.zoomFiltered, routeDetails200Response.zoomFiltered);
   }
 
   @Override
@@ -208,7 +208,7 @@ public class Routes200Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Routes200Response {\n");
+    sb.append("class RouteDetails200Response {\n");
     sb.append("    routes: ").append(toIndentedString(routes)).append("\n");
     sb.append("    polylines: ").append(toIndentedString(polylines)).append("\n");
     sb.append("    stops: ").append(toIndentedString(stops)).append("\n");

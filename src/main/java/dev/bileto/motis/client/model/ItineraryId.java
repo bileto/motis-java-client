@@ -20,80 +20,59 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
+import dev.bileto.motis.client.model.LegId;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Object containing a single element of a ParetoSet
+ * ItineraryId
  */
 @JsonPropertyOrder({
-  ParetoSetEntry.JSON_PROPERTY_DURATION,
-  ParetoSetEntry.JSON_PROPERTY_TRANSFERS
+  ItineraryId.JSON_PROPERTY_LEGS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
-public class ParetoSetEntry {
-  public static final String JSON_PROPERTY_DURATION = "duration";
+public class ItineraryId {
+  public static final String JSON_PROPERTY_LEGS = "legs";
   @jakarta.annotation.Nonnull
-  private BigDecimal duration;
+  private List<LegId> legs = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_TRANSFERS = "transfers";
-  @jakarta.annotation.Nonnull
-  private Integer transfers;
-
-  public ParetoSetEntry() {
+  public ItineraryId() {
   }
 
-  public ParetoSetEntry duration(@jakarta.annotation.Nonnull BigDecimal duration) {
+  public ItineraryId legs(@jakarta.annotation.Nonnull List<LegId> legs) {
     
-    this.duration = duration;
+    this.legs = legs;
+    return this;
+  }
+
+  public ItineraryId addLegsItem(LegId legsItem) {
+    if (this.legs == null) {
+      this.legs = new ArrayList<>();
+    }
+    this.legs.add(legsItem);
     return this;
   }
 
   /**
-   * duration in seconds for the the best solution using &#x60;transfer&#x60; transfers  Notice that the resolution is currently in minutes, because of implementation details 
-   * minimum: 0.0
-   * @return duration
+   * Get legs
+   * @return legs
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_LEGS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public BigDecimal getDuration() {
-    return duration;
+  public List<LegId> getLegs() {
+    return legs;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_LEGS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(@jakarta.annotation.Nonnull BigDecimal duration) {
-    this.duration = duration;
-  }
-
-  public ParetoSetEntry transfers(@jakarta.annotation.Nonnull Integer transfers) {
-    
-    this.transfers = transfers;
-    return this;
-  }
-
-  /**
-   * The minimal number of transfers required to arrive within &#x60;duration&#x60; seconds  transfers&#x3D;0: Direct transit connecion without any transfers transfers&#x3D;1: Transit connection with 1 transfer 
-   * minimum: 0
-   * @return transfers
-   */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Integer getTransfers() {
-    return transfers;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransfers(@jakarta.annotation.Nonnull Integer transfers) {
-    this.transfers = transfers;
+  public void setLegs(@jakarta.annotation.Nonnull List<LegId> legs) {
+    this.legs = legs;
   }
 
 
@@ -105,22 +84,20 @@ public class ParetoSetEntry {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ParetoSetEntry paretoSetEntry = (ParetoSetEntry) o;
-    return Objects.equals(this.duration, paretoSetEntry.duration) &&
-        Objects.equals(this.transfers, paretoSetEntry.transfers);
+    ItineraryId itineraryId = (ItineraryId) o;
+    return Objects.equals(this.legs, itineraryId.legs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration, transfers);
+    return Objects.hash(legs);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ParetoSetEntry {\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    transfers: ").append(toIndentedString(transfers)).append("\n");
+    sb.append("class ItineraryId {\n");
+    sb.append("    legs: ").append(toIndentedString(legs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

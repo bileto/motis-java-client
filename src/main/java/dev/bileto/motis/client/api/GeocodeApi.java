@@ -57,14 +57,17 @@ public class GeocodeApi {
      * <p><b>200</b> - A list of guesses to resolve the text to a location
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
-     * @param type Optional. Default is all types.  Only return results of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param type Optional. Default is all types.  Only return results matching one of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
      * @param mode Optional. Filter stops by available transport modes. Defaults to applying no filter. 
      * @param place Optional. Used for biasing results towards the coordinate.  Format: latitude,longitude in degrees 
      * @param placeBias Optional. Used for biasing results towards the coordinate. Higher number &#x3D; higher bias. 
+     * @param numResults Optional. Number of suggestions to return. If omitted, 10 suggestions are returned by default. Must be &lt;&#x3D; server config variable &#x60;geocode_max_suggestions&#x60;. 
+     * @param min latitude,longitude pair of the lower right coordinate of the bounding box containing all results
+     * @param max latitude,longitude pair of the upper left coordinate of the bounding box containing all results
      * @return List&lt;Match&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec geocodeRequestCreation(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    private ResponseSpec geocodeRequestCreation(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable List<LocationType> type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias, @jakarta.annotation.Nullable Integer numResults, @jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'text' is set
         if (text == null) {
@@ -80,10 +83,13 @@ public class GeocodeApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "text", text));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "type", type));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "mode", mode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "placeBias", placeBias));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "numResults", numResults));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -105,16 +111,19 @@ public class GeocodeApi {
      * <p><b>200</b> - A list of guesses to resolve the text to a location
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
-     * @param type Optional. Default is all types.  Only return results of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param type Optional. Default is all types.  Only return results matching one of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
      * @param mode Optional. Filter stops by available transport modes. Defaults to applying no filter. 
      * @param place Optional. Used for biasing results towards the coordinate.  Format: latitude,longitude in degrees 
      * @param placeBias Optional. Used for biasing results towards the coordinate. Higher number &#x3D; higher bias. 
+     * @param numResults Optional. Number of suggestions to return. If omitted, 10 suggestions are returned by default. Must be &lt;&#x3D; server config variable &#x60;geocode_max_suggestions&#x60;. 
+     * @param min latitude,longitude pair of the lower right coordinate of the bounding box containing all results
+     * @param max latitude,longitude pair of the upper left coordinate of the bounding box containing all results
      * @return List&lt;Match&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public List<Match> geocode(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    public List<Match> geocode(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable List<LocationType> type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias, @jakarta.annotation.Nullable Integer numResults, @jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max) throws WebClientResponseException {
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
-        return geocodeRequestCreation(text, language, type, mode, place, placeBias).bodyToFlux(localVarReturnType).collectList().block();
+        return geocodeRequestCreation(text, language, type, mode, place, placeBias, numResults, min, max).bodyToFlux(localVarReturnType).collectList().block();
     }
 
     /**
@@ -124,16 +133,19 @@ public class GeocodeApi {
      * <p><b>200</b> - A list of guesses to resolve the text to a location
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
-     * @param type Optional. Default is all types.  Only return results of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param type Optional. Default is all types.  Only return results matching one of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
      * @param mode Optional. Filter stops by available transport modes. Defaults to applying no filter. 
      * @param place Optional. Used for biasing results towards the coordinate.  Format: latitude,longitude in degrees 
      * @param placeBias Optional. Used for biasing results towards the coordinate. Higher number &#x3D; higher bias. 
+     * @param numResults Optional. Number of suggestions to return. If omitted, 10 suggestions are returned by default. Must be &lt;&#x3D; server config variable &#x60;geocode_max_suggestions&#x60;. 
+     * @param min latitude,longitude pair of the lower right coordinate of the bounding box containing all results
+     * @param max latitude,longitude pair of the upper left coordinate of the bounding box containing all results
      * @return ResponseEntity&lt;List&lt;Match&gt;&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<List<Match>> geocodeWithHttpInfo(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
+    public ResponseEntity<List<Match>> geocodeWithHttpInfo(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable List<LocationType> type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias, @jakarta.annotation.Nullable Integer numResults, @jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max) throws WebClientResponseException {
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
-        return geocodeRequestCreation(text, language, type, mode, place, placeBias).toEntityList(localVarReturnType).block();
+        return geocodeRequestCreation(text, language, type, mode, place, placeBias, numResults, min, max).toEntityList(localVarReturnType).block();
     }
 
     /**
@@ -143,15 +155,18 @@ public class GeocodeApi {
      * <p><b>200</b> - A list of guesses to resolve the text to a location
      * @param text the (potentially partially typed) address to resolve
      * @param language language tags as used in OpenStreetMap (usually ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
-     * @param type Optional. Default is all types.  Only return results of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param type Optional. Default is all types.  Only return results matching one of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
      * @param mode Optional. Filter stops by available transport modes. Defaults to applying no filter. 
      * @param place Optional. Used for biasing results towards the coordinate.  Format: latitude,longitude in degrees 
      * @param placeBias Optional. Used for biasing results towards the coordinate. Higher number &#x3D; higher bias. 
+     * @param numResults Optional. Number of suggestions to return. If omitted, 10 suggestions are returned by default. Must be &lt;&#x3D; server config variable &#x60;geocode_max_suggestions&#x60;. 
+     * @param min latitude,longitude pair of the lower right coordinate of the bounding box containing all results
+     * @param max latitude,longitude pair of the upper left coordinate of the bounding box containing all results
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec geocodeWithResponseSpec(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable LocationType type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias) throws WebClientResponseException {
-        return geocodeRequestCreation(text, language, type, mode, place, placeBias);
+    public ResponseSpec geocodeWithResponseSpec(@jakarta.annotation.Nonnull String text, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable List<LocationType> type, @jakarta.annotation.Nullable List<Mode> mode, @jakarta.annotation.Nullable String place, @jakarta.annotation.Nullable BigDecimal placeBias, @jakarta.annotation.Nullable Integer numResults, @jakarta.annotation.Nullable String min, @jakarta.annotation.Nullable String max) throws WebClientResponseException {
+        return geocodeRequestCreation(text, language, type, mode, place, placeBias, numResults, min, max);
     }
 
     /**
@@ -160,11 +175,12 @@ public class GeocodeApi {
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the coordinates to a location
      * @param place latitude, longitude in degrees
-     * @param type Optional. Default is all types.  Only return results of the given type. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param type Optional. Default is all types.  Only return results matching one of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param numResults Optional. Number of results to return.  If omitted, 5 results are returned by default. Must be &lt;&#x3D; server config variable &#x60;reverse_geocode_max_results&#x60;. 
      * @return List&lt;Match&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec reverseGeocodeRequestCreation(@jakarta.annotation.Nonnull String place, @jakarta.annotation.Nullable LocationType type) throws WebClientResponseException {
+    private ResponseSpec reverseGeocodeRequestCreation(@jakarta.annotation.Nonnull String place, @jakarta.annotation.Nullable List<LocationType> type, @jakarta.annotation.Nullable Integer numResults) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'place' is set
         if (place == null) {
@@ -179,7 +195,8 @@ public class GeocodeApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "type", type));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "numResults", numResults));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -200,13 +217,14 @@ public class GeocodeApi {
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the coordinates to a location
      * @param place latitude, longitude in degrees
-     * @param type Optional. Default is all types.  Only return results of the given type. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param type Optional. Default is all types.  Only return results matching one of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param numResults Optional. Number of results to return.  If omitted, 5 results are returned by default. Must be &lt;&#x3D; server config variable &#x60;reverse_geocode_max_results&#x60;. 
      * @return List&lt;Match&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public List<Match> reverseGeocode(@jakarta.annotation.Nonnull String place, @jakarta.annotation.Nullable LocationType type) throws WebClientResponseException {
+    public List<Match> reverseGeocode(@jakarta.annotation.Nonnull String place, @jakarta.annotation.Nullable List<LocationType> type, @jakarta.annotation.Nullable Integer numResults) throws WebClientResponseException {
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
-        return reverseGeocodeRequestCreation(place, type).bodyToFlux(localVarReturnType).collectList().block();
+        return reverseGeocodeRequestCreation(place, type, numResults).bodyToFlux(localVarReturnType).collectList().block();
     }
 
     /**
@@ -215,13 +233,14 @@ public class GeocodeApi {
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the coordinates to a location
      * @param place latitude, longitude in degrees
-     * @param type Optional. Default is all types.  Only return results of the given type. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param type Optional. Default is all types.  Only return results matching one of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param numResults Optional. Number of results to return.  If omitted, 5 results are returned by default. Must be &lt;&#x3D; server config variable &#x60;reverse_geocode_max_results&#x60;. 
      * @return ResponseEntity&lt;List&lt;Match&gt;&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<List<Match>> reverseGeocodeWithHttpInfo(@jakarta.annotation.Nonnull String place, @jakarta.annotation.Nullable LocationType type) throws WebClientResponseException {
+    public ResponseEntity<List<Match>> reverseGeocodeWithHttpInfo(@jakarta.annotation.Nonnull String place, @jakarta.annotation.Nullable List<LocationType> type, @jakarta.annotation.Nullable Integer numResults) throws WebClientResponseException {
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
-        return reverseGeocodeRequestCreation(place, type).toEntityList(localVarReturnType).block();
+        return reverseGeocodeRequestCreation(place, type, numResults).toEntityList(localVarReturnType).block();
     }
 
     /**
@@ -230,11 +249,12 @@ public class GeocodeApi {
      * <p><b>400</b> - Bad Request
      * <p><b>200</b> - A list of guesses to resolve the coordinates to a location
      * @param place latitude, longitude in degrees
-     * @param type Optional. Default is all types.  Only return results of the given type. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param type Optional. Default is all types.  Only return results matching one of the given types. For example, this can be used to allow only &#x60;ADDRESS&#x60; and &#x60;STOP&#x60; results. 
+     * @param numResults Optional. Number of results to return.  If omitted, 5 results are returned by default. Must be &lt;&#x3D; server config variable &#x60;reverse_geocode_max_results&#x60;. 
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec reverseGeocodeWithResponseSpec(@jakarta.annotation.Nonnull String place, @jakarta.annotation.Nullable LocationType type) throws WebClientResponseException {
-        return reverseGeocodeRequestCreation(place, type);
+    public ResponseSpec reverseGeocodeWithResponseSpec(@jakarta.annotation.Nonnull String place, @jakarta.annotation.Nullable List<LocationType> type, @jakarta.annotation.Nullable Integer numResults) throws WebClientResponseException {
+        return reverseGeocodeRequestCreation(place, type, numResults);
     }
 }

@@ -5,6 +5,7 @@ src/main/java/dev/bileto/motis/client/RFC3339InstantDeserializer.java
 src/main/java/dev/bileto/motis/client/RFC3339JavaTimeModule.java
 src/main/java/dev/bileto/motis/client/StringUtil.java
 src/main/java/dev/bileto/motis/client/api/DebugApi.java
+src/main/java/dev/bileto/motis/client/api/DefaultApi.java
 src/main/java/dev/bileto/motis/client/api/GeocodeApi.java
 src/main/java/dev/bileto/motis/client/api/MapApi.java
 src/main/java/dev/bileto/motis/client/api/RoutingApi.java
@@ -29,9 +30,12 @@ src/main/java/dev/bileto/motis/client/model/FareMediaType.java
 src/main/java/dev/bileto/motis/client/model/FareProduct.java
 src/main/java/dev/bileto/motis/client/model/FareTransfer.java
 src/main/java/dev/bileto/motis/client/model/FareTransferRule.java
+src/main/java/dev/bileto/motis/client/model/HealthResponse.java
 src/main/java/dev/bileto/motis/client/model/Initial200Response.java
 src/main/java/dev/bileto/motis/client/model/Itinerary.java
+src/main/java/dev/bileto/motis/client/model/ItineraryId.java
 src/main/java/dev/bileto/motis/client/model/Leg.java
+src/main/java/dev/bileto/motis/client/model/LegId.java
 src/main/java/dev/bileto/motis/client/model/LocationType.java
 src/main/java/dev/bileto/motis/client/model/Match.java
 src/main/java/dev/bileto/motis/client/model/Mode.java
@@ -45,6 +49,8 @@ src/main/java/dev/bileto/motis/client/model/Place.java
 src/main/java/dev/bileto/motis/client/model/Plan200Response.java
 src/main/java/dev/bileto/motis/client/model/Reachable.java
 src/main/java/dev/bileto/motis/client/model/ReachablePlace.java
+src/main/java/dev/bileto/motis/client/model/RealtimeMode.java
+src/main/java/dev/bileto/motis/client/model/RefreshItineraryPostBody.java
 src/main/java/dev/bileto/motis/client/model/Rental.java
 src/main/java/dev/bileto/motis/client/model/RentalFormFactor.java
 src/main/java/dev/bileto/motis/client/model/RentalPropulsionType.java
@@ -57,8 +63,11 @@ src/main/java/dev/bileto/motis/client/model/RentalVehicleType.java
 src/main/java/dev/bileto/motis/client/model/RentalZone.java
 src/main/java/dev/bileto/motis/client/model/RentalZoneRestrictions.java
 src/main/java/dev/bileto/motis/client/model/Rentals200Response.java
+src/main/java/dev/bileto/motis/client/model/Reservation.java
 src/main/java/dev/bileto/motis/client/model/RiderCategory.java
+src/main/java/dev/bileto/motis/client/model/Route.java
 src/main/java/dev/bileto/motis/client/model/RouteColor.java
+src/main/java/dev/bileto/motis/client/model/RouteDetails200Response.java
 src/main/java/dev/bileto/motis/client/model/RouteInfo.java
 src/main/java/dev/bileto/motis/client/model/RoutePathSource.java
 src/main/java/dev/bileto/motis/client/model/RoutePolyline.java
@@ -66,8 +75,10 @@ src/main/java/dev/bileto/motis/client/model/RouteSegment.java
 src/main/java/dev/bileto/motis/client/model/Routes200Response.java
 src/main/java/dev/bileto/motis/client/model/ServerConfig.java
 src/main/java/dev/bileto/motis/client/model/StepInstruction.java
+src/main/java/dev/bileto/motis/client/model/StopInfo200Response.java
 src/main/java/dev/bileto/motis/client/model/StopTime.java
 src/main/java/dev/bileto/motis/client/model/Stoptimes200Response.java
+src/main/java/dev/bileto/motis/client/model/TicketUrls.java
 src/main/java/dev/bileto/motis/client/model/TimeRange.java
 src/main/java/dev/bileto/motis/client/model/Transfer.java
 src/main/java/dev/bileto/motis/client/model/Transfers200Response.java
@@ -75,3 +86,4 @@ src/main/java/dev/bileto/motis/client/model/TransitRouteInfo.java
 src/main/java/dev/bileto/motis/client/model/TripInfo.java
 src/main/java/dev/bileto/motis/client/model/TripSegment.java
 src/main/java/dev/bileto/motis/client/model/VertexType.java
+src/main/java/dev/bileto/motis/client/model/WheelchairAccessibility.java

@@ -20,80 +20,107 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Object containing a single element of a ParetoSet
+ * TicketUrls
  */
 @JsonPropertyOrder({
-  ParetoSetEntry.JSON_PROPERTY_DURATION,
-  ParetoSetEntry.JSON_PROPERTY_TRANSFERS
+  TicketUrls.JSON_PROPERTY_WEB,
+  TicketUrls.JSON_PROPERTY_ANDROID,
+  TicketUrls.JSON_PROPERTY_IOS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
-public class ParetoSetEntry {
-  public static final String JSON_PROPERTY_DURATION = "duration";
-  @jakarta.annotation.Nonnull
-  private BigDecimal duration;
+public class TicketUrls {
+  public static final String JSON_PROPERTY_WEB = "web";
+  @jakarta.annotation.Nullable
+  private String web;
 
-  public static final String JSON_PROPERTY_TRANSFERS = "transfers";
-  @jakarta.annotation.Nonnull
-  private Integer transfers;
+  public static final String JSON_PROPERTY_ANDROID = "android";
+  @jakarta.annotation.Nullable
+  private String android;
 
-  public ParetoSetEntry() {
+  public static final String JSON_PROPERTY_IOS = "ios";
+  @jakarta.annotation.Nullable
+  private String ios;
+
+  public TicketUrls() {
   }
 
-  public ParetoSetEntry duration(@jakarta.annotation.Nonnull BigDecimal duration) {
+  public TicketUrls web(@jakarta.annotation.Nullable String web) {
     
-    this.duration = duration;
+    this.web = web;
     return this;
   }
 
   /**
-   * duration in seconds for the the best solution using &#x60;transfer&#x60; transfers  Notice that the resolution is currently in minutes, because of implementation details 
-   * minimum: 0.0
-   * @return duration
+   * Get web
+   * @return web
    */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_WEB, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BigDecimal getDuration() {
-    return duration;
+  public String getWeb() {
+    return web;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(@jakarta.annotation.Nonnull BigDecimal duration) {
-    this.duration = duration;
+  @JsonProperty(value = JSON_PROPERTY_WEB, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWeb(@jakarta.annotation.Nullable String web) {
+    this.web = web;
   }
 
-  public ParetoSetEntry transfers(@jakarta.annotation.Nonnull Integer transfers) {
+  public TicketUrls android(@jakarta.annotation.Nullable String android) {
     
-    this.transfers = transfers;
+    this.android = android;
     return this;
   }
 
   /**
-   * The minimal number of transfers required to arrive within &#x60;duration&#x60; seconds  transfers&#x3D;0: Direct transit connecion without any transfers transfers&#x3D;1: Transit connection with 1 transfer 
-   * minimum: 0
-   * @return transfers
+   * Get android
+   * @return android
    */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ANDROID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getTransfers() {
-    return transfers;
+  public String getAndroid() {
+    return android;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransfers(@jakarta.annotation.Nonnull Integer transfers) {
-    this.transfers = transfers;
+  @JsonProperty(value = JSON_PROPERTY_ANDROID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAndroid(@jakarta.annotation.Nullable String android) {
+    this.android = android;
+  }
+
+  public TicketUrls ios(@jakarta.annotation.Nullable String ios) {
+    
+    this.ios = ios;
+    return this;
+  }
+
+  /**
+   * Get ios
+   * @return ios
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IOS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getIos() {
+    return ios;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IOS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIos(@jakarta.annotation.Nullable String ios) {
+    this.ios = ios;
   }
 
 
@@ -105,22 +132,24 @@ public class ParetoSetEntry {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ParetoSetEntry paretoSetEntry = (ParetoSetEntry) o;
-    return Objects.equals(this.duration, paretoSetEntry.duration) &&
-        Objects.equals(this.transfers, paretoSetEntry.transfers);
+    TicketUrls ticketUrls = (TicketUrls) o;
+    return Objects.equals(this.web, ticketUrls.web) &&
+        Objects.equals(this.android, ticketUrls.android) &&
+        Objects.equals(this.ios, ticketUrls.ios);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration, transfers);
+    return Objects.hash(web, android, ios);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ParetoSetEntry {\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    transfers: ").append(toIndentedString(transfers)).append("\n");
+    sb.append("class TicketUrls {\n");
+    sb.append("    web: ").append(toIndentedString(web)).append("\n");
+    sb.append("    android: ").append(toIndentedString(android)).append("\n");
+    sb.append("    ios: ").append(toIndentedString(ios)).append("\n");
     sb.append("}");
     return sb.toString();
   }

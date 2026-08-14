@@ -22,17 +22,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * - &#x60;NORMAL&#x60; - entry/exit is possible normally - &#x60;NOT_ALLOWED&#x60; - entry/exit is not allowed 
+ * Gets or Sets Reservation
  */
-public enum PickupDropoffType {
+public enum Reservation {
   
-  NORMAL("NORMAL"),
+  NONE("NONE"),
   
-  NOT_ALLOWED("NOT_ALLOWED");
+  COMPULSORY("COMPULSORY");
 
   private String value;
 
-  PickupDropoffType(String value) {
+  Reservation(String value) {
     this.value = value;
   }
 
@@ -47,8 +47,8 @@ public enum PickupDropoffType {
   }
 
   @JsonCreator
-  public static PickupDropoffType fromValue(String value) {
-    for (PickupDropoffType b : PickupDropoffType.values()) {
+  public static Reservation fromValue(String value) {
+    for (Reservation b : Reservation.values()) {
       if (b.value.equals(value)) {
         return b;
       }

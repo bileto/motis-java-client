@@ -20,80 +20,48 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
+import dev.bileto.motis.client.model.ItineraryId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Object containing a single element of a ParetoSet
+ * Body for the &#x60;refreshItineraryPost&#x60; endpoint. Carries only the structured itinerary identifier; all routing parameters are passed as query parameters (same as the &#x60;refreshItinerary&#x60; GET endpoint). 
  */
 @JsonPropertyOrder({
-  ParetoSetEntry.JSON_PROPERTY_DURATION,
-  ParetoSetEntry.JSON_PROPERTY_TRANSFERS
+  RefreshItineraryPostBody.JSON_PROPERTY_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
-public class ParetoSetEntry {
-  public static final String JSON_PROPERTY_DURATION = "duration";
+public class RefreshItineraryPostBody {
+  public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nonnull
-  private BigDecimal duration;
+  private ItineraryId id;
 
-  public static final String JSON_PROPERTY_TRANSFERS = "transfers";
-  @jakarta.annotation.Nonnull
-  private Integer transfers;
-
-  public ParetoSetEntry() {
+  public RefreshItineraryPostBody() {
   }
 
-  public ParetoSetEntry duration(@jakarta.annotation.Nonnull BigDecimal duration) {
+  public RefreshItineraryPostBody id(@jakarta.annotation.Nonnull ItineraryId id) {
     
-    this.duration = duration;
+    this.id = id;
     return this;
   }
 
   /**
-   * duration in seconds for the the best solution using &#x60;transfer&#x60; transfers  Notice that the resolution is currently in minutes, because of implementation details 
-   * minimum: 0.0
-   * @return duration
+   * Get id
+   * @return id
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public BigDecimal getDuration() {
-    return duration;
+  public ItineraryId getId() {
+    return id;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(@jakarta.annotation.Nonnull BigDecimal duration) {
-    this.duration = duration;
-  }
-
-  public ParetoSetEntry transfers(@jakarta.annotation.Nonnull Integer transfers) {
-    
-    this.transfers = transfers;
-    return this;
-  }
-
-  /**
-   * The minimal number of transfers required to arrive within &#x60;duration&#x60; seconds  transfers&#x3D;0: Direct transit connecion without any transfers transfers&#x3D;1: Transit connection with 1 transfer 
-   * minimum: 0
-   * @return transfers
-   */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Integer getTransfers() {
-    return transfers;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransfers(@jakarta.annotation.Nonnull Integer transfers) {
-    this.transfers = transfers;
+  public void setId(@jakarta.annotation.Nonnull ItineraryId id) {
+    this.id = id;
   }
 
 
@@ -105,22 +73,20 @@ public class ParetoSetEntry {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ParetoSetEntry paretoSetEntry = (ParetoSetEntry) o;
-    return Objects.equals(this.duration, paretoSetEntry.duration) &&
-        Objects.equals(this.transfers, paretoSetEntry.transfers);
+    RefreshItineraryPostBody refreshItineraryPostBody = (RefreshItineraryPostBody) o;
+    return Objects.equals(this.id, refreshItineraryPostBody.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration, transfers);
+    return Objects.hash(id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ParetoSetEntry {\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    transfers: ").append(toIndentedString(transfers)).append("\n");
+    sb.append("class RefreshItineraryPostBody {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

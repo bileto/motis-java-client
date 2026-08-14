@@ -22,17 +22,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * - &#x60;NORMAL&#x60; - entry/exit is possible normally - &#x60;NOT_ALLOWED&#x60; - entry/exit is not allowed 
+ * Gets or Sets WheelchairAccessibility
  */
-public enum PickupDropoffType {
+public enum WheelchairAccessibility {
   
-  NORMAL("NORMAL"),
+  ACCESSIBLE("ACCESSIBLE"),
   
-  NOT_ALLOWED("NOT_ALLOWED");
+  NOT_ACCESSIBLE("NOT_ACCESSIBLE");
 
   private String value;
 
-  PickupDropoffType(String value) {
+  WheelchairAccessibility(String value) {
     this.value = value;
   }
 
@@ -47,8 +47,8 @@ public enum PickupDropoffType {
   }
 
   @JsonCreator
-  public static PickupDropoffType fromValue(String value) {
-    for (PickupDropoffType b : PickupDropoffType.values()) {
+  public static WheelchairAccessibility fromValue(String value) {
+    for (WheelchairAccessibility b : WheelchairAccessibility.values()) {
       if (b.value.equals(value)) {
         return b;
       }

@@ -20,80 +20,91 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
+import dev.bileto.motis.client.model.Place;
+import dev.bileto.motis.client.model.Route;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Object containing a single element of a ParetoSet
+ * StopInfo200Response
  */
 @JsonPropertyOrder({
-  ParetoSetEntry.JSON_PROPERTY_DURATION,
-  ParetoSetEntry.JSON_PROPERTY_TRANSFERS
+  StopInfo200Response.JSON_PROPERTY_PLACE,
+  StopInfo200Response.JSON_PROPERTY_ROUTES
 })
+@JsonTypeName("stopInfo_200_response")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
-public class ParetoSetEntry {
-  public static final String JSON_PROPERTY_DURATION = "duration";
+public class StopInfo200Response {
+  public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nonnull
-  private BigDecimal duration;
+  private Place place;
 
-  public static final String JSON_PROPERTY_TRANSFERS = "transfers";
+  public static final String JSON_PROPERTY_ROUTES = "routes";
   @jakarta.annotation.Nonnull
-  private Integer transfers;
+  private List<Route> routes = new ArrayList<>();
 
-  public ParetoSetEntry() {
+  public StopInfo200Response() {
   }
 
-  public ParetoSetEntry duration(@jakarta.annotation.Nonnull BigDecimal duration) {
+  public StopInfo200Response place(@jakarta.annotation.Nonnull Place place) {
     
-    this.duration = duration;
+    this.place = place;
     return this;
   }
 
   /**
-   * duration in seconds for the the best solution using &#x60;transfer&#x60; transfers  Notice that the resolution is currently in minutes, because of implementation details 
-   * minimum: 0.0
-   * @return duration
+   * metadata of the requested stop
+   * @return place
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public BigDecimal getDuration() {
-    return duration;
+  public Place getPlace() {
+    return place;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_PLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(@jakarta.annotation.Nonnull BigDecimal duration) {
-    this.duration = duration;
+  public void setPlace(@jakarta.annotation.Nonnull Place place) {
+    this.place = place;
   }
 
-  public ParetoSetEntry transfers(@jakarta.annotation.Nonnull Integer transfers) {
+  public StopInfo200Response routes(@jakarta.annotation.Nonnull List<Route> routes) {
     
-    this.transfers = transfers;
+    this.routes = routes;
+    return this;
+  }
+
+  public StopInfo200Response addRoutesItem(Route routesItem) {
+    if (this.routes == null) {
+      this.routes = new ArrayList<>();
+    }
+    this.routes.add(routesItem);
     return this;
   }
 
   /**
-   * The minimal number of transfers required to arrive within &#x60;duration&#x60; seconds  transfers&#x3D;0: Direct transit connecion without any transfers transfers&#x3D;1: Transit connection with 1 transfer 
-   * minimum: 0
-   * @return transfers
+   * list of routes serving the stop(s)
+   * @return routes
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ROUTES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Integer getTransfers() {
-    return transfers;
+  public List<Route> getRoutes() {
+    return routes;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ROUTES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransfers(@jakarta.annotation.Nonnull Integer transfers) {
-    this.transfers = transfers;
+  public void setRoutes(@jakarta.annotation.Nonnull List<Route> routes) {
+    this.routes = routes;
   }
 
 
@@ -105,22 +116,22 @@ public class ParetoSetEntry {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ParetoSetEntry paretoSetEntry = (ParetoSetEntry) o;
-    return Objects.equals(this.duration, paretoSetEntry.duration) &&
-        Objects.equals(this.transfers, paretoSetEntry.transfers);
+    StopInfo200Response stopInfo200Response = (StopInfo200Response) o;
+    return Objects.equals(this.place, stopInfo200Response.place) &&
+        Objects.equals(this.routes, stopInfo200Response.routes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration, transfers);
+    return Objects.hash(place, routes);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ParetoSetEntry {\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    transfers: ").append(toIndentedString(transfers)).append("\n");
+    sb.append("class StopInfo200Response {\n");
+    sb.append("    place: ").append(toIndentedString(place)).append("\n");
+    sb.append("    routes: ").append(toIndentedString(routes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

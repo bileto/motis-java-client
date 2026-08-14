@@ -5,9 +5,11 @@ import dev.bileto.motis.client.ApiClient;
 import java.math.BigDecimal;
 import dev.bileto.motis.client.model.Error;
 import dev.bileto.motis.client.model.Initial200Response;
+import dev.bileto.motis.client.model.Mode;
 import java.time.OffsetDateTime;
 import dev.bileto.motis.client.model.Place;
 import dev.bileto.motis.client.model.Rentals200Response;
+import dev.bileto.motis.client.model.RouteDetails200Response;
 import dev.bileto.motis.client.model.Routes200Response;
 import dev.bileto.motis.client.model.TripSegment;
 
@@ -343,6 +345,102 @@ public class MapApi {
     }
 
     /**
+     * Returns the full data for a single route, including all stops and polyline segments. 
+     * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
+     * <p><b>200</b> - full data for a single route
+     * @param routeIdx Internal route index
+     * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
+     * @return RouteDetails200Response
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec routeDetailsRequestCreation(@jakarta.annotation.Nonnull Integer routeIdx, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        Object postBody = null;
+        // verify the required parameter 'routeIdx' is set
+        if (routeIdx == null) {
+            throw new WebClientResponseException("Missing the required parameter 'routeIdx' when calling routeDetails", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "routeIdx", routeIdx));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
+
+        final String[] localVarAccepts = { 
+            "application/json"
+        };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {  };
+
+        ParameterizedTypeReference<RouteDetails200Response> localVarReturnType = new ParameterizedTypeReference<RouteDetails200Response>() {};
+        return apiClient.invokeAPI("/api/experimental/map/route-details", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Returns the full data for a single route, including all stops and polyline segments. 
+     * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
+     * <p><b>200</b> - full data for a single route
+     * @param routeIdx Internal route index
+     * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
+     * @return RouteDetails200Response
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public RouteDetails200Response routeDetails(@jakarta.annotation.Nonnull Integer routeIdx, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        ParameterizedTypeReference<RouteDetails200Response> localVarReturnType = new ParameterizedTypeReference<RouteDetails200Response>() {};
+        return routeDetailsRequestCreation(routeIdx, language).bodyToMono(localVarReturnType).block();
+    }
+
+    /**
+     * Returns the full data for a single route, including all stops and polyline segments. 
+     * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
+     * <p><b>200</b> - full data for a single route
+     * @param routeIdx Internal route index
+     * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
+     * @return ResponseEntity&lt;RouteDetails200Response&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<RouteDetails200Response> routeDetailsWithHttpInfo(@jakarta.annotation.Nonnull Integer routeIdx, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        ParameterizedTypeReference<RouteDetails200Response> localVarReturnType = new ParameterizedTypeReference<RouteDetails200Response>() {};
+        return routeDetailsRequestCreation(routeIdx, language).toEntity(localVarReturnType).block();
+    }
+
+    /**
+     * Returns the full data for a single route, including all stops and polyline segments. 
+     * 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>400</b> - Bad Request
+     * <p><b>404</b> - Not Found
+     * <p><b>500</b> - Server Error
+     * <p><b>200</b> - full data for a single route
+     * @param routeIdx Internal route index
+     * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec routeDetailsWithResponseSpec(@jakarta.annotation.Nonnull Integer routeIdx, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        return routeDetailsRequestCreation(routeIdx, language);
+    }
+
+    /**
      * Given an area frame (box defined by the top-right and bottom-left corners), it returns all routes and their respective shapes that operate within this area. Routes are filtered by zoom level. On low zoom levels, only long distance trains will be shown while on high zoom levels, also metros, buses and trams will be returned. 
      * 
      * <p><b>422</b> - Unprocessable Entity
@@ -466,11 +564,13 @@ public class MapApi {
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
+     * @param grouped Optional. Return grouped stops
+     * @param modes Optional. Stop modes
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return List&lt;Place&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    private ResponseSpec stopsRequestCreation(@jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    private ResponseSpec stopsRequestCreation(@jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable Boolean grouped, @jakarta.annotation.Nullable List<Mode> modes, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         Object postBody = null;
         // verify the required parameter 'min' is set
         if (min == null) {
@@ -490,6 +590,8 @@ public class MapApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "grouped", grouped));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase(Locale.ROOT)), "modes", modes));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
 
         final String[] localVarAccepts = { 
@@ -502,7 +604,7 @@ public class MapApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<Place> localVarReturnType = new ParameterizedTypeReference<Place>() {};
-        return apiClient.invokeAPI("/api/v1/map/stops", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v6/map/stops", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
@@ -515,13 +617,15 @@ public class MapApi {
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
+     * @param grouped Optional. Return grouped stops
+     * @param modes Optional. Stop modes
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return List&lt;Place&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public List<Place> stops(@jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    public List<Place> stops(@jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable Boolean grouped, @jakarta.annotation.Nullable List<Mode> modes, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<Place> localVarReturnType = new ParameterizedTypeReference<Place>() {};
-        return stopsRequestCreation(min, max, language).bodyToFlux(localVarReturnType).collectList().block();
+        return stopsRequestCreation(min, max, grouped, modes, language).bodyToFlux(localVarReturnType).collectList().block();
     }
 
     /**
@@ -534,13 +638,15 @@ public class MapApi {
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
+     * @param grouped Optional. Return grouped stops
+     * @param modes Optional. Stop modes
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return ResponseEntity&lt;List&lt;Place&gt;&gt;
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<List<Place>> stopsWithHttpInfo(@jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+    public ResponseEntity<List<Place>> stopsWithHttpInfo(@jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable Boolean grouped, @jakarta.annotation.Nullable List<Mode> modes, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
         ParameterizedTypeReference<Place> localVarReturnType = new ParameterizedTypeReference<Place>() {};
-        return stopsRequestCreation(min, max, language).toEntityList(localVarReturnType).block();
+        return stopsRequestCreation(min, max, grouped, modes, language).toEntityList(localVarReturnType).block();
     }
 
     /**
@@ -553,12 +659,14 @@ public class MapApi {
      * <p><b>200</b> - array of stop places in the selected map section
      * @param min latitude,longitude pair of the lower right coordinate
      * @param max latitude,longitude pair of the upper left coordinate
+     * @param grouped Optional. Return grouped stops
+     * @param modes Optional. Stop modes
      * @param language language tags as used in OpenStreetMap / GTFS (usually BCP-47 / ISO 639-1, or ISO 639-2 if there&#39;s no ISO 639-1) 
      * @return ResponseSpec
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public ResponseSpec stopsWithResponseSpec(@jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
-        return stopsRequestCreation(min, max, language);
+    public ResponseSpec stopsWithResponseSpec(@jakarta.annotation.Nonnull String min, @jakarta.annotation.Nonnull String max, @jakarta.annotation.Nullable Boolean grouped, @jakarta.annotation.Nullable List<Mode> modes, @jakarta.annotation.Nullable List<String> language) throws WebClientResponseException {
+        return stopsRequestCreation(min, max, grouped, modes, language);
     }
 
     /**
@@ -627,7 +735,7 @@ public class MapApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<TripSegment> localVarReturnType = new ParameterizedTypeReference<TripSegment>() {};
-        return apiClient.invokeAPI("/api/v5/map/trips", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v6/map/trips", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**

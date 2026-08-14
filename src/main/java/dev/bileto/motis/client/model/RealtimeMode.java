@@ -22,17 +22,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * - &#x60;NORMAL&#x60; - entry/exit is possible normally - &#x60;NOT_ALLOWED&#x60; - entry/exit is not allowed 
+ * Controls whether realtime data (delays, cancellations, added/changed trips) is used.  - &#x60;REALTIME&#x60;: use realtime data for routing/sorting. - &#x60;REALTIME_ANNOTATION_ONLY&#x60;: route, sort and window on the scheduled   timetable only, but still annotate the response with realtime data. - &#x60;OFF&#x60;: use the scheduled timetable only, with no realtime annotation. 
  */
-public enum PickupDropoffType {
+public enum RealtimeMode {
   
-  NORMAL("NORMAL"),
+  FALSE("false"),
   
-  NOT_ALLOWED("NOT_ALLOWED");
+  REALTIME_ANNOTATION_ONLY("REALTIME_ANNOTATION_ONLY"),
+  
+  REALTIME("REALTIME");
 
   private String value;
 
-  PickupDropoffType(String value) {
+  RealtimeMode(String value) {
     this.value = value;
   }
 
@@ -47,8 +49,8 @@ public enum PickupDropoffType {
   }
 
   @JsonCreator
-  public static PickupDropoffType fromValue(String value) {
-    for (PickupDropoffType b : PickupDropoffType.values()) {
+  public static RealtimeMode fromValue(String value) {
+    for (RealtimeMode b : RealtimeMode.values()) {
       if (b.value.equals(value)) {
         return b;
       }

@@ -20,80 +20,77 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * Object containing a single element of a ParetoSet
+ * HealthResponse
  */
 @JsonPropertyOrder({
-  ParetoSetEntry.JSON_PROPERTY_DURATION,
-  ParetoSetEntry.JSON_PROPERTY_TRANSFERS
+  HealthResponse.JSON_PROPERTY_RT,
+  HealthResponse.JSON_PROPERTY_GBFS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
-public class ParetoSetEntry {
-  public static final String JSON_PROPERTY_DURATION = "duration";
-  @jakarta.annotation.Nonnull
-  private BigDecimal duration;
+public class HealthResponse {
+  public static final String JSON_PROPERTY_RT = "rt";
+  @jakarta.annotation.Nullable
+  private Boolean rt;
 
-  public static final String JSON_PROPERTY_TRANSFERS = "transfers";
-  @jakarta.annotation.Nonnull
-  private Integer transfers;
+  public static final String JSON_PROPERTY_GBFS = "gbfs";
+  @jakarta.annotation.Nullable
+  private Boolean gbfs;
 
-  public ParetoSetEntry() {
+  public HealthResponse() {
   }
 
-  public ParetoSetEntry duration(@jakarta.annotation.Nonnull BigDecimal duration) {
+  public HealthResponse rt(@jakarta.annotation.Nullable Boolean rt) {
     
-    this.duration = duration;
+    this.rt = rt;
     return this;
   }
 
   /**
-   * duration in seconds for the the best solution using &#x60;transfer&#x60; transfers  Notice that the resolution is currently in minutes, because of implementation details 
-   * minimum: 0.0
-   * @return duration
+   * GTFSRT, SIRI Lite, VDV AUS, VDV454 feeds.
+   * @return rt
    */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_RT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BigDecimal getDuration() {
-    return duration;
+  public Boolean getRt() {
+    return rt;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(@jakarta.annotation.Nonnull BigDecimal duration) {
-    this.duration = duration;
+  @JsonProperty(value = JSON_PROPERTY_RT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRt(@jakarta.annotation.Nullable Boolean rt) {
+    this.rt = rt;
   }
 
-  public ParetoSetEntry transfers(@jakarta.annotation.Nonnull Integer transfers) {
+  public HealthResponse gbfs(@jakarta.annotation.Nullable Boolean gbfs) {
     
-    this.transfers = transfers;
+    this.gbfs = gbfs;
     return this;
   }
 
   /**
-   * The minimal number of transfers required to arrive within &#x60;duration&#x60; seconds  transfers&#x3D;0: Direct transit connecion without any transfers transfers&#x3D;1: Transit connection with 1 transfer 
-   * minimum: 0
-   * @return transfers
+   * GBFS feeds.
+   * @return gbfs
    */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_GBFS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getTransfers() {
-    return transfers;
+  public Boolean getGbfs() {
+    return gbfs;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TRANSFERS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransfers(@jakarta.annotation.Nonnull Integer transfers) {
-    this.transfers = transfers;
+  @JsonProperty(value = JSON_PROPERTY_GBFS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGbfs(@jakarta.annotation.Nullable Boolean gbfs) {
+    this.gbfs = gbfs;
   }
 
 
@@ -105,22 +102,22 @@ public class ParetoSetEntry {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ParetoSetEntry paretoSetEntry = (ParetoSetEntry) o;
-    return Objects.equals(this.duration, paretoSetEntry.duration) &&
-        Objects.equals(this.transfers, paretoSetEntry.transfers);
+    HealthResponse healthResponse = (HealthResponse) o;
+    return Objects.equals(this.rt, healthResponse.rt) &&
+        Objects.equals(this.gbfs, healthResponse.gbfs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration, transfers);
+    return Objects.hash(rt, gbfs);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ParetoSetEntry {\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    transfers: ").append(toIndentedString(transfers)).append("\n");
+    sb.append("class HealthResponse {\n");
+    sb.append("    rt: ").append(toIndentedString(rt)).append("\n");
+    sb.append("    gbfs: ").append(toIndentedString(gbfs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
