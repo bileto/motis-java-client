@@ -40,7 +40,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:6.0.2'
     testImplementation 'org.mockito:mockito-core:5.23.0'
     testImplementation 'org.springframework:spring-test:6.2.19'
-    testImplementation 'io.projectreactor:reactor-test:3.8.2'
+    testImplementation 'io.projectreactor:reactor-test:3.8.6'
     testImplementation 'com.squareup.okhttp3:mockwebserver3:5.3.2'
 
     testRuntimeOnly 'org.springframework:spring-context:6.2.19'
