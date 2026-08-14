@@ -30,7 +30,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class GeocodeApi {
     private ApiClient apiClient;
 
@@ -76,20 +76,20 @@ public class GeocodeApi {
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "text", text));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "type", type));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "mode", mode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "placeBias", placeBias));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "numResults", numResults));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "text", text));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "type", type));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "mode", mode));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "placeBias", placeBias));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "numResults", numResults));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -101,7 +101,7 @@ public class GeocodeApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
-        return apiClient.invokeAPI("/api/v1/geocode", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v1/geocode", HttpMethod.GET, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
@@ -189,14 +189,14 @@ public class GeocodeApi {
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "type", type));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "numResults", numResults));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "place", place));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "type", type));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "numResults", numResults));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -208,7 +208,7 @@ public class GeocodeApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<Match> localVarReturnType = new ParameterizedTypeReference<Match>() {};
-        return apiClient.invokeAPI("/api/v1/reverse-geocode", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v1/reverse-geocode", HttpMethod.GET, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**

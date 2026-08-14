@@ -73,7 +73,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   OneToManyIntermodalParams.JSON_PROPERTY_REQUIRE_CAR_TRANSPORT,
   OneToManyIntermodalParams.JSON_PROPERTY_NO_COMPULSORY_RESERVATION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class OneToManyIntermodalParams {
   public static final String JSON_PROPERTY_ONE = "one";
   @jakarta.annotation.Nonnull
@@ -121,7 +121,7 @@ public class OneToManyIntermodalParams {
 
   public static final String JSON_PROPERTY_PEDESTRIAN_PROFILE = "pedestrianProfile";
   @jakarta.annotation.Nullable
-  private PedestrianProfile pedestrianProfile = PedestrianProfile.FOOT;
+  private PedestrianProfile pedestrianProfile;
 
   public static final String JSON_PROPERTY_PEDESTRIAN_SPEED = "pedestrianSpeed";
   @jakarta.annotation.Nullable
@@ -177,7 +177,7 @@ public class OneToManyIntermodalParams {
 
   public static final String JSON_PROPERTY_ELEVATION_COSTS = "elevationCosts";
   @jakarta.annotation.Nullable
-  private ElevationCosts elevationCosts = ElevationCosts.NONE;
+  private ElevationCosts elevationCosts;
 
   public static final String JSON_PROPERTY_TRANSIT_MODES = "transitModes";
   @jakarta.annotation.Nullable
@@ -193,7 +193,7 @@ public class OneToManyIntermodalParams {
 
   public static final String JSON_PROPERTY_DIRECT_MODE = "directMode";
   @jakarta.annotation.Nullable
-  private Mode directMode = Mode.WALK;
+  private Mode directMode;
 
   public static final String JSON_PROPERTY_MAX_PRE_TRANSIT_TIME = "maxPreTransitTime";
   @jakarta.annotation.Nullable

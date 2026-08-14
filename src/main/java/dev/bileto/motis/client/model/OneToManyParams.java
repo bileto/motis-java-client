@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   OneToManyParams.JSON_PROPERTY_ARRIVE_BY,
   OneToManyParams.JSON_PROPERTY_WITH_DISTANCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class OneToManyParams {
   public static final String JSON_PROPERTY_ONE = "one";
   @jakarta.annotation.Nonnull
@@ -66,7 +66,7 @@ public class OneToManyParams {
 
   public static final String JSON_PROPERTY_ELEVATION_COSTS = "elevationCosts";
   @jakarta.annotation.Nullable
-  private ElevationCosts elevationCosts = ElevationCosts.NONE;
+  private ElevationCosts elevationCosts;
 
   public static final String JSON_PROPERTY_ARRIVE_BY = "arriveBy";
   @jakarta.annotation.Nonnull

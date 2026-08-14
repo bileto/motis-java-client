@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   TicketUrls.JSON_PROPERTY_ANDROID,
   TicketUrls.JSON_PROPERTY_IOS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class TicketUrls {
   public static final String JSON_PROPERTY_WEB = "web";
   @jakarta.annotation.Nullable

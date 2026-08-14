@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   LegId.JSON_PROPERTY_MODE,
   LegId.JSON_PROPERTY_SCHEDULED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class LegId {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   @jakarta.annotation.Nonnull

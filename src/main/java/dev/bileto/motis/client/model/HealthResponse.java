@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   HealthResponse.JSON_PROPERTY_RT,
   HealthResponse.JSON_PROPERTY_GBFS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class HealthResponse {
   public static final String JSON_PROPERTY_RT = "rt";
   @jakarta.annotation.Nullable

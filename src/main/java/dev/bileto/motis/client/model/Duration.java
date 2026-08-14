@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Duration.JSON_PROPERTY_DURATION,
   Duration.JSON_PROPERTY_DISTANCE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class Duration {
   public static final String JSON_PROPERTY_DURATION = "duration";
   @jakarta.annotation.Nullable

@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RouteColor.JSON_PROPERTY_COLOR,
   RouteColor.JSON_PROPERTY_TEXT_COLOR
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class RouteColor {
   public static final String JSON_PROPERTY_COLOR = "color";
   @jakarta.annotation.Nonnull

@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RouteDetails200Response.JSON_PROPERTY_ZOOM_FILTERED
 })
 @JsonTypeName("routeDetails_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class RouteDetails200Response {
   public static final String JSON_PROPERTY_ROUTES = "routes";
   @jakarta.annotation.Nonnull

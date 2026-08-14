@@ -90,7 +90,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Leg.JSON_PROPERTY_TICKET_URLS,
   Leg.JSON_PROPERTY_ALTERNATIVES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class Leg {
   public static final String JSON_PROPERTY_MODE = "mode";
   @jakarta.annotation.Nonnull

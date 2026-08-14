@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RouteSegment.JSON_PROPERTY_TO,
   RouteSegment.JSON_PROPERTY_POLYLINE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class RouteSegment {
   public static final String JSON_PROPERTY_FROM = "from";
   @jakarta.annotation.Nonnull

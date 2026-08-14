@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   StopInfo200Response.JSON_PROPERTY_ROUTES
 })
 @JsonTypeName("stopInfo_200_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class StopInfo200Response {
   public static final String JSON_PROPERTY_PLACE = "place";
   @jakarta.annotation.Nonnull

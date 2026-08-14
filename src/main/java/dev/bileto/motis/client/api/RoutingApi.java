@@ -40,7 +40,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.22.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class RoutingApi {
     private ApiClient apiClient;
 
@@ -117,44 +117,44 @@ public class RoutingApi {
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "one", one));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTravelTime", maxTravelTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTransfers", maxTransfers));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "minTransferTime", minTransferTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "additionalTransferTime", additionalTransferTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "transferTimeFactor", transferTimeFactor));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "useRoutedTransfers", useRoutedTransfers));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianProfile", pedestrianProfile));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianSpeed", pedestrianSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "cyclingSpeed", cyclingSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHeight", vehicleHeight));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWidth", vehicleWidth));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLength", vehicleLength));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWeight", vehicleWeight));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmat", vehicleHazmat));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmatWater", vehicleHazmatWater));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleCount", vehicleAxleCount));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleLoad", vehicleAxleLoad));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTrailer", vehicleTrailer));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTopSpeed", vehicleTopSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLezAccess", vehicleLezAccess));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "transitModes", transitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitModes", preTransitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitModes", postTransitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireBikeTransport", requireBikeTransport));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireCarTransport", requireCarTransport));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "noCompulsoryReservation", noCompulsoryReservation));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPreTransitTime", maxPreTransitTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPostTransitTime", maxPostTransitTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "one", one));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTravelTime", maxTravelTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTransfers", maxTransfers));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "minTransferTime", minTransferTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "additionalTransferTime", additionalTransferTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "transferTimeFactor", transferTimeFactor));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "useRoutedTransfers", useRoutedTransfers));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianProfile", pedestrianProfile));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianSpeed", pedestrianSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "cyclingSpeed", cyclingSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHeight", vehicleHeight));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWidth", vehicleWidth));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLength", vehicleLength));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWeight", vehicleWeight));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmat", vehicleHazmat));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmatWater", vehicleHazmatWater));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleCount", vehicleAxleCount));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleLoad", vehicleAxleLoad));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTrailer", vehicleTrailer));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTopSpeed", vehicleTopSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLezAccess", vehicleLezAccess));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "transitModes", transitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitModes", preTransitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitModes", postTransitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireBikeTransport", requireBikeTransport));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireCarTransport", requireCarTransport));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "noCompulsoryReservation", noCompulsoryReservation));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPreTransitTime", maxPreTransitTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPostTransitTime", maxPostTransitTime));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -166,7 +166,7 @@ public class RoutingApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<Reachable> localVarReturnType = new ParameterizedTypeReference<Reachable>() {};
-        return apiClient.invokeAPI("/api/v6/one-to-all", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v6/one-to-all", HttpMethod.GET, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
@@ -373,30 +373,30 @@ public class RoutingApi {
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "one", one));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "many", many));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "mode", mode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHeight", vehicleHeight));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWidth", vehicleWidth));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLength", vehicleLength));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWeight", vehicleWeight));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmat", vehicleHazmat));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmatWater", vehicleHazmatWater));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleCount", vehicleAxleCount));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleLoad", vehicleAxleLoad));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTrailer", vehicleTrailer));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTopSpeed", vehicleTopSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLezAccess", vehicleLezAccess));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withDistance", withDistance));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "one", one));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "many", many));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "mode", mode));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHeight", vehicleHeight));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWidth", vehicleWidth));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLength", vehicleLength));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWeight", vehicleWeight));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmat", vehicleHazmat));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmatWater", vehicleHazmatWater));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleCount", vehicleAxleCount));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleLoad", vehicleAxleLoad));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTrailer", vehicleTrailer));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTopSpeed", vehicleTopSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLezAccess", vehicleLezAccess));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "withDistance", withDistance));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -408,7 +408,7 @@ public class RoutingApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<Duration> localVarReturnType = new ParameterizedTypeReference<Duration>() {};
-        return apiClient.invokeAPI("/api/v1/one-to-many", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v1/one-to-many", HttpMethod.GET, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
@@ -572,48 +572,48 @@ public class RoutingApi {
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "one", one));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "many", many));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTravelTime", maxTravelTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTransfers", maxTransfers));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "minTransferTime", minTransferTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "additionalTransferTime", additionalTransferTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "transferTimeFactor", transferTimeFactor));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "useRoutedTransfers", useRoutedTransfers));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianProfile", pedestrianProfile));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianSpeed", pedestrianSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "cyclingSpeed", cyclingSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHeight", vehicleHeight));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWidth", vehicleWidth));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLength", vehicleLength));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWeight", vehicleWeight));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmat", vehicleHazmat));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmatWater", vehicleHazmatWater));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleCount", vehicleAxleCount));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleLoad", vehicleAxleLoad));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTrailer", vehicleTrailer));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTopSpeed", vehicleTopSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLezAccess", vehicleLezAccess));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "transitModes", transitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitModes", preTransitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitModes", postTransitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "directMode", directMode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPreTransitTime", maxPreTransitTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPostTransitTime", maxPostTransitTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxDirectTime", maxDirectTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withDistance", withDistance));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireBikeTransport", requireBikeTransport));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireCarTransport", requireCarTransport));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "noCompulsoryReservation", noCompulsoryReservation));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "one", one));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "many", many));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTravelTime", maxTravelTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTransfers", maxTransfers));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "minTransferTime", minTransferTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "additionalTransferTime", additionalTransferTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "transferTimeFactor", transferTimeFactor));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "useRoutedTransfers", useRoutedTransfers));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianProfile", pedestrianProfile));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianSpeed", pedestrianSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "cyclingSpeed", cyclingSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHeight", vehicleHeight));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWidth", vehicleWidth));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLength", vehicleLength));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWeight", vehicleWeight));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmat", vehicleHazmat));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmatWater", vehicleHazmatWater));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleCount", vehicleAxleCount));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleLoad", vehicleAxleLoad));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTrailer", vehicleTrailer));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTopSpeed", vehicleTopSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLezAccess", vehicleLezAccess));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "transitModes", transitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitModes", preTransitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitModes", postTransitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "directMode", directMode));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPreTransitTime", maxPreTransitTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPostTransitTime", maxPostTransitTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxDirectTime", maxDirectTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "withDistance", withDistance));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireBikeTransport", requireBikeTransport));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireCarTransport", requireCarTransport));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "noCompulsoryReservation", noCompulsoryReservation));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -625,7 +625,7 @@ public class RoutingApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<OneToManyIntermodalResponse> localVarReturnType = new ParameterizedTypeReference<OneToManyIntermodalResponse>() {};
-        return apiClient.invokeAPI("/api/experimental/one-to-many-intermodal", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/experimental/one-to-many-intermodal", HttpMethod.GET, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
@@ -803,7 +803,7 @@ public class RoutingApi {
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
@@ -820,7 +820,7 @@ public class RoutingApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<OneToManyIntermodalResponse> localVarReturnType = new ParameterizedTypeReference<OneToManyIntermodalResponse>() {};
-        return apiClient.invokeAPI("/api/experimental/one-to-many-intermodal", HttpMethod.POST, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/experimental/one-to-many-intermodal", HttpMethod.POST, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
@@ -890,7 +890,7 @@ public class RoutingApi {
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
@@ -907,7 +907,7 @@ public class RoutingApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<Duration> localVarReturnType = new ParameterizedTypeReference<Duration>() {};
-        return apiClient.invokeAPI("/api/v1/one-to-many", HttpMethod.POST, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v1/one-to-many", HttpMethod.POST, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
@@ -1055,85 +1055,85 @@ public class RoutingApi {
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
 
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "fromPlace", fromPlace));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "toPlace", toPlace));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "radius", radius));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "via", via));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "viaMinimumStay", viaMinimumStay));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTransfers", maxTransfers));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTravelTime", maxTravelTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "minTransferTime", minTransferTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "additionalTransferTime", additionalTransferTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "transferTimeFactor", transferTimeFactor));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianProfile", pedestrianProfile));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianSpeed", pedestrianSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "cyclingSpeed", cyclingSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHeight", vehicleHeight));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWidth", vehicleWidth));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLength", vehicleLength));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWeight", vehicleWeight));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmat", vehicleHazmat));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmatWater", vehicleHazmatWater));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleCount", vehicleAxleCount));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleLoad", vehicleAxleLoad));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTrailer", vehicleTrailer));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTopSpeed", vehicleTopSpeed));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLezAccess", vehicleLezAccess));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "useRoutedTransfers", useRoutedTransfers));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "detailedTransfers", detailedTransfers));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "detailedLegs", detailedLegs));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "joinInterlinedLegs", joinInterlinedLegs));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "transitModes", transitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directModes", directModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitModes", preTransitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitModes", postTransitModes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directRentalFormFactors", directRentalFormFactors));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitRentalFormFactors", preTransitRentalFormFactors));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitRentalFormFactors", postTransitRentalFormFactors));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directRentalPropulsionTypes", directRentalPropulsionTypes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitRentalPropulsionTypes", preTransitRentalPropulsionTypes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitRentalPropulsionTypes", postTransitRentalPropulsionTypes));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directRentalProviders", directRentalProviders));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directRentalProviderGroups", directRentalProviderGroups));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitRentalProviders", preTransitRentalProviders));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitRentalProviderGroups", preTransitRentalProviderGroups));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitRentalProviders", postTransitRentalProviders));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitRentalProviderGroups", postTransitRentalProviderGroups));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ignoreDirectRentalReturnConstraints", ignoreDirectRentalReturnConstraints));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ignorePreTransitRentalReturnConstraints", ignorePreTransitRentalReturnConstraints));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ignorePostTransitRentalReturnConstraints", ignorePostTransitRentalReturnConstraints));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "numItineraries", numItineraries));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxItineraries", maxItineraries));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "pageCursor", pageCursor));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "timetableView", timetableView));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "searchWindow", searchWindow));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireBikeTransport", requireBikeTransport));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireCarTransport", requireCarTransport));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "noCompulsoryReservation", noCompulsoryReservation));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPreTransitTime", maxPreTransitTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPostTransitTime", maxPostTransitTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxDirectTime", maxDirectTime));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "fastestDirectFactor", fastestDirectFactor));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "timeout", timeout));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "passengers", passengers));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "luggage", luggage));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "slowDirect", slowDirect));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "fastestSlowDirectFactor", fastestSlowDirectFactor));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withFares", withFares));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "numLegAlternatives", numLegAlternatives));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "realtimeMode", realtimeMode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "algorithm", algorithm));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "fromPlace", fromPlace));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "toPlace", toPlace));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "radius", radius));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "via", via));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "viaMinimumStay", viaMinimumStay));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "time", time));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTransfers", maxTransfers));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxTravelTime", maxTravelTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "minTransferTime", minTransferTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "additionalTransferTime", additionalTransferTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "transferTimeFactor", transferTimeFactor));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxMatchingDistance", maxMatchingDistance));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianProfile", pedestrianProfile));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "pedestrianSpeed", pedestrianSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "cyclingSpeed", cyclingSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHeight", vehicleHeight));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWidth", vehicleWidth));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLength", vehicleLength));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleWeight", vehicleWeight));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmat", vehicleHazmat));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleHazmatWater", vehicleHazmatWater));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleCount", vehicleAxleCount));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleAxleLoad", vehicleAxleLoad));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTrailer", vehicleTrailer));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleTopSpeed", vehicleTopSpeed));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "vehicleLezAccess", vehicleLezAccess));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "elevationCosts", elevationCosts));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "useRoutedTransfers", useRoutedTransfers));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "detailedTransfers", detailedTransfers));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "detailedLegs", detailedLegs));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "joinInterlinedLegs", joinInterlinedLegs));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "transitModes", transitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directModes", directModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitModes", preTransitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitModes", postTransitModes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directRentalFormFactors", directRentalFormFactors));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitRentalFormFactors", preTransitRentalFormFactors));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitRentalFormFactors", postTransitRentalFormFactors));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directRentalPropulsionTypes", directRentalPropulsionTypes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitRentalPropulsionTypes", preTransitRentalPropulsionTypes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitRentalPropulsionTypes", postTransitRentalPropulsionTypes));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directRentalProviders", directRentalProviders));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "directRentalProviderGroups", directRentalProviderGroups));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitRentalProviders", preTransitRentalProviders));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "preTransitRentalProviderGroups", preTransitRentalProviderGroups));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitRentalProviders", postTransitRentalProviders));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "postTransitRentalProviderGroups", postTransitRentalProviderGroups));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "ignoreDirectRentalReturnConstraints", ignoreDirectRentalReturnConstraints));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "ignorePreTransitRentalReturnConstraints", ignorePreTransitRentalReturnConstraints));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "ignorePostTransitRentalReturnConstraints", ignorePostTransitRentalReturnConstraints));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "numItineraries", numItineraries));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxItineraries", maxItineraries));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "pageCursor", pageCursor));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "timetableView", timetableView));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "arriveBy", arriveBy));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "searchWindow", searchWindow));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireBikeTransport", requireBikeTransport));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "requireCarTransport", requireCarTransport));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "noCompulsoryReservation", noCompulsoryReservation));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPreTransitTime", maxPreTransitTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxPostTransitTime", maxPostTransitTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "maxDirectTime", maxDirectTime));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "fastestDirectFactor", fastestDirectFactor));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "timeout", timeout));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "passengers", passengers));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "luggage", luggage));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "slowDirect", slowDirect));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "fastestSlowDirectFactor", fastestSlowDirectFactor));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "withFares", withFares));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "numLegAlternatives", numLegAlternatives));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "withScheduledSkippedStops", withScheduledSkippedStops));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "realtimeMode", realtimeMode));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("csv".toUpperCase(Locale.ROOT)), "language", language));
+        localVarQueryParams.putAll(apiClient.parameterToMultiValueMap(null, "algorithm", algorithm));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -1145,7 +1145,7 @@ public class RoutingApi {
         String[] localVarAuthNames = new String[] {  };
 
         ParameterizedTypeReference<Plan200Response> localVarReturnType = new ParameterizedTypeReference<Plan200Response>() {};
-        return apiClient.invokeAPI("/api/v6/plan", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        return apiClient.invokeAPI("/api/v6/plan", HttpMethod.GET, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
