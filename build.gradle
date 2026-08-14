@@ -29,7 +29,7 @@ dependencies {
         exclude group: 'io.netty', module: 'netty-codec-http'
     }
     implementation 'io.netty:netty-codec-http:4.2.16.Final' // Transitive from reactor netty
-    implementation platform('com.fasterxml.jackson:jackson-bom:2.21.1')
+    implementation platform('com.fasterxml.jackson:jackson-bom:2.22.0')
     implementation 'com.fasterxml.jackson.core:jackson-core'
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
