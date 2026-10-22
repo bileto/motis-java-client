@@ -249,7 +249,7 @@ public class StopTime {
   }
 
   /**
-   * Whether there is real-time data about this leg
+   * Whether there is real-time data for this arrival/departure (i.e. &#x60;place.arrivalTimestampReason&#x60;/&#x60;place.departureTimestampReason&#x60; is neither &#x60;NO_RT_DATA&#x60; nor &#x60;INCONSISTENT_RT&#x60;)
    * @return realTime
    */
   @jakarta.annotation.Nonnull

@@ -486,7 +486,7 @@ public class Leg {
   }
 
   /**
-   * Whether there is real-time data about this leg
+   * Whether there is real-time data for the departure or arrival of this leg (i.e. &#x60;from.departureTimestampReason&#x60; or &#x60;to.arrivalTimestampReason&#x60; is neither &#x60;NO_RT_DATA&#x60; nor &#x60;INCONSISTENT_RT&#x60;)
    * @return realTime
    */
   @jakarta.annotation.Nonnull

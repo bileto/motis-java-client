@@ -47,6 +47,8 @@ src/main/java/dev/bileto/motis/client/model/PedestrianProfile.java
 src/main/java/dev/bileto/motis/client/model/PickupDropoffType.java
 src/main/java/dev/bileto/motis/client/model/Place.java
 src/main/java/dev/bileto/motis/client/model/Plan200Response.java
+src/main/java/dev/bileto/motis/client/model/PlanOffset.java
+src/main/java/dev/bileto/motis/client/model/PlanPostBody.java
 src/main/java/dev/bileto/motis/client/model/Reachable.java
 src/main/java/dev/bileto/motis/client/model/ReachablePlace.java
 src/main/java/dev/bileto/motis/client/model/RealtimeMode.java
@@ -80,6 +82,7 @@ src/main/java/dev/bileto/motis/client/model/StopTime.java
 src/main/java/dev/bileto/motis/client/model/Stoptimes200Response.java
 src/main/java/dev/bileto/motis/client/model/TicketUrls.java
 src/main/java/dev/bileto/motis/client/model/TimeRange.java
+src/main/java/dev/bileto/motis/client/model/TimestampReason.java
 src/main/java/dev/bileto/motis/client/model/Transfer.java
 src/main/java/dev/bileto/motis/client/model/Transfers200Response.java
 src/main/java/dev/bileto/motis/client/model/TransitRouteInfo.java

@@ -13,6 +13,7 @@ import dev.bileto.motis.client.model.OneToManyIntermodalResponse;
 import dev.bileto.motis.client.model.OneToManyParams;
 import dev.bileto.motis.client.model.PedestrianProfile;
 import dev.bileto.motis.client.model.Plan200Response;
+import dev.bileto.motis.client.model.PlanPostBody;
 import dev.bileto.motis.client.model.Reachable;
 import dev.bileto.motis.client.model.RealtimeMode;
 import dev.bileto.motis.client.model.RentalFormFactor;
@@ -1415,5 +1416,96 @@ public class RoutingApi {
      */
     public ResponseSpec planWithResponseSpec(@jakarta.annotation.Nonnull String fromPlace, @jakarta.annotation.Nonnull String toPlace, @jakarta.annotation.Nullable Double radius, @jakarta.annotation.Nullable List<String> via, @jakarta.annotation.Nullable List<Integer> viaMinimumStay, @jakarta.annotation.Nullable OffsetDateTime time, @jakarta.annotation.Nullable Integer maxTransfers, @jakarta.annotation.Nullable Integer maxTravelTime, @jakarta.annotation.Nullable Integer minTransferTime, @jakarta.annotation.Nullable Integer additionalTransferTime, @jakarta.annotation.Nullable BigDecimal transferTimeFactor, @jakarta.annotation.Nullable BigDecimal maxMatchingDistance, @jakarta.annotation.Nullable PedestrianProfile pedestrianProfile, @jakarta.annotation.Nullable BigDecimal pedestrianSpeed, @jakarta.annotation.Nullable BigDecimal cyclingSpeed, @jakarta.annotation.Nullable BigDecimal vehicleHeight, @jakarta.annotation.Nullable BigDecimal vehicleWidth, @jakarta.annotation.Nullable BigDecimal vehicleLength, @jakarta.annotation.Nullable BigDecimal vehicleWeight, @jakarta.annotation.Nullable Boolean vehicleHazmat, @jakarta.annotation.Nullable Boolean vehicleHazmatWater, @jakarta.annotation.Nullable Integer vehicleAxleCount, @jakarta.annotation.Nullable BigDecimal vehicleAxleLoad, @jakarta.annotation.Nullable Boolean vehicleTrailer, @jakarta.annotation.Nullable Integer vehicleTopSpeed, @jakarta.annotation.Nullable Boolean vehicleLezAccess, @jakarta.annotation.Nullable ElevationCosts elevationCosts, @jakarta.annotation.Nullable Boolean useRoutedTransfers, @jakarta.annotation.Nullable Boolean detailedTransfers, @jakarta.annotation.Nullable Boolean detailedLegs, @jakarta.annotation.Nullable Boolean joinInterlinedLegs, @jakarta.annotation.Nullable List<Mode> transitModes, @jakarta.annotation.Nullable List<Mode> directModes, @jakarta.annotation.Nullable List<Mode> preTransitModes, @jakarta.annotation.Nullable List<Mode> postTransitModes, @jakarta.annotation.Nullable List<RentalFormFactor> directRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> preTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalFormFactor> postTransitRentalFormFactors, @jakarta.annotation.Nullable List<RentalPropulsionType> directRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> preTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<RentalPropulsionType> postTransitRentalPropulsionTypes, @jakarta.annotation.Nullable List<String> directRentalProviders, @jakarta.annotation.Nullable List<String> directRentalProviderGroups, @jakarta.annotation.Nullable List<String> preTransitRentalProviders, @jakarta.annotation.Nullable List<String> preTransitRentalProviderGroups, @jakarta.annotation.Nullable List<String> postTransitRentalProviders, @jakarta.annotation.Nullable List<String> postTransitRentalProviderGroups, @jakarta.annotation.Nullable Boolean ignoreDirectRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePreTransitRentalReturnConstraints, @jakarta.annotation.Nullable Boolean ignorePostTransitRentalReturnConstraints, @jakarta.annotation.Nullable Integer numItineraries, @jakarta.annotation.Nullable Integer maxItineraries, @jakarta.annotation.Nullable String pageCursor, @jakarta.annotation.Nullable Boolean timetableView, @jakarta.annotation.Nullable Boolean arriveBy, @jakarta.annotation.Nullable Integer searchWindow, @jakarta.annotation.Nullable Boolean requireBikeTransport, @jakarta.annotation.Nullable Boolean requireCarTransport, @jakarta.annotation.Nullable Boolean noCompulsoryReservation, @jakarta.annotation.Nullable Integer maxPreTransitTime, @jakarta.annotation.Nullable Integer maxPostTransitTime, @jakarta.annotation.Nullable Integer maxDirectTime, @jakarta.annotation.Nullable BigDecimal fastestDirectFactor, @jakarta.annotation.Nullable Integer timeout, @jakarta.annotation.Nullable Integer passengers, @jakarta.annotation.Nullable Integer luggage, @jakarta.annotation.Nullable Boolean slowDirect, @jakarta.annotation.Nullable BigDecimal fastestSlowDirectFactor, @jakarta.annotation.Nullable Boolean withFares, @jakarta.annotation.Nullable Integer numLegAlternatives, @jakarta.annotation.Nullable Boolean withScheduledSkippedStops, @jakarta.annotation.Nullable RealtimeMode realtimeMode, @jakarta.annotation.Nullable List<String> language, @jakarta.annotation.Nullable String algorithm) throws WebClientResponseException {
         return planRequestCreation(fromPlace, toPlace, radius, via, viaMinimumStay, time, maxTransfers, maxTravelTime, minTransferTime, additionalTransferTime, transferTimeFactor, maxMatchingDistance, pedestrianProfile, pedestrianSpeed, cyclingSpeed, vehicleHeight, vehicleWidth, vehicleLength, vehicleWeight, vehicleHazmat, vehicleHazmatWater, vehicleAxleCount, vehicleAxleLoad, vehicleTrailer, vehicleTopSpeed, vehicleLezAccess, elevationCosts, useRoutedTransfers, detailedTransfers, detailedLegs, joinInterlinedLegs, transitModes, directModes, preTransitModes, postTransitModes, directRentalFormFactors, preTransitRentalFormFactors, postTransitRentalFormFactors, directRentalPropulsionTypes, preTransitRentalPropulsionTypes, postTransitRentalPropulsionTypes, directRentalProviders, directRentalProviderGroups, preTransitRentalProviders, preTransitRentalProviderGroups, postTransitRentalProviders, postTransitRentalProviderGroups, ignoreDirectRentalReturnConstraints, ignorePreTransitRentalReturnConstraints, ignorePostTransitRentalReturnConstraints, numItineraries, maxItineraries, pageCursor, timetableView, arriveBy, searchWindow, requireBikeTransport, requireCarTransport, noCompulsoryReservation, maxPreTransitTime, maxPostTransitTime, maxDirectTime, fastestDirectFactor, timeout, passengers, luggage, slowDirect, fastestSlowDirectFactor, withFares, numLegAlternatives, withScheduledSkippedStops, realtimeMode, language, algorithm);
+    }
+
+    /**
+     * Computes optimal connections from one place to another, with the option to provide client-computed offsets for the first and/or last mile. 
+     * All routing parameters are passed as query parameters (same as the &#x60;plan&#x60; GET endpoint - see there for their descriptions). The request body carries only the offset lists. 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>404</b> - Not Found
+     * <p><b>400</b> - Bad Request
+     * <p><b>500</b> - Internal Server Error
+     * <p><b>200</b> - routing result
+     * @param planPostBody The planPostBody parameter
+     * @return Plan200Response
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec planPostRequestCreation(@jakarta.annotation.Nonnull PlanPostBody planPostBody) throws WebClientResponseException {
+        Object postBody = planPostBody;
+        // verify the required parameter 'planPostBody' is set
+        if (planPostBody == null) {
+            throw new WebClientResponseException("Missing the required parameter 'planPostBody' when calling planPost", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { 
+            "application/json"
+        };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {  };
+
+        ParameterizedTypeReference<Plan200Response> localVarReturnType = new ParameterizedTypeReference<Plan200Response>() {};
+        return apiClient.invokeAPI("/api/v6/plan", HttpMethod.POST, pathParams, localVarQueryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Computes optimal connections from one place to another, with the option to provide client-computed offsets for the first and/or last mile. 
+     * All routing parameters are passed as query parameters (same as the &#x60;plan&#x60; GET endpoint - see there for their descriptions). The request body carries only the offset lists. 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>404</b> - Not Found
+     * <p><b>400</b> - Bad Request
+     * <p><b>500</b> - Internal Server Error
+     * <p><b>200</b> - routing result
+     * @param planPostBody The planPostBody parameter
+     * @return Plan200Response
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Plan200Response planPost(@jakarta.annotation.Nonnull PlanPostBody planPostBody) throws WebClientResponseException {
+        ParameterizedTypeReference<Plan200Response> localVarReturnType = new ParameterizedTypeReference<Plan200Response>() {};
+        return planPostRequestCreation(planPostBody).bodyToMono(localVarReturnType).block();
+    }
+
+    /**
+     * Computes optimal connections from one place to another, with the option to provide client-computed offsets for the first and/or last mile. 
+     * All routing parameters are passed as query parameters (same as the &#x60;plan&#x60; GET endpoint - see there for their descriptions). The request body carries only the offset lists. 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>404</b> - Not Found
+     * <p><b>400</b> - Bad Request
+     * <p><b>500</b> - Internal Server Error
+     * <p><b>200</b> - routing result
+     * @param planPostBody The planPostBody parameter
+     * @return ResponseEntity&lt;Plan200Response&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<Plan200Response> planPostWithHttpInfo(@jakarta.annotation.Nonnull PlanPostBody planPostBody) throws WebClientResponseException {
+        ParameterizedTypeReference<Plan200Response> localVarReturnType = new ParameterizedTypeReference<Plan200Response>() {};
+        return planPostRequestCreation(planPostBody).toEntity(localVarReturnType).block();
+    }
+
+    /**
+     * Computes optimal connections from one place to another, with the option to provide client-computed offsets for the first and/or last mile. 
+     * All routing parameters are passed as query parameters (same as the &#x60;plan&#x60; GET endpoint - see there for their descriptions). The request body carries only the offset lists. 
+     * <p><b>422</b> - Unprocessable Entity
+     * <p><b>404</b> - Not Found
+     * <p><b>400</b> - Bad Request
+     * <p><b>500</b> - Internal Server Error
+     * <p><b>200</b> - routing result
+     * @param planPostBody The planPostBody parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec planPostWithResponseSpec(@jakarta.annotation.Nonnull PlanPostBody planPostBody) throws WebClientResponseException {
+        return planPostRequestCreation(planPostBody);
     }
 }

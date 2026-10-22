@@ -366,7 +366,7 @@ public class TripSegment {
   }
 
   /**
-   * Whether there is real-time data about this leg
+   * Whether there is real-time data for the departure or arrival of this leg
    * @return realTime
    */
   @jakarta.annotation.Nonnull

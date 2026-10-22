@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import dev.bileto.motis.client.model.Alert;
 import dev.bileto.motis.client.model.Mode;
 import dev.bileto.motis.client.model.PickupDropoffType;
+import dev.bileto.motis.client.model.TimestampReason;
 import dev.bileto.motis.client.model.VertexType;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -56,6 +57,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Place.JSON_PROPERTY_PICKUP_TYPE,
   Place.JSON_PROPERTY_DROPOFF_TYPE,
   Place.JSON_PROPERTY_CANCELLED,
+  Place.JSON_PROPERTY_ARRIVAL_TIMESTAMP_REASON,
+  Place.JSON_PROPERTY_DEPARTURE_TIMESTAMP_REASON,
   Place.JSON_PROPERTY_ALERTS,
   Place.JSON_PROPERTY_FLEX,
   Place.JSON_PROPERTY_FLEX_ID,
@@ -144,6 +147,14 @@ public class Place {
   public static final String JSON_PROPERTY_CANCELLED = "cancelled";
   @jakarta.annotation.Nullable
   private Boolean cancelled;
+
+  public static final String JSON_PROPERTY_ARRIVAL_TIMESTAMP_REASON = "arrivalTimestampReason";
+  @jakarta.annotation.Nullable
+  private TimestampReason arrivalTimestampReason;
+
+  public static final String JSON_PROPERTY_DEPARTURE_TIMESTAMP_REASON = "departureTimestampReason";
+  @jakarta.annotation.Nullable
+  private TimestampReason departureTimestampReason;
 
   public static final String JSON_PROPERTY_ALERTS = "alerts";
   @jakarta.annotation.Nullable
@@ -672,6 +683,56 @@ public class Place {
     this.cancelled = cancelled;
   }
 
+  public Place arrivalTimestampReason(@jakarta.annotation.Nullable TimestampReason arrivalTimestampReason) {
+    
+    this.arrivalTimestampReason = arrivalTimestampReason;
+    return this;
+  }
+
+  /**
+   * Reason for the arrival timestamp, i.e. what the arrival time is based on. Only set for stops of transit trips with an arrival. 
+   * @return arrivalTimestampReason
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ARRIVAL_TIMESTAMP_REASON, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TimestampReason getArrivalTimestampReason() {
+    return arrivalTimestampReason;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ARRIVAL_TIMESTAMP_REASON, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setArrivalTimestampReason(@jakarta.annotation.Nullable TimestampReason arrivalTimestampReason) {
+    this.arrivalTimestampReason = arrivalTimestampReason;
+  }
+
+  public Place departureTimestampReason(@jakarta.annotation.Nullable TimestampReason departureTimestampReason) {
+    
+    this.departureTimestampReason = departureTimestampReason;
+    return this;
+  }
+
+  /**
+   * Reason for the departure timestamp, i.e. what the departure time is based on. Only set for stops of transit trips with a departure. 
+   * @return departureTimestampReason
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEPARTURE_TIMESTAMP_REASON, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TimestampReason getDepartureTimestampReason() {
+    return departureTimestampReason;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEPARTURE_TIMESTAMP_REASON, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDepartureTimestampReason(@jakarta.annotation.Nullable TimestampReason departureTimestampReason) {
+    this.departureTimestampReason = departureTimestampReason;
+  }
+
   public Place alerts(@jakarta.annotation.Nullable List<Alert> alerts) {
     
     this.alerts = alerts;
@@ -868,6 +929,8 @@ public class Place {
         Objects.equals(this.pickupType, place.pickupType) &&
         Objects.equals(this.dropoffType, place.dropoffType) &&
         Objects.equals(this.cancelled, place.cancelled) &&
+        Objects.equals(this.arrivalTimestampReason, place.arrivalTimestampReason) &&
+        Objects.equals(this.departureTimestampReason, place.departureTimestampReason) &&
         Objects.equals(this.alerts, place.alerts) &&
         Objects.equals(this.flex, place.flex) &&
         Objects.equals(this.flexId, place.flexId) &&
@@ -878,7 +941,7 @@ public class Place {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, stopId, parentId, importance, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, stopCode, description, vertexType, pickupType, dropoffType, cancelled, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow, modes);
+    return Objects.hash(name, stopId, parentId, importance, lat, lon, level, tz, arrival, departure, scheduledArrival, scheduledDeparture, scheduledTrack, track, stopCode, description, vertexType, pickupType, dropoffType, cancelled, arrivalTimestampReason, departureTimestampReason, alerts, flex, flexId, flexStartPickupDropOffWindow, flexEndPickupDropOffWindow, modes);
   }
 
   @Override
@@ -905,6 +968,8 @@ public class Place {
     sb.append("    pickupType: ").append(toIndentedString(pickupType)).append("\n");
     sb.append("    dropoffType: ").append(toIndentedString(dropoffType)).append("\n");
     sb.append("    cancelled: ").append(toIndentedString(cancelled)).append("\n");
+    sb.append("    arrivalTimestampReason: ").append(toIndentedString(arrivalTimestampReason)).append("\n");
+    sb.append("    departureTimestampReason: ").append(toIndentedString(departureTimestampReason)).append("\n");
     sb.append("    alerts: ").append(toIndentedString(alerts)).append("\n");
     sb.append("    flex: ").append(toIndentedString(flex)).append("\n");
     sb.append("    flexId: ").append(toIndentedString(flexId)).append("\n");
